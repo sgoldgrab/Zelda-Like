@@ -1,51 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthPlayer : MonoBehaviour
 {
 
-    public float health;
+    private GameObject playerHealthOne;
+    private GameObject playerHealthTwo;
+    private GameObject playerHealthThree;
+    private GameObject playerHealthFour;
+    private GameObject playerHealthFive;
 
-    public float maxHealth = 25f;
+    private bool damageOne = false;
+    private bool damageTwo = false;
+    private bool damageThree = false;
+    private bool damageFour = false;
 
     public bool isDead = false;
-
-    public GameObject healthBar;
-    private Slider slider;
 
     private void Start()
     {
 
-        health = maxHealth;
-
-        slider = healthBar.GetComponent<Slider>();
+        playerHealthOne = GameObject.Find("SEG1");
+        playerHealthTwo = GameObject.Find("SEG2");
+        playerHealthThree = GameObject.Find("SEG3");
+        playerHealthFour = GameObject.Find("SEG4");
+        playerHealthFive = GameObject.Find("SEG5");
 
     }
 
-    private void Update()
+    public void TakeDamage()
     {
-        
-        if(health <= 0)
+
+        if (damageFour)
         {
+
+            playerHealthFour.SetActive(false);
 
             PlayerDead();
+            damageOne = false;
+            damageTwo = false;
+            damageThree = false;
+            damageFour = false;
 
         }
 
-        if(health > maxHealth)
+        else if (damageThree)
         {
 
-            health = maxHealth;
+            playerHealthThree.SetActive(false);
+
+            damageFour = true;
 
         }
 
-        slider.value = health;
+        else if (damageTwo)
+        {
+
+            playerHealthOne.SetActive(false);
+
+            damageThree = true;
+
+        }
+
+        else if (damageOne)
+        {
+
+            playerHealthTwo.SetActive(false);
+
+            damageTwo = true;
+
+        }
+
+        else
+        {
+
+            playerHealthFive.SetActive(false);
+
+            damageOne = true;
+
+        }
 
     }
 
-    private void PlayerDead()
+    public void PlayerDead()
     {
 
         isDead = true;

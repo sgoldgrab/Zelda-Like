@@ -7,7 +7,7 @@ public class Attack : MonoBehaviour
 
     public GameObject attackBluePrint;
 
-    private float timer;
+    private float timer = 0;
 
     private Movements movementScript;
 
@@ -42,7 +42,7 @@ public class Attack : MonoBehaviour
     private void Attacking()
     {
 
-        Instantiate(attackBluePrint, transform.position, Quaternion.Euler(movementScript.lastInput));
+        Instantiate(attackBluePrint, transform.position, Quaternion.identity);
         timer = 0.5f;
 
     }

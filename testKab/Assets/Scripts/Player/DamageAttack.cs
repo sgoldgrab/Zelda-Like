@@ -5,19 +5,23 @@ using UnityEngine;
 public class DamageAttack : MonoBehaviour
 {
 
-    private GameObject arrow;
-    private Movements movementScript;
-
     private float timer;
+
+    private GameObject player;
+    private Movements playerMovements;
 
     private void Start()
     {
 
-        timer = 0.1f;
+        player = GameObject.Find("Player");
 
-        arrow = GameObject.Find("arrow");
-    
-        transform.rotation = arrow.transform.rotation;
+        playerMovements = player.GetComponent<Movements>();
+
+        transform.LookAt(new Vector3(playerMovements.lastInput.x, playerMovements.lastInput.y, 0));
+
+        this.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z);
+
+        timer = 0.1f;
 
     }
 

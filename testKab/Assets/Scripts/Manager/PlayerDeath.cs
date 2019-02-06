@@ -8,16 +8,36 @@ public class PlayerDeath : MonoBehaviour
     public GameObject player;
     private HealthPlayer playerHealth;
 
-    public GameObject enemy1;
-    public GameObject enemy2;
+    public GameObject enemy1Prefab;
+    public GameObject enemy2Prefab;
+
+    public GameObject groupEnemies;
+    private Transform enemiesTransform;
+
+    private GameObject playerHealthOne;
+    private GameObject playerHealthTwo;
+    private GameObject playerHealthThree;
+    private GameObject playerHealthFour;
+    private GameObject playerHealthFive;
 
     private void Start()
     {
 
+        enemiesTransform = groupEnemies.GetComponent<Transform>();
+
         playerHealth = player.GetComponent<HealthPlayer>();
 
-        Instantiate(enemy1);
-        Instantiate(enemy2);
+        GameObject enemy1 = Instantiate(enemy1Prefab);
+        GameObject enemy2 = Instantiate(enemy2Prefab);
+
+        enemy1.transform.parent = enemiesTransform;
+        enemy2.transform.parent = enemiesTransform;
+
+        playerHealthOne = GameObject.Find("SEG1");
+        playerHealthTwo = GameObject.Find("SEG2");
+        playerHealthThree = GameObject.Find("SEG3");
+        playerHealthFour = GameObject.Find("SEG4");
+        playerHealthFive = GameObject.Find("SEG5");
 
     }
 
@@ -28,7 +48,6 @@ public class PlayerDeath : MonoBehaviour
         {
 
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] enemiesHealth = GameObject.FindGameObjectsWithTag("EnemyHealthBar");
 
             for(int i = 0; i < enemies.Length; i++)
             {
@@ -37,22 +56,24 @@ public class PlayerDeath : MonoBehaviour
 
             }
 
-            for (int i = 0; i < enemiesHealth.Length; i++)
-            {
-
-                Destroy(enemiesHealth[i]);
-
-            }
-
             if(Input.GetKeyDown(KeyCode.R))
             {
 
                 playerHealth.isDead = false;
-                playerHealth.health = playerHealth.maxHealth;
-                player.transform.position = new Vector3(0, 0, 0);
 
-                Instantiate(enemy1);
-                Instantiate(enemy2);
+                playerHealthOne.SetActive(true);
+                playerHealthTwo.SetActive(true);
+                playerHealthThree.SetActive(true);
+                playerHealthFour.SetActive(true);
+                playerHealthFive.SetActive(true);
+
+                player.transform.position = new Vector3(0, 4, 0);
+
+                GameObject enemy1 = Instantiate(enemy1Prefab);
+                GameObject enemy2 = Instantiate(enemy2Prefab);
+
+                enemy1.transform.parent = enemiesTransform;
+                enemy2.transform.parent = enemiesTransform;
 
             }
 

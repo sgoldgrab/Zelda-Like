@@ -11,7 +11,7 @@ public class Movements : MonoBehaviour
 
     private Vector2 direction;
 
-    public Vector3 lastInput;
+    public Vector2 lastInput;
 
     private HealthPlayer playerHealth;
 
@@ -27,9 +27,7 @@ public class Movements : MonoBehaviour
     private void Update()
     {
 
-        Inputs();
-
-        lastInput = direction;    
+        Inputs();   
 
     }
 
@@ -42,6 +40,8 @@ public class Movements : MonoBehaviour
             Movement();
 
         }
+
+        direction = lastInput;
 
     }
 

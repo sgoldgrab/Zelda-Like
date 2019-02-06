@@ -44,9 +44,7 @@ public class Interaction : MonoBehaviour
 
             sprite.color = new Color(255, 0, 0);
 
-            playerHealth.health += 2.5f * Time.deltaTime;
-
-            playerMovements.speed = 1;
+            playerMovements.speed = 5;
 
         }
 
