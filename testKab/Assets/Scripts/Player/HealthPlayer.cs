@@ -1,20 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthPlayer : MonoBehaviour
 {
 
-    public int health;
+    public float health;
 
-    public int maxHealth = 25;
+    public float maxHealth = 25f;
 
     public bool isDead = false;
+
+    public GameObject healthBar;
+    private Slider slider;
 
     private void Start()
     {
 
         health = maxHealth;
+
+        slider = healthBar.GetComponent<Slider>();
 
     }
 
@@ -34,6 +40,8 @@ public class HealthPlayer : MonoBehaviour
             health = maxHealth;
 
         }
+
+        slider.value = health;
 
     }
 

@@ -9,7 +9,14 @@ public class Attack : MonoBehaviour
 
     private float timer;
 
-    private Vector3 direction;
+    private Movements movementScript;
+
+    private void Start()
+    {
+
+        movementScript = GetComponent<Movements>();
+
+    }
 
     private void Update()
     {
@@ -18,14 +25,12 @@ public class Attack : MonoBehaviour
 
         Inputs();
 
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
     }
 
     private void Inputs()
     {
 
-        if(Input.GetKeyDown(KeyCode.Mouse0) && timer <=0)
+        if(Input.GetKeyDown(KeyCode.Space) && timer <=0)
         {
 
             Attacking();
@@ -37,7 +42,7 @@ public class Attack : MonoBehaviour
     private void Attacking()
     {
 
-        Instantiate(attackBluePrint, new Vector2(transform.position.x, transform.position.y), Quaternion.Euler(direction));
+        Instantiate(attackBluePrint, transform.position, Quaternion.Euler(movementScript.lastInput));
         timer = 0.5f;
 
     }

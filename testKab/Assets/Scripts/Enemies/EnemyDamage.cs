@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject player;
 
     private HealthPlayer playerHealth;
 
     private void Start()
     {
-        
+
+        player = GameObject.Find("Player");
+
         playerHealth = player.GetComponent<HealthPlayer>();
 
     }

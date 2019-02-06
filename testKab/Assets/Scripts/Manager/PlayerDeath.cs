@@ -8,10 +8,16 @@ public class PlayerDeath : MonoBehaviour
     public GameObject player;
     private HealthPlayer playerHealth;
 
+    public GameObject enemy1;
+    public GameObject enemy2;
+
     private void Start()
     {
 
         playerHealth = player.GetComponent<HealthPlayer>();
+
+        Instantiate(enemy1);
+        Instantiate(enemy2);
 
     }
 
@@ -44,6 +50,9 @@ public class PlayerDeath : MonoBehaviour
                 playerHealth.isDead = false;
                 playerHealth.health = playerHealth.maxHealth;
                 player.transform.position = new Vector3(0, 0, 0);
+
+                Instantiate(enemy1);
+                Instantiate(enemy2);
 
             }
 

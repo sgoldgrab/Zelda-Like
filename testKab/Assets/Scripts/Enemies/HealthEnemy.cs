@@ -9,23 +9,27 @@ public class HealthEnemy : MonoBehaviour
     [SerializeField]
     private int health = 10;
 
-    public GameObject player;
+    private GameObject player;
     private HealthPlayer playerHealth;
 
     public GameObject healthBarPrefab;
+    private GameObject healthBar;
     private Slider barSlider;
 
-    [SerializeField]
-    private Transform canvasTransform;
+    private GameObject canvas;
 
     private void Start()
     {
 
+        player = GameObject.Find("Player");
+
         playerHealth = player.GetComponent<HealthPlayer>();
 
-        GameObject healthBar = Instantiate(healthBarPrefab, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
+        healthBar = Instantiate(healthBarPrefab, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
 
-        healthBar.transform.parent = canvasTransform;
+        canvas = GameObject.Find("Canvas");
+
+        healthBar.transform.parent = canvas.transform;
 
         barSlider = healthBar.GetComponent<Slider>();
 
@@ -40,6 +44,7 @@ public class HealthEnemy : MonoBehaviour
         {
 
             Destroy(this.gameObject);
+            Destroy(healthBar.gameObject);
 
         }
 

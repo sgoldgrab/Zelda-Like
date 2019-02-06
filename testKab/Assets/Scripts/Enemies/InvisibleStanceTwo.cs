@@ -7,25 +7,36 @@ public class InvisibleStanceTwo : MonoBehaviour
 
     private SpriteRenderer sprite;
 
-    public GameObject player;
+    private GameObject player;
     private Stances playerStance;
 
     private void Start()
     {
+
         sprite = GetComponent<SpriteRenderer>();
+
+        player = GameObject.Find("Player");
+
         playerStance = player.GetComponent<Stances>();
+
     }
 
     private void Update()
     {
+
         if (playerStance.stanceOne)
         {
+
             sprite.enabled = true;
+
         }
 
         else if (!playerStance.stanceOne)
         {
+
             sprite.enabled = false;
+
         }
+
     }
 }

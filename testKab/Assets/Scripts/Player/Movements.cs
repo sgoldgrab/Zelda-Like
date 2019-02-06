@@ -5,12 +5,13 @@ using UnityEngine;
 public class Movements : MonoBehaviour
 {
 
-    [SerializeField]
-    private float speed;
+    public float speed;
 
     private Rigidbody2D rb2D;
 
     private Vector2 direction;
+
+    public Vector3 lastInput;
 
     private HealthPlayer playerHealth;
 
@@ -26,7 +27,9 @@ public class Movements : MonoBehaviour
     private void Update()
     {
 
-            Inputs();
+        Inputs();
+
+        lastInput = direction;    
 
     }
 
