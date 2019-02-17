@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour {
     private bool isDead;
 
     private PlayerControllerEzEz playerController;
+    private Animator playerAnimator;
 
     private float waitForAttack = 0.0f;
     [SerializeField]
@@ -31,6 +32,7 @@ public class PlayerAttack : MonoBehaviour {
     void Start()
     {
         playerController = GetComponent<PlayerControllerEzEz>();
+        playerAnimator = GetComponent<Animator>();
 
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner");
 
@@ -49,6 +51,8 @@ public class PlayerAttack : MonoBehaviour {
                 //WhichSideToAttack();
 
                 ChoseAttack();
+
+                playerAnimator.SetTrigger("playerAttacks");
 
                 for (int n = 0; n < attackPosSprites.Length; n++)
                 {

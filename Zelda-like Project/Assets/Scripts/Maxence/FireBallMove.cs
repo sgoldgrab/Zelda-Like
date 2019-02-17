@@ -68,6 +68,8 @@ public class FireBallMove : MonoBehaviour {
             {
                 other.GetComponent<PlayerCaracteristics>().playerHealth -= fBDamage;
                 Debug.Log("Damage to the Player !" + other.GetComponent<PlayerCaracteristics>().playerHealth);
+
+                other.GetComponent<HealthPlayer>().TakeDamage();
             }
 
             //fBIsAnimated = true;
