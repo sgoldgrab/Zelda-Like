@@ -29,6 +29,11 @@ public class PlayerControllerEzEz : MonoBehaviour {
     [HideInInspector] public bool playerIsHitByTheTemplar;
     [HideInInspector] public bool playerIsDead;
 
+    private HealthPlayer healthPlayerScript;
+
+    private float lastX;
+    private float lastY;
+
     void Awake()
     {
         GameObject templarMessenger = GameObject.FindWithTag("Templar");
@@ -49,22 +54,33 @@ public class PlayerControllerEzEz : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         playerCaracteristics = GetComponent<PlayerCaracteristics>();
+
+        /*GameObject healthPlayerMessenger = GameObject.FindWithTag("Templar");
+
+        if (healthPlayerMessenger != null)
+        {
+            healthPlayerScript = healthPlayerMessenger.GetComponent<HealthPlayer>();
+        }*/
+
+        healthPlayerScript = GetComponent<HealthPlayer>();
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        movement();
+        Movement();
 
         StanceSwitch();
 
         DamageToThePlayer();
+
+        LastSprite();
 	}
 
-    void movement()
+    void Movement()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         /*var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");*/
@@ -73,6 +89,39 @@ public class PlayerControllerEzEz : MonoBehaviour {
         animator.SetFloat("y", vertical);
 
         transform.Translate(horizontal * playerSpeed * Time.deltaTime, vertical * playerSpeed * Time.deltaTime, 0);
+
+        if(horizontal != 0 || vertical != 0)
+        {
+            lastX = horizontal;
+            lastY = vertical;
+        }
+    }
+
+    void LastSprite()
+    {
+        if(lastX > 0 && lastY < 0) // bas droite
+        {
+            animator.SetFloat("lastX", 1);
+            animator.SetFloat("lastY", -1);
+        }
+
+        if (lastX > 0 && lastY > 0) // haut droite
+        {
+            animator.SetFloat("lastX", 1);
+            animator.SetFloat("lastY", 1);
+        }
+
+        if (lastX < 0 && lastY > 0) // haut gauche
+        {
+            animator.SetFloat("lastX", -1);
+            animator.SetFloat("lastY", 1);
+        }
+
+        if (lastX < 0 && lastY < 0) // bas gauche
+        {
+            animator.SetFloat("lastX", -1);
+            animator.SetFloat("lastY", -1);
+        }
     }
 
     void StanceSwitch()
@@ -102,6 +151,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
             playerCaracteristics.playerHealth -= templarScript.templarDamage;
             Debug.Log("Damage to the playeeer FUsckjklj !!!!");
             Debug.Log(playerCaracteristics.playerHealth);
+            playerIsHitByTheTemplar = false;
+            healthPlayerScript.TakeDamage();
         }
 
         if (playerIsDead)

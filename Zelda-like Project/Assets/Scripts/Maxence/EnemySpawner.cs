@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject mage;
     public GameObject templar;
 
-    public int enemiesAlive = 0;
+    [HideInInspector] public int enemiesAlive = 0;
     public int maxEnemies;
 
     private float waitTime;

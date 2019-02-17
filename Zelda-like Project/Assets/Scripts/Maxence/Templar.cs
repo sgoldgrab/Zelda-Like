@@ -32,10 +32,11 @@ public class Templar : MonoBehaviour {
     private bool templarIsDead = false;
     private bool templarIsAlive = true;
     private bool templarCanMove = true;
-    private bool templarCanAttack;
+    private bool templarCanAttack = true;
+    private bool flipTemplar = false;
 
     //templar caracteristics
-    [SerializeField] private float templarSpeed;
+    public float templarSpeed;
     [SerializeField] private float templarHealth = 150;
     public float templarDamage;
 
@@ -58,6 +59,12 @@ public class Templar : MonoBehaviour {
     [SerializeField] private float templarAttackRange;
     [SerializeField] private float templarAttackDistance;
     [SerializeField] private LayerMask thisIsThePlayer;
+
+    //UI TESTING\\
+    public GameObject templarHealthBarPrefab;
+    private GameObject templarHealthBar;
+    private EnemyHealthBar templarHealthBarScript;
+    [SerializeField] private float offsetUI;
 
     void Start()
     {
@@ -84,6 +91,12 @@ public class Templar : MonoBehaviour {
 
         waitTime = startWaitTime; // set the movement wait time
         checkpoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY)); // set the first checkpoint position
+
+        //UI TESTING\\
+        templarHealthBar = Instantiate(templarHealthBarPrefab, new Vector2(transform.position.x, transform.position.y + offsetUI), Quaternion.identity);
+        templarHealthBar.transform.parent = transform;
+
+        templarHealthBarScript = templarHealthBar.GetComponent<EnemyHealthBar>();
     }
 
     void Update()
@@ -98,12 +111,13 @@ public class Templar : MonoBehaviour {
         {
             ChaseBehavior(); // chase the player
             templarSpriteRenderer.color = chaseColor; // basic color indicator
-            //Attack(); // basic sword attack
         }
 
         playerPosition = playerTransform.position;
 
         DamageToTheTemplar();
+
+        FlipTemplar();
     }
 
     void ChaseBehavior() // follows the player and attacks him when reaching a certain distance
@@ -118,13 +132,21 @@ public class Templar : MonoBehaviour {
             if (Vector2.Distance(transform.position, playerTransform.position) <= templarAttackDistance)
             {
                 templarCanMove = false;
-                Attack();
+                LaunchAttack();
             }
 
             if (Vector2.Distance(transform.position, playerTransform.position) > templarAttackDistance)
             {
                 templarCanMove = true;
             }
+        }
+    }
+
+    void LaunchAttack()
+    {
+        if (templarCanAttack)
+        {
+            templarAnimator.SetTrigger("templarAttacks");
         }
     }
 
@@ -140,10 +162,10 @@ public class Templar : MonoBehaviour {
             }
         }
 
-        if (templarAnimator.GetCurrentAnimatorStateInfo(0).IsName("templarIsHit") || !templarAnimator.GetCurrentAnimatorStateInfo(0).IsName("templarIsDead"))
+        /*if (!templarAnimator.GetCurrentAnimatorStateInfo(0).IsName("templarIsHit") || !templarAnimator.GetCurrentAnimatorStateInfo(0).IsName("templarIsDead"))
         {
             templarAnimator.SetTrigger("templarAttacks");
-        }
+        }*/
     }
 
     void IdleBehavior() // patrols around using random checkpoints
@@ -176,30 +198,69 @@ public class Templar : MonoBehaviour {
     {
         if (templarIsHit)
         {
-            templarHealth -= playerAttackScript.damage;
+            templarHealth -= playerAttackScript.damage; // damage
+
             templarIsHit = false;
+            templarCanAttack = false;
 
             if (templarHealth <= 0)
             {
-                templarAnimator.SetTrigger("templarIsDead"); // die animation
+                templarAnimator.SetTrigger("templarIsDead");
                 templarCollider2D.enabled = false; // disable the enemy collider so you can walk past them
-                templarIsAlive = false; // boolean that's used to disable the movement and firing functions of the enemy
+                templarIsAlive = false; // boolean that's used to disable the behaviors of the enemy
                 enemySpawner.enemiesAlive -= 1; // update the count of enemies alive
-                StartCoroutine(WaitForDeath()); // templar destruction
             }
 
             else if (templarHealth > 0)
             {
-                templarAnimator.SetTrigger("templarIsHit"); // hit animation
+                templarAnimator.SetTrigger("templarIsHit");
                 Debug.Log("Damage to the Templaaaar !!!");
                 Debug.Log(templarHealth);
+
+                /*if (!flipTemplar)
+                {
+                    templarAnimator.SetTrigger("templarIsHit");
+                    Debug.Log("Damage to the Templaaaar !!!");
+                    Debug.Log(templarHealth);
+                }
+                
+                else if (flipTemplar)
+                {
+                    // other animation
+                }*/
             }
+
+            //UI TESTING\\
+            templarHealthBarScript.Damaged();
+        }
+    }
+
+
+    void Death()
+    {
+        Destroy(gameObject);
+    }
+
+    void FlipTemplar()
+    {
+        if(transform.position.x >= playerTransform.position.x) //faceleft
+        {
+            //templarSpriteRenderer.flipX = true;
+            //flipTemplar = true;
+            templarAnimator.SetBool("templarIsFlipped", true);
+        }
+
+        else if(transform.position.x < playerTransform.position.x) //faceright
+        {
+            //templarSpriteRenderer.flipX = false;
+            //flipTemplar = false;
+            templarAnimator.SetBool("templarIsFlipped", false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             behavior = TemplarBehaviors.chase;
         }
@@ -207,23 +268,24 @@ public class Templar : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             behavior = TemplarBehaviors.patrol;
         }
-    }
-
-    IEnumerator WaitForDeath() // wait for seconds before destroying the templar game object
-    {
-        yield return new WaitForSecondsRealtime(1);
-
-        Destroy(gameObject);
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackRange);
+        Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackDistance);
     }
+
+    /*IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSecondsRealtime(1);
+
+        Destroy(gameObject);
+    }*/
 }
 
