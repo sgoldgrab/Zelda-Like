@@ -89,20 +89,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             if(enemiesToDamage[i] is BoxCollider2D)
             {
-                enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth -= damage; // access the enemy's Health script --> takes damage
-
-                if (enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth <= 0) // ENEMY IS DEAD
-                {
-                    enemiesToDamage[i].GetComponent<RandomEnemyBehavior>().enemyHasFallen = true;
-                }
-
-                else if (enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth > 0) // ENEMY TAKES DAMAGE
-                {
-                    enemiesToDamage[i].GetComponent<RandomEnemyBehavior>().enemyWasHit = true;
-                }
-
-                Debug.Log("Daamaaage !!!");
-                Debug.Log(enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth);
+                enemiesToDamage[i].GetComponent<RandomEnemyBehavior>().enemyWasHit = true;
             }
         }
     }
@@ -187,4 +174,19 @@ public class PlayerAttack : MonoBehaviour {
             Gizmos.DrawWireSphere(attackPositions[i].position, attackRange);
         }
     }
+
+    /*enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth -= damage; // access the enemy's Health script --> takes damage
+
+                if (enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth <= 0) // ENEMY IS DEAD
+                {
+                    enemiesToDamage[i].GetComponent<RandomEnemyBehavior>().enemyHasFallen = true;
+                }
+
+                else if (enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth > 0) // ENEMY TAKES DAMAGE
+                {
+                    enemiesToDamage[i].GetComponent<RandomEnemyBehavior>().enemyWasHit = true;
+                }
+
+                Debug.Log("Daamaaage !!!");
+                Debug.Log(enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth);*/
 }
