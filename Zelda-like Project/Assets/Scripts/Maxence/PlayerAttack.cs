@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void Attack() // takes all enemies in the area of effect and deals damage to them
     {
-        enemiesToDamage = Physics2D.OverlapCircleAll(attackPositions[8].position, attackRange, thisIsAnEnemy); // creates the area and takes the enemy collider(s) inside
+        enemiesToDamage = Physics2D.OverlapCircleAll(attackPositions[0].position, attackRange, thisIsAnEnemy); // creates the area and takes the enemy collider(s) inside
 
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
@@ -109,7 +109,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void TestAttack() // takes all enemies in the area of effect and deals damage to them
     {
-        templarsToDamage = Physics2D.OverlapCircleAll(attackPositions[8].position, attackRange, thisIsAnEnemy); // creates the area and takes the enemy collider(s) inside
+        templarsToDamage = Physics2D.OverlapCircleAll(attackPositions[0].position, attackRange, thisIsAnEnemy); // creates the area and takes the enemy collider(s) inside
 
         for (int i = 0; i < templarsToDamage.Length; i++)
         {
