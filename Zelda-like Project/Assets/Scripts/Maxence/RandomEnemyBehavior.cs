@@ -16,8 +16,8 @@ public class RandomEnemyBehavior : MonoBehaviour {
 
     [HideInInspector] public bool enemyWasHit = false;
     [HideInInspector] public bool enemyHasFallen = false;
-
     [HideInInspector] public bool isAlive = true;
+    [SerializeField] private float enemyHealth;
 
     public GameObject fireBall;
 
@@ -64,6 +64,7 @@ public class RandomEnemyBehavior : MonoBehaviour {
         if (playerMessenger != null)
         {
             playerTransform = playerMessenger.GetComponent<Transform>();
+            playerAttack = playerMessenger.GetComponent<PlayerAttack>();
         }
 
         rate = startRate;
@@ -139,19 +140,29 @@ public class RandomEnemyBehavior : MonoBehaviour {
     {
         if (enemyWasHit)
         {
+            enemyHealth -= playerAttack.damage;
             enemyWasHit = false;
-            enemyAnimator.SetTrigger("enemyIsHit"); // hit animation
-        }
 
-        if (enemyHasFallen)
-        {
-            enemyHasFallen = false;
-            enemyAnimator.SetTrigger("enemyIsDead"); // die animation
-            enemyCollider2D.enabled = false; // disable the enemy collider so you can walk past them
-            isAlive = false; // boolean that's used to disable the movement and firing functions of the enemy
-            enemySpawner.enemiesAlive -= 1;
-            StartCoroutine(WaitingForDeath()); // wait for seconds before destroying the object
+            if (enemyHealth > 0)
+            {
+                enemyAnimator.SetTrigger("enemyIsHit");
+                Debug.Log("Damage to The MAAAGE !!! gaddam !");
+                Debug.Log(enemyHealth);
+            }
+
+            else if (enemyHealth <= 0)
+            {
+                enemyAnimator.SetTrigger("enemyIsDead");
+                enemyCollider2D.enabled = false; // disable the enemy collider so you can walk past them
+                isAlive = false; // boolean that's used to disable the movement and firing functions of the enemy
+                enemySpawner.enemiesAlive -= 1;
+            }
         }
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -171,12 +182,12 @@ public class RandomEnemyBehavior : MonoBehaviour {
         }
     }
 
-    IEnumerator WaitingForDeath() // wait for seconds before destroying the fireball
+    /*IEnumerator WaitingForDeath()
     {
         yield return new WaitForSecondsRealtime(1);
 
-        Destroy(gameObject); // destroy the fireball
-    }
+        Destroy(gameObject);
+    }*/
 
     //gameObject.transform
 }
