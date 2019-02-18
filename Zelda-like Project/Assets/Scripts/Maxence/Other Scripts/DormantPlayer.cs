@@ -6,6 +6,7 @@ public class DormantPlayer : MonoBehaviour
 {
     public GameObject player;
     private PlayerControllerEzEz playerController;
+    private PlayerAttack playerAttackScript;
 
     public int enemiesTouchedCount;
 
@@ -28,6 +29,7 @@ public class DormantPlayer : MonoBehaviour
         player = GameObject.Find("Player");
 
         playerController = player.GetComponent<PlayerControllerEzEz>();
+        playerAttackScript = player.GetComponent<PlayerAttack>();
     }
 
     public void Pot1Effect()
@@ -143,11 +145,11 @@ public class DormantPlayer : MonoBehaviour
     {
         //augmente les dégâts infligés de 1, sur le script du prefab de l'attaque le nb d'HP qu'on enlève aux ennemis sera égale à la valeur de "attackDamage"
 
-        player.attackDamage += 1;
+        playerAttackScript.damage *= 2; // attackDamage = damage / test multiplicateur
 
         yield return new WaitForSeconds(7f);
 
-        player.attackDamage -= 1;
+        playerAttackScript.damage /= 2; // attackDamage = damage / test division
     }
 
     public void Pot3Effect()
