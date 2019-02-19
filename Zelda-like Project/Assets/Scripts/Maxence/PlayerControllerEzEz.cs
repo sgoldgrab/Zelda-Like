@@ -24,7 +24,6 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public bool playerHasFallen = false;
 
     private PlayerCaracteristics playerCaracteristics;
-    private Templar templarScript;
 
     [HideInInspector] public bool playerIsHitByTheTemplar;
     [HideInInspector] public bool playerIsDead;
@@ -36,18 +35,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     void Awake()
     {
-        GameObject templarMessenger = GameObject.FindWithTag("Templar");
-
-        if (templarMessenger != null)
-        {
-            templarScript = templarMessenger.GetComponent<Templar>();
-            Debug.Log("we found it !"); //\
-        }
-
-        if (templarMessenger == null)
-        {
-            Debug.Log("couldn't find the templar");
-        }
+        //
     }
 
     void Start()
@@ -71,8 +59,6 @@ public class PlayerControllerEzEz : MonoBehaviour {
         Movement();
 
         StanceSwitch();
-
-        DamageToThePlayer();
 
         LastSprite();
 	}
@@ -144,20 +130,27 @@ public class PlayerControllerEzEz : MonoBehaviour {
         }
     }
 
-    void DamageToThePlayer()
+    public void DamageToThePlayer(Templar templarScript)
     {
-        if (playerIsHitByTheTemplar)
+        playerCaracteristics.playerHealth -= templarScript.templarDamage;
+
+        if(playerCaracteristics.playerHealth > 0)
         {
-            playerCaracteristics.playerHealth -= templarScript.templarDamage;
+            animator.SetTrigger("playerIsHit");
+
             Debug.Log("Damage to the playeeer FUsckjklj !!!!");
             Debug.Log(playerCaracteristics.playerHealth);
-            playerIsHitByTheTemplar = false;
             healthPlayerScript.TakeDamage();
         }
 
-        if (playerIsDead)
+        else if (playerCaracteristics.playerHealth <= 0)
         {
-            Destroy(gameObject);
+            animator.SetTrigger("playerIsDead");
         }
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
     }
 }

@@ -4,7 +4,8 @@
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: templarHit
   serializedVersion: 6
   m_Legacy: 0
@@ -19,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 2305c406e9d56904b86bf7330e72c39d, type: 3}
+      value: {fileID: 21300000, guid: a2b1bb18f53d5244ab611348388901d3, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: ae57450c6b466c144a73fd1561f8d004, type: 3}
+      value: {fileID: 21300000, guid: 252d9275e4323cb4aa5d9316ade9f4b6, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: 27d6db9d83b218d4ebba45ffd1f2b622, type: 3}
+      value: {fileID: 21300000, guid: 780bf34065eba7945a0c92514db0959c, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: cbf422995535ee14abab257243d118cc, type: 3}
+      value: {fileID: 21300000, guid: e211e37d925340041b8e7f4437ac8d71, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -45,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 2305c406e9d56904b86bf7330e72c39d, type: 3}
-    - {fileID: 21300000, guid: ae57450c6b466c144a73fd1561f8d004, type: 3}
-    - {fileID: 21300000, guid: 27d6db9d83b218d4ebba45ffd1f2b622, type: 3}
-    - {fileID: 21300000, guid: cbf422995535ee14abab257243d118cc, type: 3}
+    - {fileID: 21300000, guid: a2b1bb18f53d5244ab611348388901d3, type: 3}
+    - {fileID: 21300000, guid: 252d9275e4323cb4aa5d9316ade9f4b6, type: 3}
+    - {fileID: 21300000, guid: 780bf34065eba7945a0c92514db0959c, type: 3}
+    - {fileID: 21300000, guid: e211e37d925340041b8e7f4437ac8d71, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -73,5 +74,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_GenerateMotionCurves: 0
   m_Events: []
