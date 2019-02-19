@@ -107,13 +107,13 @@ public class Templar : MonoBehaviour {
             templarSpriteRenderer.color = idleColor; // basic color indicator
         }
 
+        if (playerTransform == null) return;
+
         if (behavior == TemplarBehaviors.chase) // chase behavior
         {
             ChaseBehavior(); // chase the player
             templarSpriteRenderer.color = chaseColor; // basic color indicator
         }
-
-        playerPosition = playerTransform.position;
 
         DamageToTheTemplar();
 
@@ -124,20 +124,16 @@ public class Templar : MonoBehaviour {
     {
         if (templarIsAlive)
         {
-            if (templarCanMove)
+            if (Vector2.Distance(transform.position, playerTransform.position) > templarAttackDistance)
             {
+                templarAnimator.SetBool("templarIsMoving", true);
                 transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, templarSpeed * Time.deltaTime);
             }
 
-            if (Vector2.Distance(transform.position, playerTransform.position) <= templarAttackDistance)
+            else if (Vector2.Distance(transform.position, playerTransform.position) <= templarAttackDistance)
             {
-                templarCanMove = false;
+                templarAnimator.SetBool("templarIsMoving", false);
                 LaunchAttack();
-            }
-
-            if (Vector2.Distance(transform.position, playerTransform.position) > templarAttackDistance)
-            {
-                templarCanMove = true;
             }
         }
     }
@@ -158,7 +154,7 @@ public class Templar : MonoBehaviour {
         {
             if (playerCollider[u] is BoxCollider2D)
             {
-                playerCollider[u].GetComponent<PlayerControllerEzEz>().playerIsHitByTheTemplar = true;
+                playerCollider[u].GetComponent<PlayerControllerEzEz>().DamageToThePlayer(this);
             }
         }
 
@@ -172,10 +168,10 @@ public class Templar : MonoBehaviour {
     {
         if (templarIsAlive)
         {
-            transform.position = Vector2.MoveTowards(transform.position, checkpoint, templarSpeed * Time.deltaTime);
-
             if (Vector2.Distance(transform.position, checkpoint) <= 0.2f)
             {
+                templarAnimator.SetBool("templarIsMoving", false);
+
                 if (waitTime <= 0)
                 {
                     waitTime = startWaitTime;
@@ -190,6 +186,12 @@ public class Templar : MonoBehaviour {
                 {
                     waitTime -= Time.deltaTime;
                 }
+            }
+
+            else
+            {
+                templarAnimator.SetBool("templarIsMoving", true);
+                transform.position = Vector2.MoveTowards(transform.position, checkpoint, templarSpeed * Time.deltaTime);
             }
         }
     }
@@ -235,7 +237,6 @@ public class Templar : MonoBehaviour {
         }
     }
 
-
     void Death()
     {
         Destroy(gameObject);
@@ -245,16 +246,12 @@ public class Templar : MonoBehaviour {
     {
         if(transform.position.x >= playerTransform.position.x) //faceleft
         {
-            //templarSpriteRenderer.flipX = true;
-            //flipTemplar = true;
-            templarAnimator.SetBool("templarIsFlipped", true);
+            templarAnimator.SetFloat("lastX", -1f);
         }
 
         else if(transform.position.x < playerTransform.position.x) //faceright
         {
-            //templarSpriteRenderer.flipX = false;
-            //flipTemplar = false;
-            templarAnimator.SetBool("templarIsFlipped", false);
+            templarAnimator.SetFloat("lastX", 1f);
         }
     }
 

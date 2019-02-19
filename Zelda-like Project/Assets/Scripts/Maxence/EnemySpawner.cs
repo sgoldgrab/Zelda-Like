@@ -31,6 +31,11 @@ public class EnemySpawner : MonoBehaviour {
     // TEST ONLY
     public bool templarIsHere;
 
+    void Awake()
+    {
+        Spawn(templar);
+    }
+
     void Start ()
     {
         waitTime = 0.0f;
