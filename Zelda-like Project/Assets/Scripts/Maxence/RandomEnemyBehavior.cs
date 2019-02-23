@@ -111,7 +111,7 @@ public class RandomEnemyBehavior : MonoBehaviour {
                         GameObject bullet = Instantiate(fireBall, transform.position, transform.rotation);
                         bullet.GetComponent<FireBallMove>().SetPlayerPos(playerPos);
                         waitRate = startWaitRate;
-                        rate -= 1;
+                        rate--;
                     }
 
                     else
