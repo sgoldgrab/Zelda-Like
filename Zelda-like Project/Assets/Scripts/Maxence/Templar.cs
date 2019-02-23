@@ -60,6 +60,14 @@ public class Templar : MonoBehaviour {
     [SerializeField] private float templarAttackDistance;
     [SerializeField] private LayerMask thisIsThePlayer;
 
+    private float attackWaitTime = 0.0f;
+    [SerializeField] private float startAttackWaitTime;
+
+    private float attackWaitRate = 0.0f;
+    [SerializeField] private float startAttackWaitRate;
+    private int rate = 2;
+    [SerializeField] private int startRate;
+
     //UI TESTING\\
     public GameObject templarHealthBarPrefab;
     private GameObject templarHealthBar;
@@ -142,7 +150,34 @@ public class Templar : MonoBehaviour {
     {
         if (templarCanAttack)
         {
-            templarAnimator.SetTrigger("templarAttacks");
+            if(attackWaitTime <= 0.1f)
+            {
+                if(rate > 0)
+                {
+                    if(attackWaitRate <= 0.1f)
+                    {
+                        templarAnimator.SetTrigger("templarAttacks");
+                        attackWaitRate = startAttackWaitRate;
+                        rate--;
+                    }
+
+                    else
+                    {
+                        attackWaitRate -= Time.deltaTime;
+                    }
+                }
+
+                else
+                {
+                    attackWaitTime = startAttackWaitTime;
+                    rate = startRate;
+                }
+            }
+
+            else
+            {
+                attackWaitTime -= Time.deltaTime;
+            }
         }
     }
 
@@ -203,7 +238,7 @@ public class Templar : MonoBehaviour {
             templarHealth -= playerAttackScript.damage; // damage
 
             templarIsHit = false;
-            templarCanAttack = false;
+            //templarCanAttack = false;
 
             if (templarHealth <= 0)
             {
@@ -275,7 +310,7 @@ public class Templar : MonoBehaviour {
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackRange);
-        Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackDistance);
+        Gizmos.DrawWireSphere(transform.position, templarAttackDistance);
     }
 
     /*IEnumerator WaitForDeath()
