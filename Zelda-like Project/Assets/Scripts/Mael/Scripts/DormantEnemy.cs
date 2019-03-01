@@ -8,7 +8,7 @@ public class DormantEnemy : MonoBehaviour
     private Rigidbody2D rb2D;
 
     private GameObject player;
-    private PlayerControllerEzEz playerController; // changé
+    //private PlayerControllerEzEz playerController; // changé
 
     private float speed;
 
@@ -33,7 +33,7 @@ public class DormantEnemy : MonoBehaviour
 
         player = GameObject.Find("Player");
 
-        playerController = player.GetComponent<PlayerControllerEzEz>(); // changé
+       // playerController = player.GetComponent<PlayerControllerEzEz>(); // changé
 
         dormantPlayer = GetComponent<DormantPlayer>();
     }

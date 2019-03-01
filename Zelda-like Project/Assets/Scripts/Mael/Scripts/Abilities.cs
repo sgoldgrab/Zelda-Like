@@ -17,12 +17,17 @@ public class Abilities : MonoBehaviour
 
     private GameObject theBluePrint;
 
-    public GameObject[] blueprintSpells;
-    public GameObject[] blueprintPotions;
+    public GameObject blueprintSpell1;
+    public GameObject blueprintSpell2;
+    public GameObject blueprintSpell3;
+
+    public GameObject blueprintPotion1;
+    public GameObject blueprintPotion2;
+    public GameObject blueprintPotion3;
 
 
     [SerializeField]
-    private bool stanceOne = true;
+    private bool stanceOne = false;
     //private enum whatStance { stanceOne, stanceTwo }
     //private whatStance currentStance = whatStance.stanceOne;
 
@@ -40,7 +45,7 @@ public class Abilities : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) && !stanceOne && !isReloading)   //SPELLS
+        if (Input.GetKeyDown("joystick button 1") && !stanceOne && !isReloading)   //SPELLS
         {
 
 
@@ -67,11 +72,11 @@ public class Abilities : MonoBehaviour
             //mais si il est au dessus de 0.4, on considère que c'est un hold donc hop instantiate du bluerpint
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
-            theBluePrint = Instantiate(blueprintSpells[0], transform.position, Quaternion.identity);
+            theBluePrint = Instantiate(blueprintSpell1, transform.position, Quaternion.identity);
             bluePrint = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.Joystick1Button0) && !stanceOne && !isReloading)
+        if (Input.GetKeyUp("joystick button 1") && !stanceOne && !isReloading)
         {
 
             //le joueur relâche donc dans tous les cas ça lance la capacité dans la direction qu'il face
@@ -92,7 +97,7 @@ public class Abilities : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && !stanceOne && !isReloading)
+        if (Input.GetKeyDown("joystick button 3") && !stanceOne && !isReloading)
         {
             inputPressed = true;
 
@@ -105,11 +110,11 @@ public class Abilities : MonoBehaviour
         {
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
-            theBluePrint = Instantiate(blueprintSpells[1], transform.position, Quaternion.identity);
+            theBluePrint = Instantiate(blueprintSpell2, transform.position, Quaternion.identity);
             bluePrint = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.Joystick1Button3) && !stanceOne && !isReloading)
+        if (Input.GetKeyUp("joystick button 3") && !stanceOne && !isReloading)
         {
 
             //le joueur relâche donc dans tous les cas ça lance la capacité dans la direction qu'il face
@@ -130,7 +135,7 @@ public class Abilities : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && !stanceOne && !isReloading)
+        if (Input.GetKeyDown(KeyCode.JoystickButton2) && !stanceOne && !isReloading)
         {
             inputPressed = true;
 
@@ -143,11 +148,11 @@ public class Abilities : MonoBehaviour
         {
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
-            theBluePrint = Instantiate(blueprintSpells[2], transform.position, Quaternion.identity);
+            theBluePrint = Instantiate(blueprintSpell3, transform.position, Quaternion.identity);
             bluePrint = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.Joystick1Button2) && !stanceOne && !isReloading)
+        if (Input.GetKeyUp(KeyCode.JoystickButton2) && !stanceOne && !isReloading)
         {
 
             //le joueur relâche donc dans tous les cas ça lance la capacité dans la direction qu'il face
@@ -162,7 +167,7 @@ public class Abilities : MonoBehaviour
 
             bluePrint = false;
 
-            Instantiate(spells[2], transform.position, Quaternion.identity);
+            //Instantiate(spells[2], transform.position, Quaternion.identity);
 
         }
 
@@ -170,7 +175,7 @@ public class Abilities : MonoBehaviour
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) && stanceOne && !isReloading)   //POTIONS
+        if (Input.GetKeyDown("joystick button 1") && stanceOne && !isReloading)   //POTIONS
         {
             inputPressed = true;
         }
@@ -183,7 +188,7 @@ public class Abilities : MonoBehaviour
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
 
-            theBluePrint = Instantiate(blueprintPotions[0], transform.position, Quaternion.identity);
+            theBluePrint = Instantiate(blueprintPotion1, transform.position, Quaternion.identity);
             bluePrint = true;
         }
         if (Input.GetKeyUp(KeyCode.Joystick1Button0) && stanceOne && !isReloading)
@@ -226,7 +231,7 @@ public class Abilities : MonoBehaviour
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
 
-            theBluePrint = Instantiate(blueprintPotions[1], transform.position, Quaternion.identity);
+            theBluePrint = Instantiate(blueprintPotion2, transform.position, Quaternion.identity);
             bluePrint = true;
         }
         if (Input.GetKeyUp(KeyCode.Joystick1Button3) && stanceOne && !isReloading)
@@ -269,7 +274,7 @@ public class Abilities : MonoBehaviour
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
 
-            theBluePrint = Instantiate(blueprintPotions[2], transform.position, Quaternion.identity);
+            theBluePrint = Instantiate(blueprintPotion3, transform.position, Quaternion.identity);
             bluePrint = true;
         }
         if (Input.GetKeyUp(KeyCode.Joystick1Button2) && stanceOne && !isReloading)

@@ -1100,15 +1100,19 @@ MonoBehaviour:
   lineOfSight: {fileID: 0}
   Player: {fileID: 0}
   bluePrint: 0
-  blueprintSpells:
-  - {fileID: 1089240437148986, guid: da1d348a674a6344c977624861c8049b, type: 3}
-  - {fileID: 1120240358212556, guid: bb409ec36e078c4468d78376fb8f5b9f, type: 3}
-  - {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477, type: 3}
-  blueprintPotions:
-  - {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477, type: 3}
-  - {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477, type: 3}
-  - {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477, type: 3}
-  stanceOne: 1
+  blueprintSpell1: {fileID: 8277674747929181775, guid: 15a7566a84572974287b9340c6565440,
+    type: 3}
+  blueprintSpell2: {fileID: 1089240437148986, guid: da1d348a674a6344c977624861c8049b,
+    type: 3}
+  blueprintSpell3: {fileID: 1120240358212556, guid: bb409ec36e078c4468d78376fb8f5b9f,
+    type: 3}
+  blueprintPotion1: {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477,
+    type: 3}
+  blueprintPotion2: {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477,
+    type: 3}
+  blueprintPotion3: {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477,
+    type: 3}
+  stanceOne: 0
   isReloading: 0
 --- !u!1 &613106904
 GameObject:

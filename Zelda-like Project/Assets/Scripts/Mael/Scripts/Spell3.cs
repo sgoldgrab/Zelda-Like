@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell1 : MonoBehaviour
+public class Spell3 : MonoBehaviour
 {
     public float speed;
     Rigidbody2D rb2d;
@@ -18,7 +18,7 @@ public class Spell1 : MonoBehaviour
 
     private void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Templar").transform;
+        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
 
         target = new Vector2(enemy.position.x, enemy.position.y);
 
