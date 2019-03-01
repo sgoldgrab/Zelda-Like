@@ -32,6 +32,7 @@ public class PlayerAttack : MonoBehaviour {
     void Start()
     {
         playerController = GetComponent<PlayerControllerEzEz>();
+
         playerAnimator = GetComponent<Animator>();
 
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner");
@@ -44,12 +45,17 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Update ()
     {
+        AttackDirection();
+
+        LaunchAttack();
+	}
+
+    void LaunchAttack()
+    {
         if (waitForAttack <= 0.1f)
         {
             if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Mouse0)) // initialize an attack
             {
-                //WhichSideToAttack();
-
                 ChoseAttack();
 
                 playerAnimator.SetTrigger("playerAttacks");
@@ -66,7 +72,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             waitForAttack -= Time.deltaTime;
         }
-	}
+    }
 
     void ChoseAttack() // USED FOR TESTING ONLY
     {
@@ -107,65 +113,6 @@ public class PlayerAttack : MonoBehaviour {
         }
     }
 
-    private int WhichSideToAttack()
-    {
-        if (playerController.horizontal == 0 && playerController.vertical == 0)
-        {
-            pos = 0;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 0 && playerController.vertical == -1)
-        {
-            pos = 0;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 0 && playerController.vertical == 1)
-        {
-            pos = 1;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 1 && playerController.vertical == 0)
-        {
-            pos = 2;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == -1 && playerController.vertical == 0)
-        {
-            pos = 3;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 1 && playerController.vertical == 1)
-        {
-            pos = 4;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 1 && playerController.vertical == -1)
-        {
-            pos = 5;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == -1 && playerController.vertical == -1)
-        {
-            pos = 6;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == -1 && playerController.vertical == 1)
-        {
-            pos = 7;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        return pos;
-    }
-
     void OnDrawGizmosSelected() // draws the area of effect of the attack in the editor, used for visualisation
     {
         for(int i = 0; i < attackPositions.Length; i++)
@@ -174,6 +121,18 @@ public class PlayerAttack : MonoBehaviour {
             Gizmos.DrawWireSphere(attackPositions[i].position, attackRange);
         }
     }
+
+    void AttackDirection()
+    {
+        float attackPosX = playerController.horizontal;
+        float attackPosY = playerController.vertical;
+
+        Vector2 attackPos = new Vector2(attackPosX, attackPosY);
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     /*enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth -= damage; // access the enemy's Health script --> takes damage
 
@@ -189,4 +148,63 @@ public class PlayerAttack : MonoBehaviour {
 
                 Debug.Log("Daamaaage !!!");
                 Debug.Log(enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth);*/
+
+   /*private int WhichSideToAttack()
+   {
+       if (playerController.horizontal == 0 && playerController.vertical == 0)
+       {
+           pos = 0;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == 0 && playerController.vertical == -1)
+       {
+           pos = 0;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == 0 && playerController.vertical == 1)
+       {
+           pos = 1;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == 1 && playerController.vertical == 0)
+       {
+           pos = 2;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == -1 && playerController.vertical == 0)
+       {
+           pos = 3;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == 1 && playerController.vertical == 1)
+       {
+           pos = 4;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == 1 && playerController.vertical == -1)
+       {
+           pos = 5;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == -1 && playerController.vertical == -1)
+       {
+           pos = 6;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       else if (playerController.horizontal == -1 && playerController.vertical == 1)
+       {
+           pos = 7;
+           attackPosSprites[pos].enabled = true;
+       }
+
+       return pos;
+   }*/
 }
