@@ -30,8 +30,11 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     private HealthPlayer healthPlayerScript;
 
-    private float lastX;
-    private float lastY;
+    public float lastX;
+    public float lastY;
+
+    /*public float LastX { get; set; }
+    public float LastY { get; set; }*/
 
     void Awake()
     {
@@ -41,14 +44,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     void Start()
     {
         animator = GetComponent<Animator>();
+
         playerCaracteristics = GetComponent<PlayerCaracteristics>();
-
-        /*GameObject healthPlayerMessenger = GameObject.FindWithTag("Templar");
-
-        if (healthPlayerMessenger != null)
-        {
-            healthPlayerScript = healthPlayerMessenger.GetComponent<HealthPlayer>();
-        }*/
 
         healthPlayerScript = GetComponent<HealthPlayer>();
     }
@@ -58,7 +55,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
     {
         Movement();
 
-        StanceSwitch();
+        //StanceSwitch();
 
         LastSprite();
 	}
