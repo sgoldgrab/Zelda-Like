@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class PlayerControllerEzEz : MonoBehaviour {
 
@@ -13,6 +15,10 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     public Tilemap tilemapS1;
     public Tilemap tilemapS2;
+
+    public GameObject mainCamera;
+    private PostProcessVolume ppv;
+    private PostProcessLayer ppl;
 
     private enum Stance { stance1, stance2 };
     private Stance whatStance = Stance.stance1;
@@ -40,6 +46,12 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     void Start()
     {
+
+        ppl = mainCamera.GetComponent<PostProcessLayer>();
+        ppv = mainCamera.GetComponent<PostProcessVolume>();
+        ppl.enabled = !ppl.enabled;
+
+
         animator = GetComponent<Animator>();
         playerCaracteristics = GetComponent<PlayerCaracteristics>();
 

@@ -13,7 +13,7 @@ public class Spell1 : MonoBehaviour
 
     public Vector2 currentPos;
 
-    public DormantEnemy dormantEnemy;
+    //public DormantEnemy dormantEnemy;
    
 
     private void Start()
@@ -50,8 +50,14 @@ public class Spell1 : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             print("Enemy touched");
-            dormantEnemy.Spell1Effect();
-            //other.GetComponent("DormantEnemy") as Spell1Effect.function();
+            //dormantEnemy.Spell1Effect();
+            //other.GetComponent<DormantEnemy>();
+            //GameObject dormantEnemy = other.GetComponent<DormantEnemy>();
+            // dormantEnemy.Spell1Effect();
+            DormantEnemy dormantEnemy = gameObject.GetComponent<DormantEnemy>();
+
+
+
             Destroy(gameObject);
 
         }

@@ -15,6 +15,8 @@ public class Spell2 : MonoBehaviour
     private Transform player;
     private Vector2 target;
 
+    public DormantEnemy dormantEnemy;
+
 
 
     private void Start()
@@ -59,7 +61,8 @@ public class Spell2 : MonoBehaviour
 
             //applique effet
             //rb.AddForce(transform.right * forceAmount, ForceMode2D.Impulse);
-
+            print("Enemy touched");
+            dormantEnemy.Spell2Effect();
 
         }
         else

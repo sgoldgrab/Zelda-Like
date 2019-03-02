@@ -1,11 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour
 {
     public GameObject[] spells;
     public GameObject[] potions;
+
+    //UI
+    public GameObject[] potionCooldownUI;
+    public GameObject[] spellCooldownUI;
+
+    public float cooldownPotion1 = 5;
+    public float cooldownPotion2 = 5;
+    public float cooldownPotion3 = 5;
+    public float cooldownSpell1 = 5;
+    public float cooldownSpell2 = 5;
+    public float cooldownSpell3 = 5;
+    bool isPotion1Cooldown;
+    bool isPotion2Cooldown;
+    bool isPotion3Cooldown;
+    bool isSpell1Cooldown;
+    bool isSpell2Cooldown;
+    bool isSpell3Cooldown;
 
     //public GameObject lineOfSight;
 
@@ -137,7 +155,7 @@ public class Abilities : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton2) && !stanceOne && !isReloading)
+        if (Input.GetKeyDown("joystick button 2") && !stanceOne && !isReloading)
         {
             inputPressed = true;
 
@@ -154,7 +172,7 @@ public class Abilities : MonoBehaviour
             bluePrint = true;
 
         }
-        if (Input.GetKeyUp(KeyCode.JoystickButton2) && !stanceOne && !isReloading)
+        if (Input.GetKeyUp("joystick button 2") && !stanceOne && !isReloading)
         {
 
             //le joueur relâche donc dans tous les cas ça lance la capacité dans la direction qu'il face
@@ -180,6 +198,7 @@ public class Abilities : MonoBehaviour
         if (Input.GetKeyDown("joystick button 1") && stanceOne && !isReloading)   //POTIONS
         {
             inputPressed = true;
+            isPotion1Cooldown = true;
         }
         if (inputPressed)
         {
@@ -196,10 +215,19 @@ public class Abilities : MonoBehaviour
         if (Input.GetKeyUp(("joystick button 1")) && stanceOne && !isReloading)
         {
             bluePrint = false;
-            
+           /* if (isPotion1Cooldown)
+            {
+                potionCooldownUI[0].fillAmount += 1 / cooldownPotion1 * Time.deltaTime;
+
+                if (potionCooldownUI[0].fillAmount >= 1)
+                {
+                    potionCooldownUI[0].fillAmount = 0;
+                    isPotion1Cooldown = false;
+                }
+            }*/
             if (bluePrint == false)
             {
-                print("pot1vala");
+                print("pot1preMatch");
 
                 dormantPlayer.Pot1Effect();
                 //applique effet directement sur les stats du joueur                            //ou sinon on le fait tirer sur lui même pour activer direct l'effet depuis un prefab
