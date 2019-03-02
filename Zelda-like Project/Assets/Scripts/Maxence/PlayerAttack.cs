@@ -15,6 +15,11 @@ public class PlayerAttack : MonoBehaviour {
     private Transform[] attackPositions;
     [SerializeField]
     private SpriteRenderer[] attackPosSprites;
+
+    [SerializeField]
+    private float attackDistance;
+    private Vector2 attackPos;
+    private Vector2 transformPos;
     
     public float damage = 25;
 
@@ -27,29 +32,42 @@ public class PlayerAttack : MonoBehaviour {
     [SerializeField]
     private float startWaitForAttack;
 
-    private EnemySpawner enemySpawnerBis;
+    private EnemySpawner enemySpawnerScript;
 
     void Start()
     {
-        playerController = GetComponent<PlayerControllerEzEz>();
         playerAnimator = GetComponent<Animator>();
+
+        GameObject playerControllerMessenger = GameObject.FindWithTag("Player");
+
+        if (playerControllerMessenger != null)
+        {
+            playerController = playerControllerMessenger.GetComponent<PlayerControllerEzEz>();
+        }
 
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner");
 
         if (enemySpawnerMessenger != null)
         {
-            enemySpawnerBis = enemySpawnerMessenger.GetComponent<EnemySpawner>();
+            enemySpawnerScript = enemySpawnerMessenger.GetComponent<EnemySpawner>();
         }
     }
 
 	void Update ()
     {
+        transformPos = transform.position;
+
+        AttackDirection();
+
+        LaunchAttack();
+	}
+
+    void LaunchAttack()
+    {
         if (waitForAttack <= 0.1f)
         {
             if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Mouse0)) // initialize an attack
             {
-                //WhichSideToAttack();
-
                 ChoseAttack();
 
                 playerAnimator.SetTrigger("playerAttacks");
@@ -66,16 +84,16 @@ public class PlayerAttack : MonoBehaviour {
         {
             waitForAttack -= Time.deltaTime;
         }
-	}
+    }
 
     void ChoseAttack() // USED FOR TESTING ONLY
     {
-        if (enemySpawnerBis.templarIsHere)
+        if (enemySpawnerScript.templarIsHere)
         {
             TestAttack();
         }
 
-        if (!enemySpawnerBis.templarIsHere)
+        if (!enemySpawnerScript.templarIsHere)
         {
             Attack();
         }
@@ -96,7 +114,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void TestAttack() // takes all enemies in the area of effect and deals damage to them
     {
-        templarsToDamage = Physics2D.OverlapCircleAll(attackPositions[0].position, attackRange, thisIsAnEnemy); // creates the area and takes the enemy collider(s) inside
+        templarsToDamage = Physics2D.OverlapCircleAll(attackPos, attackRange, thisIsAnEnemy); // creates the area and takes the enemy collider(s) inside
 
         for (int i = 0; i < templarsToDamage.Length; i++)
         {
@@ -107,73 +125,35 @@ public class PlayerAttack : MonoBehaviour {
         }
     }
 
-    private int WhichSideToAttack()
+    void AttackDirection()
     {
-        if (playerController.horizontal == 0 && playerController.vertical == 0)
+        if (playerController.lastX != 0 || playerController.lastY != 0)
         {
-            pos = 0;
-            attackPosSprites[pos].enabled = true;
-        }
+            float attackPosX = playerController.lastX;
+            float attackPosY = playerController.lastY;
 
-        else if (playerController.horizontal == 0 && playerController.vertical == -1)
-        {
-            pos = 0;
-            attackPosSprites[pos].enabled = true;
+            Vector2 rawAttackCoordinates = new Vector2(attackPosX, attackPosY);
+            Vector2 rawAttackPos = rawAttackCoordinates * attackDistance;
+            attackPos = transformPos + rawAttackPos;
         }
-
-        else if (playerController.horizontal == 0 && playerController.vertical == 1)
-        {
-            pos = 1;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 1 && playerController.vertical == 0)
-        {
-            pos = 2;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == -1 && playerController.vertical == 0)
-        {
-            pos = 3;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 1 && playerController.vertical == 1)
-        {
-            pos = 4;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == 1 && playerController.vertical == -1)
-        {
-            pos = 5;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == -1 && playerController.vertical == -1)
-        {
-            pos = 6;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        else if (playerController.horizontal == -1 && playerController.vertical == 1)
-        {
-            pos = 7;
-            attackPosSprites[pos].enabled = true;
-        }
-
-        return pos;
     }
 
     void OnDrawGizmosSelected() // draws the area of effect of the attack in the editor, used for visualisation
     {
+        //TEST ATTACK POSITIONING
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(attackPos, attackRange);
+
+        //CURRENT ATTACK POSITION
         for(int i = 0; i < attackPositions.Length; i++)
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(attackPositions[i].position, attackRange);
         }
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     /*enemiesToDamage[i].GetComponent<EnemyCaracteristics>().enemyHealth -= damage; // access the enemy's Health script --> takes damage
 

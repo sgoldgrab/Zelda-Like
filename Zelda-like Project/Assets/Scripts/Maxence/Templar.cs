@@ -310,6 +310,7 @@ public class Templar : MonoBehaviour {
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackRange);
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, templarAttackDistance);
     }
 
