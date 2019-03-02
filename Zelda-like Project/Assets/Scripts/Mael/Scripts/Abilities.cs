@@ -7,28 +7,20 @@ public class Abilities : MonoBehaviour
     public GameObject[] spells;
     public GameObject[] potions;
 
+    //public GameObject lineOfSight;
+
     public GameObject Player;
 
     private bool inputPressed = false;
     public bool bluePrint = false;
     private float timer = 0f;
 
-    private bool[] keyPressed;
-
-    private string[] spellKey;
-    private int[] spellIndex;
-
-    private string[] potionKey;
-    private int[] potionIndex;
-
     private GameObject theBluePrint;
 
-    public GameObject[] spellBlueprints;
     public GameObject blueprintSpell1;
     public GameObject blueprintSpell2;
     public GameObject blueprintSpell3;
 
-    public GameObject[] potionBlueprints;
     public GameObject blueprintPotion1;
     public GameObject blueprintPotion2;
     public GameObject blueprintPotion3;
@@ -46,16 +38,13 @@ public class Abilities : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<PlayerController>();
+      GetComponent<PlayerController>();
     }
 
     private void Update()
     {
-        ///SPELLS\\\
 
-            //SPELL 1\\
-
-        if (Input.GetKeyDown("joystick button 1") && !stanceOne && !isReloading)
+        if (Input.GetKeyDown("joystick button 1") && !stanceOne && !isReloading)   //SPELLS
         {
             //currentStance == whatStance.stanceTwo
             //Instantiate(spell1, transform.position, Quaternion.identity);
