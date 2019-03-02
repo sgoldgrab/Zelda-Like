@@ -15,6 +15,7 @@ TagManager:
   - Potion1
   - Potion2
   - Smoke
+  - EnemyHitBox
   layers:
   - Default
   - TransparentFX

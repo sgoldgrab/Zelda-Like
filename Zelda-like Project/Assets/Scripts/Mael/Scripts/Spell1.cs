@@ -9,23 +9,23 @@ public class Spell1 : MonoBehaviour
     Vector3 fwd;
 
     
-    
+
 
     public Vector2 currentPos;
 
-    //public DormantEnemy dormantEnemy;
-   
+    public DormantEnemy dormantEnemy;
+
 
     private void Start()
     {
-        
 
-        
+
+
 
         rb2d = GetComponent<Rigidbody2D>();
         fwd = transform.TransformDirection(Vector3.up);
 
-        
+
 
         StartCoroutine(TicTac());
     }
@@ -39,26 +39,34 @@ public class Spell1 : MonoBehaviour
 
     }
 
-    private void Update()
+    public void Update()
     {
         transform.position += transform.up * Time.deltaTime;
-
+        
     }
+    
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.tag == "EnemyHitBox")
         {
             print("Enemy touched");
-            //dormantEnemy.Spell1Effect();
+            
+            
+            
+            dormantEnemy = other.GetComponent<DormantEnemy>();
+            dormantEnemy.Spell1Effect();
+            Destroy(gameObject);
+            
             //other.GetComponent<DormantEnemy>();
             //GameObject dormantEnemy = other.GetComponent<DormantEnemy>();
-            // dormantEnemy.Spell1Effect();
-            DormantEnemy dormantEnemy = gameObject.GetComponent<DormantEnemy>();
+             //dormantEnemy.Spell1Effect();
+            //DormantEnemy dormantEnemy = gameObject.GetComponent<DormantEnemy>();
 
 
 
-            Destroy(gameObject);
+            
 
         }
         else
@@ -67,6 +75,7 @@ public class Spell1 : MonoBehaviour
             
         }
     }
-
     
+
+
 }
