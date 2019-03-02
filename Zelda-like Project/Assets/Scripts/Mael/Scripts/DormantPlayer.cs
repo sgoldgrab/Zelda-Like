@@ -5,8 +5,8 @@ using UnityEngine;
 public class DormantPlayer : MonoBehaviour
 {
     public GameObject player;
-    private PlayerControllerEzEz playerController;
-    private PlayerAttack playerAttackScript;
+    //private PlayerControllerEzEz playerController;
+    //private PlayerAttack playerAttackScript;
 
     public int enemiesTouchedCount;
 
@@ -24,32 +24,38 @@ public class DormantPlayer : MonoBehaviour
 
     private float damageTaken; // connection à un autre script à faire
 
+    
+
     private void Start()
     {
         player = GameObject.Find("Player");
 
-        playerController = player.GetComponent<PlayerControllerEzEz>();
-        playerAttackScript = player.GetComponent<PlayerAttack>();
+        //playerController = player.GetComponent<PlayerControllerEzEz>();
+        //playerAttackScript = player.GetComponent<PlayerAttack>();
     }
 
     public void Pot1Effect()
     {
+        print("pot1");
         StartCoroutine(PotOne());
     }
 
     IEnumerator PotOne()
     {
+        
         for (int u = 0; u < 3; u++)
         {
+            
             for (int i = 0; i < 4; i++)
             {
+                
                 if (damageTaken == i)
                 {
                     playerHealth[i].SetActive(true);
                     damageTaken -= 1;
                 }
             }
-
+            
             yield return new WaitForSeconds(3f);
         }
 
@@ -137,7 +143,7 @@ public class DormantPlayer : MonoBehaviour
     public void Pot2Effect()
     {
         //attackDamage est une public int définie sur le script du playerController qui influe sur le script du prefab de l'attaque du joueur
-
+        print("pot2");
         StartCoroutine(PotTwo());
     }
 
@@ -145,15 +151,16 @@ public class DormantPlayer : MonoBehaviour
     {
         //augmente les dégâts infligés de 1, sur le script du prefab de l'attaque le nb d'HP qu'on enlève aux ennemis sera égale à la valeur de "attackDamage"
 
-        playerAttackScript.damage *= 2; // attackDamage = damage / test multiplicateur
+        //playerAttackScript.damage *= 2; // attackDamage = damage / test multiplicateur
 
         yield return new WaitForSeconds(7f);
 
-        playerAttackScript.damage /= 2; // attackDamage = damage / test division
+        //playerAttackScript.damage /= 2; // attackDamage = damage / test division
     }
 
     public void Pot3Effect()
     {
+        print("pot3");
         //valeur du rayon de la lumière permanente autour du joueur * 2
         //doubler la vision
     }
