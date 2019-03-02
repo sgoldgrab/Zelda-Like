@@ -25,7 +25,7 @@ public class DormantEnemy : MonoBehaviour
 
     private float damageTaken; // connection à un autre script à faire
 
-    private DormantPlayer dormantPlayer;
+    public DormantPlayer dormantPlayer;
 
     private void Start()
     {
@@ -35,13 +35,13 @@ public class DormantEnemy : MonoBehaviour
 
        // playerController = player.GetComponent<PlayerControllerEzEz>(); // changé
 
-        dormantPlayer = GetComponent<DormantPlayer>();
+        
     }
 
     public void Spell1Effect()
     {
         //appelée lorsque l'ennemi est touché par le spell 1
-
+        print("spell1");
         StartCoroutine(SpellOne());
     }
 

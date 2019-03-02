@@ -9,6 +9,12 @@ TagManager:
   - Obstacle
   - FireBall
   - EnemySpawner
+  - Spell1
+  - Spell2
+  - Potion3
+  - Potion1
+  - Potion2
+  - Smoke
   layers:
   - Default
   - TransparentFX

@@ -8,24 +8,24 @@ public class Spell1 : MonoBehaviour
     Rigidbody2D rb2d;
     Vector3 fwd;
 
-    private Transform enemy;
-    private Vector2 target;
+    
+    
 
     public Vector2 currentPos;
 
-    private DormantEnemy DorEnemy;
-
+    public DormantEnemy dormantEnemy;
+   
 
     private void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Templar").transform;
+        
 
-        target = new Vector2(enemy.position.x, enemy.position.y);
+        
 
         rb2d = GetComponent<Rigidbody2D>();
         fwd = transform.TransformDirection(Vector3.up);
 
-        DorEnemy = GetComponent<DormantEnemy>();
+        
 
         StartCoroutine(TicTac());
     }
@@ -49,9 +49,10 @@ public class Spell1 : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-
+            print("Enemy touched");
+            dormantEnemy.Spell1Effect();
             //other.GetComponent("DormantEnemy") as Spell1Effect.function();
-
+            Destroy(gameObject);
 
         }
         else

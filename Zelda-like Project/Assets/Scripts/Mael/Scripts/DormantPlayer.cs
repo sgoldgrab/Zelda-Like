@@ -24,6 +24,8 @@ public class DormantPlayer : MonoBehaviour
 
     private float damageTaken; // connection à un autre script à faire
 
+    
+
     private void Start()
     {
         player = GameObject.Find("Player");
@@ -34,22 +36,26 @@ public class DormantPlayer : MonoBehaviour
 
     public void Pot1Effect()
     {
+        print("pot1");
         StartCoroutine(PotOne());
     }
 
     IEnumerator PotOne()
     {
+        
         for (int u = 0; u < 3; u++)
         {
+            
             for (int i = 0; i < 4; i++)
             {
+                
                 if (damageTaken == i)
                 {
                     playerHealth[i].SetActive(true);
                     damageTaken -= 1;
                 }
             }
-
+            
             yield return new WaitForSeconds(3f);
         }
 
@@ -137,7 +143,7 @@ public class DormantPlayer : MonoBehaviour
     public void Pot2Effect()
     {
         //attackDamage est une public int définie sur le script du playerController qui influe sur le script du prefab de l'attaque du joueur
-
+        print("pot2");
         StartCoroutine(PotTwo());
     }
 
@@ -154,6 +160,7 @@ public class DormantPlayer : MonoBehaviour
 
     public void Pot3Effect()
     {
+        print("pot3");
         //valeur du rayon de la lumière permanente autour du joueur * 2
         //doubler la vision
     }

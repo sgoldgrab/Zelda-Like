@@ -7,7 +7,7 @@ public class Abilities : MonoBehaviour
     public GameObject[] spells;
     public GameObject[] potions;
 
-    public GameObject lineOfSight;
+    //public GameObject lineOfSight;
 
     public GameObject Player;
 
@@ -25,6 +25,7 @@ public class Abilities : MonoBehaviour
     public GameObject blueprintPotion2;
     public GameObject blueprintPotion3;
 
+    public GameObject parent;
 
     [SerializeField]
     private bool stanceOne = false;
@@ -33,7 +34,7 @@ public class Abilities : MonoBehaviour
 
     [SerializeField]
     private bool isReloading = false;
-
+    public DormantPlayer dormantPlayer;
 
     private void Start()
     {
@@ -73,6 +74,7 @@ public class Abilities : MonoBehaviour
             //là il faut immobiliser le joueur, et lui permettre de diriger le bluerpint avec le joystick gauce
 
             theBluePrint = Instantiate(blueprintSpell1, transform.position, Quaternion.identity);
+            //blueprintSpell1.transform.parent = Player.transform;
             bluePrint = true;
 
         }
@@ -191,10 +193,15 @@ public class Abilities : MonoBehaviour
             theBluePrint = Instantiate(blueprintPotion1, transform.position, Quaternion.identity);
             bluePrint = true;
         }
-        if (Input.GetKeyUp(KeyCode.Joystick1Button0) && stanceOne && !isReloading)
+        if (Input.GetKeyUp(("joystick button 1")) && stanceOne && !isReloading)
         {
+            bluePrint = false;
+            
             if (bluePrint == false)
             {
+                print("pot1vala");
+
+                dormantPlayer.Pot1Effect();
                 //applique effet directement sur les stats du joueur                            //ou sinon on le fait tirer sur lui même pour activer direct l'effet depuis un prefab
                 inputPressed = false;
                 timer = 0;
@@ -218,7 +225,7 @@ public class Abilities : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) && stanceOne && !isReloading)   //POTIONS
+        if (Input.GetKeyDown("joystick button 3") && stanceOne && !isReloading)   //POTIONS2
         {
             inputPressed = true;
         }
@@ -234,10 +241,14 @@ public class Abilities : MonoBehaviour
             theBluePrint = Instantiate(blueprintPotion2, transform.position, Quaternion.identity);
             bluePrint = true;
         }
-        if (Input.GetKeyUp(KeyCode.Joystick1Button3) && stanceOne && !isReloading)
+        if (Input.GetKeyUp("joystick button 3") && stanceOne && !isReloading)
         {
+            
+            bluePrint = false;
             if (bluePrint == false)
             {
+                
+                dormantPlayer.Pot2Effect();
                 //applique effet directement sur les stats du joueur                            //ou sinon on le fait tirer sur lui même pour activer direct l'effet depuis un prefab
                 inputPressed = false;
                 timer = 0;
@@ -261,7 +272,7 @@ public class Abilities : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2) && stanceOne && !isReloading)   //POTIONS
+        if (Input.GetKeyDown("joystick button 2") && stanceOne && !isReloading)   //POTIONS
         {
             inputPressed = true;
         }
@@ -277,10 +288,12 @@ public class Abilities : MonoBehaviour
             theBluePrint = Instantiate(blueprintPotion3, transform.position, Quaternion.identity);
             bluePrint = true;
         }
-        if (Input.GetKeyUp(KeyCode.Joystick1Button2) && stanceOne && !isReloading)
+        if (Input.GetKeyUp("joystick button 2") && stanceOne && !isReloading)
         {
+            bluePrint = false;
             if (bluePrint == false)
             {
+                dormantPlayer.Pot3Effect();
                 //applique effet directement sur les stats du joueur                            //ou sinon on le fait tirer sur lui même pour activer direct l'effet depuis un prefab
                 inputPressed = false;
                 timer = 0;
