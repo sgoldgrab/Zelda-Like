@@ -51,11 +51,9 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     void Start()
     {
-
         ppl = mainCamera.GetComponent<PostProcessLayer>();
         ppv = mainCamera.GetComponent<PostProcessVolume>();
         ppl.enabled = !ppl.enabled;
-
 
         animator = GetComponent<Animator>();
 
