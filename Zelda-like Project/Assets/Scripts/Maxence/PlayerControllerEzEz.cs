@@ -33,6 +33,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public float lastX;
     public float lastY;
 
+    public bool canMove = true;
+
     /*public float LastX { get; set; }
     public float LastY { get; set; }*/
 
@@ -53,31 +55,36 @@ public class PlayerControllerEzEz : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Movement();
+        Direction();
 
         //StanceSwitch();
 
         LastSprite();
 	}
 
-    void Movement()
+    void Direction()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        
+        if (canMove)
+        {
+            Movement();
+        }
 
-        /*var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");*/
+        if (horizontal != 0 || vertical != 0)
+        {
+            lastX = horizontal;
+            lastY = vertical;
+        }        
+    }
 
+    void Movement()
+    {
         animator.SetFloat("x", horizontal);
         animator.SetFloat("y", vertical);
 
         transform.Translate(horizontal * playerSpeed * Time.deltaTime, vertical * playerSpeed * Time.deltaTime, 0);
-
-        if(horizontal != 0 || vertical != 0)
-        {
-            lastX = horizontal;
-            lastY = vertical;
-        }
     }
 
     void LastSprite()

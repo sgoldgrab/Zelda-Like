@@ -9,10 +9,10 @@ public class PlayerAbilities : MonoBehaviour
 
     private float timer = 0f;
 
-    private bool[] keyPressed;
+    private bool[] buttonPressed = new bool[3];
 
-    private string[] spellKey = new string[3];
-    private string[] potionKey = new string[3];
+    private string[] spellButtonName = new string[3];
+    private string[] potionButtonName = new string[3];
 
     private GameObject theBluePrint;
 
@@ -31,13 +31,17 @@ public class PlayerAbilities : MonoBehaviour
     {
         //GetComponent<PlayerController>();
 
-        spellKey[0] = "Spell1";
-        spellKey[1] = "Spell2";
-        spellKey[2] = "Spell3";
+        spellButtonName[0] = "Spell1";
+        spellButtonName[1] = "Spell2";
+        spellButtonName[2] = "Spell3";
 
-        potionKey[0] = "Potion1";
-        potionKey[1] = "Potion2";
-        potionKey[2] = "Potion3";
+        potionButtonName[0] = "Potion1";
+        potionButtonName[1] = "Potion2";
+        potionButtonName[2] = "Potion3";
+
+        buttonPressed[0] = false;
+        buttonPressed[1] = false;
+        buttonPressed[2] = false;
     }
 
     void Update()
@@ -49,35 +53,35 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (stanceOne)
         {
-            Instantiate(potionKey[0], 0, potionBlueprints);
-            Instantiate(potionKey[1], 1, potionBlueprints);
-            Instantiate(potionKey[2], 2, potionBlueprints);
+            Instantiate(potionButtonName[0], 0, potionBlueprints);
+            Instantiate(potionButtonName[1], 1, potionBlueprints);
+            Instantiate(potionButtonName[2], 2, potionBlueprints);
         }
 
         else if (!stanceOne)
         {
-            Debug.Log(spellKey[0]);
-            Instantiate(spellKey[0], 0, spellBlueprints);
-            Instantiate(spellKey[1], 1, spellBlueprints);
-            Instantiate(spellKey[2], 2, spellBlueprints);
+            Debug.Log(spellButtonName[0]);
+            Instantiate(spellButtonName[0], 0, spellBlueprints);
+            Instantiate(spellButtonName[1], 1, spellBlueprints);
+            Instantiate(spellButtonName[2], 2, spellBlueprints);
         }
     }
 
-    void Instantiate(string key, int index, GameObject[] list)
+    void Instantiate(string button, int index, GameObject[] list)
     {
-        if (Input.GetKeyDown(key) && !isReloading)
+        if (Input.GetButtonDown(button) && !isReloading)
         {
-            keyPressed[index] = true;
+            buttonPressed[index] = true;
 
             //Reminder : intégrer bool pour bloquer le mouvement et le switch de stance
         }
 
-        if (keyPressed[index])
+        if (buttonPressed[index])
         {
             BlueprintTimer(index, list);
         }
 
-        if (Input.GetKeyUp(key) && !isReloading)
+        if (Input.GetButtonUp(button) && !isReloading)
         {
             Release(index, list);
         }
@@ -85,7 +89,7 @@ public class PlayerAbilities : MonoBehaviour
 
     void Release(int rIndex, GameObject[] rList)
     {
-        keyPressed[rIndex] = false;
+        buttonPressed[rIndex] = false;
         timer = 0;
 
         Destroy(theBluePrint);
