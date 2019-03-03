@@ -15,7 +15,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
     public GameObject[] spellBlueprints;
     public GameObject[] potionBlueprints;
 
-    [SerializeField] private bool stanceOne = false;
+    public bool stanceOne = false;
 
     [SerializeField] private bool isReloading = false;
 
@@ -34,10 +34,10 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     void Update()
     {
-        WhatStance();
+        InputManager();
     }
 
-    void WhatStance()
+    void InputManager()
     {
         if (stanceOne)
         {
@@ -95,7 +95,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             {
                 Ability(index, false);
             }
-        }       
+        }
     }
 
     void Ability(int index, bool stance)

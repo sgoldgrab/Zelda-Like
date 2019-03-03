@@ -26,6 +26,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public bool playerHasFallen = false;
 
     private PlayerCaracteristics playerCaracteristics;
+    private PlayerAbilitiesBis playerAbilities;
 
     [HideInInspector] public bool playerIsHitByTheTemplar;
     [HideInInspector] public bool playerIsDead;
@@ -36,6 +37,11 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public float lastY;
 
     public bool canMove = true;
+
+    [SerializeField] private Camera camStance1;
+    [SerializeField] private Camera camStance2;
+
+    [SerializeField] private Canvas userInterface;
 
     /*public float LastX { get; set; }
     public float LastY { get; set; }*/
@@ -51,6 +57,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
         playerCaracteristics = GetComponent<PlayerCaracteristics>();
 
+        playerAbilities = GetComponent<PlayerAbilitiesBis>();
+
         healthPlayerScript = GetComponent<HealthPlayer>();
     }
 
@@ -59,7 +67,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
     {
         Direction();
 
-        //StanceSwitch();
+        StanceSwitch();
 
         LastSprite();
 	}
@@ -120,18 +128,34 @@ public class PlayerControllerEzEz : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
         {
-            if (whatStance == Stance.stance1)
+            if (whatStance == Stance.stance1) //switch to stance 2
             {
-                tilemapS1.color = invisible;
-                tilemapS2.color = visible;
+                //tilemapS1.color = invisible;
+                //tilemapS2.color = visible;
+
                 whatStance = Stance.stance2;
+
+                camStance1.enabled = false;
+                camStance2.enabled = true;
+
+                userInterface.worldCamera = camStance1;
+
+                playerAbilities.stanceOne = false;
             }
 
-            else if (whatStance == Stance.stance2)
+            else if (whatStance == Stance.stance2) // switch to stance 1
             {
-                tilemapS1.color = visible;
-                tilemapS2.color = invisible;
+                //tilemapS1.color = visible;
+                //tilemapS2.color = invisible;
+
                 whatStance = Stance.stance1;
+
+                camStance1.enabled = true;
+                camStance2.enabled = false;
+
+                userInterface.worldCamera = camStance2;
+
+                playerAbilities.stanceOne = true;
             }
         }
     }
