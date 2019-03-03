@@ -2550,6 +2550,7 @@ MonoBehaviour:
   playerIsDead: 0
   lastX: 0
   lastY: 0
+  canMove: 1
 --- !u!114 &2011051038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2760,10 +2761,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d549c7fab49f2be48a679b1d2634819f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0
   spells:
-  - {fileID: 4509611495187070841, guid: 43a21b22993139c4495a5734b67fc5cf, type: 3}
-  - {fileID: 1891267514966032, guid: 3095b937cae2ffd40b06d165dae5b83b, type: 3}
-  - {fileID: 8865798120607498456, guid: cf7e5a2c54127ff4f9b3cdb4fdcbea0e, type: 3}
+  - {fileID: 2089678972868150669, guid: e6c892fb7dc98d5488eb95fb63e4bcb2, type: 3}
+  - {fileID: 8928616932051969286, guid: 2ed5c94ab5cd7994891b878f85713959, type: 3}
+  - {fileID: 1468722484603495704, guid: 56ea70363ba1334448ae8307736e0359, type: 3}
   potions:
   - {fileID: 1590246786865930, guid: 3495f94bdedb03e46a3d3a0ee75ae9b9, type: 3}
   - {fileID: 1810897213494534, guid: 5a6654eb7cca1834e8787bef62d2e35c, type: 3}
