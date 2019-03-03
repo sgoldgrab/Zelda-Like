@@ -15,6 +15,8 @@ public class Spell2 : MonoBehaviour
     private Transform player;
     private Vector2 target;
 
+    public DormantEnemy dormantEnemy;
+
 
 
     private void Start()
@@ -52,15 +54,17 @@ public class Spell2 : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag =="Enemy")
+        if (other.tag =="EnemyHitBox")
         {
 
             //applique effet
             //rb.AddForce(transform.right * forceAmount, ForceMode2D.Impulse);
-
-
+            print("Enemy touched");
+            
+            dormantEnemy = other.GetComponent<DormantEnemy>();
+            dormantEnemy.Spell2Effect();
         }
         else
         {

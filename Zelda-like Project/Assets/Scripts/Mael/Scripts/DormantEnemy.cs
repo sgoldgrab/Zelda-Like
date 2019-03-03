@@ -109,6 +109,8 @@ public class DormantEnemy : MonoBehaviour
 
     public void Spell2Effect()
     {
+
+        print("spell2");
         bool spell2Touched = true;
 
         rb2D.AddForce(new Vector2(directionX, directionY)); //on récupère ici la direction que le spell a pris

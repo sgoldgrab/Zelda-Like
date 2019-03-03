@@ -431,12 +431,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spells:
-  - {fileID: 1395789948491304, guid: 43a21b22993139c4495a5734b67fc5cf, type: 3}
+  - {fileID: 4509611495187070841, guid: 43a21b22993139c4495a5734b67fc5cf, type: 3}
   - {fileID: 1891267514966032, guid: 3095b937cae2ffd40b06d165dae5b83b, type: 3}
   potions:
   - {fileID: 1590246786865930, guid: 3495f94bdedb03e46a3d3a0ee75ae9b9, type: 3}
   - {fileID: 1810897213494534, guid: 5a6654eb7cca1834e8787bef62d2e35c, type: 3}
   - {fileID: 1622414799932082, guid: 2ea764eaba4f6b94bae08796d1415977, type: 3}
+  potionCooldownUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spellCooldownUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  cooldownPotion1: 5
+  cooldownPotion2: 5
+  cooldownPotion3: 5
+  cooldownSpell1: 5
+  cooldownSpell2: 5
+  cooldownSpell3: 5
   Player: {fileID: 4360301406843000731}
   bluePrint: 0
   blueprintSpell1: {fileID: 8277674747929181775, guid: 15a7566a84572974287b9340c6565440,
@@ -452,6 +466,6 @@ MonoBehaviour:
   blueprintPotion3: {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477,
     type: 3}
   parent: {fileID: 0}
-  stanceOne: 0
+  stanceOne: 1
   isReloading: 0
   dormantPlayer: {fileID: 4360301406843000719}
