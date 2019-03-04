@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpellOne : MonoBehaviour
 {
-    private Rigidbody2D rb2d;
-
     [SerializeField] private float speed;
     [SerializeField] private float timer;
 
@@ -14,23 +12,21 @@ public class SpellOne : MonoBehaviour
     private PlayerAbilitiesBis playerAbilitiesScript;
     private Vector2 direction;
 
-    public void SetDirection(Vector2 pos)
+    public void SetPositions(Vector2 pos)
     {
         direction = pos;
     }
 
     private void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-
         //penser à lancer l'anim si y'en a une (et si y'a besoin?)
     }
 
-    public void Update()
+    private void Update()
     {
         timer -= Time.deltaTime;
 
-        transform.position = direction * Time.deltaTime * speed;
+        transform.Translate(direction * speed * Time.deltaTime);
 
         if (timer <= 0.1f)
         {
