@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4626404389747958469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355525924246206392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49258480dc7da0458cfd023976db0f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6468736864935773320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23,6 +11,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PotionMax3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407233544499999536, guid: 803e6251829ea1f47b54f3462e712f47,
+        type: 3}
+      propertyPath: m_TagString
+      value: Potion3
       objectReference: {fileID: 0}
     - target: {fileID: 7300031319050402475, guid: 803e6251829ea1f47b54f3462e712f47,
         type: 3}
@@ -94,12 +87,23 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.90588236
       objectReference: {fileID: 0}
+    - target: {fileID: 8272997085787774950, guid: 803e6251829ea1f47b54f3462e712f47,
+        type: 3}
+      propertyPath: compareTag1
+      value: Spell2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272997085787774950, guid: 803e6251829ea1f47b54f3462e712f47,
+        type: 3}
+      propertyPath: combo1
+      value: 
+      objectReference: {fileID: 8130630827743236345, guid: 375baf92f35c6f141955eae3a006822d,
+        type: 3}
+    - target: {fileID: 8272997085787774950, guid: 803e6251829ea1f47b54f3462e712f47,
+        type: 3}
+      propertyPath: combo2
+      value: 
+      objectReference: {fileID: 8130630827743236345, guid: 4df9df2cb5bba1545ac4d2ec6f26b838,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 6565536881007449796, guid: 803e6251829ea1f47b54f3462e712f47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 803e6251829ea1f47b54f3462e712f47, type: 3}
---- !u!1 &1355525924246206392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5407233544499999536, guid: 803e6251829ea1f47b54f3462e712f47,
-    type: 3}
-  m_PrefabInstance: {fileID: 6468736864935773320}
-  m_PrefabAsset: {fileID: 0}

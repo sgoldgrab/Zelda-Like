@@ -16,6 +16,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
     public GameObject[] potionBlueprints;
 
     public bool stanceOne = false;
+    private bool doubleTap = false;
 
     private bool[] cooldownIsOver = new bool[6];
     private float[] coolDownTime = new float[6];
@@ -30,7 +31,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
     private PlayerControllerEzEz playerController;
 
     private Vector2 transformPos;
-    private Vector2 aimPos;
+    public Vector2 aimPos;
     [SerializeField] private float aimDistance;
 
     void Start()
@@ -61,6 +62,8 @@ public class PlayerAbilitiesBis : MonoBehaviour
     {
         if (stanceOne)
         {
+            doubleTap = true;
+
             if(Input.GetButtonDown("Potion1"))
             {
                 if (cooldownIsOver[0])
@@ -99,6 +102,8 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
         else if (!stanceOne)
         {
+            doubleTap = false;
+
             if (Input.GetButtonDown("Spell1"))
             {
                 if (cooldownIsOver[3])
@@ -179,7 +184,10 @@ public class PlayerAbilitiesBis : MonoBehaviour
             cooldownIsOver[rIndex + 3] = false;
             coolDownTime[rIndex + 3] = startCoolDownTime[rIndex + 3];
 
-            Instantiate(spells[rIndex], aimPos, Quaternion.identity);
+            GameObject spell = Instantiate(spells[rIndex], aimPos, Quaternion.identity);
+
+            if (spell.GetComponent<SpellOne>() == null) return;
+            else { spell.GetComponent<SpellOne>().SetDirection(aimPos); }
         }
 
         else if (rStance == true)
@@ -187,7 +195,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             cooldownIsOver[rIndex] = false;
             coolDownTime[rIndex] = startCoolDownTime[rIndex];
 
-            Instantiate(potions[rIndex], aimPos, Quaternion.identity);
+            GameObject potion = Instantiate(potions[rIndex], aimPos, Quaternion.identity);
         }
     }
 

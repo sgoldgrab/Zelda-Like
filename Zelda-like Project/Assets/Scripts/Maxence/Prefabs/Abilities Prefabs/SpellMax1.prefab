@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8741358835127678455}
   - component: {fileID: 8467451350083200825}
   - component: {fileID: 8577872066933773417}
-  - component: {fileID: 6935756690368546664}
+  - component: {fileID: 8838437008522592734}
   m_Layer: 0
   m_Name: SpellMax1
-  m_TagString: Untagged
+  m_TagString: Spell1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6935756690368546664
+--- !u!114 &8838437008522592734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,9 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 203697685894185085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5916b74b2726c6d4ba6c68b16948c0e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 00ee6e635d25cd64a8b43310e2600eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  currentPos: {x: 0, y: 0}
-  dormantEnemy: {fileID: 0}
+  speed: 2
+  timer: 2

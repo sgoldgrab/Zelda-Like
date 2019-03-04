@@ -790,7 +790,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424246783}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -2666,7 +2666,6 @@ GameObject:
   - component: {fileID: 2011051037}
   - component: {fileID: 2011051036}
   - component: {fileID: 2011051035}
-  - component: {fileID: 2011051045}
   - component: {fileID: 2011051046}
   m_Layer: 8
   m_Name: Player
@@ -2899,36 +2898,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011051045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011051034}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a9d1861549d3b4a96519c5d0054e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 4509611495187070841, guid: 43a21b22993139c4495a5734b67fc5cf, type: 3}
-  - {fileID: 1891267514966032, guid: 3095b937cae2ffd40b06d165dae5b83b, type: 3}
-  - {fileID: 8865798120607498456, guid: cf7e5a2c54127ff4f9b3cdb4fdcbea0e, type: 3}
-  potions:
-  - {fileID: 1590246786865930, guid: 3495f94bdedb03e46a3d3a0ee75ae9b9, type: 3}
-  - {fileID: 1810897213494534, guid: 5a6654eb7cca1834e8787bef62d2e35c, type: 3}
-  - {fileID: 1622414799932082, guid: 2ea764eaba4f6b94bae08796d1415977, type: 3}
-  spellBlueprints:
-  - {fileID: 8277674747929181775, guid: 15a7566a84572974287b9340c6565440, type: 3}
-  - {fileID: 744142672290622423, guid: ecbcfa1caf10e62488df8c14f785a7fc, type: 3}
-  - {fileID: 7413261943189439979, guid: 9b2c7f5572199c844960b5bf6ace37fc, type: 3}
-  potionBlueprints:
-  - {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477, type: 3}
-  - {fileID: 8384358206270592575, guid: caebabf5b55885147a8c297e06bfac4a, type: 3}
-  - {fileID: 2369424289353008294, guid: 150e5accb9626f9459c42b23089bcbd7, type: 3}
-  stanceOne: 0
-  isReloading: 0
 --- !u!114 &2011051046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2941,15 +2910,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d549c7fab49f2be48a679b1d2634819f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.1
+  time: 0.2
   spells:
   - {fileID: 203697685894185085, guid: 44322fb4bced7c14aa58024315a5822a, type: 3}
   - {fileID: 1807790849097075692, guid: 74d266069da07d1499605e6c57c838d8, type: 3}
   - {fileID: 5427068758220472894, guid: a0c5e5cb5eff5cf4fb0a51749ee55493, type: 3}
   potions:
-  - {fileID: 1590246786865930, guid: 3495f94bdedb03e46a3d3a0ee75ae9b9, type: 3}
-  - {fileID: 1810897213494534, guid: 5a6654eb7cca1834e8787bef62d2e35c, type: 3}
-  - {fileID: 1622414799932082, guid: 2ea764eaba4f6b94bae08796d1415977, type: 3}
+  - {fileID: 5407233544499999536, guid: 803e6251829ea1f47b54f3462e712f47, type: 3}
+  - {fileID: 8295839438851578446, guid: f4a389ff99d513a40a6357c873851eed, type: 3}
+  - {fileID: 1355525924246206392, guid: 03553bb6075676544a35494515507d8b, type: 3}
   spellBlueprints:
   - {fileID: 8277674747929181775, guid: 15a7566a84572974287b9340c6565440, type: 3}
   - {fileID: 744142672290622423, guid: ecbcfa1caf10e62488df8c14f785a7fc, type: 3}
@@ -2966,6 +2935,7 @@ MonoBehaviour:
   - 3
   - 3
   - 3
+  aimPos: {x: 0, y: 0}
   aimDistance: 1
 --- !u!1 &2128735624
 GameObject:
