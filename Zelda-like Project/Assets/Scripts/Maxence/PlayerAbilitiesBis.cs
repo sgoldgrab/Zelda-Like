@@ -184,10 +184,11 @@ public class PlayerAbilitiesBis : MonoBehaviour
             cooldownIsOver[rIndex + 3] = false;
             coolDownTime[rIndex + 3] = startCoolDownTime[rIndex + 3];
 
-            GameObject spell = Instantiate(spells[rIndex], aimPos, Quaternion.identity);
+            GameObject spell = Instantiate(spells[rIndex], transformPos + aimPos, Quaternion.identity);
 
+            //ONLY SPELL 1
             if (spell.GetComponent<SpellOne>() == null) return;
-            else { spell.GetComponent<SpellOne>().SetDirection(aimPos); }
+            else { spell.GetComponent<SpellOne>().SetPositions(aimPos); }
         }
 
         else if (rStance == true)
@@ -195,7 +196,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             cooldownIsOver[rIndex] = false;
             coolDownTime[rIndex] = startCoolDownTime[rIndex];
 
-            GameObject potion = Instantiate(potions[rIndex], aimPos, Quaternion.identity);
+            GameObject potion = Instantiate(potions[rIndex], transformPos + aimPos, Quaternion.identity);
         }
     }
 
@@ -222,7 +223,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
             else
             {                
-                theBluePrint.transform.position = aimPos;
+                theBluePrint.transform.position = transformPos + aimPos;
             }
 
             //là il faut immobiliser le joueur, et lui permettre de diriger le blueprint avec le joystick gauche
@@ -242,8 +243,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             float posY = playerController.lastY;
 
             Vector2 rawAimCoordinates = new Vector2(posX, posY);
-            Vector2 rawAimPos = rawAimCoordinates * distance;
-            aimPos = transformPos + rawAimPos;
+            aimPos = rawAimCoordinates * distance;
         }
     }
 }
