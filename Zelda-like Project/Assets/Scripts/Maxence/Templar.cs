@@ -109,6 +109,8 @@ public class Templar : MonoBehaviour {
 
     void Update()
     {
+        FlipTemplar();
+
         if (behavior == TemplarBehaviors.patrol) // patrol behavior
         {
             IdleBehavior(); // moves from checkpoint to checkpoint
@@ -124,8 +126,6 @@ public class Templar : MonoBehaviour {
         }
 
         DamageToTheTemplar();
-
-        FlipTemplar();
     }
 
     void ChaseBehavior() // follows the player and attacks him when reaching a certain distance
@@ -296,14 +296,28 @@ public class Templar : MonoBehaviour {
 
     void FlipTemplar()
     {
-        if(transform.position.x >= playerTransform.position.x) //faceleft
+        if (transform.position.x >= playerTransform.position.x && transform.position.y < playerTransform.position.y) //faceUpLeft
         {
             templarAnimator.SetFloat("lastX", -1f);
+            templarAnimator.SetFloat("lastY", 1f);
         }
 
-        else if(transform.position.x < playerTransform.position.x) //faceright
+        else if (transform.position.x < playerTransform.position.x && transform.position.y < playerTransform.position.y) //faceUpRight
         {
             templarAnimator.SetFloat("lastX", 1f);
+            templarAnimator.SetFloat("lastY", 1f);
+        }
+
+        else if (transform.position.x >= playerTransform.position.x && transform.position.y >= playerTransform.position.y) //faceDownLeft
+        {
+            templarAnimator.SetFloat("lastX", -1f);
+            templarAnimator.SetFloat("lastY", -1f);
+        }
+
+        else if(transform.position.x < playerTransform.position.x && transform.position.y >= playerTransform.position.y) //faceDownRight
+        {
+            templarAnimator.SetFloat("lastX", 1f);
+            templarAnimator.SetFloat("lastY", -1f);
         }
     }
 
