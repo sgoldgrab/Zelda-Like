@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class PlayerDormantEffects : MonoBehaviour
 {
-    public GameObject player;
-
-    public int enemiesTouchedCount;
+    [HideInInspector] public int enemiesTouchedCount;
 
     public GameObject[] playerHealth;
 
-    public bool immuneToDamage = false;
+    [HideInInspector] public bool immuneToDamage = false;
 
-    public int damageAbsorbed = 0;
+    [HideInInspector] public int damageAbsorbed = 0;
 
     private float damageTaken;
-
-    private void Start()
-    {
-        player = GameObject.Find("Player");
-    }
 
     public void Pot1Effect()
     {

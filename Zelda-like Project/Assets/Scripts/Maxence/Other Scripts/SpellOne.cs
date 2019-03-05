@@ -7,7 +7,7 @@ public class SpellOne : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float timer;
 
-    private DormantEnemy dormantEnemyScript;
+    private EnemyDormantEffects dormantEnemyScript;
 
     private PlayerAbilitiesBis playerAbilitiesScript;
     private Vector2 direction;
@@ -38,7 +38,7 @@ public class SpellOne : MonoBehaviour
     {
         if (other.CompareTag("Templar")) //Faudra mettre le tag "Enemy" sur tous les ennemis
         {
-            dormantEnemyScript = other.gameObject.GetComponent<DormantEnemy>();
+            dormantEnemyScript = other.gameObject.GetComponent<EnemyDormantEffects>();
 
             dormantEnemyScript.Spell1Effect();
 

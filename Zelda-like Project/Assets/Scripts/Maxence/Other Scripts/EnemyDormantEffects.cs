@@ -21,15 +21,31 @@ public class EnemyDormantEffects : MonoBehaviour
 
     private EnemyHealthBar enemyHealthBar;
 
-    public DormantPlayer dormantPlayer;
+    private PlayerDormantEffects dormantPlayer;
+
+    private bool messengerIsNull = true;
 
     private void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        dormantPlayer = GetComponent<PlayerDormantEffects>();
 
-        enemyHealthBar = GetComponent<EnemyHealthBar>();
+        rb2D = GetComponent<Rigidbody2D>();        
 
         player = GameObject.Find("Player");
+    }
+
+    private void Update()
+    {
+        if (messengerIsNull)
+        {
+            GameObject enemyHealthBarMessenger = GameObject.FindWithTag("EnemyHealthBar");
+
+            if (enemyHealthBarMessenger != null)
+            {
+                enemyHealthBar = enemyHealthBarMessenger.GetComponent<EnemyHealthBar>();
+                messengerIsNull = false;
+            }
+        }
     }
 
     public void Spell1Effect()
@@ -44,17 +60,19 @@ public class EnemyDormantEffects : MonoBehaviour
 
         for (int u = 0; u < 2; u++)
         {
-            for (int i = 0; i < 4; i++)
+            enemyHealthBar.Damaged();
+
+            /*for (int i = 0; i < 4; i++)
             {
                 if (damageTaken == i)
                 {
                     enemyHealth[i].SetActive(false);
                     //enemyHealthBar.damageTaken -= 1;
                 }
-            }
+            }*/
 
             yield return new WaitForSeconds(2f);
-        }       
+        }
     }
 
     //appelée lorsque l'ennemi est touché par le spell 2
