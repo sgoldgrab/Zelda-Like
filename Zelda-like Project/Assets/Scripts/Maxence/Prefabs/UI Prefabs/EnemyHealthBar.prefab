@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 114264970205532646}
   m_Layer: 0
   m_Name: EnemyHealthBar
-  m_TagString: Untagged
+  m_TagString: EnemyHealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,3 +49,6 @@ MonoBehaviour:
     type: 3}
   healthBordureDroitePrefab: {fileID: 1130289880838182, guid: 3ebc31651cad55744a839dfbde2cecd3,
     type: 3}
+  healthSegment1: {fileID: 0}
+  healthSegment2: {fileID: 0}
+  healthSegment3: {fileID: 0}

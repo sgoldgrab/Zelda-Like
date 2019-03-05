@@ -132,7 +132,7 @@ public class Templar : MonoBehaviour {
     {
         if (templarIsAlive)
         {
-            if (Vector2.Distance(transform.position, playerTransform.position) > templarAttackDistance)
+            if (Vector2.Distance(transform.position, playerTransform.position) > templarAttackDistance && templarCanMove)
             {
                 templarAnimator.SetBool("templarIsMoving", true);
                 transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, templarSpeed * Time.deltaTime);
@@ -143,6 +143,16 @@ public class Templar : MonoBehaviour {
                 templarAnimator.SetBool("templarIsMoving", false);
                 LaunchAttack();
             }
+
+            else
+            {
+                templarAnimator.SetBool("templarIsMoving", false);
+            }
+        }
+
+        else
+        {
+            templarAnimator.SetBool("templarIsMoving", false);
         }
     }
 
@@ -223,7 +233,7 @@ public class Templar : MonoBehaviour {
                 }
             }
 
-            else
+            else if (templarCanMove)
             {
                 templarAnimator.SetBool("templarIsMoving", true);
                 transform.position = Vector2.MoveTowards(transform.position, checkpoint, templarSpeed * Time.deltaTime);
@@ -237,9 +247,11 @@ public class Templar : MonoBehaviour {
         {
             templarHealth -= playerAttackScript.damage; // damage
 
-            templarIsHit = false;
-            //templarCanAttack = false;
+            templarCanMove = false;
+            templarCanAttack = false;
 
+            templarIsHit = false;
+            
             if (templarHealth <= 0)
             {
                 templarAnimator.SetTrigger("templarIsDead");
@@ -267,7 +279,6 @@ public class Templar : MonoBehaviour {
                 }*/
             }
 
-            //UI TESTING\\
             templarHealthBarScript.Damaged();
         }
     }
@@ -275,6 +286,12 @@ public class Templar : MonoBehaviour {
     void Death()
     {
         Destroy(gameObject);
+    }
+
+    void TemplarRecover()
+    {
+        templarCanMove = true;
+        templarCanAttack = true;
     }
 
     void FlipTemplar()
@@ -310,6 +327,7 @@ public class Templar : MonoBehaviour {
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackRange);
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, templarAttackDistance);
     }
 

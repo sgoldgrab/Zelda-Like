@@ -8,7 +8,7 @@ public class DormantEnemy : MonoBehaviour
     private Rigidbody2D rb2D;
 
     private GameObject player;
-    private PlayerControllerEzEz playerController; // changé
+    //private PlayerControllerEzEz playerController; // changé
 
     private float speed;
 
@@ -25,7 +25,7 @@ public class DormantEnemy : MonoBehaviour
 
     private float damageTaken; // connection à un autre script à faire
 
-    private DormantPlayer dormantPlayer;
+    public DormantPlayer dormantPlayer;
 
     private void Start()
     {
@@ -33,15 +33,15 @@ public class DormantEnemy : MonoBehaviour
 
         player = GameObject.Find("Player");
 
-        playerController = player.GetComponent<PlayerControllerEzEz>(); // changé
+       // playerController = player.GetComponent<PlayerControllerEzEz>(); // changé
 
-        dormantPlayer = GetComponent<DormantPlayer>();
+        
     }
 
     public void Spell1Effect()
     {
         //appelée lorsque l'ennemi est touché par le spell 1
-
+        print("spell1");
         StartCoroutine(SpellOne());
     }
 
@@ -109,6 +109,8 @@ public class DormantEnemy : MonoBehaviour
 
     public void Spell2Effect()
     {
+
+        print("spell2");
         bool spell2Touched = true;
 
         rb2D.AddForce(new Vector2(directionX, directionY)); //on récupère ici la direction que le spell a pris

@@ -9,6 +9,14 @@ TagManager:
   - Obstacle
   - FireBall
   - EnemySpawner
+  - Spell1
+  - Spell2
+  - Potion3
+  - Potion1
+  - Potion2
+  - Smoke
+  - EnemyHitBox
+  - Spell3
   layers:
   - Default
   - TransparentFX
@@ -22,9 +30,9 @@ TagManager:
   - Enemy
   - 
   - 
-  - 
+  - Collider
   - Obstacle
-  - 
+  - PP
   - 
   - 
   - 

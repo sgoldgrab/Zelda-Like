@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class PlayerControllerEzEz : MonoBehaviour {
 
@@ -24,14 +26,25 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public bool playerHasFallen = false;
 
     private PlayerCaracteristics playerCaracteristics;
+    private PlayerAbilitiesBis playerAbilities;
 
     [HideInInspector] public bool playerIsHitByTheTemplar;
     [HideInInspector] public bool playerIsDead;
 
     private HealthPlayer healthPlayerScript;
 
-    private float lastX;
-    private float lastY;
+    public float lastX;
+    public float lastY;
+
+    public bool canMove = true;
+
+    [SerializeField] private Camera camStance1;
+    [SerializeField] private Camera camStance2;
+
+    [SerializeField] private Canvas userInterface;
+
+    /*public float LastX { get; set; }
+    public float LastY { get; set; }*/
 
     void Awake()
     {
@@ -41,14 +54,10 @@ public class PlayerControllerEzEz : MonoBehaviour {
     void Start()
     {
         animator = GetComponent<Animator>();
+
         playerCaracteristics = GetComponent<PlayerCaracteristics>();
 
-        /*GameObject healthPlayerMessenger = GameObject.FindWithTag("Templar");
-
-        if (healthPlayerMessenger != null)
-        {
-            healthPlayerScript = healthPlayerMessenger.GetComponent<HealthPlayer>();
-        }*/
+        playerAbilities = GetComponent<PlayerAbilitiesBis>();
 
         healthPlayerScript = GetComponent<HealthPlayer>();
     }
@@ -56,31 +65,36 @@ public class PlayerControllerEzEz : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Movement();
+        Direction();
 
         StanceSwitch();
 
         LastSprite();
 	}
 
-    void Movement()
+    void Direction()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        
+        if (canMove)
+        {
+            Movement();
+        }
 
-        /*var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");*/
+        if (horizontal != 0 || vertical != 0)
+        {
+            lastX = horizontal;
+            lastY = vertical;
+        }        
+    }
 
+    void Movement()
+    {
         animator.SetFloat("x", horizontal);
         animator.SetFloat("y", vertical);
 
         transform.Translate(horizontal * playerSpeed * Time.deltaTime, vertical * playerSpeed * Time.deltaTime, 0);
-
-        if(horizontal != 0 || vertical != 0)
-        {
-            lastX = horizontal;
-            lastY = vertical;
-        }
     }
 
     void LastSprite()
@@ -114,18 +128,34 @@ public class PlayerControllerEzEz : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
         {
-            if (whatStance == Stance.stance1)
+            if (whatStance == Stance.stance1) //switch to stance 2
             {
-                tilemapS1.color = invisible;
-                tilemapS2.color = visible;
+                //tilemapS1.color = invisible;
+                //tilemapS2.color = visible;
+
                 whatStance = Stance.stance2;
+
+                camStance1.enabled = false;
+                camStance2.enabled = true;
+
+                userInterface.worldCamera = camStance1;
+
+                playerAbilities.stanceOne = false;
             }
 
-            else if (whatStance == Stance.stance2)
+            else if (whatStance == Stance.stance2) // switch to stance 1
             {
-                tilemapS1.color = visible;
-                tilemapS2.color = invisible;
+                //tilemapS1.color = visible;
+                //tilemapS2.color = invisible;
+
                 whatStance = Stance.stance1;
+
+                camStance1.enabled = true;
+                camStance2.enabled = false;
+
+                userInterface.worldCamera = camStance2;
+
+                playerAbilities.stanceOne = true;
             }
         }
     }
