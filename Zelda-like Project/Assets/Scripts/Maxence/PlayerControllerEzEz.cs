@@ -10,6 +10,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     private Animator animator;
     public float playerSpeed;
 
+    private Rigidbody2D rb2D;
+
     public Color visible;
     public Color invisible;
 
@@ -21,6 +23,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     public float horizontal;
     public float vertical;
+    private Vector2 moveDir;
 
     public bool playerWasHit = false;
     public bool playerHasFallen = false;
@@ -59,13 +62,21 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
         playerAbilities = GetComponent<PlayerAbilitiesBis>();
 
+        rb2D = GetComponent<Rigidbody2D>();
+
         healthPlayerScript = GetComponent<HealthPlayer>();
     }
 
-	// Update is called once per frame
-	void Update ()
+    private void FixedUpdate()
     {
+
         Direction();
+
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
 
         StanceSwitch();
 
@@ -94,7 +105,11 @@ public class PlayerControllerEzEz : MonoBehaviour {
         animator.SetFloat("x", horizontal);
         animator.SetFloat("y", vertical);
 
-        transform.Translate(horizontal * playerSpeed * Time.deltaTime, vertical * playerSpeed * Time.deltaTime, 0);
+        moveDir = new Vector2(horizontal, vertical);
+
+        rb2D.velocity = playerSpeed * moveDir.normalized;
+
+        //transform.Translate(horizontal * playerSpeed * Time.deltaTime, vertical * playerSpeed * Time.deltaTime, 0);
     }
 
     void LastSprite()

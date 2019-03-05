@@ -214,8 +214,8 @@ public class Abilities : MonoBehaviour
         }
         if (Input.GetKeyUp(("joystick button 1")) && stanceOne && !isReloading)
         {
-            bluePrint = false;
-           /* if (isPotion1Cooldown)
+            /*bluePrint = false;
+            if (isPotion1Cooldown)
             {
                 potionCooldownUI[0].fillAmount += 1 / cooldownPotion1 * Time.deltaTime;
 
