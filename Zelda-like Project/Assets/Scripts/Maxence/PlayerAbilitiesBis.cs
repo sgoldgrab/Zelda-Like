@@ -5,10 +5,16 @@ using UnityEngine;
 public class PlayerAbilitiesBis : MonoBehaviour
 {
     private float timer = 0f;
+    private float timer2 = 0f;
+
+    [SerializeField] private float time2;
+
     [SerializeField] private float time;
 
     public GameObject[] spells;
     public GameObject[] potions;
+
+    public PlayerDormantEffects[] potionsEffects;
    
     private GameObject theBluePrint;
 
@@ -30,6 +36,8 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     private PlayerControllerEzEz playerController;
 
+    private PlayerDormantEffects playerDormants;
+
     private Vector2 transformPos;
     public Vector2 aimPos;
     [SerializeField] private float aimDistance;
@@ -47,6 +55,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
         {
             coolDownTime[x] = startCoolDownTime[x];
         }
+
+        //potionsEffects[0] = playerDormants.Pot1Effect();
+
     }
 
     void Update()
@@ -165,13 +176,40 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
         if (Input.GetButtonUp(buttonName))
         {
-            Release(index, stance);
+            if (doubleTap)
+            {
+                if (timer > 0 && Input.GetButtonDown(buttonName))
+                {
+
+                    Drink();
+
+                }
+
+                else
+                {
+
+                    timer2 -= Time.deltaTime;
+
+                }
+
+                if (timer <= 0f)
+                {
+                    doubleTap = false;
+                }
+            }
+
+            else if (!doubleTap)
+            {
+                Release(index, stance);
+            }            
         }
+
     }
 
     void Release(int rIndex, bool rStance)
     {
         inputPressed = false;
+
         timer = 0;
 
         createBluePrint = true;
@@ -198,6 +236,17 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
             GameObject potion = Instantiate(potions[rIndex], transformPos + aimPos, Quaternion.identity);
         }
+    }
+
+    void Drink()
+    {
+
+        inputPressed = false;
+
+        timer2 = time2;
+
+        
+
     }
 
     void Blueprint(int bPIndex, bool bPStance, float bPDistance)
