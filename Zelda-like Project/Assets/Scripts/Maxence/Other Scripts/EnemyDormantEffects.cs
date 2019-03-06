@@ -12,8 +12,6 @@ public class EnemyDormantEffects : MonoBehaviour
 
     public GameObject[] enemyHealth;
 
-    //AJOUTS\\
-
     private float directionX;
     private float directionY;
 
@@ -23,11 +21,17 @@ public class EnemyDormantEffects : MonoBehaviour
 
     private PlayerDormantEffects dormantPlayer;
 
+    private Templar templarScript;
+
     private bool messengerIsNull = true;
+
+    [SerializeField] private float pullForce;
 
     private void Start()
     {
         dormantPlayer = GetComponent<PlayerDormantEffects>();
+
+        templarScript = GetComponent<Templar>();
 
         rb2D = GetComponent<Rigidbody2D>();        
 
@@ -50,33 +54,23 @@ public class EnemyDormantEffects : MonoBehaviour
 
     public void Spell1Effect()
     {
-        //appelée lorsque l'ennemi est touché par le spell 1
+
         StartCoroutine(SpellOne());
+
     }
 
     IEnumerator SpellOne()
     {
-        //ça enlève 1 HP toutes les 2 sec 2 fois
 
         for (int u = 0; u < 2; u++)
         {
+
             enemyHealthBar.Damaged();
 
-            /*for (int i = 0; i < 4; i++)
-            {
-                if (damageTaken == i)
-                {
-                    enemyHealth[i].SetActive(false);
-                    //enemyHealthBar.damageTaken -= 1;
-                }
-            }*/
-
             yield return new WaitForSeconds(2f);
+
         }
     }
-
-    //appelée lorsque l'ennemi est touché par le spell 2
-    //ça pull back les ennemis dans la direction du spell, tant qu'ils sont à la bonne portée, ici j'ai mis 2 au pif mais on calibrera
 
     public void Spell2Effect()
     {
@@ -95,85 +89,66 @@ public class EnemyDormantEffects : MonoBehaviour
 
     public void Spell1AndPot1()
     {
-        //appelée lorsque l'ennemi est touché par le spell 1 combo dans la pot 1
-        //enlève 1HP et ajoute 1 au compteur d'ennemis touchés, utile pour le script sur le joueur 
 
-        if (damageTaken == 0)
-        {
-            enemyHealth[0].SetActive(false);
-            dormantPlayer.enemiesTouchedCount += 1;
-            damageTaken += 1;
-        }
+        enemyHealthBar.Damaged();
+        dormantPlayer.enemiesTouchedCount += 1;
 
-        if (damageTaken == 1)
-        {
-            enemyHealth[1].SetActive(false);
-            dormantPlayer.enemiesTouchedCount += 1;
-            damageTaken += 1;
-        }
-
-        if (damageTaken == 2)
-        {
-            enemyHealth[2].SetActive(false);
-            Destroy(gameObject);
-            dormantPlayer.enemiesTouchedCount += 1;
-        }
     }
 
     public void Spell1AndPot2()
     {
-        //appelée lorsque l'ennemi est touché par le spell 1 combo dans la pot 2
-        //enlève 2HP
 
-        if (damageTaken == 0)
-        {
-            enemyHealth[0].SetActive(false);
-            enemyHealth[1].SetActive(false);
-            damageTaken += 1;
-        }
+        StartCoroutine(SpellOnePot2());
 
-        if (damageTaken == 1)
-        {
-            enemyHealth[1].SetActive(false);
-            enemyHealth[2].SetActive(false);
-            Destroy(gameObject);
-            damageTaken += 1;
-        }
+    }
 
-        if (damageTaken == 2)
+    IEnumerator SpellOnePot2()
+    {
+
+        for (int u = 0; u < 2; u++)
         {
-            enemyHealth[2].SetActive(false);
-            Destroy(gameObject);
+
+            enemyHealthBar.Damaged();
+
+            yield return new WaitForSeconds(0);
+
         }
     }
 
     public void Spell2AndPot2()
     {
-        //appelée lorsque l'ennemi est touché par le spell 2 combo dans la pot 2
-        //je pense que cet effet là c'est pas possible de le FOUTRE sur l'ennemi on est obligé de le laisser sur le prefab
+
+        GameObject comboPrefab;
+
+        comboPrefab = GameObject.Find("P2S2");
+
+        transform.Translate(comboPrefab.transform.position * pullForce);
+
     }
 
     public void Spell2AndPot3()
     {
-        //appelée lorsque l'ennemi est touché par le spell 2 combo dans la pot 3
 
         StartCoroutine(ComboSpell2Pot3());
+
     }
 
     IEnumerator ComboSpell2Pot3()
     {
-        //divise la vitesse par 2 et le rend glow, donc visible tout le temps, pendant 6 sec
 
-        speed = speed / 2;
+        templarScript.templarSpeed /= 2;
         //Set la bool du script "glow" à true
+
         yield return new WaitForSeconds(6);
-        speed = speed * 2;
+
+        templarScript.templarSpeed *= 2;
         //Set la bool du script "glow" à false
     }
 
     public void Spell3AndPot1()
     {
-        //appelée lorsque l'ennemi est touché par le spell 3 combo dans la pot 1
+
         //???
+
     }
 }

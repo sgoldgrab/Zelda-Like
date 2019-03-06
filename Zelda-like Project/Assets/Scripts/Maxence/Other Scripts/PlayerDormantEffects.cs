@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,12 +13,26 @@ public class PlayerDormantEffects : MonoBehaviour
 
     [HideInInspector] public int damageAbsorbed = 0;
 
+    private PlayerControllerEzEz playerControllerScript;
+
     private float damageTaken;
+
+    private void Start()
+    {
+
+        playerControllerScript = GetComponent<PlayerControllerEzEz>();
+
+    }
 
     public void Pot1Effect()
     {
         print("pot1");
         StartCoroutine(PotOne());
+    }
+
+    internal void Spell3AndPot3Effect()
+    {
+        throw new NotImplementedException();
     }
 
     IEnumerator PotOne()
@@ -64,12 +79,13 @@ public class PlayerDormantEffects : MonoBehaviour
 
     public void Spell1AndPot1Effect()
     {
-        //rend 1HP pour chaque ennemi touché, le compte est gardé avec la variable "compteurEnnemisTouches"
 
         for (int w = enemiesTouchedCount; w > 0; w--)
         {
+
             for (int y = 0; y < 4; y++)
             {
+
                 if (damageTaken == y)
                 {
 
@@ -77,29 +93,35 @@ public class PlayerDormantEffects : MonoBehaviour
                     damageTaken -= 1;
 
                 }
-            }            
+
+            } 
+            
         }
+
     }
 
-    private void Spell3AndPot3Effect(Collider2D otherOther)
+    public void Spell3AndPot3Effect(Collider2D otherOther)
     {
-        //quand le joueur entre dans la smoke il gagne l'effet d'absorbtion de damage tant qu'il a absorbé moins de 3 attaques
 
         if (otherOther.CompareTag("Smoke"))
         {
-            if (damageAbsorbed < 4)
-            {
-                immuneToDamage = true;
 
-                //tant que cette bool est true, chaque attaque subit du player, au lieu d'enlever 1 segement de vie, augmente l'int damageAbsorbed de 1
-                //donc dans le update du playercontroller on met un if immuneToDamage true, alors ....? et là je sais pas trop
+            if (playerControllerScript.damageAbsorbed < 4)
+            {
+
+                playerControllerScript.immuneToDamage = true;
+
             }
 
             if (otherOther.CompareTag("Smoke"))
             {
-                immuneToDamage = false;
+
+                playerControllerScript.immuneToDamage = false;
+
             }
+
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)

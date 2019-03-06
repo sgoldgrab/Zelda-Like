@@ -38,6 +38,9 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     public bool canMove = true;
 
+    public bool immuneToDamage = false;
+    public int damageAbsorbed = 0;
+
     [SerializeField] private Camera camStance1;
     [SerializeField] private Camera camStance2;
 
@@ -166,11 +169,25 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
         if(playerCaracteristics.playerHealth > 0)
         {
-            animator.SetTrigger("playerIsHit");
 
-            Debug.Log("Damage to the playeeer FUsckjklj !!!!");
-            Debug.Log(playerCaracteristics.playerHealth);
-            healthPlayerScript.TakeDamage();
+            if (immuneToDamage)
+            {
+
+                damageAbsorbed += 1;
+
+            }
+
+            else
+            {
+
+                animator.SetTrigger("playerIsHit");
+
+                Debug.Log("Damage to the playeeer FUsckjklj !!!!");
+                Debug.Log(playerCaracteristics.playerHealth);
+                healthPlayerScript.TakeDamage();
+
+            }
+
         }
 
         else if (playerCaracteristics.playerHealth <= 0)
