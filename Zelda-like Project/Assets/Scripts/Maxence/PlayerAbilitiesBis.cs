@@ -7,6 +7,11 @@ public class PlayerAbilitiesBis : MonoBehaviour
     private float timer = 0f;
     [SerializeField] private float time;
 
+    private float timer2;
+    [SerializeField] private float time2;
+
+    private bool canDrink = false;
+
     public GameObject[] spells;
     public GameObject[] potions;
    
@@ -47,6 +52,8 @@ public class PlayerAbilitiesBis : MonoBehaviour
         {
             coolDownTime[x] = startCoolDownTime[x];
         }
+
+        timer2 = time2;
     }
 
     void Update()
@@ -62,14 +69,13 @@ public class PlayerAbilitiesBis : MonoBehaviour
     {
         if (stanceOne)
         {
-            doubleTap = true;
-
             if(Input.GetButtonDown("Potion1"))
             {
                 if (cooldownIsOver[0])
                 {
                     index = 0;
                     inputPressed = true;
+                    doubleTap = true;
                     buttonName = "Potion1";
                 }
             }
@@ -80,8 +86,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
                 {
                     index = 1;
                     inputPressed = true;
+                    doubleTap = true;
                     buttonName = "Potion2";
-                }                
+                }
             }
 
             if (Input.GetButtonDown("Potion3"))
@@ -90,8 +97,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
                 {
                     index = 2;
                     inputPressed = true;
+                    doubleTap = true;
                     buttonName = "Potion3";
-                }                
+                }
             }
 
             if (inputPressed)
@@ -102,16 +110,15 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
         else if (!stanceOne)
         {
-            doubleTap = false;
-
             if (Input.GetButtonDown("Spell1"))
             {
                 if (cooldownIsOver[3])
                 {
                     index = 0;
                     inputPressed = true;
+                    doubleTap = false;
                     buttonName = "Spell1";
-                }                
+                }
             }
 
             if (Input.GetButtonDown("Spell2"))
@@ -120,8 +127,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
                 {
                     index = 1;
                     inputPressed = true;
+                    doubleTap = false;
                     buttonName = "Spell2";
-                }                
+                }
             }
 
             if (Input.GetButtonDown("Spell3"))
@@ -130,8 +138,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
                 {
                     index = 2;
                     inputPressed = true;
+                    doubleTap = false;
                     buttonName = "Spell3";
-                }                
+                }
             }
 
             if (inputPressed)
@@ -161,11 +170,58 @@ public class PlayerAbilitiesBis : MonoBehaviour
     {
         AimDirection(aBDistance);
 
-        Blueprint(index, stance, aBDistance);
-
-        if (Input.GetButtonUp(buttonName))
+        if (!canDrink)
         {
-            Release(index, stance);
+            Blueprint(index, stance, aBDistance);
+        }
+
+        if (Input.GetButtonUp(buttonName) && !canDrink) //when the player releases the button
+        {
+            if (!doubleTap) //if the player is in stance 2 (using spells) or if he is already aiming a blueprint
+            {
+                Release(index, stance); //instantiate the right prefab and return from the function
+            }
+
+            else if (doubleTap) //if the player is in stance 1 (using potions) and if he is not aiming a blueprint
+            {
+                canDrink = true; //allows the second potential input
+            }
+        }
+
+        HaveADrink(index, stance);
+    }
+
+    void HaveADrink(int dIndex, bool dStance)
+    {
+        if (canDrink)
+        {
+            if (Input.GetButtonDown(buttonName) && timer2 >= 0.0f) //if the player press the button a second time during the right period of time
+            {
+                inputPressed = false;
+                timer2 = time2;
+
+                doubleTap = false;
+
+                canDrink = false;
+
+                //playerController.canMove = false;
+
+                Debug.Log("ça fait du bien par où ça passe !"); //drinks the potion
+                //potionEffect[index];
+            }
+
+            else if (timer2 >= 0.0f) //if the player hasn't pressed the button yet
+            {
+                timer2 -= Time.deltaTime;
+            }
+
+            else if (timer2 < 0.0f) //if the time period is over
+            {
+                Release(dIndex, dStance); //releases the potion zone
+
+                canDrink = false;
+                timer2 = time2;
+            }
         }
     }
 
@@ -178,6 +234,8 @@ public class PlayerAbilitiesBis : MonoBehaviour
         Destroy(theBluePrint);
 
         playerController.canMove = true;
+
+        doubleTap = false;
 
         if (rStance == false)
         {
@@ -205,6 +263,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
         if (timer > time)
         {
             playerController.canMove = false;
+            doubleTap = false;
 
             if (createBluePrint)
             {
@@ -229,7 +288,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             //là il faut immobiliser le joueur, et lui permettre de diriger le blueprint avec le joystick gauche
         }
 
-        else
+        else if (timer <= time)
         {
             timer += Time.deltaTime;
         }
