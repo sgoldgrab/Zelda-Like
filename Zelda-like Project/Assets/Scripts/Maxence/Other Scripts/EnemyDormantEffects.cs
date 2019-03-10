@@ -148,7 +148,19 @@ public class EnemyDormantEffects : MonoBehaviour
     public void Spell3AndPot1()
     {
 
-        //???
+        StartCoroutine(ComboSpell3Pot1());
 
     }
+
+    IEnumerator ComboSpell3Pot1()
+    {
+
+        templarScript.isWeakened = true;
+
+        yield return new WaitForSeconds(6);
+
+        templarScript.isWeakened = false;
+
+    }
+
 }

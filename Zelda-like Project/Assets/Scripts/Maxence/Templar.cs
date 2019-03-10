@@ -74,6 +74,9 @@ public class Templar : MonoBehaviour {
     private EnemyHealthBar templarHealthBarScript;
     [SerializeField] private float offsetUI;
 
+    //pour le script dormant
+    public bool isWeakened = false;
+
     void Start()
     {
         templarAnimator = GetComponent<Animator>(); // get the templar animator
@@ -245,6 +248,7 @@ public class Templar : MonoBehaviour {
     {
         if (templarIsHit)
         {
+
             templarHealth -= playerAttackScript.damage; // damage
 
             templarCanMove = false;
@@ -280,6 +284,14 @@ public class Templar : MonoBehaviour {
             }
 
             templarHealthBarScript.Damaged();
+
+            if(isWeakened)
+            {
+
+                templarHealthBarScript.Damaged();
+
+            }
+
         }
     }
 
