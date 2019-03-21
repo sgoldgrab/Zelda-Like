@@ -67,6 +67,11 @@ public class EnemyHealthBar : MonoBehaviour
 
     }
 
+    public void Healed()
+    {
+        //re-instantiate health segments
+    }
+
     private void UIDeath()
     {
 
