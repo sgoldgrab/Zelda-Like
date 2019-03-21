@@ -25,6 +25,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public bool playerWasHit = false;
     public bool playerHasFallen = false;
 
+    public bool immuneToDamage = false;
+
     private PlayerCaracteristics playerCaracteristics;
     private PlayerAbilitiesBis playerAbilities;
 
@@ -162,20 +164,28 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     public void DamageToThePlayer(Templar templarScript)
     {
-        playerCaracteristics.playerHealth -= templarScript.templarDamage;
-
-        if(playerCaracteristics.playerHealth > 0)
+        if (immuneToDamage)
         {
-            animator.SetTrigger("playerIsHit");
-
-            Debug.Log("Damage to the playeeer FUsckjklj !!!!");
-            Debug.Log(playerCaracteristics.playerHealth);
-            healthPlayerScript.TakeDamage();
+            playerCaracteristics.playerResistance += templarScript.templarDamage;
         }
 
-        else if (playerCaracteristics.playerHealth <= 0)
+        else
         {
-            animator.SetTrigger("playerIsDead");
+            playerCaracteristics.playerHealth -= templarScript.templarDamage;
+
+            if (playerCaracteristics.playerHealth > 0)
+            {
+                animator.SetTrigger("playerIsHit");
+
+                Debug.Log("Damage to the playeeer FUsckjklj !!!!");
+                Debug.Log(playerCaracteristics.playerHealth);
+                healthPlayerScript.TakeDamage();
+            }
+
+            else if (playerCaracteristics.playerHealth <= 0)
+            {
+                animator.SetTrigger("playerIsDead");
+            }
         }
     }
 

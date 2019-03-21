@@ -5,4 +5,6 @@ using UnityEngine;
 public class PlayerCaracteristics : MonoBehaviour {
 
     public float playerHealth;
+
+    public float playerResistance = 0;
 }

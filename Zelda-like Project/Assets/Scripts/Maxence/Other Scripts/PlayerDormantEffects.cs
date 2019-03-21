@@ -8,7 +8,7 @@ public class PlayerDormantEffects : MonoBehaviour
 
     public GameObject[] playerHealth;
 
-    [HideInInspector] public bool immuneToDamage = false;
+    //[HideInInspector] public bool immuneToDamage = false;
 
     [HideInInspector] public int damageAbsorbed = 0;
 
@@ -81,7 +81,8 @@ public class PlayerDormantEffects : MonoBehaviour
         }
     }
 
-    private void Spell3AndPot3Effect(Collider2D otherOther)
+    /// TO BE DELETED \\\
+    public void Spell3AndPot3Effect(Collider2D otherOther)
     {
         //quand le joueur entre dans la smoke il gagne l'effet d'absorbtion de damage tant qu'il a absorbé moins de 3 attaques
 
@@ -89,7 +90,7 @@ public class PlayerDormantEffects : MonoBehaviour
         {
             if (damageAbsorbed < 4)
             {
-                immuneToDamage = true;
+                //immuneToDamage = true;
 
                 //tant que cette bool est true, chaque attaque subit du player, au lieu d'enlever 1 segement de vie, augmente l'int damageAbsorbed de 1
                 //donc dans le update du playercontroller on met un if immuneToDamage true, alors ....? et là je sais pas trop
@@ -97,7 +98,7 @@ public class PlayerDormantEffects : MonoBehaviour
 
             if (otherOther.CompareTag("Smoke"))
             {
-                immuneToDamage = false;
+                //immuneToDamage = false;
             }
         }
     }
