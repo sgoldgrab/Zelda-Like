@@ -5,41 +5,50 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     //GENERAL
-    public float health;
-    public float maxHealth;
-    public float resistance;
+    [SerializeField] protected float health;
+    [SerializeField] protected float maxHealth;
+    [SerializeField] protected float resistance;
 
-    public float damage;
-    public float initDamage;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float initDamage;
 
-    public float speed;
-    public float initSpeed;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float initSpeed;
 
     //COMPLEX DAMAGE
-    public int damageIndex;
-    public int bonusDamage;
-    public int damageRateCoolDown;
+    [SerializeField] protected int damageIndex;
+    [SerializeField] protected int bonusDamage;
+    [SerializeField] protected int damageRateCoolDown;
 
-    void TakeDamage(float dmg, EnemyHealthBar healthBar)
+    //BOOLS
+    protected bool isAlive = true;
+    protected bool canMove = true;
+    protected bool canAttack = true;
+    protected bool isHit; // possibly useless /!\
+
+    //COMPONENTS
+    protected Collider2D theCollider;
+
+    public virtual void TakeDamage(float dmg, EnemyHealthBar healthBar) 
     {
-        health -= dmg;
+        // remove the health bar parameter, replace it in both enemy and player scripts overrides of this function, 
+        // as they are uncommun to one another
 
-        //canMove = false; // put it just before the call of this method
-        //canAttack = false; // put it just before the call of this method
+        health -= dmg;
 
         if (health <= 0)
         {
-            // death behavior
-
-            /*animator.SetTrigger("templarIsDead");
-            collider2D.enabled = false;
+            theCollider.enabled = false;
             isAlive = false;
-            enemySpawner.enemiesAlive -= 1;*/
+
+            // death behavior ()
+
+            /*animator.SetTrigger("templarIsDead");*/
         }
 
         else if (health > 0)
         {
-            // hit behavior
+            // hit behavior ()
 
             /*animator.SetTrigger("templarIsHit");*/
         }
@@ -47,11 +56,11 @@ public class Entity : MonoBehaviour
         healthBar.Damaged();
     }
 
-    void TakeHealth(float heal, EnemyHealthBar healthBar)
+    public virtual void TakeHealth(float heal, EnemyHealthBar healthBar)
     {
         health += heal;
 
-        if(health > maxHealth)
+        if (health > maxHealth)
         {
             health = maxHealth;
         }
@@ -59,16 +68,8 @@ public class Entity : MonoBehaviour
         healthBar.Healed();
     }
 
-    void Recover(bool canMove, bool canAttack, bool isHit)
-    {
-        canMove = true;
-        canAttack = true;
-
-        isHit = false;
-    }
-
     void Death(GameObject obj)
     {
-        Destroy(obj);
+        Destroy(obj); // see if the player stays when he dies, test with the menus, i dunno
     }
 }
