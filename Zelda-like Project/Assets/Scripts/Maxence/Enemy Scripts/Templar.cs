@@ -68,7 +68,7 @@ public class Templar : MonoBehaviour {
     private int rate = 2;
     [SerializeField] private int startRate;
 
-    //UI TESTING\\
+    //UI HEALTH\\
     public GameObject templarHealthBarPrefab;
     private GameObject templarHealthBar;
     private EnemyHealthBar templarHealthBarScript;
