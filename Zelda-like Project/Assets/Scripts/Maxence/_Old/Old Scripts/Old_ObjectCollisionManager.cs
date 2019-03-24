@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectCollisionManager : MonoBehaviour {
+public class Old_ObjectCollisionManager : MonoBehaviour {
 
     [SerializeField] private Collider2D topCollider, bottomCollider;
 

@@ -2665,7 +2665,6 @@ GameObject:
   - component: {fileID: 2011051038}
   - component: {fileID: 2011051037}
   - component: {fileID: 2011051036}
-  - component: {fileID: 2011051035}
   - component: {fileID: 2011051046}
   - component: {fileID: 2011051045}
   m_Layer: 8
@@ -2675,20 +2674,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2011051035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011051034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92245340399ded4681c246aed1a8ae6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDistance: 3
-  dashSpeed: 150
 --- !u!114 &2011051036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100000
+  playerResistance: 0
 --- !u!114 &2011051037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2723,6 +2709,7 @@ MonoBehaviour:
   vertical: 0
   playerWasHit: 0
   playerHasFallen: 0
+  immuneToDamage: 0
   playerIsHitByTheTemplar: 0
   playerIsDead: 0
   lastX: 0
@@ -2919,7 +2906,6 @@ MonoBehaviour:
   - {fileID: 1982764812}
   - {fileID: 72537992}
   - {fileID: 686556649}
-  immuneToDamage: 0
   damageAbsorbed: 0
 --- !u!114 &2011051046
 MonoBehaviour:

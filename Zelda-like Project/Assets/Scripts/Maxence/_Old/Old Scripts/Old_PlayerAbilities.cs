@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbilities : MonoBehaviour
+public class Old_PlayerAbilities : MonoBehaviour
 {
     public GameObject[] spells;
     public GameObject[] potions;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDash : MonoBehaviour {
+public class Old_PlayerDash : MonoBehaviour {
 
     private PlayerControllerEzEz playerController;
 
