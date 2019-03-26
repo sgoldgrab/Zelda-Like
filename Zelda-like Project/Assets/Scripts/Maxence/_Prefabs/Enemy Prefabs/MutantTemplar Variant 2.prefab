@@ -73,7 +73,7 @@ PrefabInstance:
     - target: {fileID: 6820411529525483879, guid: b9c31ee8e7d346744887491be66b894c,
         type: 3}
       propertyPath: m_Name
-      value: MutantTemplar
+      value: MutantTemplar Variant 2
       objectReference: {fileID: 0}
     - target: {fileID: 6824247826539471573, guid: b9c31ee8e7d346744887491be66b894c,
         type: 3}

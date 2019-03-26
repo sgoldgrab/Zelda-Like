@@ -26,50 +26,8 @@ public class Entity : MonoBehaviour
     protected bool canAttack = true;
     protected bool isHit; // possibly useless /!\
 
+    protected bool immunity = false;
+
     //COMPONENTS
     protected Collider2D theCollider;
-
-    public virtual void TakeDamage(float dmg, EnemyHealthBar healthBar) 
-    {
-        // remove the health bar parameter, replace it in both enemy and player scripts overrides of this function, 
-        // as they are uncommun to one another
-
-        health -= dmg;
-
-        if (health <= 0)
-        {
-            theCollider.enabled = false;
-            isAlive = false;
-
-            // death behavior ()
-
-            /*animator.SetTrigger("templarIsDead");*/
-        }
-
-        else if (health > 0)
-        {
-            // hit behavior ()
-
-            /*animator.SetTrigger("templarIsHit");*/
-        }
-
-        healthBar.Damaged();
-    }
-
-    public virtual void TakeHealth(float heal, EnemyHealthBar healthBar)
-    {
-        health += heal;
-
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-
-        healthBar.Healed();
-    }
-
-    void Death(GameObject obj)
-    {
-        Destroy(obj); // see if the player stays when he dies, test with the menus, i dunno
-    }
 }

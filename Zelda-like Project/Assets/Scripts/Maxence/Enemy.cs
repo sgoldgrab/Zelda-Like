@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    //SIGHT
     [SerializeField] protected float sightRange;
 
     //ATTACK
@@ -13,18 +14,6 @@ public class Enemy : Entity
     [SerializeField] protected float attackRate;
     [SerializeField] protected float attackRateCoolDown;
 
-    //IDLE
-    private float idlePauseTime;
-    [SerializeField] protected float idleStartPauseTime;
-    public float idleWalkDistance; // useless
-
-    [SerializeField] protected float minX;
-    [SerializeField] protected float maxX;
-    [SerializeField] protected float minY;
-    [SerializeField] protected float maxY;
-
-    protected Vector2 checkpoint;
-
     //ENUMS
     protected enum behavior { patrol, combat };
     protected behavior currentBehavior = behavior.patrol;
@@ -33,64 +22,6 @@ public class Enemy : Entity
     protected EnemySpawner enemySpawner;
 
     protected GameObject[] healthSegment;
-
-    public virtual void IdleBehavior()
-    {
-        if (isAlive)
-        {
-            if (Vector2.Distance(transform.position, checkpoint) <= 0.2f)
-            {
-                //animator.SetBool("templarIsMoving", false);
-
-                if (idlePauseTime <= 0)
-                {
-                    idlePauseTime = idleStartPauseTime;
-                    float currentMinX = transform.position.x + minX;
-                    float currentMaxX = transform.position.x + maxX;
-                    float currentMinY = transform.position.y + minY;
-                    float currentMaxY = transform.position.y + maxY;
-                    checkpoint = new Vector2(Random.Range(currentMinX, currentMaxX), Random.Range(currentMinY, currentMaxY));
-                }
-
-                else
-                {
-                    idlePauseTime -= Time.deltaTime;
-                }
-            }
-
-            else if (canMove)
-            {
-                //animator.SetBool("templarIsMoving", true);
-                transform.position = Vector2.MoveTowards(transform.position, checkpoint, speed * Time.deltaTime);
-            }
-        }
-    }
-
-    public virtual void CombatBehavior()
-    {
-
-    }
-
-    public override void TakeDamage(float dmg, EnemyHealthBar healthBar)
-    {
-        canAttack = false;
-        canMove = false;
-
-        base.TakeDamage(dmg, healthBar);
-
-        if(health <= 0)
-        {
-            enemySpawner.enemiesAlive -= 1;
-        }
-    }
-
-    void Recover()
-    {
-        canMove = true;
-        canAttack = true;
-
-        isHit = false; // possibly useless /!\
-    }
 
     public virtual void HealthBarDisplay() // Move it to the Enemy Health Bar script
     {
