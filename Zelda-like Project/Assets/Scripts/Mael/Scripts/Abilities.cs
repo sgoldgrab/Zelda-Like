@@ -47,10 +47,8 @@ public class Abilities : MonoBehaviour
 
     private void Start()
     {
-      GetComponent<PlayerController>();
+
     }
-
-
 
     private void Update()
     {
