@@ -9,29 +9,6 @@ public class Abilities : MonoBehaviour
     public GameObject[] potions;
 
     //UI
-    public GameObject[] potionCooldownUI;
-    public GameObject[] spellCooldownUI;
-
-    public float cooldownPotion1 = 5;
-    public float cooldownPotion2 = 5;
-    public float cooldownPotion3 = 5;
-    public float cooldownSpell1 = 5;
-    public float cooldownSpell2 = 5;
-    public float cooldownSpell3 = 5;
-    bool isPotion1Cooldown;
-    bool isPotion2Cooldown;
-    bool isPotion3Cooldown;
-    bool isSpell1Cooldown;
-    bool isSpell2Cooldown;
-    bool isSpell3Cooldown;
-
-    //public GameObject lineOfSight;
-
-    public GameObject Player;
-
-    private bool inputPressed = false;
-    public bool bluePrint = false;
-    private float timer = 0f;
 
     private GameObject theBluePrint;
 
@@ -42,6 +19,20 @@ public class Abilities : MonoBehaviour
     public GameObject blueprintPotion1;
     public GameObject blueprintPotion2;
     public GameObject blueprintPotion3;
+
+    //test
+   
+   
+
+    //public GameObject lineOfSight;
+
+    public GameObject Player;
+
+    private bool inputPressed = false;
+    public bool bluePrint = false;
+    private float timer = 0f;
+
+    
 
     public GameObject parent;
 
@@ -64,6 +55,14 @@ public class Abilities : MonoBehaviour
     private void Update()
     {
 
+
+
+       /* if (Input.GetKeyDown(KeyCode.F))
+        {
+            potionCooldownUI[0]
+        }
+
+
         if (Input.GetKeyDown("joystick button 1") && !stanceOne && !isReloading)   //SPELLS
         {
 
@@ -73,7 +72,7 @@ public class Abilities : MonoBehaviour
 
             inputPressed = true;
 
-        }
+        }*/
 
         if (inputPressed)
         {
@@ -198,7 +197,7 @@ public class Abilities : MonoBehaviour
         if (Input.GetKeyDown("joystick button 1") && stanceOne && !isReloading)   //POTIONS
         {
             inputPressed = true;
-            isPotion1Cooldown = true;
+            //isPotion1Cooldown = true;
         }
         if (inputPressed)
         {
