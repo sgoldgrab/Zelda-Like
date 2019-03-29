@@ -781,7 +781,7 @@ MonoBehaviour:
   sharedProfile: {fileID: 11400000, guid: 29ad038d7e402b5418b7901efe631361, type: 2}
   isGlobal: 1
   blendDistance: 0
-  weight: 1
+  weight: 0
   priority: 0
 --- !u!114 &424246785
 MonoBehaviour:
@@ -2719,6 +2719,7 @@ MonoBehaviour:
   invisible: {r: 0, g: 0, b: 0, a: 0.5019608}
   tilemapS1: {fileID: 0}
   tilemapS2: {fileID: 0}
+  whatStance: 1
   horizontal: 0
   vertical: 0
   playerWasHit: 0
@@ -2728,9 +2729,62 @@ MonoBehaviour:
   lastX: 0
   lastY: 0
   canMove: 1
+  immuneToDamage: 0
+  damageAbsorbed: 0
   camStance1: {fileID: 1076521891}
   camStance2: {fileID: 424246788}
   userInterface: {fileID: 94933692}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.07351875
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3003088
+      value: 0.50047976
+      inSlope: 2.6494544
+      outSlope: 2.6494544
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.39792752
+      value: 0.80616987
+      inSlope: 3.1571336
+      outSlope: 3.1571336
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06665783
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5003725
+      value: 0.99966025
+      inSlope: 0.0028097483
+      outSlope: 0.0028097483
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9986572
+      value: 0.2621975
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2011051038
 MonoBehaviour:
   m_ObjectHideFlags: 0

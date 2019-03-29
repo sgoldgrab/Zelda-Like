@@ -62,7 +62,7 @@ public class PlayerAttack : MonoBehaviour {
         LaunchAttack();
 	}
 
-    void LaunchAttack()
+    public void LaunchAttack()
     {
         if (waitForAttack <= 0.1f)
         {

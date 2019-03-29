@@ -16,8 +16,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public Tilemap tilemapS1;
     public Tilemap tilemapS2;
 
-    private enum Stance { stance1, stance2 };
-    private Stance whatStance = Stance.stance1;
+    [SerializeField] private enum Stance { stance1, stance2 };
+    [SerializeField] private Stance whatStance = Stance.stance1;
 
     public float horizontal;
     public float vertical;
@@ -49,9 +49,20 @@ public class PlayerControllerEzEz : MonoBehaviour {
     /*public float LastX { get; set; }
     public float LastY { get; set; }*/
 
+    public AnimationCurve curve;
+
     void Awake()
     {
-        //
+
+        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
+
+        Vignette v;
+
+        var foundEffectSettings = volume.profile.TryGetSettings<Vignette>(out v);
+        v.intensity.value = 1f;
+    
+        //v.intensity.value = curve.Evaluate(0.5f);
+
     }
 
     void Start()
@@ -144,6 +155,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
                 userInterface.worldCamera = camStance1;
 
                 playerAbilities.stanceOne = false;
+
+
             }
 
             else if (whatStance == Stance.stance2) // switch to stance 1
