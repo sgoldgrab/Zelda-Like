@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected float initSpeed;
 
-    //COMPLEX DAMAGE
+    //COMPLEX DAMAGE --> Probably going to move into the "specific enemy stats" scripts and "player stats" script, as it is very specific variables
     [SerializeField] protected int damageIndex;
     [SerializeField] protected int bonusDamage;
     [SerializeField] protected int damageRateCoolDown;

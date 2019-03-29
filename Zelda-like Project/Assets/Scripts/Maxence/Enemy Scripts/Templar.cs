@@ -29,18 +29,18 @@ public class Templar : MonoBehaviour {
 
     //Bools
     [HideInInspector] public bool templarIsHit = false;
-    private bool templarIsDead = false;
+    private bool templarIsDead = false; // useless \\
     private bool templarIsAlive = true;
     private bool templarCanMove = true;
     private bool templarCanAttack = true;
-    private bool flipTemplar = false;
+    private bool flipTemplar = false; // useless \\
 
     //templar caracteristics
     public float templarSpeed;
     [SerializeField] private float templarHealth = 150;
     public float templarDamage;
 
-    //Attack wait
+    //Attack wait // USELESS VARIABLES \\
     private float waitTilAttack = 4;
     [SerializeField] private float startWaitTilAttackMin;
     [SerializeField] private float startWaitTilAttackMax;
@@ -56,8 +56,8 @@ public class Templar : MonoBehaviour {
     //Attack
     private Collider2D[] playerCollider;
     [SerializeField] private Transform templarAttackPos;
-    [SerializeField] private float templarAttackRange;
-    [SerializeField] private float templarAttackDistance;
+    [SerializeField] private float templarAttackZoneRadius;
+    [SerializeField] private float templarAttackDistance; // equivalent to attack Range
     [SerializeField] private LayerMask thisIsThePlayer;
 
     private float attackWaitTime = 0.0f;
@@ -193,7 +193,7 @@ public class Templar : MonoBehaviour {
 
     void Attack()
     {
-        playerCollider = Physics2D.OverlapCircleAll(templarAttackPos.position, templarAttackRange, thisIsThePlayer);
+        playerCollider = Physics2D.OverlapCircleAll(templarAttackPos.position, templarAttackZoneRadius, thisIsThePlayer);
 
         for (int u = 0; u < playerCollider.Length; u++)
         {
@@ -340,7 +340,7 @@ public class Templar : MonoBehaviour {
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackRange);
+        Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackZoneRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, templarAttackDistance);
     }
