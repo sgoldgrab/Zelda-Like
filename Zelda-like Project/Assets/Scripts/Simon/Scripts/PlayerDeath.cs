@@ -10,7 +10,8 @@ public class PlayerDeath : MonoBehaviour
 
     private SpriteRenderer playerSprite;
 
-    [SerializeField] private InputManager inputScript;
+    private InputManager inputScript;
+    private PlayerStance stanceScript;
 
     private GameObject[] enemies;
     //private GameObject[] attacks; //toutes les attaques auront un tag comumn
@@ -24,6 +25,8 @@ public class PlayerDeath : MonoBehaviour
         playerSprite = player.GetComponent<SpriteRenderer>();
 
         inputScript = GetComponent<InputManager>();
+
+        stanceScript = player.GetComponent<PlayerStance>();
 
     }
 
@@ -51,6 +54,8 @@ public class PlayerDeath : MonoBehaviour
     private void PlayerOnDeath()
     {
         inputScript.isDead = true;
+
+        stanceScript.whatStance = PlayerStance.Stance.stanceOne;
 
         playerSprite.enabled = false;
 

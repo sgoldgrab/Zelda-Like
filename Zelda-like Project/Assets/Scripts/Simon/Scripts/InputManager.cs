@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour
 
     private PlayerAttack attackScript;
 
+    private AbilitiesPlayer abilitiesScript;
+
     [SerializeField] private GameObject player;
     #endregion
 
@@ -23,6 +25,8 @@ public class InputManager : MonoBehaviour
         stanceScript = player.GetComponent<PlayerStance>();
 
         attackScript = player.GetComponent<PlayerAttack>();
+
+        abilitiesScript = player.GetComponent<AbilitiesPlayer>();
 
     }
 
@@ -74,26 +78,26 @@ public class InputManager : MonoBehaviour
         #endregion
 
         #region Abilities
-        /*if(Input.GetButtonDown("Ability1"))
+        if(/*Input.GetButtonDown("Ability1") ||*/ Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-            //AbilityScript
+            abilitiesScript.AbilityOne();
 
         }
 
-        if(Input.GetButtonDown("Ability2"))
+        if(/*Input.GetButtonDown("Ability2") ||*/ Input.GetKeyDown(KeyCode.Alpha2))
         {
 
-            //AbilityScript
+            abilitiesScript.AbilityTwo();
 
         }
 
-        if(Input.GetButtonDown("Ability3"))
+        if(/*Input.GetButtonDown("Ability3") ||*/ Input.GetKeyDown(KeyCode.Alpha3))
         {
 
-            //AbilityScript
+            abilitiesScript.AbilityThree();
 
-        }*/
+        }
         #endregion
 
     }

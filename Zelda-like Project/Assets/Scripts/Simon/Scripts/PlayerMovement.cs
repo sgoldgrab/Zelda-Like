@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject gameManager;
 
+    private PlayerStats statsScript;
+
     private InputManager inputScript;
     #endregion
 
@@ -15,19 +17,25 @@ public class PlayerMovement : MonoBehaviour
 
         inputScript = gameManager.GetComponent<InputManager>();
 
+        statsScript = GetComponent<PlayerStatistics>().otherStats;
+
     }
 
     void Update()
     {
 
-        Movement();
+        {
+
+            Movement();
+
+        }
         
     }
 
     private void Movement()
     {
 
-        transform.Translate(inputScript.inputHor * Time.deltaTime, inputScript.inputVer * Time.deltaTime, 0);
+        transform.Translate(inputScript.inputHor * Time.deltaTime * statsScript.movementSpeed, inputScript.inputVer * Time.deltaTime * statsScript.movementSpeed, 0);
 
     }
 
