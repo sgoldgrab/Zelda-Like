@@ -598,6 +598,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df90b654f1c52204fae019b92a3f0ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellOnePrefab: {fileID: 551656666780710183, guid: efef12b08d93d98418eb8285e4aa939a,
+    type: 3}
+  spellTwoPrefab: {fileID: 7410257311793384130, guid: 46be875380d52a94d8bf6acf3aa0d1db,
+    type: 3}
 --- !u!1 &208440998
 GameObject:
   m_ObjectHideFlags: 0

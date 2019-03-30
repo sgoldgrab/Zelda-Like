@@ -12,6 +12,11 @@ public class AbilitiesPlayer : MonoBehaviour
     private Health healthScript;
 
     private PlayerStats statsScript;
+
+    [SerializeField] private GameObject spellOnePrefab;
+
+    [SerializeField] private GameObject spellTwoPrefab;
+
     #endregion
 
     private void Awake()
@@ -41,7 +46,7 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-            Debug.Log("Spell");
+            Instantiate(spellOnePrefab, transform.position, Quaternion.identity); //l'orienter dans la bonne direction
 
         }
         #endregion
@@ -64,7 +69,7 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-            Debug.Log("Spell");
+            Instantiate(spellTwoPrefab, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
 
         }
         #endregion
@@ -87,7 +92,7 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-            Debug.Log("Spell");
+
 
         }
         #endregion
