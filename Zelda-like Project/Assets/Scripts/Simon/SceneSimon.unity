@@ -602,6 +602,8 @@ MonoBehaviour:
     type: 3}
   spellTwoPrefab: {fileID: 7410257311793384130, guid: 46be875380d52a94d8bf6acf3aa0d1db,
     type: 3}
+  spellThreePrefab: {fileID: 2407447732018345236, guid: cb892c93d26953440b27f0292126ec81,
+    type: 3}
 --- !u!1 &208440998
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class AbilitiesPlayer : MonoBehaviour
 
     [SerializeField] private GameObject spellTwoPrefab;
 
+    [SerializeField] private GameObject spellThreePrefab;
+
     #endregion
 
     private void Awake()
@@ -92,7 +94,7 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-
+            Instantiate(spellThreePrefab, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
 
         }
         #endregion
