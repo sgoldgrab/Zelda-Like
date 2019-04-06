@@ -13,11 +13,15 @@ public class AbilitiesPlayer : MonoBehaviour
 
     private PlayerStats statsScript;
 
+    private PlayerMovement movements;
+
     [SerializeField] private GameObject spellOnePrefab;
 
     [SerializeField] private GameObject spellTwoPrefab;
 
     [SerializeField] private GameObject spellThreePrefab;
+
+    private Vector2 trsfrmPute;
 
     #endregion
 
@@ -30,6 +34,13 @@ public class AbilitiesPlayer : MonoBehaviour
 
         statsScript = GetComponent<PlayerStatistics>().otherStats;
 
+        movements = GetComponent<PlayerMovement>();
+
+    }
+
+    private void Update()
+    {
+        trsfrmPute = transform.position;
     }
 
     public void AbilityOne()
@@ -48,7 +59,8 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-            Instantiate(spellOnePrefab, transform.position, Quaternion.identity); //l'orienter dans la bonne direction
+            GameObject projectile1 = Instantiate(spellOnePrefab, transform.position, Quaternion.identity);
+            projectile1.GetComponent<AbilitySpellOne>().SetDirection(movements.direction);
 
         }
         #endregion
@@ -71,7 +83,8 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-            Instantiate(spellTwoPrefab, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
+            GameObject projectile2 = Instantiate(spellTwoPrefab, trsfrmPute + movements.direction, Quaternion.identity);
+            projectile2.GetComponent<AbilitySpellTwo>().SetDirection(movements.direction);
 
         }
         #endregion
@@ -94,7 +107,7 @@ public class AbilitiesPlayer : MonoBehaviour
         if (stanceScript.whatStance == PlayerStance.Stance.stanceTwo)
         {
 
-            Instantiate(spellThreePrefab, new Vector2(transform.position.x, transform.position.y + 1), Quaternion.identity);
+            Instantiate(spellThreePrefab, trsfrmPute + movements.direction * 3, Quaternion.identity);
 
         }
         #endregion

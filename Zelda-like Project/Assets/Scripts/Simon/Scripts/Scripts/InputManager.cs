@@ -8,6 +8,8 @@ public class InputManager : MonoBehaviour
     public float inputHor;
     public float inputVer;
 
+    public float timer = 05f;
+
     public bool isDead = false;
 
     private PlayerStance stanceScript;
@@ -78,7 +80,7 @@ public class InputManager : MonoBehaviour
         #endregion
 
         #region Abilities
-        if(/*Input.GetButtonDown("Ability1") ||*/ Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetButtonDown("Spell1") || Input.GetKeyDown(KeyCode.Alpha1))
         {
 
             abilitiesScript.AbilityOne();

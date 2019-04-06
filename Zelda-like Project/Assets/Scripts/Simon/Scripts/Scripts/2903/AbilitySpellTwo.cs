@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class AbilitySpellTwo : MonoBehaviour
 {
-
+    #region Variables
     private Rigidbody2D targetrb2D;
 
+    private bool enemyHit = false;
+
     [SerializeField] private float timer;
+
+    [SerializeField] private int forceAmount;
+
+    [SerializeField] private Vector2 direction;
+    #endregion
 
     private void Update()
     {
@@ -17,7 +24,21 @@ public class AbilitySpellTwo : MonoBehaviour
         if (timer <= 0)
         {
 
-            Destroy(this.gameObject);
+            if(enemyHit)
+            {
+
+                targetrb2D.AddForce(direction * forceAmount * -1);
+
+                Destroy(gameObject);
+
+            }
+
+            else if (!enemyHit)
+            {
+
+                Destroy(gameObject);
+
+            }
 
         }
 
@@ -29,14 +50,19 @@ public class AbilitySpellTwo : MonoBehaviour
         if(enemy.CompareTag("Enemy"))
         {
 
+            enemyHit = true;
+
             targetrb2D = enemy.GetComponent<Rigidbody2D>();
 
-            Debug.Log("OUI");
-
-            targetrb2D.AddForce(Vector2.up); //remplacer Vector2 par la bonne direction
+            targetrb2D.AddForce(direction * forceAmount);
 
         }
 
+    }
+
+    public void SetDirection(Vector2 _direction)
+    {
+        direction = _direction;
     }
 
 }

@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2818988218397522391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2407447732018345236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d583eff2b6e0d543a5f0b8a32f7ce50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &5005221121610675831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -49,7 +37,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8ebfe1c5745f094d9019bc79eaaf1d6, type: 3}
+  m_Sprite: {fileID: 21300020, guid: 7d7647f5863590d4ea60cd2fa0345e92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -60,6 +48,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2038026801857524540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407447732018345236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3252d7ae3cd3b5a4d989f46ceca00212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5169707095463460822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +126,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823531084461802737, guid: 46be875380d52a94d8bf6acf3aa0d1db,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823531084461802737, guid: 46be875380d52a94d8bf6acf3aa0d1db,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823531084461802737, guid: 46be875380d52a94d8bf6acf3aa0d1db,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823531084461802737, guid: 46be875380d52a94d8bf6acf3aa0d1db,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.13
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7396692253800274025, guid: 46be875380d52a94d8bf6acf3aa0d1db, type: 3}

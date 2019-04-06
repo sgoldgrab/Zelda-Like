@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats statsScript;
 
     private InputManager inputScript;
+
+    public Vector2 direction { get; private set; }
+
+    //private float direction2;
+    //public float Direction2 { get { return direction2; } private set { direction2 = Mathf.Clamp(value, 0, 100); } }
     #endregion
 
     private void Awake()
@@ -24,19 +29,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        {
+        Movement();
 
-            Movement();
-
-        }
-        
     }
 
     private void Movement()
     {
 
-        transform.Translate(inputScript.inputHor * Time.deltaTime * statsScript.movementSpeed, inputScript.inputVer * Time.deltaTime * statsScript.movementSpeed, 0);
+        if (inputScript.inputHor == 0 && inputScript.inputVer == 0) return;
+        else
+        {
+            transform.Translate(inputScript.inputHor * Time.deltaTime * statsScript.movementSpeed, inputScript.inputVer * Time.deltaTime * statsScript.movementSpeed, 0);
 
+            direction = new Vector2(inputScript.inputHor, inputScript.inputVer).normalized;
+        }
     }
 
 }

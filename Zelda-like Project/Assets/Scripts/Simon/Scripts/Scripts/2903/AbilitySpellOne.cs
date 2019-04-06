@@ -37,7 +37,7 @@ public class AbilitySpellOne : MonoBehaviour
 
         }
 
-        transform.Translate(Vector2.up * speed * Time.deltaTime); //remplacer Vector2.up par la bonne direction
+        transform.Translate(direction * speed * Time.deltaTime);
 
     }
 
@@ -72,6 +72,11 @@ public class AbilitySpellOne : MonoBehaviour
 
         Destroy(this.gameObject);
 
+    }
+
+    public void SetDirection(Vector2 _direction)
+    {
+        direction = _direction;
     }
 
 }
