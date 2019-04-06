@@ -578,8 +578,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthStats:
-    currentHealth: 1
+    currentHealth: 5
     maxHealth: 5
+    isImmune: 0
+    isAnti: 0
   otherStats:
     attackDamage: 1
     attackSpeed: 1
@@ -2508,6 +2510,7 @@ MonoBehaviour:
   timer: 0.5
   isDead: 0
   player: {fileID: 164713328}
+  prefab: {fileID: 7281069120166402831, guid: 444f05457b6ddfe409c02ec2624b4c24, type: 3}
 --- !u!4 &1967126858
 Transform:
   m_ObjectHideFlags: 0
@@ -2752,6 +2755,8 @@ MonoBehaviour:
   healthStats:
     currentHealth: 0
     maxHealth: 0
+    isImmune: 0
+    isAnti: 0
   otherStats:
     attackDamage: 0
     movementSpeed: 0

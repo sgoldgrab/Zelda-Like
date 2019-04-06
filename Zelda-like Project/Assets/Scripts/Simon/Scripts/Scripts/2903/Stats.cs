@@ -9,17 +9,20 @@ public class Health
     public int currentHealth;
     public int maxHealth;
 
+    public bool isImmune = false;
+    public bool isAnti = false;
+
     public void TakeDamage(int damageValue)
     {
 
-        currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, maxHealth);
+        if (!isImmune) { currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, maxHealth); }
 
     }
 
     public void TakeHeal(int healValue)
     {
 
-        currentHealth = Mathf.Clamp(currentHealth + healValue, 0, maxHealth);
+        if (!isAnti) { currentHealth = Mathf.Clamp(currentHealth + healValue, 0, maxHealth); }
 
     }
 

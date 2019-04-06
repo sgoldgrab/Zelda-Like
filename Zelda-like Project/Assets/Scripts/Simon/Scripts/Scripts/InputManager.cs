@@ -21,6 +21,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameObject player;
     #endregion
 
+    public GameObject prefab; //A ENLEVER
+
+    private Health playerScript; //A ENLEVER
+
     private void Awake()
     {
         
@@ -29,6 +33,9 @@ public class InputManager : MonoBehaviour
         attackScript = player.GetComponent<PlayerAttack>();
 
         abilitiesScript = player.GetComponent<AbilitiesPlayer>();
+
+        //ENLEVE
+        playerScript = player.GetComponent<PlayerStatistics>().healthStats;
 
     }
 
@@ -46,6 +53,21 @@ public class InputManager : MonoBehaviour
 
     private void GetInput()
     {
+        #region A ENLEVER
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+
+            Instantiate(prefab, new Vector2(3, 1), Quaternion.identity);
+
+        }
+
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+
+            playerScript.TakeDamage(1);
+
+        }
+        #endregion
 
         #region Movement
         inputHor = Input.GetAxisRaw("Horizontal");

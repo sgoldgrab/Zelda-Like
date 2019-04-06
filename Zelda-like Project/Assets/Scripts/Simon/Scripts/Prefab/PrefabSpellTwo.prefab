@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7396692253800274025}
   - component: {fileID: 5196925645219757126}
   - component: {fileID: 5823531084461802737}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PrefabSpellTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
