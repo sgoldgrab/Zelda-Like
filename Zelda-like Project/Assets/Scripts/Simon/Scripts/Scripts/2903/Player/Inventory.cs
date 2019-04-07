@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     public GameObject[] consumables;
 
     public int currentSlotsTaken = 0;
+
+    public int firstAvailable = 0;
     #endregion
 
     private void Awake()
@@ -34,6 +36,8 @@ public class Inventory : MonoBehaviour
             {
 
                 puScript.ConsumableUse();
+
+                if(firstAvailable > slotNumber) { firstAvailable = slotNumber; }
 
             }
 

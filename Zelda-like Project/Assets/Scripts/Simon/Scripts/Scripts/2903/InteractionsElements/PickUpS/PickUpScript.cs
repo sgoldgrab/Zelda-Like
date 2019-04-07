@@ -11,8 +11,6 @@ public class PickUpScript : MonoBehaviour
     public PlayerStats statsScript;
 
     public Health healthScript;
-
-
     #endregion
 
     private void OnTriggerEnter2D(Collider2D player)
@@ -26,23 +24,28 @@ public class PickUpScript : MonoBehaviour
             statsScript = player.GetComponent<PlayerStatistics>().otherStats;
 
             healthScript = player.GetComponent<PlayerStatistics>().healthStats;
-
-            for(int i = 0; i <= inventoryScript.currentSlotsTaken; i++)
+        
+            
+            if(inventoryScript.currentSlotsTaken < inventoryScript.consumables.Length)
             {
 
-                inventoryScript.consumables[inventoryScript.currentSlotsTaken] = this.gameObject;
+                inventoryScript.consumables[inventoryScript.firstAvailable] = gameObject;
+                
+                //inventoryScript.consumables[inventoryScript.currentSlotsTaken] = gameObject; //NOPE
+
+                inventoryScript.currentSlotsTaken++;
+                inventoryScript.firstAvailable++;
+
+                SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+                BoxCollider2D collider = GetComponent<BoxCollider2D>();
+
+                collider.enabled = false;
+
+                sprite.enabled = false;
 
             }
-
-            inventoryScript.currentSlotsTaken++;
-
-            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-
-            BoxCollider2D collider = GetComponent<BoxCollider2D>();
-
-            collider.enabled = false;
-
-            sprite.enabled = false;
+            
 
         }
 
@@ -51,6 +54,7 @@ public class PickUpScript : MonoBehaviour
     public virtual void ConsumableUse()
     {
 
+        inventoryScript.currentSlotsTaken--;
 
     }
 
