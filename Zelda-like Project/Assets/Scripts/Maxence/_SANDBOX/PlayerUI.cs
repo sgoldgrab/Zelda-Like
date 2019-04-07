@@ -12,13 +12,13 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
-        playerHealthSeg = new GameObject[playerState.playerMaxHealth + 1];
+        playerHealthSeg = new GameObject[playerState.maxHealth];
 
         //playerHealthSeg[0] = GameObject.Find("HealthBarEdge");
 
-        for (int n = 1; n <= 5; n++)
+        for (int n = 0; n < 5; n++)
         {
-            playerHealthSeg[n] = GameObject.Find("healthSegment " + n.ToString());
+            playerHealthSeg[n] = GameObject.Find("healthSegment " + (n + 1).ToString());
         }
     }
 
@@ -26,10 +26,9 @@ public class PlayerUI : MonoBehaviour
     {
         int bonusDmg = 0;
 
-        //playerHealthSeg[playerState.playerHealth + 1].SetActive(false);
         for (int x = 0; x < damageIndex; x++)
         {
-            playerHealthSeg[currentHealth - bonusDmg].SetActive(false);
+            playerHealthSeg[(currentHealth - 1) - bonusDmg].SetActive(false);
             bonusDmg++;
         }
 
@@ -42,7 +41,7 @@ public class PlayerUI : MonoBehaviour
 
         for (int x = 0; x < healIndex; x++)
         {
-            playerHealthSeg[currentHealth + bonusHeal].SetActive(true);
+            playerHealthSeg[(currentHealth - 1) + bonusHeal].SetActive(true);
             bonusHeal++;
         }
 

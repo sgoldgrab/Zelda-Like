@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     void AbilitiesInputs()
     {
-        if (playerStance.WhatStance == PlayerStance.Stance.stance1)
+        if (playerStance.whatStance == PlayerStance.Stance.stance1)
         {
             if (Input.GetButtonDown(abilitiesInputs[0]))
             {
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             //if (inputPressed)
         }
 
-        else if (playerStance.WhatStance == PlayerStance.Stance.stance2)
+        else if (playerStance.whatStance == PlayerStance.Stance.stance2)
         {
             if (Input.GetButtonDown(abilitiesInputs[0]))
             {

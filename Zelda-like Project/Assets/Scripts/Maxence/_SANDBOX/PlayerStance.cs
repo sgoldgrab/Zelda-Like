@@ -7,9 +7,8 @@ public class PlayerStance : MonoBehaviour
     [SerializeField] private string stanceInput;
 
     public enum Stance { stance1, stance2 };
-    private Stance whatStance = Stance.stance1;
 
-    public Stance WhatStance { get; private set; }
+    public Stance whatStance { get; private set; } = Stance.stance1;
 
     [SerializeField] private GameObject postProcess;
 

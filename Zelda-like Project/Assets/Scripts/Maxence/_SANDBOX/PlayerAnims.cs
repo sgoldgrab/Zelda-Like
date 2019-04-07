@@ -9,9 +9,9 @@ public class PlayerAnims : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerState playerState;
 
-    void Start()
+    void OnValidate()
     {
-        //playerAnimator = GetComponent<Animator>();
+        playerAnimator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -37,12 +37,12 @@ public class PlayerAnims : MonoBehaviour
 
     public void DamageAnim()
     {
-        if (playerState.playerHealth > 0)
+        if (playerState.health > 0)
         {
             playerAnimator.SetTrigger("playerIsHit");
         }
 
-        else if (playerState.playerHealth <= 0)
+        else if (playerState.health <= 0)
         {
             playerAnimator.SetTrigger("playerIsDead");
         }

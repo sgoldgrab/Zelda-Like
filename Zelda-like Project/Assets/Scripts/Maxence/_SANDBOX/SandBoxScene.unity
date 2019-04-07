@@ -2310,7 +2310,7 @@ MonoBehaviour:
   mage: {fileID: 1176262940350730, guid: 1ee3bc9f631a6864a80c981e4eb44be4, type: 3}
   templar: {fileID: 998766741643992611, guid: 269d1af75a395854cb94ddaa95f2f5f2, type: 3}
   enemiesAlive: 0
-  maxEnemies: 0
+  maxEnemies: 1
   startWaitTime: 7
   minX: -7.7
   maxX: 7.7
@@ -2893,6 +2893,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1953870977}
+  - component: {fileID: 1953870979}
+  - component: {fileID: 1953870978}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: PlayerSprite
@@ -2914,6 +2916,73 @@ Transform:
   m_Father: {fileID: 2011051044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1953870978
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953870976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59d56ec5c5a1e1d40afafd975cf03d7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &1953870979
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953870976}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 322498475
+  m_SortingLayer: 2
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: d809ad5902ab77e42912e241f90788e8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.98, y: 0.98}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1982764812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,8 +3077,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2011051044}
   - component: {fileID: 2011051040}
-  - component: {fileID: 2011051041}
-  - component: {fileID: 2011051042}
   - component: {fileID: 2011051035}
   - component: {fileID: 2011051036}
   - component: {fileID: 2011051039}
@@ -3037,8 +3104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffff57f5904bae8438eb7b78899c1bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 5
-  playerHealth: 0
+  maxHealth: 5
   playerAnims: {fileID: 2011051036}
   playerUI: {fileID: 2011051043}
 --- !u!114 &2011051036
@@ -3053,7 +3119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f474eb77e7dd148a2648cd4fc5a3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 2011051041}
+  playerAnimator: {fileID: 1953870978}
   playerMovement: {fileID: 2011051039}
   playerState: {fileID: 2011051035}
 --- !u!114 &2011051037
@@ -3070,10 +3136,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 2011051039}
   playerAnims: {fileID: 2011051036}
-  attackDamage: 0
   attackRange: 0.6
   attackRadius: 0.25
-  startAttackCoolDown: 1
+  startAttackCoolDown: 0.5
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -3125,73 +3190,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!95 &2011051041
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011051034}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 59d56ec5c5a1e1d40afafd975cf03d7f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!212 &2011051042
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011051034}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 322498475
-  m_SortingLayer: 2
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: d809ad5902ab77e42912e241f90788e8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.98, y: 0.98}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &2011051043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3247,7 +3245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   releaseTime: 0.2
-  drinkTime: 0
+  drinkTime: 0.3
   spells:
   - {fileID: 203697685894185085, guid: 44322fb4bced7c14aa58024315a5822a, type: 3}
   - {fileID: 1807790849097075692, guid: 74d266069da07d1499605e6c57c838d8, type: 3}

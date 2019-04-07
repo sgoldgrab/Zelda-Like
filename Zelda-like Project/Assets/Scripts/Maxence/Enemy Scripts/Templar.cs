@@ -22,6 +22,8 @@ public class Templar : MonoBehaviour {
 
     private EnemySpawner enemySpawner;
     private PlayerAttacks playerAttackScript;
+    //TESTING
+    private PlayerAttack playerAttack;
 
     //Color change
     [SerializeField] private Color idleColor = Color.white;
@@ -88,6 +90,7 @@ public class Templar : MonoBehaviour {
         {
             playerTransform = playerMessenger.GetComponent<Transform>();
             playerAttackScript = playerMessenger.GetComponent<PlayerAttacks>();
+            playerAttack = playerMessenger.GetComponent<PlayerAttack>(); // TESTING
         }
 
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner"); // get the enemy spawner script
@@ -246,6 +249,7 @@ public class Templar : MonoBehaviour {
         if (templarIsHit)
         {
             templarHealth -= playerAttackScript.damage; // damage
+            //templarHealth -= playerAttack.attackDamage; // TESTING
 
             templarCanMove = false;
             templarCanAttack = false;

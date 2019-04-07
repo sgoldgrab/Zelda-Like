@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerAnims playerAnims;
 
-    [SerializeField] private float attackDamage;
+    [SerializeField] public float attackDamage { get; private set; }
 
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRadius;
@@ -25,6 +25,8 @@ public class PlayerAttack : MonoBehaviour
         transformPos = transform.position;
 
         AttackDirection();
+
+        Attack();
     }
 
     void AttackDirection()
@@ -70,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (enemyList[i] is BoxCollider2D)
             {
+                enemyList[i].GetComponent<Templar>().templarIsHit = true;
                 //enemyList[i].GetComponent<EnemyState>().TakeDamage(attackDamage);
             }
         }

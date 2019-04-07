@@ -69,7 +69,7 @@ public class PlayerAbilities : MonoBehaviour
 
     void InputManager()
     {
-        if (playerStance.WhatStance == PlayerStance.Stance.stance1)
+        if (playerStance.whatStance == PlayerStance.Stance.stance1)
         {
             if (Input.GetButtonDown("Potion1"))
             {
@@ -110,7 +110,7 @@ public class PlayerAbilities : MonoBehaviour
             }
         }
 
-        else if (playerStance.WhatStance == PlayerStance.Stance.stance2)
+        else if (playerStance.whatStance == PlayerStance.Stance.stance2)
         {
             if (Input.GetButtonDown("Spell1"))
             {
@@ -300,8 +300,6 @@ public class PlayerAbilities : MonoBehaviour
         {
             posX = playerMovement.lastX;
             posY = playerMovement.lastY;
-
-            Debug.Log(posX + "&" + posY);
 
             Vector2 rawAimCoordinates = new Vector2(posX, posY);
             aimPos = (rawAimCoordinates * distance).normalized;
