@@ -18,6 +18,7 @@ TagManager:
   - EnemyHitBox
   - Spell3
   - EnemyHealthBar
+  - Interactable
   layers:
   - Default
   - TransparentFX

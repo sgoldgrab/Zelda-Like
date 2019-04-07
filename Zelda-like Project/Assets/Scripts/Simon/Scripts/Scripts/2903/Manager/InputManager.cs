@@ -101,10 +101,10 @@ public class InputManager : MonoBehaviour
         #endregion
 
         #region Interaction
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && interactionScript.isInRangeToInteract)
         {
 
-            interactionScript.Interacting();
+            interactionScript.Interaction();
 
         }
         #endregion

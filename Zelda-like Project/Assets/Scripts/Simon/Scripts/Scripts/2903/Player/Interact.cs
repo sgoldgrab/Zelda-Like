@@ -5,17 +5,42 @@ using UnityEngine;
 public class Interact : MonoBehaviour
 {
 
+    #region Variables
+    private InteractableItem itemScript;
+
     public bool isInRangeToInteract = false;
+    #endregion
 
-    public void Interacting()
+    private void OnTriggerEnter2D(Collider2D interactable)
     {
-
-        if(isInRangeToInteract)
+        
+        if(interactable.CompareTag("Interactable"))
         {
 
-            Debug.Log("OUIBIENSUR");
+            isInRangeToInteract = true;
+
+            itemScript = interactable.GetComponent<InteractableItem>();
 
         }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D interactable)
+    {
+        
+        if(interactable.CompareTag("Interactable"))
+        {
+
+            isInRangeToInteract = false;
+
+        }
+
+    }
+
+    public void Interaction()
+    {
+
+        itemScript.InteractionItem();
 
     }
 
