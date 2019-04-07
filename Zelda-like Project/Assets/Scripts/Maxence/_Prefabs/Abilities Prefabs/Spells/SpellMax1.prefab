@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8467451350083200825}
   - component: {fileID: 8577872066933773417}
   - component: {fileID: 8838437008522592734}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpellMax1
   m_TagString: Spell1
   m_Icon: {fileID: 0}

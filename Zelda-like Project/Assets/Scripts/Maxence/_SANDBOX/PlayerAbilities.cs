@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbilitiesBis : MonoBehaviour
+public class PlayerAbilities : MonoBehaviour
 {
-    private float timer = 0f;
-    [SerializeField] private float time;
+    private float releaseTimer = 0f;
+    [SerializeField] private float releaseTime;
 
     private float drinkTimer;
     [SerializeField] private float drinkTime;
@@ -14,13 +14,13 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     public GameObject[] spells;
     public GameObject[] potions;
-   
+
     private GameObject theBluePrint;
 
     public GameObject[] spellBlueprints;
     public GameObject[] potionBlueprints;
 
-    public bool stanceOne = false;
+    [SerializeField] private PlayerStance playerStance;
     private bool doubleTap = false;
 
     private bool[] cooldownIsOver = new bool[6];
@@ -33,7 +33,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     private bool createBluePrint = true;
 
-    private PlayerControllerEzEz playerController;
+    private PlayerMovement playerMovement;
 
     private Vector2 transformPos;
     public Vector2 aimPos { get; private set; }
@@ -43,14 +43,14 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     void Start()
     {
-        playerController = GetComponent<PlayerControllerEzEz>();
+        playerMovement = GetComponent<PlayerMovement>();
 
-        for(int y = 0; y < 6; y++)
+        for (int y = 0; y < 6; y++)
         {
             cooldownIsOver[y] = true;
         }
 
-        for(int x = 0; x < 6; x++) //pas utile
+        for (int x = 0; x < 6; x++) //pas utile
         {
             coolDownTime[x] = startCoolDownTime[x];
         }
@@ -69,9 +69,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     void InputManager()
     {
-        if (stanceOne)
+        if (playerStance.WhatStance == PlayerStance.Stance.stance1)
         {
-            if(Input.GetButtonDown("Potion1"))
+            if (Input.GetButtonDown("Potion1"))
             {
                 if (cooldownIsOver[0])
                 {
@@ -110,7 +110,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             }
         }
 
-        else if (!stanceOne)
+        else if (playerStance.WhatStance == PlayerStance.Stance.stance2)
         {
             if (Input.GetButtonDown("Spell1"))
             {
@@ -154,7 +154,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     void CoolDown()
     {
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (coolDownTime[i] <= 0.1f)
             {
@@ -165,7 +165,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             {
                 coolDownTime[i] -= Time.deltaTime;
             }
-        }        
+        }
     }
 
     void Ability(int index, bool stance, float aBDistance)
@@ -206,7 +206,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
                 canDrink = false;
 
-                //playerController.canMove = false;
+                //playerMovement.canMove = false; --> probably an animation with a function stopMove() and recover() at the first and last frames
 
                 Debug.Log("ça fait du bien par où ça passe !"); //drinks the potion
                 //potionEffect[index];
@@ -230,12 +230,12 @@ public class PlayerAbilitiesBis : MonoBehaviour
     void Release(int rIndex, bool rStance)
     {
         inputPressed = false;
-        timer = 0;
+        releaseTimer = 0;
 
         createBluePrint = true;
         Destroy(theBluePrint);
 
-        playerController.canMove = true;
+        playerMovement.canMove = true;
 
         doubleTap = false;
 
@@ -262,9 +262,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
 
     void Blueprint(int bPIndex, bool bPStance, float bPDistance)
     {
-        if (timer > time)
+        if (releaseTimer > releaseTime)
         {
-            playerController.canMove = false;
+            playerMovement.canMove = false;
             doubleTap = false;
 
             if (createBluePrint)
@@ -283,25 +283,23 @@ public class PlayerAbilitiesBis : MonoBehaviour
             }
 
             else
-            {                
+            {
                 theBluePrint.transform.position = transformPos + aimPos;
             }
-
-            //là il faut immobiliser le joueur, et lui permettre de diriger le blueprint avec le joystick gauche
         }
 
-        else if (timer <= time)
+        else if (releaseTimer <= releaseTime)
         {
-            timer += Time.deltaTime;
+            releaseTimer += Time.deltaTime;
         }
     }
 
     void AimDirection(float distance)
     {
-        if (playerController.lastX != 0 || playerController.lastY != 0)
+        if (playerMovement.lastX != 0 || playerMovement.lastY != 0)
         {
-            posX = playerController.lastX;
-            posY = playerController.lastY;
+            posX = playerMovement.lastX;
+            posY = playerMovement.lastY;
 
             Debug.Log(posX + "&" + posY);
 

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LayerSorter : MonoBehaviour
 {
-
-    private SpriteRenderer parentRenderer;
+    private SpriteRenderer spriteRenderer;
 
     //on va collide avec ça : // ça me semble ok
 
@@ -13,7 +12,7 @@ public class LayerSorter : MonoBehaviour
 
     private void Start()
     {
-        parentRenderer = transform.parent.GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,9 +22,9 @@ public class LayerSorter : MonoBehaviour
             Obstacle obstacleCollider = collision.GetComponent<Obstacle>();
             obstacleCollider.FadeOut();
 
-            if (obstacles.Count == 0 || obstacleCollider.MySpriteRender.sortingOrder -1 < parentRenderer.sortingOrder)
+            if (obstacles.Count == 0 || obstacleCollider.MySpriteRender.sortingOrder -1 < spriteRenderer.sortingOrder)
             {
-                parentRenderer.sortingOrder = obstacleCollider.MySpriteRender.sortingOrder - 1;
+                spriteRenderer.sortingOrder = obstacleCollider.MySpriteRender.sortingOrder - 1;
             }
 
             obstacles.Add(obstacleCollider);
@@ -42,12 +41,12 @@ public class LayerSorter : MonoBehaviour
             obstacles.Remove(obstacleCollider);
             if (obstacles.Count == 0)
             {
-                parentRenderer.sortingOrder = 2000; //  not enough layers !!!
+                spriteRenderer.sortingOrder = 2000; //  not enough layers !!!
             }
             else
             {
                 obstacles.Sort();
-                parentRenderer.sortingOrder = obstacles[0].MySpriteRender.sortingOrder - 1;
+                spriteRenderer.sortingOrder = obstacles[0].MySpriteRender.sortingOrder - 1;
             }
         }
 

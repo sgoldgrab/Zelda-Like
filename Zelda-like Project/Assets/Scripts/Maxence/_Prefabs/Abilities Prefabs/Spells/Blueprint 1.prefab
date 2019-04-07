@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2774815348978194663}
   - component: {fileID: 5340257869888573303}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Blueprint 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

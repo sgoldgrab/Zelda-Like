@@ -21,7 +21,7 @@ public class Templar : MonoBehaviour {
     private SpriteRenderer templarSpriteRenderer;
 
     private EnemySpawner enemySpawner;
-    private PlayerAttack playerAttackScript;
+    private PlayerAttacks playerAttackScript;
 
     //Color change
     [SerializeField] private Color idleColor = Color.white;
@@ -87,7 +87,7 @@ public class Templar : MonoBehaviour {
         if (playerMessenger != null)
         {
             playerTransform = playerMessenger.GetComponent<Transform>();
-            playerAttackScript = playerMessenger.GetComponent<PlayerAttack>();
+            playerAttackScript = playerMessenger.GetComponent<PlayerAttacks>();
         }
 
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner"); // get the enemy spawner script

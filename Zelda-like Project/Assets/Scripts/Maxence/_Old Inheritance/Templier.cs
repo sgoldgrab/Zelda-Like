@@ -13,7 +13,7 @@ public class Templier : Enemy
     private Vector2 playerPosition;
 
     private Collider2D[] playerCollider;
-    private PlayerAttack playerAttackScript;
+    private PlayerAttacks playerAttackScript;
 
     [SerializeField] private LayerMask thePlayer;
 

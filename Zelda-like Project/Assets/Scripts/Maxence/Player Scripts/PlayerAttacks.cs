@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour {
-
+public class PlayerAttacks : MonoBehaviour
+{
     public int pos;
     private Collider2D[] enemiesToDamage;
     private Collider2D[] templarsToDamage;

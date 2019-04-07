@@ -12,14 +12,21 @@ public class SpellOne : MonoBehaviour
     private PlayerAbilitiesBis playerAbilitiesScript;
     private Vector2 direction;
 
-    public void SetPositions(Vector2 pos)
+    private float dirX;
+    private float dirY;
+
+    private SpriteRenderer sprite;
+
+    private bool hasHit;
+
+    public void SetPositions(Vector2 pos) // A DELETE
     {
-        direction = pos;
+        direction = pos.normalized;
     }
 
     private void Start()
     {
-        //penser à lancer l'anim si y'en a une (et si y'a besoin?)
+
     }
 
     private void Update()
@@ -28,7 +35,7 @@ public class SpellOne : MonoBehaviour
 
         transform.Translate(direction * speed * Time.deltaTime);
 
-        if (timer <= 0.1f)
+        if (timer <= 0.1f && !hasHit)
         {
             Destroy(gameObject);
         }
@@ -38,16 +45,31 @@ public class SpellOne : MonoBehaviour
     {
         if (other.CompareTag("Templar")) //Faudra mettre le tag "Enemy" sur tous les ennemis
         {
-            dormantEnemyScript = other.gameObject.GetComponent<EnemyDormantEffects>();
+            //healthScript = other.GetComponent<TemplarStatistics>().healthStats;
 
-            dormantEnemyScript.Spell1Effect();
+            StartCoroutine(EffectSpellOne(1, 2f));
 
-            Destroy(gameObject);
+            sprite.enabled = false;
         }
 
         if (other.CompareTag("Obstacle") || other.CompareTag("Potion1") || other.CompareTag("Potion2"))
         {
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator EffectSpellOne(int damageValue, float time)
+    {
+        hasHit = true;
+
+        yield return new WaitForSeconds(time);
+
+        //healthScript.TakeDamage(damageValue);
+
+        yield return new WaitForSeconds(time);
+
+        //healthScript.TakeDamage(damageValue);
+
+        Destroy(gameObject);
     }
 }
