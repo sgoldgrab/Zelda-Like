@@ -35,7 +35,7 @@ public class Pot3Spe3 : MonoBehaviour
 
             }
 
-            else if(healthScript.damageAbsorbed >= 4)
+            else if(healthScript.damageAbsorbed >= 4) //on voit bien la variable augmenter dans l'inspector mais ce else if ne se fait jamais, ce fils de pute
             {
 
                 healthScript.isImmune = false;
@@ -72,7 +72,7 @@ public class Pot3Spe3 : MonoBehaviour
 
             healthScript.isImmune = false;
 
-            healthScript.damageAbsorbed = 0;
+            healthScript.damageAbsorbed = 0; //ça ça se fait bien, communication ok entre les scripts
 
             Destroy(gameObject);
 

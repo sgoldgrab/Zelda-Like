@@ -16,6 +16,10 @@ public class InputManager : MonoBehaviour
 
     private PlayerAttack attackScript;
 
+    private Interact interactionScript;
+
+    private Inventory inventoryScript;
+
     private AbilitiesPlayer abilitiesScript;
 
     [SerializeField] private GameObject player;
@@ -33,6 +37,10 @@ public class InputManager : MonoBehaviour
         attackScript = player.GetComponent<PlayerAttack>();
 
         abilitiesScript = player.GetComponent<AbilitiesPlayer>();
+
+        interactionScript = player.GetComponent<Interact>();
+
+        inventoryScript = player.GetComponent<Inventory>();
 
         //ENLEVE
         playerScript = player.GetComponent<PlayerStatistics>().healthStats;
@@ -93,12 +101,12 @@ public class InputManager : MonoBehaviour
         #endregion
 
         #region Interaction
-        /*if()
+        if(Input.GetKeyDown(KeyCode.Space))
         {
 
+            interactionScript.Interacting();
 
-
-        }*/
+        }
         #endregion
 
         #region Abilities
@@ -120,6 +128,29 @@ public class InputManager : MonoBehaviour
         {
 
             abilitiesScript.AbilityThree();
+
+        }
+        #endregion
+
+        #region Consumables
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+
+            inventoryScript.UseConsumable(0);
+
+        }
+
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+
+            inventoryScript.UseConsumable(1);
+
+        }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+
+            inventoryScript.UseConsumable(2);
 
         }
         #endregion

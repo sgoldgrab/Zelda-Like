@@ -19,11 +19,4 @@ public class TemplarStatistics : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-        Debug.Log(healthStats.currentHealth);
-
-    }
-
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pot1Spe1 : MonoBehaviour
 {
-    //1 dégâts aux ennemis touchés, 1 de heal au player pour chaque ennemi touché ; la boucle for pète un câble la pute
+    //1 dégâts aux ennemis touchés, 1 de heal au player pour chaque ennemi touché ; works just fine
 
     #region Variables
     private Health playerHealth;
@@ -43,10 +43,12 @@ public class Pot1Spe1 : MonoBehaviour
 
             enemyHealth.TakeDamage(1);
 
-            for (int i = 0; i < enemyCount; i++)
+            while(enemyCount > 0)
             {
 
                 playerHealth.TakeHeal(1);
+
+                enemyCount--;
 
             }
 

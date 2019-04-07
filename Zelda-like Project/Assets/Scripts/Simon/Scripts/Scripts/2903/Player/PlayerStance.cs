@@ -9,6 +9,8 @@ public class PlayerStance : MonoBehaviour
     public enum Stance { stanceOne, stanceTwo };
     public Stance whatStance = Stance.stanceOne;
 
+    public bool switchIsPossible = true;
+
     [SerializeField] private GameObject mainCamera;
 
     [SerializeField] private GameObject fog;
@@ -39,7 +41,7 @@ public class PlayerStance : MonoBehaviour
     public void SwitchStance()
     {
         #region Stance 1 > Stance 2
-        if (whatStance == Stance.stanceOne)
+        if (whatStance == Stance.stanceOne && switchIsPossible)
         {
 
             volume.enabled = true;
@@ -57,7 +59,7 @@ public class PlayerStance : MonoBehaviour
         #endregion
 
         #region Stance 2 > Stance 1
-        else if(whatStance == Stance.stanceTwo)
+        else if(whatStance == Stance.stanceTwo && switchIsPossible)
         {
 
             StartCoroutine(BlinkEffect());

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pot2Spe2 : MonoBehaviour
 {
-    //pull les ennemis touchés au centre et les stun l ; works fine
+    //pull les ennemis touchés au centre et les stun l ; works fine mais faudra trouver un meilleur moyen de stun
 
     #region Variables
     private EnemyStats enemyScript;
