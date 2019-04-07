@@ -109,3 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e022375fad5255429df47db9ecb4970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TagFilter: Player
+  TagFilterArray:
+  - Player
+  damageAbsorbed: 0

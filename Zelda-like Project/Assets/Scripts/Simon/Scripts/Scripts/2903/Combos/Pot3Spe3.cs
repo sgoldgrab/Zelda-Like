@@ -6,10 +6,16 @@ public class Pot3Spe3 : MonoBehaviour
 {
     //crée une smoke qui rend le joueur insensible ; je sais pas comment incrémenter cette petite salope de damageAbsorbed
 
+    /*
+    [TagSelector]
+    public string TagFilter = "";
+
+    [TagSelector]
+    public string[] TagFilterArray = new string[] { };
+    */
+
     #region Variables
     private Health healthScript;
-
-    [SerializeField] private int damageAbsorbed = 0;
 
     private float timer = 6f;
     #endregion
@@ -22,19 +28,19 @@ public class Pot3Spe3 : MonoBehaviour
 
             healthScript = player.GetComponent<PlayerStatistics>().healthStats;
 
-            if(damageAbsorbed < 4)
+            if (healthScript.damageAbsorbed < 4)
             {
 
                 healthScript.isImmune = true;
 
-                //damageAbsorbed++
-
             }
 
-            else if(damageAbsorbed >= 4)
+            else if(healthScript.damageAbsorbed >= 4)
             {
 
                 healthScript.isImmune = false;
+
+                healthScript.damageAbsorbed = 0;
 
                 Destroy(gameObject);
 
@@ -65,6 +71,8 @@ public class Pot3Spe3 : MonoBehaviour
         {
 
             healthScript.isImmune = false;
+
+            healthScript.damageAbsorbed = 0;
 
             Destroy(gameObject);
 

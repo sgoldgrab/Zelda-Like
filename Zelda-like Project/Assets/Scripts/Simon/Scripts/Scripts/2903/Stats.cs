@@ -6,6 +6,8 @@ using UnityEngine;
 public class Health
 {
 
+    public int damageAbsorbed = 0;
+
     public int currentHealth;
     public int maxHealth;
 
@@ -16,6 +18,8 @@ public class Health
     {
 
         if (!isImmune) { currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, maxHealth); }
+
+        else if (isImmune) { damageAbsorbed++; }
 
     }
 
