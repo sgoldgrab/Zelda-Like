@@ -48,7 +48,7 @@ public class PlayerUI : MonoBehaviour
         bonusHeal = 0;
     }
 
-    public void UIOnDeath()
+    public void UIOnDeath() // useless
     {
         isDead = true;
     }
