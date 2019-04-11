@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUI : MonoBehaviour
+public class EntityUI : MonoBehaviour
 {
-    private GameObject[] playerHealthSeg;
+    private GameObject[] healthSegs;
+    [SerializeField] private string segName;
 
-    [SerializeField] private PlayerState playerState;
+    [SerializeField] private EntityState state;
 
     private bool isDead = false;
 
     private void Start()
     {
-        playerHealthSeg = new GameObject[playerState.maxHealth];
+        if (gameObject.tag == "Enemy") { state = GetComponentInParent<EntityState>(); }
 
-        //playerHealthSeg[0] = GameObject.Find("HealthBarEdge");
+        healthSegs = new GameObject[state.health]; // creates the list of size health
 
-        for (int n = 0; n < 5; n++)
+        for (int n = 0; n < state.health; n++)
         {
-            playerHealthSeg[n] = GameObject.Find("healthSegment " + (n + 1).ToString());
+            healthSegs[n] = GameObject.Find(segName + " " + (n + 1).ToString()); // fills the objects of the list with the health segs
         }
     }
 
@@ -28,7 +29,7 @@ public class PlayerUI : MonoBehaviour
 
         for (int x = 0; x < damageIndex; x++)
         {
-            playerHealthSeg[(currentHealth - 1) - bonusDmg].SetActive(false);
+            healthSegs[(currentHealth - 1) - bonusDmg].SetActive(false);
             bonusDmg++;
         }
 
@@ -41,7 +42,7 @@ public class PlayerUI : MonoBehaviour
 
         for (int x = 0; x < healIndex; x++)
         {
-            playerHealthSeg[(currentHealth - 1) + bonusHeal].SetActive(true);
+            healthSegs[currentHealth + bonusHeal].SetActive(true);
             bonusHeal++;
         }
 

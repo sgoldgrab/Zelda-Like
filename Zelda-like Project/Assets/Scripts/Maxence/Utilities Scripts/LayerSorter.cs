@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class LayerSorter : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     //on va collide avec ça : // ça me semble ok
 
     private List<Obstacle> obstacles = new List<Obstacle>();
 
-    private void Start()
+    private void OnValidate()
     {
-        spriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
+        // spriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

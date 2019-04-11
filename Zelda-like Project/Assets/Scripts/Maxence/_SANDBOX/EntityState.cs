@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EntityState : MonoBehaviour
 {
-    public int maxHealth;
+    [SerializeField] protected int maxHealth;
     public int health { get; private set; }
 
-    void Start()
+    void Awake()
     {
         health = maxHealth;
     }

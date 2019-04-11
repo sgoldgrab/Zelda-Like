@@ -8,16 +8,34 @@ public class EnemyState : EntityState
     //[SerializeField] private EnemyUI enemyUI;
 
     // HEALTH BAR INSTANTIATE
+    [SerializeField] private GameObject enemyHealthBar;
     [SerializeField] private GameObject[] enemyHealthSegs;
     [SerializeField] private float offsetValue = 0.4f;
+    [SerializeField] private float mainOffset;
+
+    [SerializeField] private string theName;
 
     // ON DEATH REQUIRED
     [SerializeField] private Collider2D[] enemyCollider;
     [SerializeField] private EnemySpawner enemySpawner;
 
+    //STATES
+    public bool enemyCanMove { get; private set; } = true;
+    public bool enemyCanAttack { get; private set; } = true;
+
+    void Start()
+    {
+        enemyHealthBar = Instantiate(enemyHealthBar, transform);
+
+        EnemyHealthBarDisplay();
+    }
+
     public override void TakeDamage(int dmg)
     {
         base.TakeDamage(dmg); // loses health
+
+        enemyCanAttack = false;
+        enemyCanMove = false;
 
         enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
 
@@ -44,6 +62,12 @@ public class EnemyState : EntityState
         //enemyUI.UITakeHealth(health, heal);
     }
 
+    public void Recover()
+    {
+        enemyCanAttack = true;
+        enemyCanMove = true;
+    }
+
     public void EnemyHealthBarDisplay()
     {
         int multiple = 1;
@@ -52,17 +76,19 @@ public class EnemyState : EntityState
 
         foreach (GameObject prefab in enemyHealthSegs)
         {
-            Instantiate(enemyHealthSegs[index], new Vector2(transform.position.x + offsetX, transform.position.y), Quaternion.identity);
+            Vector2 spawnPosition = new Vector2(transform.position.x + offsetX, transform.position.y + mainOffset);
+            GameObject seg = Instantiate(enemyHealthSegs[index], spawnPosition, Quaternion.identity, enemyHealthBar.transform);
+            seg.name = theName + " " + (index + 1).ToString();
             offsetX = 0.0f;
             index++;
             if (index % 2 == 1) //odd
             {
                 offsetX += offsetValue * multiple;
-                multiple++;
             }
             else if (index % 2 == 0) //even
             {
                 offsetX -= offsetValue * multiple;
+                multiple++;
             }
         }
     }

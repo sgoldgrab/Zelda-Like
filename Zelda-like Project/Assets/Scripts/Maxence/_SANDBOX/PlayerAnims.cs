@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnims : MonoBehaviour
 {
-    [SerializeField] private Animator playerAnimator;
+    private Animator playerAnimator;
 
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerState playerState;

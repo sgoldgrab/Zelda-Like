@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerState : EntityState
 {
     [SerializeField] private PlayerAnims playerAnims;
-    [SerializeField] private PlayerUI playerUI;
+    [SerializeField] private EntityUI playerUI;
 
     void Update() // TESTING ONLY
     {
@@ -14,28 +14,26 @@ public class PlayerState : EntityState
 
     public override void TakeDamage(int dmg)
     {
-        Debug.Log(health);
-
-        playerAnims.DamageAnim(); // the OnDeath() Method is activated through the playerAnims script, with the death animation.
-
         if (health <= 0) { return; }
 
         playerUI.UITakeDamage(health, dmg);
 
         base.TakeDamage(dmg);
+
+        Debug.Log(health);
+
+        playerAnims.DamageAnim(); // the OnDeath() Method is activated through the playerAnims script, with the death animation.
     }
 
     public override void TakeHeal(int heal)
     {
-        Debug.Log(health);
-
-        //base.TakeHeal(heal);
-
-        if(health >= maxHealth) { return; }
+        if (health >= maxHealth) { return; }
 
         playerUI.UITakeHealth(health, heal);
 
         base.TakeHeal(heal);
+
+        Debug.Log(health);
     }
 
     void TestMethod() // TESTING ONLY
