@@ -7,7 +7,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerAnims playerAnims;
 
-    [SerializeField] public float attackDamage { get; private set; }
+    [SerializeField] private int swordDamage;
+    public int attackDamage { get; private set; }
 
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRadius;
@@ -18,7 +19,12 @@ public class PlayerAttack : MonoBehaviour
     private float attackCoolDown;
     [SerializeField] private float startAttackCoolDown;
 
-    [SerializeField] private LayerMask enemyLayerMask; // to replace in enemy (possible)
+    [SerializeField] private LayerMask enemyLayerMask; // to replace in EnemyState (possible)
+
+    void Start()
+    {
+        attackDamage = swordDamage;
+    }
 
     void Update()
     {
@@ -72,8 +78,8 @@ public class PlayerAttack : MonoBehaviour
         {
             if (enemyList[i] is BoxCollider2D)
             {
-                enemyList[i].GetComponent<Templar>().templarIsHit = true;
-                //enemyList[i].GetComponent<EnemyState>().TakeDamage(attackDamage);
+                //enemyList[i].GetComponent<Templar>().templarIsHit = true;
+                enemyList[i].transform.parent.GetComponentInParent<EnemyState>().TakeDamage(attackDamage);
             }
         }
     }

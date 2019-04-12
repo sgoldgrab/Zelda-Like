@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyState : EntityState
 {
     [SerializeField] private EnemyAnims enemyAnims;
-    //[SerializeField] private EnemyUI enemyUI;
+    [SerializeField] private EntityUI enemyUI;
 
     // HEALTH BAR INSTANTIATE
     [SerializeField] private GameObject enemyHealthBar;
@@ -32,13 +32,6 @@ public class EnemyState : EntityState
 
     public override void TakeDamage(int dmg)
     {
-        base.TakeDamage(dmg); // loses health
-
-        enemyCanAttack = false;
-        enemyCanMove = false;
-
-        enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
-
         if (health <= 0)
         {
             foreach (Collider2D col in enemyCollider) { col.enabled = false; }
@@ -47,19 +40,26 @@ public class EnemyState : EntityState
             return;
         }
 
-        //enemyUI.UITakeDamage(health, dmg);
+        enemyUI.UITakeDamage(health, dmg);
+
+        base.TakeDamage(dmg); // loses health
+
+        enemyCanAttack = false;
+        enemyCanMove = false;
+
+        enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
     }
 
     public override void TakeHeal(int heal)
     {
-        base.TakeHeal(heal);
-
         if (health >= maxHealth)
         {
             return;
         }
 
-        //enemyUI.UITakeHealth(health, heal);
+        enemyUI.UITakeHealth(health, heal);
+
+        base.TakeHeal(heal);
     }
 
     public void Recover()

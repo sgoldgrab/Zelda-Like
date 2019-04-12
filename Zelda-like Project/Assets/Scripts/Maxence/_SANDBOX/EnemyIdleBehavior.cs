@@ -24,7 +24,7 @@ public class EnemyIdleBehavior : MonoBehaviour
 
     void Update()
     {
-        //if (enemyState.health <= 0) { return; }
+        if (enemyState.health <= 0) { return; }
 
         IdleBehavior();
     }

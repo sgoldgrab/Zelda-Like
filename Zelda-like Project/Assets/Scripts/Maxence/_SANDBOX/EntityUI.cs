@@ -20,6 +20,7 @@ public class EntityUI : MonoBehaviour
         for (int n = 0; n < state.health; n++)
         {
             healthSegs[n] = GameObject.Find(segName + " " + (n + 1).ToString()); // fills the objects of the list with the health segs
+            Debug.Log(healthSegs[2]);
         }
     }
 
@@ -29,6 +30,9 @@ public class EntityUI : MonoBehaviour
 
         for (int x = 0; x < damageIndex; x++)
         {
+            Debug.Log(healthSegs[2]);
+            if (healthSegs == null) { Debug.Log("nique ton oncle unity"); }
+            else { Debug.Log((currentHealth - 1) - bonusDmg); }
             healthSegs[(currentHealth - 1) - bonusDmg].SetActive(false);
             bonusDmg++;
         }
