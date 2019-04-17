@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityUI : MonoBehaviour
 {
-    private GameObject[] healthSegs;
+    [SerializeField] private List<GameObject> healthSegs = new List<GameObject>();
     [SerializeField] private string segName;
 
     [SerializeField] private EntityState state;
@@ -15,12 +15,11 @@ public class EntityUI : MonoBehaviour
     {
         if (gameObject.tag == "Enemy") { state = GetComponentInParent<EntityState>(); }
 
-        healthSegs = new GameObject[state.health]; // creates the list of size health
+        //healthSegs = new GameObject[state.health]; // creates the list of size health
 
         for (int n = 0; n < state.health; n++)
         {
-            healthSegs[n] = GameObject.Find(segName + " " + (n + 1).ToString()); // fills the objects of the list with the health segs
-            Debug.Log(healthSegs[2]);
+            healthSegs.Add(GameObject.Find(segName + " " + (n + 1).ToString())); // fills the objects of the list with the health segs
         }
     }
 
@@ -30,7 +29,7 @@ public class EntityUI : MonoBehaviour
 
         for (int x = 0; x < damageIndex; x++)
         {
-            Debug.Log(healthSegs[2]);
+            Debug.Log(healthSegs.Count);
             if (healthSegs == null) { Debug.Log("nique ton oncle unity"); }
             else { Debug.Log((currentHealth - 1) - bonusDmg); }
             healthSegs[(currentHealth - 1) - bonusDmg].SetActive(false);

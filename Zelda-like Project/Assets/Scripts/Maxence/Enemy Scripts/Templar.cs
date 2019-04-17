@@ -163,11 +163,11 @@ public class Templar : MonoBehaviour {
     {
         if (templarCanAttack)
         {
-            if(attackWaitTime <= 0.1f)
+            if (attackWaitTime <= 0.1f)
             {
-                if(rate > 0)
+                if (rate > 0)
                 {
-                    if(attackWaitRate <= 0.1f)
+                    if (attackWaitRate <= 0.1f)
                     {
                         templarAnimator.SetTrigger("templarAttacks");
                         attackWaitRate = startAttackWaitRate;
@@ -318,7 +318,7 @@ public class Templar : MonoBehaviour {
             templarAnimator.SetFloat("lastY", -1f);
         }
 
-        else if(transform.position.x < playerTransform.position.x && transform.position.y >= playerTransform.position.y) //faceDownRight
+        else if (transform.position.x < playerTransform.position.x && transform.position.y >= playerTransform.position.y) //faceDownRight
         {
             templarAnimator.SetFloat("lastX", 1f);
             templarAnimator.SetFloat("lastY", -1f);

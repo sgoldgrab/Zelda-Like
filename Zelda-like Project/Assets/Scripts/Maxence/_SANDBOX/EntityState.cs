@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EntityState : MonoBehaviour
 {
+    public delegate void DeathAction();
+    public static event DeathAction OnDeathAction;
+
     [SerializeField] protected int maxHealth;
     public int health { get; private set; }
 
@@ -24,6 +27,8 @@ public class EntityState : MonoBehaviour
 
     public void OnDeath() // activated via the playerAnims script.
     {
+        OnDeathAction();
+
         Destroy(gameObject);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleBehavior : MonoBehaviour
+public class IdleBehavior : Behavior
 {
     private float waitTime;
     [SerializeField] private float startWaitTime;
@@ -14,22 +14,18 @@ public class EnemyIdleBehavior : MonoBehaviour
     [SerializeField] private EnemyAnims enemyAnims;
     [SerializeField] private EnemyState enemyState;
 
-    public float enemyIdleSpeed = 0.5f;
+    [SerializeField] private float enemyIdleSpeed = 0.5f;
 
     void Start()
     {
+        EnemyBehaviorsManager.OnIdleAction += EnemyBehavior;
+        EntityState.OnDeathAction += OnDeath;
+
         waitTime = startWaitTime;
         checkpoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 
-    void Update()
-    {
-        if (enemyState.health <= 0) { return; }
-
-        IdleBehavior();
-    }
-
-    void IdleBehavior() // patrols around using random checkpoints
+    public override void EnemyBehavior() // patrols around using random checkpoints
     {
         if (Vector2.Distance(transform.position, checkpoint) <= 0.2f)
         {
@@ -56,5 +52,11 @@ public class EnemyIdleBehavior : MonoBehaviour
             enemyAnims.MoveAnim(true);
             transform.position = Vector2.MoveTowards(transform.position, checkpoint, enemyIdleSpeed * Time.deltaTime);
         }
+    }
+
+    void OnDeath()
+    {
+        EnemyBehaviorsManager.OnIdleAction -= EnemyBehavior;
+        EntityState.OnDeathAction -= OnDeath;
     }
 }

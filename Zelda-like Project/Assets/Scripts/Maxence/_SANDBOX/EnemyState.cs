@@ -15,19 +15,28 @@ public class EnemyState : EntityState
 
     [SerializeField] private string theName;
 
+    //TEST Instantiation
+    [SerializeField] private float barSize;
+    [SerializeField] private int segsNumber;
+
+    [SerializeField] private float minOffset;
+    [SerializeField] private float maxOffset;
+
     // ON DEATH REQUIRED
     [SerializeField] private Collider2D[] enemyCollider;
     [SerializeField] private EnemySpawner enemySpawner;
 
     //STATES
-    public bool enemyCanMove { get; private set; } = true;
-    public bool enemyCanAttack { get; private set; } = true;
+    public bool enemyCanMove { get; set; } = true;
+    public bool enemyCanUseSkill { get; set; } = true;
 
     void Start()
     {
         enemyHealthBar = Instantiate(enemyHealthBar, transform);
 
-        EnemyHealthBarDisplay();
+        //EnemyHealthBarDisplay();
+
+        InstantiateHealthBar();
     }
 
     public override void TakeDamage(int dmg)
@@ -40,11 +49,12 @@ public class EnemyState : EntityState
             return;
         }
 
-        enemyUI.UITakeDamage(health, dmg);
+        Debug.Log(health + " " + dmg);
+        enemyHealthBar.GetComponent<EntityUI>().UITakeDamage(health, dmg);
 
         base.TakeDamage(dmg); // loses health
 
-        enemyCanAttack = false;
+        enemyCanUseSkill = false;
         enemyCanMove = false;
 
         enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
@@ -57,14 +67,14 @@ public class EnemyState : EntityState
             return;
         }
 
-        enemyUI.UITakeHealth(health, heal);
+        enemyHealthBar.GetComponent<EntityUI>().UITakeHealth(health, heal);
 
         base.TakeHeal(heal);
     }
 
     public void Recover()
     {
-        enemyCanAttack = true;
+        enemyCanUseSkill = true;
         enemyCanMove = true;
     }
 
@@ -90,6 +100,37 @@ public class EnemyState : EntityState
                 offsetX -= offsetValue * multiple;
                 multiple++;
             }
+        }
+    }
+
+    //Testing
+    public void InstantiateHealthBar()
+    {
+        float segOffset = barSize / (segsNumber - 1);
+        float offset = 0.0f;
+
+        if (segOffset < minOffset)
+        {
+            segOffset = minOffset;
+            barSize = segOffset * (segsNumber - 1);
+        }
+
+        if (segOffset > maxOffset)
+        {
+            segOffset = maxOffset;
+            barSize = segOffset * (segsNumber - 1);
+        }
+
+        Debug.Log(segOffset);
+
+        float startPos = transform.position.x + (barSize / 2);
+
+        for (int x = 0; x < segsNumber; x++)
+        {
+            Vector2 spawnPosition = new Vector2(startPos - offset, transform.position.y + mainOffset);
+            GameObject seg = Instantiate(enemyHealthSegs[1], spawnPosition, Quaternion.identity, enemyHealthBar.transform);
+            seg.name = theName + " " + (x + 1).ToString();
+            offset += segOffset;
         }
     }
 }

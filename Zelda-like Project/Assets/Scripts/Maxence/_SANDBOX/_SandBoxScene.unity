@@ -2249,7 +2249,10 @@ GameObject:
   - component: {fileID: 1157775228}
   - component: {fileID: 1157775227}
   - component: {fileID: 1157775230}
+  - component: {fileID: 1157775232}
   - component: {fileID: 1157775231}
+  - component: {fileID: 1157775233}
+  - component: {fileID: 1157775234}
   m_Layer: 0
   m_Name: ENEMY
   m_TagString: Enemy
@@ -2283,6 +2286,10 @@ MonoBehaviour:
   offsetValue: 0.4
   mainOffset: 0.7
   theName: enemyHealthSegment
+  barSize: 1
+  segsNumber: 3
+  minOffset: 0.15
+  maxOffset: 0.2
   enemyCollider:
   - {fileID: 1568865607}
   - {fileID: 1617586684}
@@ -2360,6 +2367,98 @@ MonoBehaviour:
   enemyAnims: {fileID: 1157775230}
   enemyState: {fileID: 1157775227}
   enemyIdleSpeed: 0.5
+--- !u!114 &1157775232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157775226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 119d87a99adde154eac9268a921af299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IdleEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1157775231}
+        m_MethodName: EnemyBehavior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  CombatEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1157775233}
+        m_MethodName: EnemyBehavior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  playerName: PLAYER
+  enemyState: {fileID: 1157775227}
+  skills:
+  - {fileID: 1157775234}
+  moveIdleBehavior: {fileID: 1157775231}
+  moveCombatBehavior: {fileID: 1157775233}
+--- !u!114 &1157775233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157775226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7df5c43399607a47a28cf25f6ac3548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnims: {fileID: 1157775230}
+  enemyState: {fileID: 1157775227}
+  playerTransform: {fileID: 2011051044}
+  minDist: 0.4
+  chaseSpeed: 0.5
+--- !u!114 &1157775234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157775226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26ea29200cec284192add84bc70e9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyState: {fileID: 1157775227}
+  cooldownValue: 4
+  playerTransform: {fileID: 2011051044}
+  enemyAnims: {fileID: 1157775230}
+  rangeOfAttack: 0.7
+  swordDamage: 1
+  attackPosition: {fileID: 306998937}
+  swordBlowZoneRadius: 0.5
+  thisIsThePlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  startRate: 2
+  startAttackWaitRate: 3
 --- !u!1001 &1207495286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2947,6 +3046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f2ad3882cdc574e9887b400fca046c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSegs: []
   segName: healthSegment
   state: {fileID: 2011051035}
 --- !u!1001 &1539530265
