@@ -11,20 +11,12 @@ public abstract class Behavior : MonoBehaviour
 public abstract class Skill : Behavior
 {
     [SerializeField] protected EnemyState enemyState;
+
     public bool skillIsActive { get; set; } = false;
+    public float additionalCooldown { get; set; } = 0.0f;
 
-    public float cooldownValue;
-    public float cooldown { get; set; }
-
-    void Update()
-    {
-        CoolDown();
-    }
-
-    void CoolDown()
-    {
-        cooldown -= Time.deltaTime;
-    }
+    public enum Conditions { none, checkRange, checkEnemies }
+    public Conditions condition { get; protected set; }
 }
 
 public class EnemyBehaviorsManager : MonoBehaviour
@@ -55,6 +47,10 @@ public class EnemyBehaviorsManager : MonoBehaviour
     [SerializeField] private Behavior moveIdleBehavior;
     [SerializeField] private Behavior moveCombatBehavior;
 
+    [SerializeField] private float startGeneralCooldown;
+    public float generalCooldown { get; private set; } = 0.0f;
+    public int k { get; private set; } = 0;
+
     void Start()
     {
         player = GameObject.Find(playerName);
@@ -62,15 +58,13 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(generalCooldown);
+
         if (enemyState.health <= 0) { return; }
 
         if (behavior == Behaviors.idle)
         {
             moveIdleBehavior.EnemyBehavior();
-
-            //IdleEvent.Invoke();
-
-            //OnIdleAction();
         }
 
         else if (behavior == Behaviors.combat)
@@ -78,11 +72,14 @@ public class EnemyBehaviorsManager : MonoBehaviour
             if (enemyState.enemyCanMove)
             {
                 moveCombatBehavior.EnemyBehavior();
-
-                //CombatEvent.Invoke();
             }
 
-            for (int j = 0; j < skills.Count; j++)
+            if (!skills[k].skillIsActive)
+            {
+                skillCheck();
+            }
+
+            /*for (int j = 0; j < skills.Count; j++)
             {
                 if (skills[j].cooldown <= 0.0f && enemyState.enemyCanUseSkill)
                 {
@@ -92,28 +89,34 @@ public class EnemyBehaviorsManager : MonoBehaviour
                     skills[j].skillIsActive = true;
                     skills[j].cooldown = skills[j].cooldownValue;
                 }
-            }
-
-            //OnCombatAction();
+            }*/
         }
     }
 
-    void ChoseBehavior()
+    void skillCheck()
     {
-        /*if (Vector2.Distance(player.transform.position, transform.position) > range)
+        if (generalCooldown <= 0.0f)
         {
+            k = Random.Range(0, skills.Count);
 
+            if (skills[k].condition != Skill.Conditions.none)
+            {
+                // check la condition
+            }
+
+            else
+            {
+                skills[k].skillIsActive = true;
+                enemyState.enemyCanMove = false;
+
+                generalCooldown = startGeneralCooldown;
+            }
         }
 
-        if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Mouse0))
+        else
         {
-
+            generalCooldown -= Time.deltaTime;
         }
-
-        if (transform.GetComponent<EntityUI>().BroadcastMessage("UITakeDamage", int param = 1))
-        {
-
-        }*/
     }
 
     void OnTriggerEnter2D(Collider2D other)

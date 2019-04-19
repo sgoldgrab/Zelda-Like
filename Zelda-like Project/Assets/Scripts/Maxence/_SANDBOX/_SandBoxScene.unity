@@ -2417,6 +2417,7 @@ MonoBehaviour:
   - {fileID: 1157775234}
   moveIdleBehavior: {fileID: 1157775231}
   moveCombatBehavior: {fileID: 1157775233}
+  startGeneralCooldown: 3
 --- !u!114 &1157775233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2432,7 +2433,7 @@ MonoBehaviour:
   enemyAnims: {fileID: 1157775230}
   enemyState: {fileID: 1157775227}
   playerTransform: {fileID: 2011051044}
-  minDist: 0.4
+  minDist: 0.5
   chaseSpeed: 0.5
 --- !u!114 &1157775234
 MonoBehaviour:
@@ -2447,18 +2448,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1157775227}
-  cooldownValue: 4
   playerTransform: {fileID: 2011051044}
   enemyAnims: {fileID: 1157775230}
   rangeOfAttack: 0.7
   swordDamage: 1
   attackPosition: {fileID: 306998937}
-  swordBlowZoneRadius: 0.5
+  swordBlowZoneRadius: 0.6
   thisIsThePlayer:
     serializedVersion: 2
     m_Bits: 256
   startRate: 2
-  startAttackWaitRate: 3
+  startAttackWaitRate: 1
 --- !u!1001 &1207495286
 PrefabInstance:
   m_ObjectHideFlags: 0

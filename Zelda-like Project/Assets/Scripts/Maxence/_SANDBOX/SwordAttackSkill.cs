@@ -18,16 +18,20 @@ public class SwordAttackSkill : Skill
     public int rate { get; private set; }
 
     [SerializeField] private float startAttackWaitRate;
-    public float attackWaitRate { get; private set; }
+    public float attackWaitRate { get; private set; } = 0.0f;
+
+    void Start()
+    {
+        additionalCooldown = 1.0f;
+
+        condition = Conditions.none;
+    }
 
     void Update()
     {
-        Debug.Log(skillIsActive + " " + enemyState.enemyCanUseSkill);
-
         if (skillIsActive)
         {
             EnemyBehavior();
-            enemyState.enemyCanUseSkill = false;
         }
     }
 
@@ -36,6 +40,12 @@ public class SwordAttackSkill : Skill
         if (Vector2.Distance(transform.position, playerTransform.position) <= rangeOfAttack)
         {
             SwordAttack();
+        }
+
+        else
+        {
+            skillIsActive = false;
+            enemyState.enemyCanMove = true;
         }
     }
 
@@ -60,7 +70,7 @@ public class SwordAttackSkill : Skill
         {
             rate = startRate;
             skillIsActive = false;
-            enemyState.enemyCanUseSkill = true;
+            enemyState.enemyCanMove = true;
         }
     }
 
