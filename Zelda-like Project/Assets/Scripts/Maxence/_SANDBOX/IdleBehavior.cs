@@ -12,15 +12,11 @@ public class IdleBehavior : Behavior
     [SerializeField] private float minX; [SerializeField] private float maxX; [SerializeField] private float minY; [SerializeField] private float maxY;
 
     [SerializeField] private EnemyAnims enemyAnims;
-    [SerializeField] private EnemyState enemyState;
 
     [SerializeField] private float enemyIdleSpeed = 0.5f;
 
     void Start()
     {
-        EnemyBehaviorsManager.OnIdleAction += EnemyBehavior;
-        EntityState.OnDeathAction += OnDeath;
-
         waitTime = startWaitTime;
         checkpoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
@@ -52,11 +48,5 @@ public class IdleBehavior : Behavior
             enemyAnims.MoveAnim(true);
             transform.position = Vector2.MoveTowards(transform.position, checkpoint, enemyIdleSpeed * Time.deltaTime);
         }
-    }
-
-    void OnDeath()
-    {
-        EnemyBehaviorsManager.OnIdleAction -= EnemyBehavior;
-        EntityState.OnDeathAction -= OnDeath;
     }
 }

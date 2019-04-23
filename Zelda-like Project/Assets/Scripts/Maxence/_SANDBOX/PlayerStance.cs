@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStance : MonoBehaviour
 {
     [SerializeField] private string stanceInput;
+    public string input { get => stanceInput; private set => stanceInput = value; }
 
     public enum Stance { stance1, stance2 };
 

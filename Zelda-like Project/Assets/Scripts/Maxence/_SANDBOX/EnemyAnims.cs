@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class EnemyAnims : MonoBehaviour
 {
-    private Animator enemyAnimator;
-
-    [SerializeField] private Transform playerTransform;
+    public Animator enemyAnimator { get; private set; }
+    public Animation enemyAnim { get; private set; }
 
     [SerializeField] private EnemyState enemyState;
+
+    [SerializeField] private List<Skill> skillsAnimationMethods;
 
     void OnValidate()
     {
         enemyAnimator = GetComponentInChildren<Animator>();
+
+        skillsAnimationMethods = GetComponentInParent<EnemyBehaviorsManager>().theSkills;
     }
 
     void Update()
@@ -22,10 +25,10 @@ public class EnemyAnims : MonoBehaviour
 
     void LookAtPlayer()
     {
-        if (transform.position.x >= playerTransform.position.x) { enemyAnimator.SetFloat("lastX", -1f); }
-        if (transform.position.x <= playerTransform.position.x) { enemyAnimator.SetFloat("lastX", 1f); }
-        if (transform.position.y >= playerTransform.position.y) { enemyAnimator.SetFloat("lastY", -1f); }
-        if (transform.position.y <= playerTransform.position.y) { enemyAnimator.SetFloat("lastY", 1f); }
+        if (transform.position.x >= enemyState.playerTransform.position.x) { enemyAnimator.SetFloat("lastX", -1f); }
+        if (transform.position.x <= enemyState.playerTransform.position.x) { enemyAnimator.SetFloat("lastX", 1f); }
+        if (transform.position.y >= enemyState.playerTransform.position.y) { enemyAnimator.SetFloat("lastY", -1f); }
+        if (transform.position.y <= enemyState.playerTransform.position.y) { enemyAnimator.SetFloat("lastY", 1f); }
     }
 
     public void MoveAnim(bool move)
@@ -38,17 +41,43 @@ public class EnemyAnims : MonoBehaviour
     {
         if (enemyState.health > 0)
         {
-            enemyAnimator.SetTrigger("templarIsHit");
+            enemyAnimator.SetTrigger("isHit");
         }
 
         else if (enemyState.health <= 0)
         {
-            enemyAnimator.SetTrigger("templarIsDead");
+            enemyAnimator.SetTrigger("isDead");
         }
     }
 
     public void AttackAnim()
     {
-        enemyAnimator.SetTrigger("templarAttacks");
+        enemyAnimator.SetTrigger("attacks");
+    }
+
+    /// Animation Events \\\
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
+    }
+
+    public void Recover()
+    {
+        enemyState.enemyCanUseSkill = true;
+        enemyState.enemyCanMove = true;
+    }
+
+    public void SkillAnimationEvent(string name)
+    {
+        foreach (Skill skill in skillsAnimationMethods)
+        {
+            if (skill.skillName == name)
+            {
+                Debug.Log("it works");
+
+                skill.SkillAnimMethod();
+            }
+        }
     }
 }

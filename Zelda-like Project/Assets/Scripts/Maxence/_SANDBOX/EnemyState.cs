@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyState : EntityState
 {
     [SerializeField] private EnemyAnims enemyAnims;
-    [SerializeField] private EntityUI enemyUI;
+
+    public Transform playerTransform { get; private set; }
 
     // HEALTH BAR INSTANTIATE
     [SerializeField] private GameObject enemyHealthBar;
@@ -24,7 +25,7 @@ public class EnemyState : EntityState
 
     // ON DEATH REQUIRED
     [SerializeField] private Collider2D[] enemyCollider;
-    [SerializeField] private EnemySpawner enemySpawner;
+    private EnemySpawner enemySpawner;
 
     //STATES
     public bool enemyCanMove { get; set; } = true;
@@ -32,32 +33,36 @@ public class EnemyState : EntityState
 
     void Start()
     {
+        GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner");
+        if (enemySpawnerMessenger != null) { enemySpawner = enemySpawnerMessenger.GetComponent<EnemySpawner>(); }
+
+        GameObject playerMessenger = GameObject.FindWithTag("Player");
+        if (playerMessenger != null) { playerTransform = playerMessenger.GetComponent<Transform>(); }
+
         enemyHealthBar = Instantiate(enemyHealthBar, transform);
-
-        //EnemyHealthBarDisplay();
-
         InstantiateHealthBar();
     }
 
     public override void TakeDamage(int dmg)
     {
-        if (health <= 0)
-        {
-            foreach (Collider2D col in enemyCollider) { col.enabled = false; }
-            enemySpawner.enemiesAlive -= 1;
-
-            return;
-        }
-
-        Debug.Log(health + " " + dmg);
         enemyHealthBar.GetComponent<EntityUI>().UITakeDamage(health, dmg);
 
         base.TakeDamage(dmg); // loses health
+
+        Debug.Log(health + " " + dmg);
 
         enemyCanUseSkill = false;
         enemyCanMove = false;
 
         enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
+
+        if (health <= 0)
+        {
+            foreach (Collider2D col in enemyCollider) { col.enabled = false; }
+            //enemySpawner.enemiesAlive -= 1;
+
+            return;
+        }
     }
 
     public override void TakeHeal(int heal)
@@ -121,7 +126,7 @@ public class EnemyState : EntityState
             barSize = segOffset * (segsNumber - 1);
         }
 
-        Debug.Log(segOffset);
+        //Debug.Log(segOffset);
 
         float startPos = transform.position.x + (barSize / 2);
 

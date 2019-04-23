@@ -3,35 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum Conditions
+{
+    DistanceToPlayer,
+    NumberOfEnemies,
+    HasTakenDamage,
+    IsAttacked,
+    PlayerUseAnAbility,
+    PlayerSwitchStance,
+    None
+}
+
 public abstract class Behavior : MonoBehaviour
 {
     public abstract void EnemyBehavior();
+
+    [SerializeField] protected EnemyState enemyState;
 }
 
-public abstract class Skill : Behavior
+public abstract class ConditionedBehavior : Behavior
 {
-    [SerializeField] protected EnemyState enemyState;
+    [SerializeField] private List<Conditions> conditions;
+    public List<Conditions> conds { get => conditions; protected set => conditions = value; }
+
+    [SerializeField] private List<ConditionInfo> conditionInfos;
+    public List<ConditionInfo> infos { get => conditionInfos; protected set => conditionInfos = value; }
+}
+
+public abstract class Skill : ConditionedBehavior
+{
+    public string skillName;
+
+    public abstract void SkillAnimMethod();
 
     public bool skillIsActive { get; set; } = false;
     public float additionalCooldown { get; set; } = 0.0f;
+}
 
-    public enum Conditions { none, checkRange, checkEnemies }
-    public Conditions condition { get; protected set; }
+public abstract class Trigger : ConditionedBehavior
+{
+
 }
 
 public class EnemyBehaviorsManager : MonoBehaviour
 {
-    //OLD DELEGATES --> to delete
-    public delegate void IdleAction();
-    public static event IdleAction OnIdleAction;
-
-    public delegate void CombatAction();
-    public static event CombatAction OnCombatAction;
-
-    //OLD EVENTS --> to update
-    public UnityEvent IdleEvent;
-    public UnityEvent CombatEvent;
-
     //ENUMS
     public enum Behaviors { idle, combat }
     public Behaviors behavior { get; private set; } = Behaviors.idle;
@@ -41,8 +56,12 @@ public class EnemyBehaviorsManager : MonoBehaviour
     [SerializeField] private string playerName;
 
     [SerializeField] private EnemyState enemyState;
+    [SerializeField] private EnemyConditions enemyConditions;
 
     [SerializeField] private List<Skill> skills;
+    public List<Skill> theSkills { get => skills; private set => skills = value; }
+
+    [SerializeField] private List<Trigger> triggers;
 
     [SerializeField] private Behavior moveIdleBehavior;
     [SerializeField] private Behavior moveCombatBehavior;
@@ -58,7 +77,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(generalCooldown);
+        //Debug.Log(generalCooldown);
 
         if (enemyState.health <= 0) { return; }
 
@@ -67,7 +86,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
             moveIdleBehavior.EnemyBehavior();
         }
 
-        else if (behavior == Behaviors.combat)
+        else if (behavior == Behaviors.combat && player.GetComponent<PlayerState>().health > 0)
         {
             if (enemyState.enemyCanMove)
             {
@@ -99,23 +118,31 @@ public class EnemyBehaviorsManager : MonoBehaviour
         {
             k = Random.Range(0, skills.Count);
 
-            if (skills[k].condition != Skill.Conditions.none)
+            for (int u = 0; u < skills[k].conds.Count; u++)
             {
-                // check la condition
+                if (enemyConditions.CheckCondition(skills[k].conds[u], skills[k].infos[u]) != true) { return; }
             }
 
-            else
-            {
-                skills[k].skillIsActive = true;
-                enemyState.enemyCanMove = false;
+            skills[k].skillIsActive = true;
+            enemyState.enemyCanMove = false;
 
-                generalCooldown = startGeneralCooldown;
-            }
+            generalCooldown = startGeneralCooldown;
         }
 
         else
         {
             generalCooldown -= Time.deltaTime;
+        }
+    }
+
+    void TriggerCheck()
+    {
+        foreach (Trigger trig in triggers)
+        {
+            for (int o = 0; o < trig.conds.Count; o++)
+            {
+                if (enemyConditions.CheckCondition(triggers[k].conds[o], triggers[k].infos[o]) != true) { return; }
+            }
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SwordAttackSkill : Skill
 {
-    [SerializeField] private Transform playerTransform;
     [SerializeField] private EnemyAnims enemyAnims;
 
     [SerializeField] private float rangeOfAttack;
@@ -23,8 +22,6 @@ public class SwordAttackSkill : Skill
     void Start()
     {
         additionalCooldown = 1.0f;
-
-        condition = Conditions.none;
     }
 
     void Update()
@@ -37,7 +34,9 @@ public class SwordAttackSkill : Skill
 
     public override void EnemyBehavior()
     {
-        if (Vector2.Distance(transform.position, playerTransform.position) <= rangeOfAttack)
+        SwordAttack();
+
+        /*if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= rangeOfAttack)
         {
             SwordAttack();
         }
@@ -46,7 +45,7 @@ public class SwordAttackSkill : Skill
         {
             skillIsActive = false;
             enemyState.enemyCanMove = true;
-        }
+        }*/
     }
 
     void SwordAttack()
@@ -74,7 +73,7 @@ public class SwordAttackSkill : Skill
         }
     }
 
-    void SwordBlow()
+    public override void SkillAnimMethod() // SwordBlow
     {
         Collider2D[] playerCollider = Physics2D.OverlapCircleAll(attackPosition.position, swordBlowZoneRadius, thisIsThePlayer);
 
@@ -82,7 +81,7 @@ public class SwordAttackSkill : Skill
         {
             if (playerCollider[u] is BoxCollider2D)
             {
-                playerCollider[u].GetComponent<PlayerState>().TakeDamage(swordDamage);
+                playerCollider[u].transform.parent.parent.gameObject.GetComponent<PlayerState>().TakeDamage(swordDamage);
             }
         }
     }
