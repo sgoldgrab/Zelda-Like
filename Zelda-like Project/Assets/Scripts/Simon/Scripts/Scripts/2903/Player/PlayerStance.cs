@@ -13,10 +13,8 @@ public class PlayerStance : MonoBehaviour
 
     [SerializeField] private GameObject mainCamera;
 
+    [SerializeField] private GameObject shadow;
     [SerializeField] private GameObject fog;
-
-    [SerializeField] private GameObject mapStanceOne;
-    [SerializeField] private GameObject mapStanceTwo;
 
     private PostProcessVolume volume;
     private PostProcessLayer layer;
@@ -47,9 +45,8 @@ public class PlayerStance : MonoBehaviour
             volume.enabled = true;
             layer.enabled = true;
 
+            shadow.SetActive(false);
             fog.SetActive(true);
-            mapStanceTwo.SetActive(true);
-            mapStanceOne.SetActive(false);
 
             StartCoroutine(BlinkEffect());
 
@@ -67,9 +64,8 @@ public class PlayerStance : MonoBehaviour
             volume.enabled = false;
             layer.enabled = false;
 
+            shadow.SetActive(true);
             fog.SetActive(false);
-            mapStanceOne.SetActive(true);
-            mapStanceTwo.SetActive(false);
 
             whatStance = Stance.stanceOne;
 
