@@ -42,7 +42,7 @@ public abstract class Skill : ConditionedBehavior
 
 public abstract class Trigger : ConditionedBehavior
 {
-
+    public bool triggerIsActive { get; set; } = false;
 }
 
 public class EnemyBehaviorsManager : MonoBehaviour
@@ -143,6 +143,9 @@ public class EnemyBehaviorsManager : MonoBehaviour
             {
                 if (enemyConditions.CheckCondition(triggers[k].conds[o], triggers[k].infos[o]) != true) { return; }
             }
+
+            triggers[k].triggerIsActive = true;
+            enemyState.enemyCanMove = false;
         }
     }
 

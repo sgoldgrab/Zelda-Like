@@ -89,7 +89,7 @@ public class PlayerAttacks : MonoBehaviour
 
     void ChoseAttack() // USED FOR TESTING ONLY
     {
-        if (enemySpawnerScript.templarIsHere)
+        /*if (enemySpawnerScript.templarIsHere)
         {
             TestAttack();
         }
@@ -97,7 +97,7 @@ public class PlayerAttacks : MonoBehaviour
         if (!enemySpawnerScript.templarIsHere)
         {
             Attack();
-        }
+        }*/
     }
 
     void Attack() // takes all enemies in the area of effect and deals damage to them

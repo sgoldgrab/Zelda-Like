@@ -559,72 +559,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 116336171}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &173248872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 173248875}
-  - component: {fileID: 173248874}
-  - component: {fileID: 173248873}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &173248873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173248872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &173248874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173248872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &173248875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173248872}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &225639307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1843,7 +1777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911022591
 GameObject:
@@ -2139,7 +2073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1157775227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,7 +2127,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!4 &1157775229
 Transform:
   m_ObjectHideFlags: 0
@@ -2209,7 +2143,7 @@ Transform:
   - {fileID: 911022592}
   - {fileID: 306998937}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1157775230
 MonoBehaviour:
@@ -2227,10 +2161,6 @@ MonoBehaviour:
   enemySpawner: {fileID: 0}
   enemyAnims: {fileID: 114530221}
   playerStance: {fileID: 0}
-  conditionInfos:
-  - conditionType: 0
-    value: 0.7
-    text: 
 --- !u!114 &1157775231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,6 +2198,7 @@ MonoBehaviour:
   enemyConditions: {fileID: 1157775230}
   skills:
   - {fileID: 1157775234}
+  triggers: []
   moveIdleBehavior: {fileID: 1157775231}
   moveCombatBehavior: {fileID: 1157775233}
   startGeneralCooldown: 3
@@ -2300,12 +2231,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1157775227}
-  skillName: SwordBlow
   conditions: 00000000
   conditionInfos:
   - conditionType: 0
     value: 0.7
     text: 
+  skillName: SwordBlow
   enemyAnims: {fileID: 114530221}
   rangeOfAttack: 0.7
   swordDamage: 1
@@ -2486,7 +2417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1377072625
 Transform:
   m_ObjectHideFlags: 0
@@ -2513,17 +2444,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428b5654c15eb6343b3197c6f21da969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mage: {fileID: 1176262940350730, guid: 1ee3bc9f631a6864a80c981e4eb44be4, type: 3}
-  templar: {fileID: 998766741643992611, guid: 269d1af75a395854cb94ddaa95f2f5f2, type: 3}
-  enemiesAlive: 0
-  maxEnemies: 0
+  enemies:
+  - {fileID: 4697471463926243229, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+  - {fileID: 5906008889863754853, guid: 2692edae7d73efe47b63a4f9a5977a68, type: 3}
+  maxEnemies: 5
   startWaitTime: 7
   minX: -7.7
   maxX: 7.7
   minY: -4.8
   maxY: 4.8
-  enemyToSpawn: 0
-  templarIsHere: 1
 --- !u!1001 &1384745653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3728,7 +3657,7 @@ Transform:
   - {fileID: 676604788}
   - {fileID: 1779813470}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1816481579593760909 stripped
 Transform:

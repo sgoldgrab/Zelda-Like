@@ -73,7 +73,7 @@ Animator:
   m_GameObject: {fileID: 5172756951906646706}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0521f9b7242469b40a33f52e468eed9b, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -119,7 +119,7 @@ SpriteRenderer:
   m_SortingLayerID: 322498475
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f591cc5d15e5d194a82ed3e3e613d3e9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_Size: {x: 0.41, y: 0.95}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5172756951906646710
@@ -143,8 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5172756952916316768}
-  skillsAnimationMethods:
-  - {fileID: 5172756952916316825}
+  skillsAnimationMethods: []
 --- !u!1 &5172756952166266084
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,11 +351,9 @@ GameObject:
   - component: {fileID: 5172756952916316775}
   - component: {fileID: 5172756952916316768}
   - component: {fileID: 5172756952916316827}
-  - component: {fileID: 5172756952916316772}
-  - component: {fileID: 5172756952916316826}
-  - component: {fileID: 5172756952916316825}
+  - component: {fileID: 3054999721291039063}
   m_Layer: 0
-  m_Name: ENEMY
+  m_Name: Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,46 +442,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119d87a99adde154eac9268a921af299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5172756952916316772}
-        m_MethodName: EnemyBehavior
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  CombatEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5172756952916316826}
-        m_MethodName: EnemyBehavior
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   playerName: PLAYER
   enemyState: {fileID: 5172756952916316768}
-  skills:
-  - {fileID: 5172756952916316825}
-  moveIdleBehavior: {fileID: 5172756952916316772}
-  moveCombatBehavior: {fileID: 5172756952916316826}
+  enemyConditions: {fileID: 3054999721291039063}
+  skills: []
+  triggers: []
+  moveIdleBehavior: {fileID: 0}
+  moveCombatBehavior: {fileID: 0}
   startGeneralCooldown: 3
---- !u!114 &5172756952916316772
+--- !u!114 &3054999721291039063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,57 +459,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5172756952916316769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c93a399f52ff4784bb5c1d4f47474b86, type: 3}
+  m_Script: {fileID: 11500000, guid: 111da1eb8cc8be143b953a6f21dd757f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5172756952916316768}
-  startWaitTime: 4
-  minX: -2
-  maxX: 2
-  minY: -2
-  maxY: 2
+  enemySpawner: {fileID: 0}
   enemyAnims: {fileID: 5172756951906646710}
-  enemyIdleSpeed: 0.5
---- !u!114 &5172756952916316826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172756952916316769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7df5c43399607a47a28cf25f6ac3548, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyState: {fileID: 5172756952916316768}
-  enemyAnims: {fileID: 5172756951906646710}
-  minDist: 0.5
-  chaseSpeed: 0.5
---- !u!114 &5172756952916316825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172756952916316769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26ea29200cec284192add84bc70e9c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyState: {fileID: 5172756952916316768}
-  skillName: SwordBlow
-  enemyAnims: {fileID: 5172756951906646710}
-  rangeOfAttack: 0.7
-  swordDamage: 1
-  attackPosition: {fileID: 5172756951696409474}
-  swordBlowZoneRadius: 0.6
-  thisIsThePlayer:
-    serializedVersion: 2
-    m_Bits: 256
-  startRate: 2
-  startAttackWaitRate: 1
+  playerStance: {fileID: 0}
 --- !u!1 &5172756953543869666
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f2ad3882cdc574e9887b400fca046c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSegs: []
   segName: enemyHealthSegment
   state: {fileID: 0}
 --- !u!1001 &2024348237217145834
@@ -23,7 +24,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1350663447978678, guid: 6a0067f1e0fbe9847b2a3216882c03f4, type: 3}
       propertyPath: m_Name
-      value: EnemyHealthBar TEST
+      value: Enemy Health Bar
       objectReference: {fileID: 0}
     - target: {fileID: 1350663447978678, guid: 6a0067f1e0fbe9847b2a3216882c03f4, type: 3}
       propertyPath: m_TagString

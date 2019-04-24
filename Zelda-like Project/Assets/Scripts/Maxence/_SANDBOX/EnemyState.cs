@@ -60,6 +60,7 @@ public class EnemyState : EntityState
         {
             foreach (Collider2D col in enemyCollider) { col.enabled = false; }
             //enemySpawner.enemiesAlive -= 1;
+            enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
 
             return;
         }

@@ -11,7 +11,7 @@ public class EnemyAnims : MonoBehaviour
 
     [SerializeField] private List<Skill> skillsAnimationMethods;
 
-    void OnValidate()
+    void Awake()
     {
         enemyAnimator = GetComponentInChildren<Animator>();
 

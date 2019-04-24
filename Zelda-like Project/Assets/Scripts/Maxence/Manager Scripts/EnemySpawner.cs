@@ -4,37 +4,18 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public GameObject mage;
-    public GameObject templar;
+    [SerializeField] private GameObject[] enemies;
 
-    [HideInInspector] public int enemiesAlive = 0;
-    public int maxEnemies;
+    public int enemiesAlive { get; set; } = 0;
+    [SerializeField] private int maxEnemies;
 
     private float waitTime;
-    [SerializeField]
-    private float startWaitTime;
+    [SerializeField] private float startWaitTime;
 
-    [SerializeField]
-    private float minX;
-    [SerializeField]
-    private float maxX;
-    [SerializeField]
-    private float minY;
-    [SerializeField]
-    private float maxY;
+    [SerializeField] private float minX; [SerializeField] private float maxX; [SerializeField] private float minY; [SerializeField] private float maxY;
 
-    [SerializeField]
-    private enum whoToSpawn { templar, mage };
-    [SerializeField]
-    private whoToSpawn enemyToSpawn = whoToSpawn.mage;
-
-    // TEST ONLY
-    public bool templarIsHere;
-
-    void Awake()
-    {
-        Spawn(templar);
-    }
+    private enum whoToSpawn { templar, mage }; // useless
+    private whoToSpawn enemyToSpawn = whoToSpawn.mage; // bitch
 
     void Start ()
     {
@@ -43,15 +24,9 @@ public class EnemySpawner : MonoBehaviour {
 	
 	void Update ()
     {
-        if(enemyToSpawn == whoToSpawn.mage)
-        {
-            Spawn(mage);
-        }
+        int index = Random.Range(0, 2);
 
-        if(enemyToSpawn == whoToSpawn.templar)
-        {
-            Spawn(templar);
-        }
+        Spawn(enemies[index]);
     }
 
     void Spawn(GameObject enemy)
@@ -59,10 +34,10 @@ public class EnemySpawner : MonoBehaviour {
         if (waitTime <= 0.1f && enemiesAlive < maxEnemies)
         {
             waitTime = startWaitTime;
-            //
-            Instantiate(enemy, new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY)), new Quaternion(0, 0, 0, 0)); // check the surcharges boi
+            Instantiate(enemy, new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY)), new Quaternion(0, 0, 0, 0));
             enemiesAlive += 1;
         }
+
         else
         {
             waitTime -= Time.deltaTime;
