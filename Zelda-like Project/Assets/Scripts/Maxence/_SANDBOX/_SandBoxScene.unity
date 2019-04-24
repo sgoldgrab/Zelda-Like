@@ -481,6 +481,7 @@ MonoBehaviour:
   enemyState: {fileID: 1157775227}
   skillsAnimationMethods:
   - {fileID: 1157775234}
+  layerIndex: 0
 --- !u!1001 &116336171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2445,8 +2446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
+  - {fileID: 8399091906969231778, guid: c02b63a861bc82d43ae03a73bec8fac6, type: 3}
   - {fileID: 4697471463926243229, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
-  - {fileID: 5906008889863754853, guid: 2692edae7d73efe47b63a4f9a5977a68, type: 3}
   maxEnemies: 5
   startWaitTime: 7
   minX: -7.7

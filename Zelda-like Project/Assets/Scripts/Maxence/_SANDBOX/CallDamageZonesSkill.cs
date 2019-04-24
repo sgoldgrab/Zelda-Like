@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootProjectilesSkill : Skill
+public class CallDamageZonesSkill : Skill
 {
-    [SerializeField] private EnemyAnims enemyAnims;
-
     [SerializeField] private int startRate;
     public int rate { get; private set; }
 
     [SerializeField] private float startWaitRate;
     public float waitRate { get; private set; } = 0.0f;
 
-    [SerializeField] private GameObject fireBall;
+    [SerializeField] private EnemyAnims enemyAnims;
+
+    [SerializeField] private GameObject areaOfEffect;
 
     void Update()
     {
@@ -47,9 +47,10 @@ public class ShootProjectilesSkill : Skill
         }
     }
 
-    public override void SkillAnimMethod() // FireBall
+    public override void SkillAnimMethod()
     {
-        GameObject bullet = Instantiate(fireBall, transform.position, transform.rotation);
-        bullet.GetComponent<FireBall>().SetPlayerPos(enemyState.playerTransform.position);
+        Vector2 desiredPos = enemyState.playerTransform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+
+        GameObject aOE = Instantiate(areaOfEffect, desiredPos, transform.rotation);
     }
 }

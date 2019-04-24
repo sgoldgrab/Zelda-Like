@@ -11,11 +11,18 @@ public class EnemyAnims : MonoBehaviour
 
     [SerializeField] private List<Skill> skillsAnimationMethods;
 
+    [SerializeField] private int layerIndex;
+
     void Awake()
     {
         enemyAnimator = GetComponentInChildren<Animator>();
 
         skillsAnimationMethods = GetComponentInParent<EnemyBehaviorsManager>().theSkills;
+    }
+
+    void Start()
+    {
+        enemyAnimator.SetLayerWeight(layerIndex, 1);
     }
 
     void Update()
