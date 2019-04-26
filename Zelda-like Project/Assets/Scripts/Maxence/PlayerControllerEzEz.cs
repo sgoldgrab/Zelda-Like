@@ -16,8 +16,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     public Tilemap tilemapS1;
     public Tilemap tilemapS2;
 
-    [SerializeField] private enum Stance { stance1, stance2 };
-    [SerializeField] private Stance whatStance = Stance.stance1;
+    private enum Stance { stance1, stance2 };
+    private Stance whatStance = Stance.stance1;
 
     public float horizontal;
     public float vertical;
@@ -38,9 +38,6 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
     public bool canMove = true;
 
-    public bool immuneToDamage = false;
-    public int damageAbsorbed = 0;
-
     [SerializeField] private Camera camStance1;
     [SerializeField] private Camera camStance2;
 
@@ -49,20 +46,9 @@ public class PlayerControllerEzEz : MonoBehaviour {
     /*public float LastX { get; set; }
     public float LastY { get; set; }*/
 
-    public AnimationCurve curve;
-
     void Awake()
     {
-
-        PostProcessVolume volume = Camera.main.GetComponent<PostProcessVolume>();
-
-        Vignette v;
-
-        var foundEffectSettings = volume.profile.TryGetSettings<Vignette>(out v);
-        v.intensity.value = 1f;
-    
-        //v.intensity.value = curve.Evaluate(0.5f);
-
+        //
     }
 
     void Start()
@@ -155,8 +141,6 @@ public class PlayerControllerEzEz : MonoBehaviour {
                 userInterface.worldCamera = camStance1;
 
                 playerAbilities.stanceOne = false;
-
-
             }
 
             else if (whatStance == Stance.stance2) // switch to stance 1
@@ -182,25 +166,11 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
         if(playerCaracteristics.playerHealth > 0)
         {
+            animator.SetTrigger("playerIsHit");
 
-            if (immuneToDamage)
-            {
-
-                damageAbsorbed += 1;
-
-            }
-
-            else
-            {
-
-                animator.SetTrigger("playerIsHit");
-
-                Debug.Log("Damage to the playeeer FUsckjklj !!!!");
-                Debug.Log(playerCaracteristics.playerHealth);
-                healthPlayerScript.TakeDamage();
-
-            }
-
+            Debug.Log("Damage to the playeeer FUsckjklj !!!!");
+            Debug.Log(playerCaracteristics.playerHealth);
+            healthPlayerScript.TakeDamage();
         }
 
         else if (playerCaracteristics.playerHealth <= 0)

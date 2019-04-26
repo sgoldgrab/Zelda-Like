@@ -19,6 +19,7 @@ TagManager:
   - Spell3
   - EnemyHealthBar
   - Interactable
+  - PlayerSprite
   layers:
   - Default
   - TransparentFX
@@ -36,6 +37,7 @@ TagManager:
   - Obstacle
   - PP
   - Projectiles
+  - Abilities
   - 
   - 
   - 
@@ -52,6 +54,7 @@ TagManager:
   - 
   - 
   - 
+  - PostProcess
   m_SortingLayers:
   - name: Default
     uniqueID: 0
