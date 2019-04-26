@@ -9,7 +9,7 @@ public class PlayerState : EntityState
 
     void Update() // TESTING ONLY
     {
-        TestMethod();
+        //TestMethod();
     }
 
     public override void TakeDamage(int dmg)

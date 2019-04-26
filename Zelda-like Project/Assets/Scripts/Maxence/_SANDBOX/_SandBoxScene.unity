@@ -3421,6 +3421,8 @@ GameObject:
   - component: {fileID: 2011051037}
   - component: {fileID: 2011051046}
   - component: {fileID: 2011051045}
+  - component: {fileID: 2011051042}
+  - component: {fileID: 2011051041}
   m_Layer: 8
   m_Name: PLAYER
   m_TagString: Player
@@ -3478,6 +3480,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  attackMoveSpeed: 0
 --- !u!114 &2011051038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3526,6 +3529,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2011051041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011051034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc08358e9e368146a830e6aed62f105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumeInputName: Consume
+--- !u!114 &2011051042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011051034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c9150bfa07e242ba882631c0c5d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactName: Interact
 --- !u!4 &2011051044
 Transform:
   m_ObjectHideFlags: 0

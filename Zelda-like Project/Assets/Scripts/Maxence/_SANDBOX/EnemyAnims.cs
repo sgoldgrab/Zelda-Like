@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyAnims : MonoBehaviour
 {
     public Animator enemyAnimator { get; private set; }
-    public Animation enemyAnim { get; private set; }
 
     [SerializeField] private EnemyState enemyState;
 

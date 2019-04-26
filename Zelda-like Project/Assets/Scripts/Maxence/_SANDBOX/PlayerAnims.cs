@@ -6,12 +6,15 @@ public class PlayerAnims : MonoBehaviour
 {
     private Animator playerAnimator;
 
+    public AnimationState playerAnimState { get; set; }
+
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerState playerState;
 
     void OnValidate()
     {
         playerAnimator = GetComponentInChildren<Animator>();
+        playerAnimState = GetComponentInChildren<AnimationState>();
     }
 
     void Update()

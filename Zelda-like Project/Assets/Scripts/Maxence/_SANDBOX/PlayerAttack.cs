@@ -21,6 +21,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private LayerMask enemyLayerMask; // to replace in EnemyState (possible)
 
+    [SerializeField] private float attackMoveSpeed;
+    private bool attackMove = false;
+
     void Start()
     {
         attackDamage = swordDamage;
@@ -54,12 +57,16 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Mouse0)) // initialize an attack
             {
+                attackMove = true;
+
                 SwordAttack();
 
                 playerAnims.AttackAnim();
 
                 attackCoolDown = startAttackCoolDown;
             }
+
+            if (attackMove) { Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed); }
         }
 
         else
