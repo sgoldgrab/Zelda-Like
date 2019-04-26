@@ -46,6 +46,8 @@ public class PlayerControllerEzEz : MonoBehaviour {
     [SerializeField] private Camera camStance1;
     [SerializeField] private Camera camStance2;
 
+    [SerializeField] private GameObject postProcess;
+
     [SerializeField] private Canvas userInterface;
 
     /*public float LastX { get; set; }
@@ -99,7 +101,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
         {
             lastX = horizontal;
             lastY = vertical;
-        }        
+        }
     }
 
     void Movement()
@@ -152,10 +154,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
                 whatStance = Stance.stance2;
 
-                camStance1.enabled = false;
-                camStance2.enabled = true;
-
-                userInterface.worldCamera = camStance1;
+                postProcess.SetActive(true);
 
                 playerAbilities.stanceOne = false;
             }
@@ -167,10 +166,7 @@ public class PlayerControllerEzEz : MonoBehaviour {
 
                 whatStance = Stance.stance1;
 
-                camStance1.enabled = true;
-                camStance2.enabled = false;
-
-                userInterface.worldCamera = camStance2;
+                postProcess.SetActive(false);
 
                 playerAbilities.stanceOne = true;
             }

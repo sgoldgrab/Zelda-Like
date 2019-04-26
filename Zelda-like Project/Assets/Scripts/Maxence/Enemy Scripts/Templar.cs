@@ -21,7 +21,9 @@ public class Templar : MonoBehaviour {
     private SpriteRenderer templarSpriteRenderer;
 
     private EnemySpawner enemySpawner;
-    private PlayerAttack playerAttackScript;
+    private PlayerAttacks playerAttackScript;
+    //TESTING
+    private PlayerAttack playerAttack;
 
     //Color change
     [SerializeField] private Color idleColor = Color.white;
@@ -29,18 +31,18 @@ public class Templar : MonoBehaviour {
 
     //Bools
     [HideInInspector] public bool templarIsHit = false;
-    private bool templarIsDead = false;
+    private bool templarIsDead = false; // useless \\
     private bool templarIsAlive = true;
     private bool templarCanMove = true;
     private bool templarCanAttack = true;
-    private bool flipTemplar = false;
+    private bool flipTemplar = false; // useless \\
 
     //templar caracteristics
     public float templarSpeed;
     [SerializeField] private float templarHealth = 150;
     public float templarDamage;
 
-    //Attack wait
+    //Attack wait // USELESS VARIABLES \\
     private float waitTilAttack = 4;
     [SerializeField] private float startWaitTilAttackMin;
     [SerializeField] private float startWaitTilAttackMax;
@@ -56,8 +58,8 @@ public class Templar : MonoBehaviour {
     //Attack
     private Collider2D[] playerCollider;
     [SerializeField] private Transform templarAttackPos;
-    [SerializeField] private float templarAttackRange;
-    [SerializeField] private float templarAttackDistance;
+    [SerializeField] private float templarAttackZoneRadius;
+    [SerializeField] private float templarAttackDistance; // equivalent to attack Range
     [SerializeField] private LayerMask thisIsThePlayer;
 
     private float attackWaitTime = 0.0f;
@@ -87,7 +89,8 @@ public class Templar : MonoBehaviour {
         if (playerMessenger != null)
         {
             playerTransform = playerMessenger.GetComponent<Transform>();
-            playerAttackScript = playerMessenger.GetComponent<PlayerAttack>();
+            playerAttackScript = playerMessenger.GetComponent<PlayerAttacks>();
+            playerAttack = playerMessenger.GetComponent<PlayerAttack>(); // TESTING
         }
 
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner"); // get the enemy spawner script
@@ -160,11 +163,11 @@ public class Templar : MonoBehaviour {
     {
         if (templarCanAttack)
         {
-            if(attackWaitTime <= 0.1f)
+            if (attackWaitTime <= 0.1f)
             {
-                if(rate > 0)
+                if (rate > 0)
                 {
-                    if(attackWaitRate <= 0.1f)
+                    if (attackWaitRate <= 0.1f)
                     {
                         templarAnimator.SetTrigger("templarAttacks");
                         attackWaitRate = startAttackWaitRate;
@@ -193,7 +196,7 @@ public class Templar : MonoBehaviour {
 
     void Attack()
     {
-        playerCollider = Physics2D.OverlapCircleAll(templarAttackPos.position, templarAttackRange, thisIsThePlayer);
+        playerCollider = Physics2D.OverlapCircleAll(templarAttackPos.position, templarAttackZoneRadius, thisIsThePlayer);
 
         for (int u = 0; u < playerCollider.Length; u++)
         {
@@ -246,6 +249,7 @@ public class Templar : MonoBehaviour {
         if (templarIsHit)
         {
             templarHealth -= playerAttackScript.damage; // damage
+            //templarHealth -= playerAttack.attackDamage; // TESTING
 
             templarCanMove = false;
             templarCanAttack = false;
@@ -314,7 +318,7 @@ public class Templar : MonoBehaviour {
             templarAnimator.SetFloat("lastY", -1f);
         }
 
-        else if(transform.position.x < playerTransform.position.x && transform.position.y >= playerTransform.position.y) //faceDownRight
+        else if (transform.position.x < playerTransform.position.x && transform.position.y >= playerTransform.position.y) //faceDownRight
         {
             templarAnimator.SetFloat("lastX", 1f);
             templarAnimator.SetFloat("lastY", -1f);
@@ -340,7 +344,7 @@ public class Templar : MonoBehaviour {
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackRange);
+        Gizmos.DrawWireSphere(templarAttackPos.position, templarAttackZoneRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, templarAttackDistance);
     }

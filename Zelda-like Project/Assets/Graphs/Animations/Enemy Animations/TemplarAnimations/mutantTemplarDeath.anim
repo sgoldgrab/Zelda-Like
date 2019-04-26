@@ -40,7 +40,7 @@ AnimationClip:
     - time: 0.9
       value: {fileID: 21300000, guid: fba05c5b85f3a144ca73fced6fcc33ea, type: 3}
     - time: 1
-      value: {fileID: 21300000, guid: fba05c5b85f3a144ca73fced6fcc33ea, type: 3}
+      value: {fileID: 21300000, guid: 13422d44eeaba39438a30b328fb35521, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -70,7 +70,7 @@ AnimationClip:
     - {fileID: 21300000, guid: fba05c5b85f3a144ca73fced6fcc33ea, type: 3}
     - {fileID: 21300000, guid: fba05c5b85f3a144ca73fced6fcc33ea, type: 3}
     - {fileID: 21300000, guid: fba05c5b85f3a144ca73fced6fcc33ea, type: 3}
-    - {fileID: 21300000, guid: fba05c5b85f3a144ca73fced6fcc33ea, type: 3}
+    - {fileID: 21300000, guid: 13422d44eeaba39438a30b328fb35521, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -97,7 +97,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1
-    functionName: Death
+    functionName: OnDeath
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

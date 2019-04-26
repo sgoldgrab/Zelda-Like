@@ -7,8 +7,8 @@ public class PlayerAbilitiesBis : MonoBehaviour
     private float timer = 0f;
     [SerializeField] private float time;
 
-    private float timer2;
-    [SerializeField] private float time2;
+    private float drinkTimer;
+    [SerializeField] private float drinkTime;
 
     private bool canDrink = false;
 
@@ -36,7 +36,9 @@ public class PlayerAbilitiesBis : MonoBehaviour
     private PlayerControllerEzEz playerController;
 
     private Vector2 transformPos;
-    public Vector2 aimPos;
+    public Vector2 aimPos { get; private set; }
+    private float posX;
+    private float posY;
     [SerializeField] private float aimDistance;
 
     void Start()
@@ -53,7 +55,7 @@ public class PlayerAbilitiesBis : MonoBehaviour
             coolDownTime[x] = startCoolDownTime[x];
         }
 
-        timer2 = time2;
+        drinkTimer = drinkTime;
     }
 
     void Update()
@@ -195,10 +197,10 @@ public class PlayerAbilitiesBis : MonoBehaviour
     {
         if (canDrink)
         {
-            if (Input.GetButtonDown(buttonName) && timer2 >= 0.0f) //if the player press the button a second time during the right period of time
+            if (Input.GetButtonDown(buttonName) && drinkTimer >= 0.0f) //if the player press the button a second time during the right period of time
             {
                 inputPressed = false;
-                timer2 = time2;
+                drinkTimer = drinkTime;
 
                 doubleTap = false;
 
@@ -210,17 +212,17 @@ public class PlayerAbilitiesBis : MonoBehaviour
                 //potionEffect[index];
             }
 
-            else if (timer2 >= 0.0f) //if the player hasn't pressed the button yet
+            else if (drinkTimer >= 0.0f) //if the player hasn't pressed the button yet
             {
-                timer2 -= Time.deltaTime;
+                drinkTimer -= Time.deltaTime;
             }
 
-            else if (timer2 < 0.0f) //if the time period is over
+            else if (drinkTimer < 0.0f) //if the time period is over
             {
                 Release(dIndex, dStance); //releases the potion zone
 
                 canDrink = false;
-                timer2 = time2;
+                drinkTimer = drinkTime;
             }
         }
     }
@@ -298,11 +300,13 @@ public class PlayerAbilitiesBis : MonoBehaviour
     {
         if (playerController.lastX != 0 || playerController.lastY != 0)
         {
-            float posX = playerController.lastX;
-            float posY = playerController.lastY;
+            posX = playerController.lastX;
+            posY = playerController.lastY;
+
+            Debug.Log(posX + "&" + posY);
 
             Vector2 rawAimCoordinates = new Vector2(posX, posY);
-            aimPos = rawAimCoordinates * distance;
+            aimPos = (rawAimCoordinates * distance).normalized;
         }
     }
 }

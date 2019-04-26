@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour {
-
+public class PlayerAttacks : MonoBehaviour
+{
     public int pos;
     private Collider2D[] enemiesToDamage;
     private Collider2D[] templarsToDamage;
@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void ChoseAttack() // USED FOR TESTING ONLY
     {
-        if (enemySpawnerScript.templarIsHere)
+        /*if (enemySpawnerScript.templarIsHere)
         {
             TestAttack();
         }
@@ -97,7 +97,7 @@ public class PlayerAttack : MonoBehaviour {
         if (!enemySpawnerScript.templarIsHere)
         {
             Attack();
-        }
+        }*/
     }
 
     void Attack() // takes all enemies in the area of effect and deals damage to them

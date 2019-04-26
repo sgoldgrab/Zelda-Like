@@ -8,11 +8,12 @@ public class Enemy : Entity
     [SerializeField] protected float sightRange;
 
     //ATTACK
-    [SerializeField] protected float attackSpeed;
+    [SerializeField] protected float attackSpeed; // probably the number of frames of the animations, needs to be tested
     [SerializeField] protected float attackRange;
-    [SerializeField] protected float attackCoolDown;
-    [SerializeField] protected float attackRate;
-    [SerializeField] protected float attackRateCoolDown;
+    [SerializeField] protected float attackCoolDown; // equivalent to attackWaitTime
+    [SerializeField] protected int attackRate;
+    [SerializeField] protected float attackRateCoolDown; // equivalent to attackWaitRateTime
+    [SerializeField] protected float attackZoneRadius;
 
     //ENUMS
     protected enum behavior { patrol, combat };

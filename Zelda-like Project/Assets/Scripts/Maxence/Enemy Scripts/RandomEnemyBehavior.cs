@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomEnemyBehavior : MonoBehaviour {
 
-    private PlayerAttack playerAttack;
+    private PlayerAttacks playerAttack;
 
     private Transform playerTransform;
     [HideInInspector] public Vector2 playerPos;
@@ -64,7 +64,7 @@ public class RandomEnemyBehavior : MonoBehaviour {
         if (playerMessenger != null)
         {
             playerTransform = playerMessenger.GetComponent<Transform>();
-            playerAttack = playerMessenger.GetComponent<PlayerAttack>();
+            playerAttack = playerMessenger.GetComponent<PlayerAttacks>();
         }
 
         rate = startRate;

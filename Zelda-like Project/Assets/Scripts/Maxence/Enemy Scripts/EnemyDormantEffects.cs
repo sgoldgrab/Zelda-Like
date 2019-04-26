@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyDormantEffects : MonoBehaviour
 {
+    public UnityEvent spell;
+
     private Rigidbody2D rb2D;
 
     private GameObject player;
