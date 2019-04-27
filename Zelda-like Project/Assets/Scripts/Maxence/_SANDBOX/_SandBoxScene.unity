@@ -3480,7 +3480,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  attackMoveSpeed: 0
+  attackMoveSpeed: 0.5
 --- !u!114 &2011051038
 MonoBehaviour:
   m_ObjectHideFlags: 0

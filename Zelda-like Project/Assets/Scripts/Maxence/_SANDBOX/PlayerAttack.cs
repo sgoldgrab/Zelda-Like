@@ -35,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
 
         AttackDirection();
 
+        if (attackMove) { Debug.Log(transformPos + " " + attackPos); Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed); }
+
         Attack();
     }
 
@@ -65,8 +67,6 @@ public class PlayerAttack : MonoBehaviour
 
                 attackCoolDown = startAttackCoolDown;
             }
-
-            if (attackMove) { Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed); }
         }
 
         else

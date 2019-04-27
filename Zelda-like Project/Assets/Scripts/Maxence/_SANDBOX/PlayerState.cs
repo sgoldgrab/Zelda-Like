@@ -7,6 +7,9 @@ public class PlayerState : EntityState
     [SerializeField] private PlayerAnims playerAnims;
     [SerializeField] private EntityUI playerUI;
 
+    public bool isImmune { get; set; } = false;
+    public int damageCount { get; private set; }
+
     void Update() // TESTING ONLY
     {
         //TestMethod();
@@ -14,7 +17,7 @@ public class PlayerState : EntityState
 
     public override void TakeDamage(int dmg)
     {
-        if (health <= 0) { return; }
+        if (health <= 0 || isImmune) { damageCount++; return; }
 
         playerUI.UITakeDamage(health, dmg);
 

@@ -19,6 +19,7 @@ TagManager:
   - Spell3
   - EnemyHealthBar
   - PlayerSprite
+  - Interactable
   layers:
   - Default
   - TransparentFX
