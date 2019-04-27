@@ -7,11 +7,12 @@ public class Pot1Spe1 : MonoBehaviour
     //1 dégâts aux ennemis touchés, 1 de heal au player pour chaque ennemi touché ; works just fine
 
     #region Variables
-    private Health playerHealth;
 
     private GameObject player;
 
-    private Health enemyHealth;
+    private EnemyState enemyHealth;
+
+    private PlayerState healthScript;
 
     public int enemyCount = 0;
 
@@ -25,7 +26,7 @@ public class Pot1Spe1 : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        playerHealth = player.GetComponent<PlayerStatistics>().healthStats;
+        healthScript = player.GetComponent<PlayerState>();
 
     }
 
@@ -37,7 +38,7 @@ public class Pot1Spe1 : MonoBehaviour
 
             enemyHit = true;
 
-            enemyHealth = enemy.GetComponent<TemplarStatistics>().healthStats;
+            enemyHealth = enemy.GetComponent<EnemyState>();
 
             enemyCount += 1;
 
@@ -46,7 +47,7 @@ public class Pot1Spe1 : MonoBehaviour
             while(enemyCount > 0)
             {
 
-                playerHealth.TakeHeal(1);
+                healthScript.TakeHeal(1);
 
                 enemyCount--;
 

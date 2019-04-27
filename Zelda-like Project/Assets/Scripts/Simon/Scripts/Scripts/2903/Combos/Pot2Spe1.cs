@@ -7,7 +7,7 @@ public class Pot2Spe1 : MonoBehaviour
     //2 dégâts aux ennemis touchés ; works just fine
 
     #region Variables
-    private Health healthScript;
+    private EnemyState enemyHealth;
 
     private bool enemyHit = false;
 
@@ -22,9 +22,9 @@ public class Pot2Spe1 : MonoBehaviour
 
             enemyHit = true;
 
-            healthScript = enemy.GetComponent<TemplarStatistics>().healthStats;
+            enemyHealth = enemy.GetComponent<EnemyState>();
 
-            healthScript.TakeDamage(2);
+            enemyHealth.TakeDamage(2);
 
             Destroy(gameObject);
 

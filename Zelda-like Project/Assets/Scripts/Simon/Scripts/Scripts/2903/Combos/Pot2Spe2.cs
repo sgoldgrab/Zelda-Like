@@ -7,7 +7,7 @@ public class Pot2Spe2 : MonoBehaviour
     //pull les ennemis touchés au centre et les stun l ; works fine mais faudra trouver un meilleur moyen de stun
 
     #region Variables
-    private EnemyStats enemyScript;
+    private EnemyState enemyState;
 
     private bool enemyHit = false;
 
@@ -22,7 +22,7 @@ public class Pot2Spe2 : MonoBehaviour
 
             enemyHit = true;
 
-            enemyScript = enemy.GetComponent<TemplarStatistics>().otherStats;
+            enemyState = enemy.GetComponent<EnemyState>();
 
             Rigidbody2D rb2D = enemy.GetComponent<Rigidbody2D>();
 
@@ -37,9 +37,7 @@ public class Pot2Spe2 : MonoBehaviour
     IEnumerator ComboEffect(float time)
     {
 
-        float temper = enemyScript.movementSpeed;
-
-        enemyScript.movementSpeed = 0;
+        //enemyState.isStunned = true; AJOUTER LA BOOL IS STUNNED A PLAYER STATE OU SUR UN AUTRE SCRIPT
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
 
@@ -51,7 +49,7 @@ public class Pot2Spe2 : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-        enemyScript.movementSpeed = temper;
+        //enemyState.isStunned = false;
 
         Destroy(gameObject);
 

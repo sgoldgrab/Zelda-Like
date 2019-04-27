@@ -8,7 +8,7 @@ public class Mist : MonoBehaviour
     #region Variables
     private PlayerStance stancesScript;
 
-    private PlayerStats statsScript;
+    private PlayerMovement movemenentScript;
     #endregion
 
     private void OnTriggerEnter2D(Collider2D player)
@@ -19,11 +19,11 @@ public class Mist : MonoBehaviour
 
             stancesScript = player.GetComponent<PlayerStance>();
 
-            statsScript = player.GetComponent<PlayerStatistics>().otherStats;
+            movemenentScript = player.GetComponent<PlayerMovement>();
 
-            stancesScript.switchIsPossible = false;
+            //stancesScript.canSwitch = false; AJOUTER LE BOOL CAN SWITCH AU SCRIPT PLAYER STANCE
 
-            statsScript.movementSpeed *= 0.7f;
+            movemenentScript.playerSpeed *= 0.7f;
 
         }
 
@@ -35,9 +35,9 @@ public class Mist : MonoBehaviour
         if(player.CompareTag("Player"))
         {
 
-            stancesScript.switchIsPossible = true;
+            //stancesScript.canSwitch = true;
 
-            statsScript.movementSpeed /= 0.7f;
+            movemenentScript.playerSpeed /= 0.7f;
 
         }
 

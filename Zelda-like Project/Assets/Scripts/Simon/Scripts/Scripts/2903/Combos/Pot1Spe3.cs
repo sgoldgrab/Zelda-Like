@@ -7,7 +7,8 @@ public class Pot1Spe3 : MonoBehaviour
     //augmente les vitesses d'attaque et de déplacement du player ; works just fine
 
     #region Variables
-    private PlayerStats playerScript;
+    private PlayerMovement movementsScript;
+    private PlayerAttack attackScript;
 
     private bool enemyHit = false;
 
@@ -22,7 +23,8 @@ public class Pot1Spe3 : MonoBehaviour
 
             enemyHit = true;
 
-            playerScript = player.GetComponent<PlayerStatistics>().otherStats;
+            movementsScript = player.GetComponent<PlayerMovement>();
+            attackScript = player.GetComponent<PlayerAttack>();
 
             StartCoroutine(ComboEffect(8f));
 
@@ -33,9 +35,9 @@ public class Pot1Spe3 : MonoBehaviour
     IEnumerator ComboEffect(float time)
     {
 
-        playerScript.attackSpeed *= 2;
+        //attackScript.attackSpeed *= 2; AJOUTER LA FLOAT ATTACK SPEED DANS PLAYER ATTACK
 
-        playerScript.movementSpeed *= 2;
+        movementsScript.playerSpeed *= 2;
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
 
@@ -47,9 +49,9 @@ public class Pot1Spe3 : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-        playerScript.attackSpeed /= 2;
+        //attackScript.attackSpeed /= 2; 
 
-        playerScript.movementSpeed /= 2;
+        movementsScript.playerSpeed /= 2;
 
         Destroy(gameObject);
 

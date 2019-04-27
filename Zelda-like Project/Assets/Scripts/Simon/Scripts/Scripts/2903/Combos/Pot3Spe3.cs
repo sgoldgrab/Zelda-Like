@@ -15,7 +15,7 @@ public class Pot3Spe3 : MonoBehaviour
     */
 
     #region Variables
-    private Health healthScript;
+    private PlayerState healthScript;
 
     private float timer = 6f;
     #endregion
@@ -26,12 +26,13 @@ public class Pot3Spe3 : MonoBehaviour
         if(player.CompareTag("Player"))
         {
 
-            healthScript = player.GetComponent<PlayerStatistics>().healthStats;
+            healthScript = player.GetComponent<PlayerState>();
 
-            if (healthScript.damageAbsorbed < 4)
+            /*
+            if (healthScript.damageAbsorbed < 4) AJOUTER LA INT DAMAGE ABSORBED DANS PLAYER STATE
             {
 
-                healthScript.isImmune = true;
+                healthScript.isImmune = true; AJOUTEZ LA BOOL IS IMMUNE DANS PLAYER STATE
 
             }
 
@@ -45,6 +46,7 @@ public class Pot3Spe3 : MonoBehaviour
                 Destroy(gameObject);
 
             }
+            */
 
         }
 
@@ -56,7 +58,7 @@ public class Pot3Spe3 : MonoBehaviour
         if(player.CompareTag("Player"))
         {
 
-            healthScript.isImmune = false;
+            //healthScript.isImmune = false;
 
         }
 
@@ -70,9 +72,9 @@ public class Pot3Spe3 : MonoBehaviour
         if(timer <= 0)
         {
 
-            healthScript.isImmune = false;
+            //healthScript.isImmune = false;
 
-            healthScript.damageAbsorbed = 0; //ça ça se fait bien, communication ok entre les scripts
+            //healthScript.damageAbsorbed = 0; //ça ça se fait bien, communication ok entre les scripts
 
             Destroy(gameObject);
 

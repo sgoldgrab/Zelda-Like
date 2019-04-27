@@ -17,13 +17,15 @@ public class Checkpoint : MonoBehaviour
         if(player.CompareTag("Player") && !hasChecked)
         {
 
-            PlayerDeath deathScript = gameController.GetComponent<PlayerDeath>();
+            /*
+            PlayerDeath deathScript = gameController.GetComponent<PlayerDeath>(); GERER LA MORT DU JOUEUR
 
             deathScript.checkPoint = true;
 
             deathScript.checkPointSpawn = this.gameObject;
 
             hasChecked = true;
+            */
 
         }
 

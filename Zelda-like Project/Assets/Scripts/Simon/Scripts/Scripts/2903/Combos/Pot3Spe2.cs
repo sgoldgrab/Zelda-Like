@@ -7,7 +7,7 @@ public class Pot3Spe2 : MonoBehaviour
     //révèle les ennemis touchés et les ralentis ; works just fine
 
     #region Variables
-    private EnemyStats enemyScript;
+    //private ??? enemyMovements; JE SAIS PAS OU EST STOCKEE LA MOVE SPEED DE L'ENNEMI
 
     private Invisible invisibleScript;
 
@@ -24,7 +24,7 @@ public class Pot3Spe2 : MonoBehaviour
 
             enemyHit = true;
 
-            enemyScript = enemy.GetComponent<TemplarStatistics>().otherStats;
+            //enemyMovements = enemy.GetComponent<???>();
 
             invisibleScript = enemy.GetComponent<Invisible>();
 
@@ -37,7 +37,7 @@ public class Pot3Spe2 : MonoBehaviour
     IEnumerator ComboEffect(float timer)
     {
 
-        enemyScript.movementSpeed /= 2;
+        //enemyMovements.movementSpeed /= 2;
 
         invisibleScript.enabled = false;
 
@@ -51,7 +51,7 @@ public class Pot3Spe2 : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
 
-        enemyScript.movementSpeed *= 2;
+        //enemyMovements.movementSpeed *= 2;
 
         invisibleScript.enabled = true;
 

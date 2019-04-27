@@ -6,8 +6,10 @@ public class CharmOfRenewal : PickUp
 {
     //Heals the player every 2 second during 6 seconds, but locks him in his current stance during the effect
 
+    #region Variables
     private PlayerState healthScript;
     private PlayerStance stanceScript;
+    #endregion
 
     public override void Consume()
     {
@@ -19,13 +21,13 @@ public class CharmOfRenewal : PickUp
 
     IEnumerator CharmEffect(float time, int healingAmount)
     {
-        //stanceScript.canSwitch = false;
+        //stanceScript.canSwitch = false; AJOUTER LA BOOL CAN SWITCH SUR LE SCXRIPT PLAYER STANCE
         yield return new WaitForSeconds(time);
-        //healthScript.TakeHeal(healingAmount);
+        healthScript.TakeHeal(healingAmount);
         yield return new WaitForSeconds(time);
-        //healthScript.TakeHeal(healingAmount);
+        healthScript.TakeHeal(healingAmount);
         yield return new WaitForSeconds(time);
-        //healthScript.TakeHeal(healingAmount);
+        healthScript.TakeHeal(healingAmount);
         //stanceScript.canSwitch = true;
         Destroy(this);
     }

@@ -8,12 +8,10 @@ public class PickUpScript : MonoBehaviour
     #region Variables
     private Inventory inventoryScript;
 
-    public PlayerStats statsScript;
-
-    public Health healthScript;
+    public GameObject player;
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D player)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         
         if(player.CompareTag("Player"))
@@ -21,17 +19,13 @@ public class PickUpScript : MonoBehaviour
 
             inventoryScript = player.GetComponent<Inventory>();
 
-            statsScript = player.GetComponent<PlayerStatistics>().otherStats;
-
-            healthScript = player.GetComponent<PlayerStatistics>().healthStats;
+            player = other.GetComponent<GameObject>();
         
             
-            if(inventoryScript.currentSlotsTaken < inventoryScript.consumables.Length)
+            if(inventoryScript.currentSlotsTaken < inventoryScript.consumables.Count)
             {
 
                 inventoryScript.consumables[inventoryScript.firstAvailable] = gameObject;
-                
-                //inventoryScript.consumables[inventoryScript.currentSlotsTaken] = gameObject; //NOPE
 
                 inventoryScript.currentSlotsTaken++;
                 inventoryScript.firstAvailable++;
