@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextTrigger : MonoBehaviour
 {
     public GameObject textePourObjet;
     public GameObject buttonTexte;
+
 
     //public bool isTrigger;
 
@@ -14,31 +16,33 @@ public class TextTrigger : MonoBehaviour
         textePourObjet.SetActive(false);
         buttonTexte.SetActive(false);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D player)
     {
-        Debug.Log("Touché");
-
         if (player.gameObject.tag == "Player")
-        {
-            Debug.Log("Double Touché");
-            buttonTexte.SetActive(true);
+        {           
+            buttonTexte.SetActive(true);           
         }
     }
 
-    IEnumerator WaitForSec()
+    /*IEnumerator WaitForSec()
     {
         yield return new WaitForSeconds(5);
         textePourObjet.SetActive(false);
         Debug.Log("Jesus meurt");
-    }
+    }*/
 
     public void DisplayText()
     {
+        buttonTexte.SetActive(false);
         textePourObjet.SetActive(true);
-        StartCoroutine("WaitForSec");
-        Debug.Log("Naissance de la bible");
+        if (Input.GetKeyDown("space"))
+        {
+            textePourObjet.SetActive(false);     //En gros l'idée était que quand le joueur appui sur un bouton ça remet le texte en false
+        }
     }
+
+    
 
     /*private void Update()
     {

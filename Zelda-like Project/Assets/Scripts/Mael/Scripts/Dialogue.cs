@@ -10,15 +10,27 @@ public class Dialogue : MonoBehaviour
     private int index;
     public float typingSpeed;
 
+    public GameObject Dialogue1SettingItFalse;
     public GameObject nextButton;
+    public GameObject backgroundTexte;
+
+
 
     private void Start()
     {
-        StartCoroutine(Type());
+        Dialogue1SettingItFalse.SetActive(false);
     }
+
+    public void Dialogue1()
+    {
+        StartCoroutine(Type());
+        Dialogue1SettingItFalse.SetActive(true);
+    }
+
 
     IEnumerator Type()
     {
+        Debug.Log("Euh gros ça va?");
         foreach(char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
@@ -28,7 +40,7 @@ public class Dialogue : MonoBehaviour
 
     private void Update()
     {
-        if(textDisplay.text == sentences[index])
+        if (textDisplay.text == sentences[index])
         {
             nextButton.SetActive(true);
         }
@@ -36,9 +48,10 @@ public class Dialogue : MonoBehaviour
 
     public void NextSentence()
     {
+        Debug.Log("NEXT SENTENCE HAHA");
         nextButton.SetActive(false);
 
-        if(index < sentences.Length - 1)
+        if (index < sentences.Length - 1)
         {
             index++;
             textDisplay.text = "";
@@ -48,6 +61,8 @@ public class Dialogue : MonoBehaviour
         {
             textDisplay.text = "";
             nextButton.SetActive(false);
+            backgroundTexte.SetActive(false);
         }
     }
 }
+
