@@ -41,6 +41,14 @@ public class PlayerAbilities : MonoBehaviour
     private float posY;
     [SerializeField] private float aimDistance;
 
+    //Bools
+    public bool canUseAbility { get; set; } = true;
+
+    //PotionsEffects
+    [SerializeField] private List<PotionsEffects> potionsEffects;
+    [SerializeField] private int[] potionsValues;
+    [SerializeField] private float[] potionsDurations;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -64,7 +72,7 @@ public class PlayerAbilities : MonoBehaviour
 
         CoolDown();
 
-        InputManager();
+        if (canUseAbility) { InputManager(); }
     }
 
     void InputManager()
@@ -209,7 +217,8 @@ public class PlayerAbilities : MonoBehaviour
                 //playerMovement.canMove = false; --> probably an animation with a function stopMove() and recover() at the first and last frames
 
                 Debug.Log("ça fait du bien par où ça passe !"); //drinks the potion
-                //potionEffect[index];
+
+                potionsEffects[index].Effect(potionsValues[index], potionsDurations[index]);
             }
 
             else if (drinkTimer >= 0.0f) //if the player hasn't pressed the button yet

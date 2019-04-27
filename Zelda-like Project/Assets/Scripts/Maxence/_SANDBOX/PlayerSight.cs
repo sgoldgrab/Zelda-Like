@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerSight : MonoBehaviour
 {
-    private float sightZoneRadius;
+    public float sightZoneRadius { get; set; }
 }

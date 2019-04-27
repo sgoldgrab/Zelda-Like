@@ -30,6 +30,7 @@ public class EnemyState : EntityState
     //STATES
     public bool enemyCanMove { get; set; } = true;
     public bool enemyCanUseSkill { get; set; } = true;
+    public bool isStunned { get; set; } = false;
 
     void Start()
     {
@@ -59,7 +60,6 @@ public class EnemyState : EntityState
         if (health <= 0)
         {
             foreach (Collider2D col in enemyCollider) { col.enabled = false; }
-            //enemySpawner.enemiesAlive -= 1;
             enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
 
             return;

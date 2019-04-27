@@ -8,7 +8,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerAnims playerAnims;
 
     [SerializeField] private int swordDamage;
-    public int attackDamage { get; private set; }
+    public int attackDamage { get; set; }
+
+    public bool canAttack { get; set; } = true;
 
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRadius;
@@ -18,11 +20,15 @@ public class PlayerAttack : MonoBehaviour
 
     private float attackCoolDown;
     [SerializeField] private float startAttackCoolDown;
+    public float attackCoolDownSpeed { get => startAttackCoolDown; set => startAttackCoolDown = value; } // constructor for combo P1S3 (attack speed)
 
     [SerializeField] private LayerMask enemyLayerMask; // to replace in EnemyState (possible)
 
     [SerializeField] private float attackMoveSpeed;
     private bool attackMove = false;
+
+    //Test New Move
+    public float attackMoveDistance { get; set; }
 
     void Start()
     {
@@ -57,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackCoolDown <= 0.1f)
         {
-            if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Mouse0)) // initialize an attack
+            if (Input.GetButtonDown("Fire2") && canAttack) // initialize an attack
             {
                 attackMove = true;
 
@@ -85,7 +91,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (enemyList[i] is BoxCollider2D)
             {
-                //enemyList[i].GetComponent<Templar>().templarIsHit = true;
                 enemyList[i].transform.parent.GetComponentInParent<EnemyState>().TakeDamage(attackDamage);
             }
         }

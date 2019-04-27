@@ -50,8 +50,6 @@ public class SwordAttackSkill : Skill
 
     void SwordAttack()
     {
-        Debug.Log("ok");
-
         if (rate > 0)
         {
             if (attackWaitRate <= 0.1f)

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3544258004084273381}
   - component: {fileID: 225477365491230973}
   - component: {fileID: 5981641202545805816}
-  - component: {fileID: 4801096196879486089}
+  - component: {fileID: 5811919212674576551}
   m_Layer: 0
   m_Name: P2S2
   m_TagString: Untagged
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4801096196879486089
+--- !u!114 &5811919212674576551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8130630827743236345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84f390314c272dd47b8e3f819473c27d, type: 3}
+  m_Script: {fileID: 11500000, guid: b7be8571a0214564ca65a0b19c258d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

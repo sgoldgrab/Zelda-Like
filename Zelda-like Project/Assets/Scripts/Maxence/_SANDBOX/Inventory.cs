@@ -41,11 +41,13 @@ public class Inventory : MonoBehaviour
     public List<GameObject> consumables { get; private set; }
     [SerializeField] private string consumeInputName;
 
+    public bool canUseConsumable { get; set; } = true;
+
     void Update()
     {
         for (int z = 0; z < 3; z++)
         {
-            if (Input.GetButtonDown(consumeInputName + (z + 1).ToString())) { UseConsumable(z); }
+            //if (Input.GetButtonDown(consumeInputName + (z + 1).ToString()) && canUseConsumable) { UseConsumable(z); }
         }
     }
 

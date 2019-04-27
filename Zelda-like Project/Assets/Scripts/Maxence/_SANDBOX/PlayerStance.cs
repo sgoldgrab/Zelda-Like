@@ -8,14 +8,15 @@ public class PlayerStance : MonoBehaviour
     public string input { get => stanceInput; private set => stanceInput = value; }
 
     public enum Stance { stance1, stance2 };
-
     public Stance whatStance { get; private set; } = Stance.stance1;
+
+    public bool canSwitch { get; set; } = true;
 
     [SerializeField] private GameObject postProcess;
 
     void Update()
     {
-        if (Input.GetButtonDown(stanceInput))
+        if (Input.GetButtonDown(stanceInput) && canSwitch)
         {
             if (whatStance == Stance.stance1) //switch to stance 2
             {

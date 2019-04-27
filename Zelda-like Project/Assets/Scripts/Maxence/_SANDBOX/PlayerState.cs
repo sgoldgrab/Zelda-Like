@@ -8,11 +8,11 @@ public class PlayerState : EntityState
     [SerializeField] private EntityUI playerUI;
 
     public bool isImmune { get; set; } = false;
-    public int damageCount { get; private set; }
+    public int damageCount { get; set; } = 0;
 
     void Update() // TESTING ONLY
     {
-        //TestMethod();
+        TestMethod();
     }
 
     public override void TakeDamage(int dmg)
