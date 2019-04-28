@@ -6,7 +6,6 @@ public class FleeBehavior : Behavior
 {
     private Vector2 desiredPosition;
     [SerializeField] private float distance;
-    [SerializeField] private float fleeSpeed;
     [SerializeField] private float safeDistance;
 
     public float waitTime { get; private set; } = 0.0f;
@@ -19,7 +18,7 @@ public class FleeBehavior : Behavior
 
     public override void EnemyBehavior()
     {
-        transform.position = Vector2.MoveTowards(transform.position, desiredPosition, fleeSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, desiredPosition, enemyBaseSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, desiredPosition) <= 0.0f)
         {

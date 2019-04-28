@@ -7,7 +7,6 @@ public class ComboP1S1 : MonoBehaviour
     //1 dégâts aux ennemis touchés, 1 de heal au player pour chaque ennemi touché ; works just fine --> /!\ NOT YET /!\
 
     private GameObject player;
-    private EnemyState enemyState;
     private PlayerState playerState;
 
     private int enemyCount = 0;
@@ -37,14 +36,18 @@ public class ComboP1S1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject enemy = other.transform.parent.parent.gameObject;
+        List<GameObject> enemyList = new List<GameObject>();
 
-        if (enemy.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
+            GameObject enemy = other.transform.parent.parent.gameObject;
+
+            enemyList.Add(enemy);
+
             isTrigger = true;
 
-            enemyState = enemy.GetComponent<EnemyState>();
-            enemyState.TakeDamage(1);
+            /*
+            enemy.GetComponent<EnemyState>().TakeDamage(1);
 
             enemyCount += 1;
 
@@ -55,6 +58,17 @@ public class ComboP1S1 : MonoBehaviour
                 playerState.TakeHeal(1);
 
                 enemyCount--;
+            }
+            */
+        }
+
+        if (isTrigger)
+        {
+            foreach (GameObject foe in enemyList)
+            {
+                foe.GetComponent<EnemyState>().TakeDamage(1);
+
+                playerState.TakeHeal(1);
             }
 
             Destroy(gameObject);

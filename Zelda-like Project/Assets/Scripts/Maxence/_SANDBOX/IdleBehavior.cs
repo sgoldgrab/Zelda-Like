@@ -13,8 +13,6 @@ public class IdleBehavior : Behavior
 
     [SerializeField] private EnemyAnims enemyAnims;
 
-    [SerializeField] private float enemyIdleSpeed = 0.5f;
-
     void Start()
     {
         waitTime = startWaitTime;
@@ -46,7 +44,7 @@ public class IdleBehavior : Behavior
         else if (enemyState.enemyCanMove) // else and if the enemy can move...
         {
             enemyAnims.MoveAnim(true);
-            transform.position = Vector2.MoveTowards(transform.position, checkpoint, enemyIdleSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, checkpoint, enemyBaseSpeed * Time.deltaTime);
         }
     }
 }

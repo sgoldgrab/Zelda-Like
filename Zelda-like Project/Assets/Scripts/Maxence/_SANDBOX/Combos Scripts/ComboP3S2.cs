@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ComboP3S2 : MonoBehaviour
 {
-    //private ??? enemyMovements; JE SAIS PAS OU EST STOCKEE LA MOVE SPEED DE L'ENNEMI --> OUI JE SAIS COMMENT FAIRE (P-E)
+    // 
+
+    private Behavior behavior;
 
     //private Invisible invisibleScript;
 
@@ -27,13 +29,13 @@ public class ComboP3S2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.tag == "Enemy")
         {
             GameObject enemy = other.transform.parent.parent.gameObject;
 
             isTrigger = true;
 
-            //enemyMovements = enemy.GetComponent<???>();
+            behavior = enemy.GetComponent<EnemyBehaviorsManager>().enemyMovement;
 
             //invisibleScript = enemy.GetComponent<Invisible>();
 
@@ -43,7 +45,7 @@ public class ComboP3S2 : MonoBehaviour
 
     IEnumerator ComboEffect(float timer)
     {
-        //enemyMovements.movementSpeed /= 2;
+        behavior.enemyGlobalSpeed /= 2;
 
         //invisibleScript.enabled = false;
 
@@ -52,12 +54,10 @@ public class ComboP3S2 : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
 
-        //enemyMovements.movementSpeed *= 2;
+        behavior.enemyGlobalSpeed *= 2;
 
         //invisibleScript.enabled = true;
 
         Destroy(gameObject);
     }
-
-    
 }

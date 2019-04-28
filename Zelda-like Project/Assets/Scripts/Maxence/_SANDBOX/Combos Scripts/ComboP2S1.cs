@@ -6,8 +6,6 @@ public class ComboP2S1 : MonoBehaviour
 {
     //2 dégâts aux ennemis touchés ; works just fine --> /!\ NOT YET /!\ --> same as ComboP1S1
 
-    private EnemyState enemyState;
-
     private bool isTrigger = false;
 
     private float timer = 0.25f;
@@ -27,16 +25,36 @@ public class ComboP2S1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject enemy = other.transform.parent.parent.gameObject;
+        List<GameObject> enemyList = new List<GameObject>();
 
-        if (enemy.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            isTrigger = true;
+            GameObject enemy = other.transform.parent.parent.gameObject;
 
-            enemyState = enemy.GetComponent<EnemyState>();
-            enemyState.TakeDamage(2);
+            enemyList.Add(enemy);
+
+            isTrigger = true;
+        }
+
+        if (isTrigger)
+        {
+            foreach (GameObject foe in enemyList)
+            {
+                foe.GetComponent<EnemyState>().TakeDamage(2);
+            }
 
             Destroy(gameObject);
         }
+
+        /*if (other.CompareTag("Enemy"))
+        {
+            GameObject enemy = other.transform.parent.parent.gameObject;
+
+            isTrigger = true;
+
+            enemy.GetComponent<EnemyState>().TakeDamage(2);
+
+            Destroy(gameObject);
+        }*/
     }
 }

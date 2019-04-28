@@ -18,6 +18,9 @@ public abstract class Behavior : MonoBehaviour
     public abstract void EnemyBehavior();
 
     [SerializeField] protected EnemyState enemyState;
+
+    [SerializeField] protected float enemyBaseSpeed;
+    public float enemyGlobalSpeed { get => enemyBaseSpeed; set => enemyBaseSpeed = value; }
 }
 
 public abstract class ConditionedBehavior : Behavior
@@ -64,6 +67,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     [SerializeField] private Behavior moveIdleBehavior;
     [SerializeField] private Behavior moveCombatBehavior;
+    public Behavior enemyMovement { get => moveCombatBehavior; set => moveCombatBehavior = value; }
 
     [SerializeField] private float startGeneralCooldown;
     public float generalCooldown { get; private set; } = 0.0f;

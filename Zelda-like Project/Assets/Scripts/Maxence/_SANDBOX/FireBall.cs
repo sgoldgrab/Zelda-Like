@@ -32,9 +32,9 @@ public class FireBall : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            GameObject theGameObject = other.transform.parent.parent.gameObject;
+            GameObject player = other.transform.parent.parent.gameObject;
 
-            theGameObject.GetComponent<PlayerState>().TakeDamage(damage);
+            player.GetComponent<PlayerState>().TakeDamage(damage);
 
             ExplosionAnim();
         }

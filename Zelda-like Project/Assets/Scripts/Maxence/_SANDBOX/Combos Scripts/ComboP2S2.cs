@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComboP2S2 : MonoBehaviour
 {
-    //pull les ennemis touchés au centre et les stun l ; works fine mais faudra trouver un meilleur moyen de stun --> /!\ NOT WORKING /!\
+    //pull les ennemis touchés au centre et les stun ; works fine mais faudra trouver un meilleur moyen de stun --> /!\ NOT WORKING /!\
 
     private EnemyState enemyState;
 

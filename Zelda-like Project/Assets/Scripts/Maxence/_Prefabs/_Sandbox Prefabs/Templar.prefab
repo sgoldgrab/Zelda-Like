@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5906008889863754852}
+  enemyBaseSpeed: 0
   conditions: 00000000
   conditionInfos:
   - conditionType: 0
@@ -42,9 +43,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5906008889863754852}
+  enemyBaseSpeed: 0.5
   enemyAnims: {fileID: 5906008888837242034}
   minDist: 0.5
-  chaseSpeed: 0.5
 --- !u!114 &1819417467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,13 +59,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5906008889863754852}
+  enemyBaseSpeed: 0.5
   startWaitTime: 4
   minX: -2
   maxX: 2
   minY: -2
   maxY: 2
   enemyAnims: {fileID: 5906008888837242034}
-  enemyIdleSpeed: 0.5
 --- !u!1001 &1603009619815466500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +77,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Templar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: moveIdleBehavior
+      value: 
+      objectReference: {fileID: 1819417467}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: moveCombatBehavior
+      value: 
+      objectReference: {fileID: 1819417466}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 1819417465}
+    - target: {fileID: 5172756952916316775, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
@@ -132,31 +158,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316775, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: skills.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: moveIdleBehavior
-      value: 
-      objectReference: {fileID: 1819417467}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: moveCombatBehavior
-      value: 
-      objectReference: {fileID: 1819417466}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: skills.Array.data[0]
-      value: 
-      objectReference: {fileID: 1819417465}
     - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: skillsAnimationMethods.Array.size
@@ -167,11 +168,6 @@ PrefabInstance:
       propertyPath: skillsAnimationMethods.Array.data[0]
       value: 
       objectReference: {fileID: 1819417465}
-    - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 0521f9b7242469b40a33f52e468eed9b, type: 2}
     - target: {fileID: 5172756951906646704, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Sprite
@@ -193,6 +189,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0521f9b7242469b40a33f52e468eed9b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bb5bf4693df852459ef9f5d89a58b73, type: 3}
 --- !u!1 &5906008889863754853 stripped

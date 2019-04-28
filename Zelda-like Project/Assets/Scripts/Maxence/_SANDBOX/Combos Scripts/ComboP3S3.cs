@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComboP3S3 : MonoBehaviour
 {
-    //crée une smoke qui rend le joueur insensible ; je sais pas comment incrémenter cette petite salope de damageCount
+    //crée une smoke qui rend le joueur insensible ; --> WORKS FINE --> CONFIRMED
 
     /*
     [TagSelector]
@@ -25,7 +25,7 @@ public class ComboP3S3 : MonoBehaviour
         if (timer <= 0)
         {
             playerState.isImmune = false;
-            playerState.damageCount = 0; //ça ça se fait bien, communication ok entre les scripts
+            playerState.damageCount = 0;
 
             Destroy(gameObject);
         }
@@ -44,7 +44,7 @@ public class ComboP3S3 : MonoBehaviour
                 playerState.isImmune = true;
             }
 
-            else if (playerState.damageCount >= 4) //on voit bien la variable augmenter dans l'inspector mais ce else if ne se fait jamais, ce fils de pute
+            else if (playerState.damageCount >= 4)
             {
                 playerState.isImmune = false;
                 playerState.damageCount = 0;
@@ -58,8 +58,6 @@ public class ComboP3S3 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject player = other.transform.parent.parent.gameObject;
-
             playerState.isImmune = false;
         }
     }
