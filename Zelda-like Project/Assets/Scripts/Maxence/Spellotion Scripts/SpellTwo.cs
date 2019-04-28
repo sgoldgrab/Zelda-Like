@@ -8,13 +8,9 @@ public class SpellTwo : MonoBehaviour
 
     [SerializeField] private float timer;
 
-    private DormantEnemy dormantEnemyScript;
-
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-
-        //penser à lancer l'anim si y'a besoin
     }
 
     private void Update()
@@ -29,11 +25,11 @@ public class SpellTwo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Templar")) //Faudra mettre le tag "Enemy" sur tous les ennemis
+        if (other.CompareTag("Enemy")) //Faudra mettre le tag "Enemy" sur tous les ennemis
         {
-            dormantEnemyScript = other.gameObject.GetComponent<DormantEnemy>();
+            //dormantEnemyScript = other.gameObject.GetComponent<DormantEnemy>();
 
-            dormantEnemyScript.Spell2Effect();
+            //dormantEnemyScript.Spell2Effect();
         }
 
         if (other.CompareTag("Potion1") || other.CompareTag("Potion2"))

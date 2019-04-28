@@ -3804,6 +3804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f371c2a29a4d74fb6256deae5a9050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightZone: 1
 --- !u!114 &2011051046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3817,7 +3818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   releaseTime: 0.2
-  drinkTime: 0.3
+  drinkTime: 0.4
   spells:
   - {fileID: 203697685894185085, guid: 44322fb4bced7c14aa58024315a5822a, type: 3}
   - {fileID: 1807790849097075692, guid: 74d266069da07d1499605e6c57c838d8, type: 3}
@@ -3842,7 +3843,19 @@ MonoBehaviour:
   - 2
   - 2
   - 2
-  aimDistance: 1
+  aimDistances:
+  - 1
+  - 1
+  - 1
+  - 3
+  potionsEffects: {fileID: 2011051043}
+  potionsStats:
+  - potionValue: 1
+    potionDuration: 1
+  - potionValue: 1
+    potionDuration: 4
+  - potionValue: 1
+    potionDuration: 4
 --- !u!1 &2077036289
 GameObject:
   m_ObjectHideFlags: 0

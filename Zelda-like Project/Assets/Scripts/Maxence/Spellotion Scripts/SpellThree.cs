@@ -34,12 +34,4 @@ public class SpellThree : MonoBehaviour
 
         Destroy(gameObject);
     }
-
-    private void OnTriggerEnter2D(Collider2D other) //inutile
-    {
-        if (other.CompareTag("Potion1") || other.CompareTag("Potion2"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }

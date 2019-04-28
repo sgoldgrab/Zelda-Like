@@ -27,10 +27,10 @@ public class ComboP3S2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject enemy = other.transform.parent.parent.gameObject;
-
-        if (enemy.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
+            GameObject enemy = other.transform.parent.parent.gameObject;
+
             isTrigger = true;
 
             //enemyMovements = enemy.GetComponent<???>();

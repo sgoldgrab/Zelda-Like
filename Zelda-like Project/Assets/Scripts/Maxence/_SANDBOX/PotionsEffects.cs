@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PotionsEffects : MonoBehaviour
+public class PotionsEffects : MonoBehaviour
 {
     protected PlayerState playerState;
     protected PlayerAttack playerAttack;
@@ -15,62 +15,44 @@ public abstract class PotionsEffects : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
     }
 
-    public abstract void Effect(int value, float time);
-}
-
-public class Potion1Effect : PotionsEffects
-{
-    public override void Effect(int value, float time)
+    public void Effect(int value, float time, int index)
     {
-        StartCoroutine(EffectPotOne(value, time));
+        StartCoroutine(PotionEffect(value, time, index));
     }
 
-    IEnumerator EffectPotOne(int healingValue, float time)
+    IEnumerator PotionEffect(int value, float time, int index)
     {
-        yield return new WaitForSeconds(time);
+        if (index == 0) // Potion 1
+        {
+            yield return new WaitForSeconds(time);
 
-        playerState.TakeHeal(healingValue);
+            playerState.TakeHeal(value);
 
-        yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time);
 
-        playerState.TakeHeal(healingValue);
+            playerState.TakeHeal(value);
 
-        yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time);
 
-        playerState.TakeHeal(healingValue);
-    }
-}
+            playerState.TakeHeal(value);
+        }
 
-public class Potion2Effect : PotionsEffects
-{
-    public override void Effect(int value, float time)
-    {
-        StartCoroutine(EffectPotTwo(value, time));
-    }
+        if (index == 1) // Potion 2
+        {
+            playerAttack.attackDamage += value;
 
-    IEnumerator EffectPotTwo(int boostValue, float time)
-    {
-        playerAttack.attackDamage += boostValue;
+            yield return new WaitForSeconds(time);
 
-        yield return new WaitForSeconds(time);
+            playerAttack.attackDamage -= value;
+        }
 
-        playerAttack.attackDamage -= boostValue;
-    }
-}
+        if (index == 2) // Potion 3
+        {
+            playerSight.sightZoneRadius += value;
 
-public class Potion3Effect : PotionsEffects
-{
-    public override void Effect(int value, float time)
-    {
-        StartCoroutine(EffectPotThree(value, time));
-    }
+            yield return new WaitForSeconds(time);
 
-    IEnumerator EffectPotThree(int boostValue, float time)
-    {
-        playerSight.sightZoneRadius += boostValue;
-
-        yield return new WaitForSeconds(time);
-
-        playerSight.sightZoneRadius -= boostValue;
+            playerSight.sightZoneRadius -= value;
+        }
     }
 }

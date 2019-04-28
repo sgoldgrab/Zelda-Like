@@ -35,19 +35,26 @@ public class PlayerAbilities : MonoBehaviour
 
     private PlayerMovement playerMovement;
 
+    //AimBlueprint
     private Vector2 transformPos;
     public Vector2 aimPos { get; private set; }
     private float posX;
     private float posY;
-    [SerializeField] private float aimDistance;
+    [SerializeField] private float[] aimDistances;
 
     //Bools
     public bool canUseAbility { get; set; } = true;
 
-    //PotionsEffects
-    [SerializeField] private List<PotionsEffects> potionsEffects;
-    [SerializeField] private int[] potionsValues;
-    [SerializeField] private float[] potionsDurations;
+    //PotionsDrinkEffects
+    [System.Serializable]
+    public class PotionsStats
+    {
+        public int potionValue;
+        public float potionDuration;
+    }
+
+    [SerializeField] private PotionsEffects potionsEffects;
+    [SerializeField] private List<PotionsStats> potionsStats;
 
     void Start()
     {
@@ -114,7 +121,7 @@ public class PlayerAbilities : MonoBehaviour
 
             if (inputPressed)
             {
-                Ability(index, true, aimDistance);
+                Ability(index, true, aimDistances[0]);
             }
         }
 
@@ -155,7 +162,7 @@ public class PlayerAbilities : MonoBehaviour
 
             if (inputPressed)
             {
-                Ability(index, false, aimDistance);
+                Ability(index, false, aimDistances[index + 1]);
             }
         }
     }
@@ -218,7 +225,7 @@ public class PlayerAbilities : MonoBehaviour
 
                 Debug.Log("ça fait du bien par où ça passe !"); //drinks the potion
 
-                potionsEffects[index].Effect(potionsValues[index], potionsDurations[index]);
+                potionsEffects.Effect(potionsStats[index].potionValue, potionsStats[index].potionDuration, index);
             }
 
             else if (drinkTimer >= 0.0f) //if the player hasn't pressed the button yet
@@ -311,7 +318,7 @@ public class PlayerAbilities : MonoBehaviour
             posY = playerMovement.lastY;
 
             Vector2 rawAimCoordinates = new Vector2(posX, posY);
-            aimPos = (rawAimCoordinates * distance).normalized;
+            aimPos = rawAimCoordinates.normalized * distance;
         }
     }
 }

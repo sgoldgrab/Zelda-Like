@@ -33,10 +33,10 @@ public class ComboP3S3 : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        GameObject player = other.transform.parent.parent.gameObject;
-
-        if (player.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            GameObject player = other.transform.parent.parent.gameObject;
+
             playerState = player.GetComponent<PlayerState>();
 
             if (playerState.damageCount < 4)
@@ -56,10 +56,10 @@ public class ComboP3S3 : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject player = other.transform.parent.parent.gameObject;
-
-        if (player.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            GameObject player = other.transform.parent.parent.gameObject;
+
             playerState.isImmune = false;
         }
     }

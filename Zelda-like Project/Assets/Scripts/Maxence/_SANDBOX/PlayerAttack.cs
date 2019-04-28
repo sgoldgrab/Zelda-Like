@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float startAttackCoolDown;
     public float attackCoolDownSpeed { get => startAttackCoolDown; set => startAttackCoolDown = value; } // constructor for combo P1S3 (attack speed)
 
-    [SerializeField] private LayerMask enemyLayerMask; // to replace in EnemyState (possible)
+    [SerializeField] private LayerMask enemyLayerMask;
 
     [SerializeField] private float attackMoveSpeed;
     private bool attackMove = false;
@@ -41,7 +41,7 @@ public class PlayerAttack : MonoBehaviour
 
         AttackDirection();
 
-        if (attackMove) { Debug.Log(transformPos + " " + attackPos); Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed); }
+        //if (attackMove) { Debug.Log(transformPos + " " + attackPos); Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed); }
 
         Attack();
     }

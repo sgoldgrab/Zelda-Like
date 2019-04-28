@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PlayerSight : MonoBehaviour
 {
-    public float sightZoneRadius { get; set; }
+    [SerializeField] private float sightZone;
+    public float sightZoneRadius { get => sightZone; set => sightZone = value; }
 }

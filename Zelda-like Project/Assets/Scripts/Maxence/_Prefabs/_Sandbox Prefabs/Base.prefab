@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5172756952916316768}
   skillsAnimationMethods: []
+  layerIndex: 0
 --- !u!1 &5172756952166266084
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ GameObject:
   - component: {fileID: 5172756952802833909}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
