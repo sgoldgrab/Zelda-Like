@@ -24,11 +24,14 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private LayerMask enemyLayerMask;
 
-    [SerializeField] private float attackMoveSpeed;
-    private bool attackMove = false;
+    //Attack Move
+    private float attackMoveDuration;
+    [SerializeField] private float startAttackMoveDuration;
+    public float attackMoveTime { get => startAttackMoveDuration; set => startAttackMoveDuration = value; } // constructor for consumable locket of winged soul
 
-    //Test New Move
-    public float attackMoveDistance { get; set; }
+    [SerializeField] private float attackMoveSpeed;
+
+    private bool attackMove = false;
 
     void Start()
     {
@@ -41,9 +44,22 @@ public class PlayerAttack : MonoBehaviour
 
         AttackDirection();
 
-        //if (attackMove) { Debug.Log(transformPos + " " + attackPos); Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed); }
-
         Attack();
+
+        if (attackMove)
+        {
+            transform.position = Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed * Time.deltaTime);
+
+            if (attackMoveDuration <= 0.0f)
+            {
+                attackMove = false;
+            }
+
+            else
+            {
+                attackMoveDuration -= Time.deltaTime;
+            }
+        }
     }
 
     void AttackDirection()
@@ -66,6 +82,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetButtonDown("Fire2") && canAttack) // initialize an attack
             {
                 attackMove = true;
+                attackMoveDuration = startAttackMoveDuration;
 
                 SwordAttack();
 

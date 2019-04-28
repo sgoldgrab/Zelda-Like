@@ -17,10 +17,9 @@ public class LocketOfAWIngedSoul : PickUp
 
     IEnumerator LocketEffect (float time)
     {
-        playerAttack.attackMoveDistance *= 2.5f;
+        playerAttack.attackMoveTime += 0.2f;
         yield return new WaitForSeconds(time);
-        playerAttack.attackMoveDistance /= 2.5f;
+        playerAttack.attackMoveTime -= 0.2f;
         Destroy(gameObject);
     }
-
 }

@@ -262,9 +262,10 @@ public class PlayerAbilities : MonoBehaviour
 
             GameObject spell = Instantiate(spells[rIndex], transformPos + aimPos, Quaternion.identity);
 
-            //ONLY SPELL 1
-            if (spell.GetComponent<SpellOne>() == null) return;
-            else { spell.GetComponent<SpellOne>().SetPositions(aimPos); }
+            //CHECK SPELLS
+            if (spell.GetComponent<SpellOne>() == null && spell.GetComponent<SpellTwo>() == null) return;
+            else if (spell.GetComponent<SpellTwo>() == null) { spell.GetComponent<SpellOne>().SetPositions(aimPos); }
+            else { spell.GetComponent<SpellTwo>().SetPositions(aimPos); }
         }
 
         else if (rStance == true)

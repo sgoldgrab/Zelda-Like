@@ -6,11 +6,17 @@ public class SpellTwo : MonoBehaviour
 {
     private Rigidbody2D rb2D;
 
+    private bool isTrigger = false;
+
     [SerializeField] private float timer;
 
-    private void Start()
+    [SerializeField] private int forceAmount;
+
+    [SerializeField] private Vector2 direction;
+
+    public void SetPositions(Vector2 pos) // A DELETE
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        direction = pos.normalized;
     }
 
     private void Update()
@@ -19,22 +25,25 @@ public class SpellTwo : MonoBehaviour
 
         if (timer <= 0)
         {
+            if (isTrigger)
+            {
+                rb2D.AddForce(direction * forceAmount * -1);
+            }
+
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy")) //Faudra mettre le tag "Enemy" sur tous les ennemis
+        if (other.CompareTag("Enemy"))
         {
-            //dormantEnemyScript = other.gameObject.GetComponent<DormantEnemy>();
+            GameObject enemy = other.transform.parent.parent.gameObject;
 
-            //dormantEnemyScript.Spell2Effect();
-        }
+            isTrigger = true;
 
-        if (other.CompareTag("Potion1") || other.CompareTag("Potion2"))
-        {
-            Destroy(gameObject);
+            rb2D = enemy.GetComponent<Rigidbody2D>();
+            rb2D.AddForce(direction * forceAmount);
         }
 
         //Si un jour on y arrive, faut stopper le collider contre les murs (pas le détruire mais faire en sorte qu'il aille pas plus loin)

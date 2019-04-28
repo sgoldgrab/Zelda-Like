@@ -35,7 +35,6 @@ MonoBehaviour:
   enemyState: {fileID: 8399091906969231779}
   enemyBaseSpeed: 1
   distance: 2
-  fleeSpeed: 1
   safeDistance: 4
   startWaitTime: 4
 --- !u!114 &6645534412392498241
@@ -61,7 +60,7 @@ MonoBehaviour:
   startRate: 2
   startWaitRate: 0.5
   enemyAnims: {fileID: 8399091905867270517}
-  areaOfEffect: {fileID: 1355525924246206392, guid: 03553bb6075676544a35494515507d8b,
+  areaOfEffect: {fileID: 434794706471922950, guid: d5187df526bd3494698681e34efa728a,
     type: 3}
 --- !u!1001 &3694854520090670019
 PrefabInstance:
