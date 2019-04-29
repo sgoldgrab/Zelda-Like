@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSiimonEnemyManager : EntityState
+public class TestSimonEnemyState : EntityState
 {
     [SerializeField] private EnemyAnims enemyAnims;
 
     public delegate void EnemyKilled(); //AJOUTER CA
     public static event EnemyKilled whenEnemyDies; //AJOUTER CA
+
+    public delegate void EnemyHit();
+    public static event EnemyHit whenEnemyHit;
 
     public Transform playerTransform { get; private set; }
 
@@ -51,6 +54,8 @@ public class TestSiimonEnemyManager : EntityState
         enemyHealthBar.GetComponent<EntityUI>().UITakeDamage(health, dmg);
 
         base.TakeDamage(dmg); // loses health
+
+        whenEnemyHit();
 
         Debug.Log(health + " " + dmg);
 

@@ -16,14 +16,9 @@ public class IrisSoakedInMoonlight : PickUp
         StartCoroutine(IrisEffect(10f));
     }
 
-    private void OnEnable()
-    {
-        TestSiimonEnemyManager.whenEnemyDies += CDRbuff;
-    }
-
     private void OnDisable()
     {
-        TestSiimonEnemyManager.whenEnemyDies -= CDRbuff;
+        TestSimonEnemyState.whenEnemyDies -= CDRbuff;
     }
 
     private void CDRbuff()
@@ -33,8 +28,11 @@ public class IrisSoakedInMoonlight : PickUp
 
     IEnumerator IrisEffect(float time)
     {
+        TestSimonEnemyState.whenEnemyDies += CDRbuff;
+        int temper = abilitiesScript.cooldownReduction;
         abilitiesScript.cooldownReduction +=10;
         yield return new WaitForSeconds(time);
+        abilitiesScript.cooldownReduction = temper;
         Destroy(this);
     }
 
