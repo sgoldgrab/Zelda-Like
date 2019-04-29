@@ -61,6 +61,39 @@ MonoBehaviour:
   maxY: 2
   enemyAnims: {fileID: 4697471462855554890}
   enemyIdleSpeed: 0.5
+--- !u!114 &3380647714960568515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697471463926243229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f12696f8d6eb8547b4d733c779fb882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  enemyAnims: {fileID: 4697471462855554890}
+  enemyHealthBar: {fileID: 2022997580815991132, guid: 122779e50215c7e4a99e87eebdedb3a6,
+    type: 3}
+  enemyHealthSegs:
+  - {fileID: 1957373099380820, guid: fda414fa9146ee8408cbea50f0a5d369, type: 3}
+  - {fileID: 1957373099380820, guid: fda414fa9146ee8408cbea50f0a5d369, type: 3}
+  - {fileID: 1957373099380820, guid: fda414fa9146ee8408cbea50f0a5d369, type: 3}
+  - {fileID: 1130289880838182, guid: 3ebc31651cad55744a839dfbde2cecd3, type: 3}
+  - {fileID: 1069886497388530, guid: c80e11c268f52934eb502f87d4211e89, type: 3}
+  offsetValue: 0.4
+  mainOffset: 0
+  theName: enemyHealthSegment
+  barSize: 1
+  segsNumber: 3
+  minOffset: 0.15
+  maxOffset: 0.2
+  enemyCollider:
+  - {fileID: 4697471463515184544}
+  - {fileID: 4697471463302875419}
+  - {fileID: 4697471463507589129}
 --- !u!1001 &502598183996214780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +106,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 679890270}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: moveIdleBehavior
+      value: 
+      objectReference: {fileID: 679890272}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: moveCombatBehavior
+      value: 
+      objectReference: {fileID: 679890271}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -128,26 +181,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: skills.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: skills.Array.data[0]
-      value: 
-      objectReference: {fileID: 679890270}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: moveIdleBehavior
-      value: 
-      objectReference: {fileID: 679890272}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: moveCombatBehavior
-      value: 
-      objectReference: {fileID: 679890271}
     - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: skillsAnimationMethods.Array.size
@@ -178,26 +211,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.10851234
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0.00052528083
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.056216
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.41862473
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.30516076
-      objectReference: {fileID: 0}
     - target: {fileID: 5172756952802833909, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Offset.x
@@ -218,11 +231,26 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.3858273
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f7f64bdd57c72064a88eb1cbc2e0096f, type: 2}
+      propertyPath: m_Offset.x
+      value: 0.00052528083
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.056216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.41862473
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.30516076
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756951906646704, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Sprite
@@ -244,6 +272,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f7f64bdd57c72064a88eb1cbc2e0096f, type: 2}
     - target: {fileID: 5172756952392051800, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Radius
@@ -281,3 +314,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97583761c192d974cb8ff18efdcde049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &4697471463515184544 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5172756952790503516, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+    type: 3}
+  m_PrefabInstance: {fileID: 502598183996214780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &4697471463302875419 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+    type: 3}
+  m_PrefabInstance: {fileID: 502598183996214780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &4697471463507589129 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5172756952802833909, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+    type: 3}
+  m_PrefabInstance: {fileID: 502598183996214780}
+  m_PrefabAsset: {fileID: 0}
