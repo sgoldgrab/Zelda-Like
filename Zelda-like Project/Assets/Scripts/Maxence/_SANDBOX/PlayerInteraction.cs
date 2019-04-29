@@ -9,7 +9,7 @@ public abstract class Interactable : MonoBehaviour
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private Interactable itemScript;
+    private Interactable interactable;
 
     public bool isInRangeToInteract { get; set; } = false;
     [SerializeField] private string interactName;
@@ -19,22 +19,27 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetButtonDown(interactName)) { Interaction(); }
     }
 
-    private void OnTriggerEnter2D(Collider2D interactable)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (interactable.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable"))
         {
             isInRangeToInteract = true;
-            itemScript = interactable.GetComponent<Interactable>();
+            interactable = other.GetComponent<Interactable>();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D interactable)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (interactable.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable"))
         {
             isInRangeToInteract = false;
         }
     }
 
-    public void Interaction() { itemScript.InteractionItem(); }
+    public void Interaction()
+    {
+        if (interactable == null) { return; }
+
+        interactable.InteractionItem();
+    }
 }

@@ -14,7 +14,7 @@ public class PlayerAnims : MonoBehaviour
     void OnValidate()
     {
         playerAnimator = GetComponentInChildren<Animator>();
-        playerAnimState = GetComponentInChildren<AnimationState>();
+        //playerAnimState = playerAnimator.GetComponentInChildren<AnimationState>();
     }
 
     void Update()
