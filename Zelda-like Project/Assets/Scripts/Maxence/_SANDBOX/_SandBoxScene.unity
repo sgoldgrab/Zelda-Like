@@ -1770,6 +1770,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8399091906969231780, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c02b63a861bc82d43ae03a73bec8fac6, type: 3}
 --- !u!1 &844798123
@@ -2319,7 +2324,6 @@ MonoBehaviour:
   maxX: 2
   minY: -2
   maxY: 2
-  enemyAnims: {fileID: 114530221}
 --- !u!114 &1157775232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2355,7 +2359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1157775227}
   enemyBaseSpeed: 0
-  enemyAnims: {fileID: 114530221}
   minDist: 0.5
 --- !u!114 &1157775234
 MonoBehaviour:
@@ -3753,7 +3756,7 @@ MonoBehaviour:
   playerAnims: {fileID: 2011051036}
   swordDamage: 1
   attackRange: 0.6
-  attackRadius: 0.25
+  attackRadius: 0.1
   startAttackCoolDown: 0.5
   enemyLayerMask:
     serializedVersion: 2

@@ -16,7 +16,7 @@ public class CallDamageZonesSkill : Skill
 
     void Update()
     {
-        if (skillIsActive)
+        if (skillIsActive && enemyState.enemyCanUseSkill)
         {
             EnemyBehavior();
         }

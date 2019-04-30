@@ -216,6 +216,7 @@ public class PlayerAbilities : MonoBehaviour
             {
                 inputPressed = false;
                 drinkTimer = drinkTime;
+                releaseTimer = 0;
 
                 doubleTap = false;
 

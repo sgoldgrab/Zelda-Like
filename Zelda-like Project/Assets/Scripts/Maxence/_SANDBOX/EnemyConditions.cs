@@ -24,7 +24,6 @@ public class EnemyConditions : MonoBehaviour
     {
         playerStance = FindObjectOfType<PlayerStance>();
         enemySpawner = FindObjectOfType<EnemySpawner>();
-        Debug.Log(playerStance + " " + enemySpawner);
     }
 
     public bool CheckCondition(Conditions cond, ConditionInfo info)

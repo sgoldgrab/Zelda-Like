@@ -40,7 +40,6 @@ MonoBehaviour:
   enemyState: {fileID: 4697471463926243228}
   enemyBaseSpeed: 1
   distance: 2
-  fleeSpeed: 1
   safeDistance: 4
   startWaitTime: 4
 --- !u!114 &679890272
@@ -95,6 +94,11 @@ PrefabInstance:
       propertyPath: moveCombatBehavior
       value: 
       objectReference: {fileID: 679890271}
+    - target: {fileID: 5172756952916316775, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_LocalPosition.x

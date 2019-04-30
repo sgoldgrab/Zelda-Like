@@ -78,7 +78,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
         player = GameObject.Find(playerName);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //Debug.Log(generalCooldown);
 

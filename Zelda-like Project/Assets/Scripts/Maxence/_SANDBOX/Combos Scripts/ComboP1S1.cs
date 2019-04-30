@@ -9,6 +9,8 @@ public class ComboP1S1 : MonoBehaviour
     private GameObject player;
     private PlayerState playerState;
 
+    List<GameObject> enemyList = new List<GameObject>();
+
     private int enemyCount = 0;
 
     private bool isTrigger = false; // anciennement enemyHit
@@ -36,8 +38,6 @@ public class ComboP1S1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        List<GameObject> enemyList = new List<GameObject>();
-
         if (other.CompareTag("Enemy"))
         {
             GameObject enemy = other.transform.parent.parent.gameObject;

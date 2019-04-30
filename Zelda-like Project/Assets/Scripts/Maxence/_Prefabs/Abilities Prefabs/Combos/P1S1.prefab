@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3544258004084273381}
   - component: {fileID: 225477365491230973}
   - component: {fileID: 4333259203043356203}
-  - component: {fileID: 3966711081532799447}
+  - component: {fileID: 5384887086119642058}
   m_Layer: 0
   m_Name: P1S1
   m_TagString: Untagged
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3966711081532799447
+--- !u!114 &5384887086119642058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,4 +109,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2c8f8ddc1d37b438a292ade8129b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 0

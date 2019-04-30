@@ -11,8 +11,6 @@ public class IdleBehavior : Behavior
 
     [SerializeField] private float minX; [SerializeField] private float maxX; [SerializeField] private float minY; [SerializeField] private float maxY;
 
-    [SerializeField] private EnemyAnims enemyAnims;
-
     void Start()
     {
         waitTime = startWaitTime;
@@ -23,7 +21,9 @@ public class IdleBehavior : Behavior
     {
         if (Vector2.Distance(transform.position, checkpoint) <= 0.2f)
         {
-            enemyAnims.MoveAnim(false);
+            //enemyAnims.MoveAnim(false);
+
+            enemyState.isMoving = false;
 
             if (waitTime <= 0)
             {
@@ -43,7 +43,10 @@ public class IdleBehavior : Behavior
 
         else if (enemyState.enemyCanMove) // else and if the enemy can move...
         {
-            enemyAnims.MoveAnim(true);
+            //enemyAnims.MoveAnim(true);
+
+            enemyState.isMoving = true;
+
             transform.position = Vector2.MoveTowards(transform.position, checkpoint, enemyBaseSpeed * Time.deltaTime);
         }
     }

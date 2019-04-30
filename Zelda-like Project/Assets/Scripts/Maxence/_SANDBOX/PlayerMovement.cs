@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove { get; set; } = true;
 
-    void Update()
+    void FixedUpdate()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");

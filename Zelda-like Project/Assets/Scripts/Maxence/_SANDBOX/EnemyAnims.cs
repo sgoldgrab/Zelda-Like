@@ -39,6 +39,8 @@ public class EnemyAnims : MonoBehaviour
 
     public void MoveAnim(bool move)
     {
+        if (enemyAnimator == null) return;
+
         if (move) { enemyAnimator.SetBool("isMoving", true); }
         else if (!move) { enemyAnimator.SetBool("isMoving", false); }
     }
@@ -80,8 +82,6 @@ public class EnemyAnims : MonoBehaviour
         {
             if (skill.skillName == name)
             {
-                Debug.Log("it works");
-
                 skill.SkillAnimMethod();
             }
         }

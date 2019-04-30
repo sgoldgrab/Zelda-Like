@@ -18,8 +18,6 @@ public class FleeBehavior : Behavior
 
     public override void EnemyBehavior()
     {
-        transform.position = Vector2.MoveTowards(transform.position, desiredPosition, enemyBaseSpeed * Time.deltaTime);
-
         if (Vector2.Distance(transform.position, desiredPosition) <= 0.0f)
         {
             if (waitTime <= 0)
@@ -36,6 +34,11 @@ public class FleeBehavior : Behavior
             {
                 waitTime -= Time.deltaTime;
             }
+        }
+
+        else if (enemyState.enemyCanMove)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, desiredPosition, enemyBaseSpeed * Time.deltaTime);
         }
     }
 

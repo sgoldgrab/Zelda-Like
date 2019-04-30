@@ -16,7 +16,7 @@ public class ShootProjectilesSkill : Skill
 
     void Update()
     {
-        if (skillIsActive)
+        if (skillIsActive && enemyState.enemyCanUseSkill)
         {
             EnemyBehavior();
         }

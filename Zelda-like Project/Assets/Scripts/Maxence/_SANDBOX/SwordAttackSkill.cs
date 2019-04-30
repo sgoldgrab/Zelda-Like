@@ -26,7 +26,7 @@ public class SwordAttackSkill : Skill
 
     void Update()
     {
-        if (skillIsActive)
+        if (skillIsActive && enemyState.enemyCanUseSkill)
         {
             EnemyBehavior();
         }

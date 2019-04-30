@@ -17,9 +17,9 @@ public class EntityUI : MonoBehaviour
         {
             string theNameYouNeed = segName + " " + (n + 1).ToString();
 
-            //healthSegs.Add(GameObject.Find(theNameYouNeed)); // fills the objects of the list with the health segs
+            //healthSegs.Add(GameObject.Find(theNameYouNeed));
 
-            foreach (Transform child in transform)
+            foreach (Transform child in transform) // fills the objects of the list with the health segs
             {
                 if (child.name == theNameYouNeed)
                 {
@@ -35,6 +35,8 @@ public class EntityUI : MonoBehaviour
 
         for (int x = 0; x < damageIndex; x++)
         {
+            //if (!healthSegs.Contains(healthSegs[(currentHealth - 1) - bonusDmg])) { return; }
+
             healthSegs[(currentHealth - 1) - bonusDmg].SetActive(false);
             bonusDmg++;
         }
@@ -46,6 +48,8 @@ public class EntityUI : MonoBehaviour
 
         for (int x = 0; x < healIndex; x++)
         {
+            //if (!healthSegs.Contains(healthSegs[currentHealth + bonusHeal])) { return; }
+
             healthSegs[currentHealth + bonusHeal].SetActive(true);
             bonusHeal++;
         }

@@ -102,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Collider2D[] enemyList;
 
-        enemyList = Physics2D.OverlapCircleAll(attackPos, attackRange, enemyLayerMask);
+        enemyList = Physics2D.OverlapCircleAll(attackPos, attackRadius, enemyLayerMask);
 
         for (int i = 0; i < enemyList.Length; i++)
         {

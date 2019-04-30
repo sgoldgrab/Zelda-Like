@@ -26,11 +26,15 @@ public class EnemyState : EntityState
     // ON DEATH REQUIRED
     [SerializeField] private Collider2D[] enemyCollider;
     private EnemySpawner enemySpawner;
+    private bool isDead = false;
 
-    //STATES
+    //CONDITIONS
     public bool enemyCanMove { get; set; } = true;
     public bool enemyCanUseSkill { get; set; } = true;
+
+    //STATES
     public bool isStunned { get; set; } = false;
+    public bool isMoving { get; set; } = true;
 
     void Start()
     {
@@ -44,38 +48,52 @@ public class EnemyState : EntityState
         InstantiateHealthBar();
     }
 
+    void Update()
+    {
+        if (isMoving && enemyCanMove) enemyAnims.MoveAnim(true);
+
+        else if (!isMoving || !enemyCanMove) enemyAnims.MoveAnim(false);
+    }
+
     public override void TakeDamage(int dmg)
     {
-        enemyHealthBar.GetComponent<EntityUI>().UITakeDamage(health, dmg);
+        for (int d = 0; d < dmg; d++)
+        {
+            if (!isDead)
+            {
+                if (health == 1)
+                {
+                    foreach (Collider2D col in enemyCollider) { col.enabled = false; }
+                    enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
 
-        base.TakeDamage(dmg); // loses health
+                    isDead = true;
+                }
 
-        Debug.Log(health + " " + dmg);
+                enemyHealthBar.GetComponent<EntityUI>().UITakeDamage(health, 1);
+
+                base.TakeDamage(1);
+            }
+        }
 
         enemyCanUseSkill = false;
         enemyCanMove = false;
 
         enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
-
-        if (health <= 0)
-        {
-            foreach (Collider2D col in enemyCollider) { col.enabled = false; }
-            enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
-
-            return;
-        }
     }
 
     public override void TakeHeal(int heal)
     {
-        if (health >= maxHealth)
+        for (int h = 0; h < heal; h++)
         {
-            return;
+            if (health >= maxHealth)
+            {
+                return;
+            }
+
+            enemyHealthBar.GetComponent<EntityUI>().UITakeHealth(health, 1);
+
+            base.TakeHeal(1);
         }
-
-        enemyHealthBar.GetComponent<EntityUI>().UITakeHealth(health, heal);
-
-        base.TakeHeal(heal);
     }
 
     public void Recover()
@@ -84,6 +102,7 @@ public class EnemyState : EntityState
         enemyCanMove = true;
     }
 
+    //Old
     public void EnemyHealthBarDisplay()
     {
         int multiple = 1;
@@ -109,7 +128,6 @@ public class EnemyState : EntityState
         }
     }
 
-    //Testing
     public void InstantiateHealthBar()
     {
         float segOffset = barSize / (segsNumber - 1);
