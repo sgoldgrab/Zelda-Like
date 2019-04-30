@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerAnims playerAnims;
 
     [SerializeField] private int swordDamage;
-    public int attackDamage { get; private set; }
+    public int attackDamage { get; set; }
 
     [SerializeField] private float attackRange;
     [SerializeField] private float attackRadius;
