@@ -6,10 +6,11 @@ public class SwordAttackSkill : Skill
 {
     [SerializeField] private EnemyAnims enemyAnims;
 
-    [SerializeField] private float rangeOfAttack;
+    [SerializeField] private float attackRange;
     [SerializeField] private int swordDamage;
 
-    [SerializeField] private Transform attackPosition;
+    private Vector2 attackPosition;
+    private Vector2 fixedAttackPos;
     [SerializeField] private float swordBlowZoneRadius;
     [SerializeField] private LayerMask thisIsThePlayer;
 
@@ -26,6 +27,8 @@ public class SwordAttackSkill : Skill
 
     void Update()
     {
+        SwordAttackDirection();
+
         if (skillIsActive && enemyState.enemyCanUseSkill)
         {
             EnemyBehavior();
@@ -52,8 +55,9 @@ public class SwordAttackSkill : Skill
     {
         if (rate > 0)
         {
-            if (attackWaitRate <= 0.1f)
+            if (attackWaitRate <= 0.0f)
             {
+                fixedAttackPos = attackPosition;
                 enemyAnims.AttackAnim();
                 attackWaitRate = startAttackWaitRate;
                 rate--;
@@ -75,7 +79,7 @@ public class SwordAttackSkill : Skill
 
     public override void SkillAnimMethod() // SwordBlow
     {
-        Collider2D[] playerCollider = Physics2D.OverlapCircleAll(attackPosition.position, swordBlowZoneRadius, thisIsThePlayer);
+        Collider2D[] playerCollider = Physics2D.OverlapCircleAll(fixedAttackPos, swordBlowZoneRadius, thisIsThePlayer);
 
         for (int u = 0; u < playerCollider.Length; u++)
         {
@@ -86,11 +90,21 @@ public class SwordAttackSkill : Skill
         }
     }
 
+    void SwordAttackDirection()
+    {
+        float attackX = enemyState.playerTransform.position.x - transform.position.x;
+        float attackY = enemyState.playerTransform.position.y - transform.position.y;
+
+        Vector2 attackCoordinates = new Vector2(attackX, attackY);
+        Vector3 attackDir = attackCoordinates.normalized * attackRange;
+        attackPosition = transform.position + attackDir;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(attackPosition.position, swordBlowZoneRadius);
+        Gizmos.DrawWireSphere(attackPosition, swordBlowZoneRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, rangeOfAttack);
+        Gizmos.DrawWireSphere(transform.position, infos[0].value);
     }
 }

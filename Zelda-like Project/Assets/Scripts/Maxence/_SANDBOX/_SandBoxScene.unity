@@ -814,6 +814,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1819417465, guid: 2692edae7d73efe47b63a4f9a5977a68, type: 3}
+      propertyPath: rangeOfAttack
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819417465, guid: 2692edae7d73efe47b63a4f9a5977a68, type: 3}
+      propertyPath: swordBlowZoneRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819417465, guid: 2692edae7d73efe47b63a4f9a5977a68, type: 3}
+      propertyPath: attackRange
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2692edae7d73efe47b63a4f9a5977a68, type: 3}
 --- !u!1 &386848682
@@ -1715,6 +1727,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ange
       objectReference: {fileID: 0}
+    - target: {fileID: 8399091906969231778, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8399091906969231781, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2381,9 +2398,8 @@ MonoBehaviour:
     text: 
   skillName: SwordBlow
   enemyAnims: {fileID: 114530221}
-  rangeOfAttack: 0.7
+  attackRange: 0
   swordDamage: 1
-  attackPosition: {fileID: 306998937}
   swordBlowZoneRadius: 0.6
   thisIsThePlayer:
     serializedVersion: 2
@@ -3159,6 +3175,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Templar (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5906008889863754853, guid: 2692edae7d73efe47b63a4f9a5977a68,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906008889863754850, guid: 2692edae7d73efe47b63a4f9a5977a68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3227,6 +3248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Templar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906008889863754853, guid: 2692edae7d73efe47b63a4f9a5977a68,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5906008889863754850, guid: 2692edae7d73efe47b63a4f9a5977a68,
         type: 3}

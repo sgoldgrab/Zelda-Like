@@ -21,10 +21,9 @@ MonoBehaviour:
     text: 
   skillName: SwordBlow
   enemyAnims: {fileID: 5906008888837242034}
-  rangeOfAttack: 0.7
+  attackRange: 0.4
   swordDamage: 1
-  attackPosition: {fileID: 5906008889180980614}
-  swordBlowZoneRadius: 0.6
+  swordBlowZoneRadius: 0.2
   thisIsThePlayer:
     serializedVersion: 2
     m_Bits: 256
@@ -44,7 +43,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyState: {fileID: 5906008889863754852}
   enemyBaseSpeed: 0.5
-  enemyAnims: {fileID: 5906008888837242034}
   minDist: 0.5
 --- !u!114 &1819417467
 MonoBehaviour:
@@ -65,7 +63,6 @@ MonoBehaviour:
   maxX: 2
   minY: -2
   maxY: 2
-  enemyAnims: {fileID: 5906008888837242034}
 --- !u!1001 &1603009619815466500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,9 +223,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97583761c192d974cb8ff18efdcde049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5906008889180980614 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5172756951696409474, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-    type: 3}
-  m_PrefabInstance: {fileID: 1603009619815466500}
-  m_PrefabAsset: {fileID: 0}

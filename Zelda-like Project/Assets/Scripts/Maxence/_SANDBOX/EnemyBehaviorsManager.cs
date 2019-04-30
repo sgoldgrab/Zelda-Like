@@ -63,6 +63,9 @@ public class EnemyBehaviorsManager : MonoBehaviour
     [SerializeField] private List<Skill> skills;
     public List<Skill> theSkills { get => skills; private set => skills = value; }
 
+    private bool skillIsValid = true;
+    private bool triggerIsValid = true;
+
     [SerializeField] private List<Trigger> triggers;
 
     [SerializeField] private Behavior moveIdleBehavior;
@@ -82,21 +85,20 @@ public class EnemyBehaviorsManager : MonoBehaviour
     {
         //Debug.Log(generalCooldown);
 
-        if (enemyState.health <= 0) { return; }
+        if (enemyState.health <= 0) return;
+
+        if (player.GetComponent<PlayerState>().health <= 0) behavior = Behaviors.idle;
 
         if (behavior == Behaviors.idle)
         {
             moveIdleBehavior.EnemyBehavior();
         }
 
-        else if (behavior == Behaviors.combat && player.GetComponent<PlayerState>().health > 0)
+        else if (behavior == Behaviors.combat)
         {
-            if (enemyState.enemyCanMove)
-            {
-                moveCombatBehavior.EnemyBehavior();
-            }
+            if (enemyState.enemyCanMove) moveCombatBehavior.EnemyBehavior();
 
-            if (!skills[k].skillIsActive)
+            if (!skills[k].skillIsActive) // check if a skill is currently active
             {
                 skillCheck();
             }
@@ -112,6 +114,8 @@ public class EnemyBehaviorsManager : MonoBehaviour
                     skills[j].cooldown = skills[j].cooldownValue;
                 }
             }*/
+
+            TriggerCheck();
         }
     }
 
@@ -123,13 +127,24 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
             for (int u = 0; u < skills[k].conds.Count; u++)
             {
-                if (enemyConditions.CheckCondition(skills[k].conds[u], skills[k].infos[u]) != true) { return; }
+                if (enemyConditions.CheckCondition(skills[k].conds[u], skills[k].infos[u]) == false) skillIsValid = false;
             }
 
-            skills[k].skillIsActive = true;
-            enemyState.enemyCanMove = false;
+            if (skillIsValid)
+            {
+                //activate the skill
+                skills[k].skillIsActive = true;
+                enemyState.enemyCanMove = false;
 
-            generalCooldown = startGeneralCooldown;
+                generalCooldown = startGeneralCooldown;
+            }
+
+            else
+            {
+                // does nothing
+
+                skillIsValid = true; // reset for another skill check
+            }
         }
 
         else
@@ -144,11 +159,22 @@ public class EnemyBehaviorsManager : MonoBehaviour
         {
             for (int o = 0; o < trig.conds.Count; o++)
             {
-                if (enemyConditions.CheckCondition(triggers[k].conds[o], triggers[k].infos[o]) != true) { return; }
+                if (enemyConditions.CheckCondition(triggers[k].conds[o], triggers[k].infos[o]) == false) triggerIsValid = false;
             }
 
-            triggers[k].triggerIsActive = true;
-            enemyState.enemyCanMove = false;
+            if (triggerIsValid)
+            {
+                //activate the trigger
+                triggers[k].triggerIsActive = true;
+                enemyState.enemyCanMove = false;
+            }
+
+            else
+            {
+                // does nothing
+
+                triggerIsValid = true; // reset for another trigger check
+            }
         }
     }
 
