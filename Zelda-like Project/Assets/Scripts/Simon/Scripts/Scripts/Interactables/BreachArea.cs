@@ -12,14 +12,14 @@ public class BreachArea : MonoBehaviour
     [SerializeField] private float activeTime = 10f;
 
     public GameObject breach;
-    private BreachRift breachScript;
+    private BreachRift2 breachScript;
 
     private SpriteRenderer sprite;
 
     private void Awake()
     {
 
-        breachScript = breach.GetComponent<BreachRift>();
+        breachScript = breach.GetComponent<BreachRift2>();
 
     }
 
