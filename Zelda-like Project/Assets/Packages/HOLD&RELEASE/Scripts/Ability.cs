@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public class AbilityEwan : MonoBehaviour
 {
 
     private float timer = 1.7f;

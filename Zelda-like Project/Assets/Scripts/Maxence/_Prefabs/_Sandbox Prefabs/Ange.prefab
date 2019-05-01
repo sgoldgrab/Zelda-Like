@@ -19,7 +19,6 @@ MonoBehaviour:
   maxX: 2
   minY: -2
   maxY: 2
-  enemyAnims: {fileID: 8399091905867270517}
 --- !u!114 &4904808987406339879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,7 +55,7 @@ MonoBehaviour:
   - conditionType: 0
     value: 0
     text: 
-  skillName: AreaOfEffect
+  abilityName: AreaOfEffect
   startRate: 2
   startWaitRate: 0.5
   enemyAnims: {fileID: 8399091905867270517}
@@ -81,6 +80,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
+      propertyPath: randomValue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
       propertyPath: moveCombatBehavior
       value: 
       objectReference: {fileID: 4904808987406339879}
@@ -94,6 +98,11 @@ PrefabInstance:
       propertyPath: skills.Array.data[0]
       value: 
       objectReference: {fileID: 6645534412392498241}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: randomValue.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316775, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Constraints

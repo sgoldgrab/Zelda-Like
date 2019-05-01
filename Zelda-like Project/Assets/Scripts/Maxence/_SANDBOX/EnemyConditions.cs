@@ -71,6 +71,9 @@ public class EnemyConditions : MonoBehaviour
                 if (Input.GetButtonDown(playerStance.input)) { return true; }
                 return false;
 
+            case Conditions.FollowingAttack:
+                break;
+
             case Conditions.None:
                 return true;
 

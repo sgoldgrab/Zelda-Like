@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SwordAttackSkill : Skill
 {
-    [SerializeField] private EnemyAnims enemyAnims;
-
     [SerializeField] private float attackRange;
     [SerializeField] private int swordDamage;
 
@@ -23,6 +21,7 @@ public class SwordAttackSkill : Skill
     void Start()
     {
         additionalCooldown = 1.0f;
+        rate = startRate;
     }
 
     void Update()
@@ -33,6 +32,8 @@ public class SwordAttackSkill : Skill
         {
             EnemyBehavior();
         }
+
+        attackWaitRate -= Time.deltaTime;
     }
 
     public override void EnemyBehavior()
@@ -62,11 +63,6 @@ public class SwordAttackSkill : Skill
                 attackWaitRate = startAttackWaitRate;
                 rate--;
             }
-
-            else
-            {
-                attackWaitRate -= Time.deltaTime;
-            }
         }
 
         else
@@ -77,7 +73,7 @@ public class SwordAttackSkill : Skill
         }
     }
 
-    public override void SkillAnimMethod() // SwordBlow
+    public override void AbilityAnimMethod() // SwordBlow
     {
         Collider2D[] playerCollider = Physics2D.OverlapCircleAll(fixedAttackPos, swordBlowZoneRadius, thisIsThePlayer);
 

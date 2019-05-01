@@ -10,6 +10,7 @@ public enum Conditions
     IsAttacked,
     PlayerUseAnAbility,
     PlayerSwitchStance,
+    FollowingAttack,
     None
 }
 
@@ -18,31 +19,32 @@ public abstract class Behavior : MonoBehaviour
     public abstract void EnemyBehavior();
 
     [SerializeField] protected EnemyState enemyState;
+    [SerializeField] protected EnemyAnims enemyAnims;
 
     [SerializeField] protected float enemyBaseSpeed;
     public float enemyGlobalSpeed { get => enemyBaseSpeed; set => enemyBaseSpeed = value; }
 }
 
-public abstract class ConditionedBehavior : Behavior
+public abstract class Ability : Behavior
 {
     [SerializeField] private List<Conditions> conditions;
     public List<Conditions> conds { get => conditions; protected set => conditions = value; }
 
     [SerializeField] private List<ConditionInfo> conditionInfos;
     public List<ConditionInfo> infos { get => conditionInfos; protected set => conditionInfos = value; }
-}
 
-public abstract class Skill : ConditionedBehavior
-{
-    public string skillName;
-
-    public abstract void SkillAnimMethod();
+    public string abilityName;
+    public abstract void AbilityAnimMethod();
 
     public bool skillIsActive { get; set; } = false;
-    public float additionalCooldown { get; set; } = 0.0f;
 }
 
-public abstract class Trigger : ConditionedBehavior
+public abstract class Skill : Ability
+{
+    public float additionalCooldown { get; protected set; } = 0.0f;
+}
+
+public abstract class Trigger : Skill
 {
     public bool triggerIsActive { get; set; } = false;
 }
@@ -63,6 +65,9 @@ public class EnemyBehaviorsManager : MonoBehaviour
     [SerializeField] private List<Skill> skills;
     public List<Skill> theSkills { get => skills; private set => skills = value; }
 
+    private List<Skill> skillStock = new List<Skill>();
+    [SerializeField] private int[] randomValue;
+
     private bool skillIsValid = true;
     private bool triggerIsValid = true;
 
@@ -79,6 +84,14 @@ public class EnemyBehaviorsManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find(playerName);
+
+        for (int p = 0; p < skills.Count; p++)
+        {
+            for (int s = 0; s < randomValue[p]; s++)
+            {
+                skillStock.Add(skills[p]);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -98,9 +111,12 @@ public class EnemyBehaviorsManager : MonoBehaviour
         {
             if (enemyState.enemyCanMove) moveCombatBehavior.EnemyBehavior();
 
-            if (!skills[k].skillIsActive) // check if a skill is currently active
+            if (skillStock.Count > 0)
             {
-                skillCheck();
+                if (!skillStock[k].skillIsActive) // check if a skill is currently active
+                {
+                    skillCheck();
+                }
             }
 
             /*for (int j = 0; j < skills.Count; j++)
@@ -123,18 +139,18 @@ public class EnemyBehaviorsManager : MonoBehaviour
     {
         if (generalCooldown <= 0.0f)
         {
-            k = Random.Range(0, skills.Count);
+            k = Random.Range(0, skillStock.Count);
 
-            for (int u = 0; u < skills[k].conds.Count; u++)
+            for (int u = 0; u < skillStock[k].conds.Count; u++)
             {
-                if (enemyConditions.CheckCondition(skills[k].conds[u], skills[k].infos[u]) == false) skillIsValid = false;
+                if (enemyConditions.CheckCondition(skillStock[k].conds[u], skillStock[k].infos[u]) == false) skillIsValid = false;
             }
 
             if (skillIsValid)
             {
                 //activate the skill
-                skills[k].skillIsActive = true;
                 enemyState.enemyCanMove = false;
+                skillStock[k].skillIsActive = true;
 
                 generalCooldown = startGeneralCooldown;
             }
@@ -155,17 +171,18 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void TriggerCheck()
     {
-        foreach (Trigger trig in triggers)
+        for (int t = 0; t < triggers.Count; t++)
         {
-            for (int o = 0; o < trig.conds.Count; o++)
+            for (int o = 0; o < triggers[t].conds.Count; o++)
             {
-                if (enemyConditions.CheckCondition(triggers[k].conds[o], triggers[k].infos[o]) == false) triggerIsValid = false;
+                if (enemyConditions.CheckCondition(triggers[t].conds[o], triggers[t].infos[o]) == false) triggerIsValid = false;
             }
 
             if (triggerIsValid)
             {
                 //activate the trigger
-                triggers[k].triggerIsActive = true;
+                triggers[t].triggerIsActive = true;
+                skillStock[k].skillIsActive = false;
                 enemyState.enemyCanMove = false;
             }
 

@@ -10,9 +10,9 @@ public class CallDamageZonesSkill : Skill
     [SerializeField] private float startWaitRate;
     public float waitRate { get; private set; } = 0.0f;
 
-    [SerializeField] private EnemyAnims enemyAnims;
-
     [SerializeField] private GameObject areaOfEffect;
+
+    void Start() { rate = startRate; }
 
     void Update()
     {
@@ -47,7 +47,7 @@ public class CallDamageZonesSkill : Skill
         }
     }
 
-    public override void SkillAnimMethod()
+    public override void AbilityAnimMethod()
     {
         Vector2 desiredPos = enemyState.playerTransform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 

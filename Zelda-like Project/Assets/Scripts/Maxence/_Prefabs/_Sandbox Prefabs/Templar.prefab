@@ -19,7 +19,7 @@ MonoBehaviour:
   - conditionType: 0
     value: 0.7
     text: 
-  skillName: SwordBlow
+  abilityName: SwordBlow
   enemyAnims: {fileID: 5906008888837242034}
   attackRange: 0.4
   swordDamage: 1
@@ -82,6 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
+      propertyPath: randomValue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
       propertyPath: moveIdleBehavior
       value: 
       objectReference: {fileID: 1819417467}
@@ -95,6 +100,11 @@ PrefabInstance:
       propertyPath: skills.Array.data[0]
       value: 
       objectReference: {fileID: 1819417465}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: randomValue.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316775, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Constraints

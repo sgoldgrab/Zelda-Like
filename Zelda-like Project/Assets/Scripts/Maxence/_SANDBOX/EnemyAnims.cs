@@ -80,9 +80,9 @@ public class EnemyAnims : MonoBehaviour
     {
         foreach (Skill skill in skillsAnimationMethods)
         {
-            if (skill.skillName == name)
+            if (skill.abilityName == name)
             {
-                skill.SkillAnimMethod();
+                skill.AbilityAnimMethod();
             }
         }
     }

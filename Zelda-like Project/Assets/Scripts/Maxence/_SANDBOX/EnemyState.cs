@@ -7,6 +7,7 @@ public class EnemyState : EntityState
     [SerializeField] private EnemyAnims enemyAnims;
 
     public Transform playerTransform { get; private set; }
+    public PlayerMovement playerMovement { get; private set; }
 
     // HEALTH BAR INSTANTIATE
     [SerializeField] private GameObject enemyHealthBar;
@@ -42,7 +43,7 @@ public class EnemyState : EntityState
         if (enemySpawnerMessenger != null) { enemySpawner = enemySpawnerMessenger.GetComponent<EnemySpawner>(); }
 
         GameObject playerMessenger = GameObject.FindWithTag("Player");
-        if (playerMessenger != null) { playerTransform = playerMessenger.GetComponent<Transform>(); }
+        if (playerMessenger != null) { playerTransform = playerMessenger.GetComponent<Transform>(); playerMovement = playerMessenger.GetComponent<PlayerMovement>(); }
 
         enemyHealthBar = Instantiate(enemyHealthBar, transform);
         InstantiateHealthBar();

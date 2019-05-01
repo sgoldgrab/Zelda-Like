@@ -33,6 +33,9 @@ public class PlayerAttack : MonoBehaviour
 
     private bool attackMove = false;
 
+    //Testing
+    [SerializeField] private GameObject attackPosition;
+
     void Start()
     {
         attackDamage = swordDamage;
@@ -46,20 +49,7 @@ public class PlayerAttack : MonoBehaviour
 
         Attack();
 
-        if (attackMove)
-        {
-            transform.position = Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed * Time.deltaTime);
-
-            if (attackMoveDuration <= 0.0f)
-            {
-                attackMove = false;
-            }
-
-            else
-            {
-                attackMoveDuration -= Time.deltaTime;
-            }
-        }
+        AttackMove();
     }
 
     void AttackDirection()
@@ -72,6 +62,8 @@ public class PlayerAttack : MonoBehaviour
             Vector2 rawAttackCoordinates = new Vector2(attackPosX, attackPosY);
             Vector2 rawAttackPos = rawAttackCoordinates.normalized * attackRange;
             attackPos = transformPos + rawAttackPos;
+
+            //attackPosition.transform.LookAt(attackPosition.transform);
         }
     }
 
@@ -109,6 +101,24 @@ public class PlayerAttack : MonoBehaviour
             if (enemyList[i] is BoxCollider2D)
             {
                 enemyList[i].transform.parent.GetComponentInParent<EnemyState>().TakeDamage(attackDamage);
+            }
+        }
+    }
+
+    void AttackMove()
+    {
+        if (attackMove)
+        {
+            transform.position = Vector2.MoveTowards(transformPos, attackPos, attackMoveSpeed * Time.deltaTime);
+
+            if (attackMoveDuration <= 0.0f)
+            {
+                attackMove = false;
+            }
+
+            else
+            {
+                attackMoveDuration -= Time.deltaTime;
             }
         }
     }

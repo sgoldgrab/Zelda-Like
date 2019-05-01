@@ -10,8 +10,6 @@ public class ChaseBehavior : Behavior
     {
         if (Vector2.Distance(transform.position, enemyState.playerTransform.position) > minDist && enemyState.enemyCanMove)
         {
-            //enemyAnims.MoveAnim(true);
-
             enemyState.isMoving = true;
 
             transform.position = Vector2.MoveTowards(transform.position, enemyState.playerTransform.position, enemyBaseSpeed * Time.deltaTime);
@@ -19,8 +17,6 @@ public class ChaseBehavior : Behavior
 
         else
         {
-            //enemyAnims.MoveAnim(false);
-
             enemyState.isMoving = false;
         }
     }

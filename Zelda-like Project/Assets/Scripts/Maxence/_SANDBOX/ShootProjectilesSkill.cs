@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShootProjectilesSkill : Skill
 {
-    [SerializeField] private EnemyAnims enemyAnims;
-
     [SerializeField] private int startRate;
     public int rate { get; private set; }
 
@@ -47,7 +45,7 @@ public class ShootProjectilesSkill : Skill
         }
     }
 
-    public override void SkillAnimMethod() // FireBall
+    public override void AbilityAnimMethod() // FireBall
     {
         GameObject bullet = Instantiate(fireBall, transform.position, transform.rotation);
         bullet.GetComponent<FireBall>().SetPlayerPos(enemyState.playerTransform.position);
