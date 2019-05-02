@@ -2166,7 +2166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22048c93778260a41b6a1c5392e78418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  health: 0
   enemyAnims: {fileID: 114530221}
   enemyHealthBar: {fileID: 2022997580815991132, guid: 122779e50215c7e4a99e87eebdedb3a6,
     type: 3}
@@ -3502,6 +3502,7 @@ GameObject:
   - component: {fileID: 2011051045}
   - component: {fileID: 2011051042}
   - component: {fileID: 2011051041}
+  - component: {fileID: 2011051043}
   m_Layer: 8
   m_Name: PLAYER
   m_TagString: Player
@@ -3521,7 +3522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffff57f5904bae8438eb7b78899c1bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  health: 0
   playerAnims: {fileID: 2011051036}
   playerUI: {fileID: 1463651476}
 --- !u!114 &2011051036
@@ -3634,6 +3635,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactName: Interact
+--- !u!114 &2011051043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011051034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8da4c4f2793e0419f772130de955c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sephirothsInInventory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &2011051044
 Transform:
   m_ObjectHideFlags: 0
