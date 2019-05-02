@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 4697471463926243228}
+  enemyAnims: {fileID: 4697471462855554890}
   enemyBaseSpeed: 0
-  conditions: 06000000
+  conditions: 07000000
   conditionInfos:
   - conditionType: 0
     value: 0
     text: 
   abilityName: FireBall
-  enemyAnims: {fileID: 4697471462855554890}
   startRate: 3
   startWaitRate: 0.3
   fireBall: {fileID: 3881369036538732966, guid: b75db516b57106342b9678657601d2de,
@@ -38,6 +38,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 4697471463926243228}
+  enemyAnims: {fileID: 0}
   enemyBaseSpeed: 1
   distance: 2
   safeDistance: 4
@@ -55,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 4697471463926243228}
+  enemyAnims: {fileID: 0}
   enemyBaseSpeed: 0.5
   startWaitTime: 4
   minX: -2

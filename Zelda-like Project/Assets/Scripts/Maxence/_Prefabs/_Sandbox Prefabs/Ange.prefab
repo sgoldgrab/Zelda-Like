@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 8399091906969231779}
+  enemyAnims: {fileID: 0}
   enemyBaseSpeed: 0.5
   startWaitTime: 4
   minX: -2
@@ -32,6 +33,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 8399091906969231779}
+  enemyAnims: {fileID: 0}
   enemyBaseSpeed: 1
   distance: 2
   safeDistance: 4
@@ -49,8 +51,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 8399091906969231779}
+  enemyAnims: {fileID: 8399091905867270517}
   enemyBaseSpeed: 0
-  conditions: 06000000
+  conditions: 07000000
   conditionInfos:
   - conditionType: 0
     value: 0
@@ -58,7 +61,6 @@ MonoBehaviour:
   abilityName: AreaOfEffect
   startRate: 2
   startWaitRate: 0.5
-  enemyAnims: {fileID: 8399091905867270517}
   areaOfEffect: {fileID: 434794706471922950, guid: d5187df526bd3494698681e34efa728a,
     type: 3}
 --- !u!1001 &3694854520090670019

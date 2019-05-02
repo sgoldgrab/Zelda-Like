@@ -85,26 +85,19 @@ public class DashAbility : Trigger
         Vector3 normalizedDirection = dashDirection.normalized;
         Vector3 randomizedDirection = LateralDash(normalizedDirection);
 
-        Debug.Log(randomizedDirection);
-
         desiredPosition = transform.position + normalizedDirection + randomizedDirection;
     }
 
     Vector2 LateralDash(Vector2 dir)
     {
         float[] coordinates = new float[2];
-
         coordinates[0] = Mathf.Sign(dir.x); // x
         coordinates[1] = Mathf.Sign(dir.y); // y
 
         int random = Random.Range(0, 2);
-
-        Debug.Log(random);
-
         coordinates[random] = coordinates[random] * -1;
 
         Vector2 lateralDir = new Vector2(coordinates[0], coordinates[1]);
-
         return lateralDir;
     }
 

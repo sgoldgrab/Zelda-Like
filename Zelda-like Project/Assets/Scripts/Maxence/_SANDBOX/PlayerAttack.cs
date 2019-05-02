@@ -63,7 +63,9 @@ public class PlayerAttack : MonoBehaviour
             Vector2 rawAttackPos = rawAttackCoordinates.normalized * attackRange;
             attackPos = transformPos + rawAttackPos;
 
-            //attackPosition.transform.LookAt(attackPosition.transform);
+            float angle = Mathf.Atan2(attackPosX, attackPosY) * Mathf.Rad2Deg;
+
+            attackPosition.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
@@ -77,6 +79,8 @@ public class PlayerAttack : MonoBehaviour
                 attackMoveDuration = startAttackMoveDuration;
 
                 SwordAttack();
+
+                //SwordAttack2();
 
                 playerAnims.AttackAnim();
 
@@ -103,6 +107,11 @@ public class PlayerAttack : MonoBehaviour
                 enemyList[i].transform.parent.GetComponentInParent<EnemyState>().TakeDamage(attackDamage);
             }
         }
+    }
+
+    void SwordAttack2()
+    {
+        //
     }
 
     void AttackMove()

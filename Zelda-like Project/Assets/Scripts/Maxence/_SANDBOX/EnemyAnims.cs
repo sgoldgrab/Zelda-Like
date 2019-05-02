@@ -67,7 +67,7 @@ public class EnemyAnims : MonoBehaviour
 
     public void OnDeath()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
     public void Recover()

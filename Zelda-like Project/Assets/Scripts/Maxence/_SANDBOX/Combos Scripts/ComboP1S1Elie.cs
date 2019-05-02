@@ -5,25 +5,28 @@ using UnityEngine;
 public class ComboP1S1Elie : MonoBehaviour
 {
     private GameObject player;
-    private PlayerState playerState;
 
     private List<GameObject> enemies = new List<GameObject>();
 
-    public List<GameObject> Debug = new List<GameObject>();
-
-    private bool used = false;
+    [SerializeField] private float time;
+    private float timer;
 
     private void Awake()
     {
+        timer = time;
         player = GameObject.FindGameObjectWithTag("Player");
-        playerState = player.GetComponent<PlayerState>();
     }
 
     void Update()
     {
-        if(!used) DealDamage();
+        //DealDamage();
 
-        //Destroy(this);
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -32,21 +35,24 @@ public class ComboP1S1Elie : MonoBehaviour
         {
             GameObject enemy = col.transform.parent.parent.gameObject;
 
-            if (!enemies.Contains(enemy)) enemies.Add(enemy);
+            Debug.Log(enemy);
+            enemy.GetComponent<EnemyState>().TakeDamage(1);
+            player.GetComponent<PlayerState>().TakeHeal(1);
+
+            //if (!enemies.Contains(enemy))
+            //enemies.Add(enemy);
         }
     }
 
     void DealDamage()
     {
-        Debug = enemies;
-
         foreach (GameObject enemy in enemies)
         {
+            Debug.Log(enemy);
             enemy.GetComponent<EnemyState>().TakeDamage(1);
-            playerState.TakeHeal(1);
-            enemies.Remove(enemy);
+            player.GetComponent<PlayerState>().TakeHeal(1);
         }
 
-        used = true;
+        enemies.Clear();
     }
 }

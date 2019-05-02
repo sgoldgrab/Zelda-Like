@@ -36,6 +36,8 @@ public class EnemyState : EntityState
     //STATES
     public bool isStunned { get; set; } = false;
     public bool isMoving { get; set; } = true;
+    public bool isProtected { get; set; } = false;
+    public bool parry { get; set; } = false;
 
     void Start()
     {
@@ -58,6 +60,10 @@ public class EnemyState : EntityState
 
     public override void TakeDamage(int dmg)
     {
+        Debug.Log(dmg);
+
+        if (isProtected) { parry = true; return; }
+
         for (int d = 0; d < dmg; d++)
         {
             if (!isDead)

@@ -182,7 +182,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
             {
                 //activate the trigger
                 triggers[t].triggerIsActive = true;
-                skillStock[k].skillIsActive = false;
+                if (skillStock.Count > 0) skillStock[k].skillIsActive = false;
                 enemyState.enemyCanMove = false;
             }
 

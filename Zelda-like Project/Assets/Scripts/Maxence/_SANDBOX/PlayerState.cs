@@ -19,7 +19,7 @@ public class PlayerState : EntityState
 
     public override void TakeDamage(int dmg)
     {
-        if (isImmune) damageCount++;
+        if (isImmune) { damageCount++; return; }
 
         for (int d = 0; d < dmg; d++)
         {
