@@ -2830,7 +2830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSegs: []
   segName: healthSegment
-  state: {fileID: 2011051035}
+  state: {fileID: 0}
 --- !u!1001 &1539530265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3493,16 +3493,18 @@ GameObject:
   m_Component:
   - component: {fileID: 2011051044}
   - component: {fileID: 2011051040}
-  - component: {fileID: 2011051035}
+  - component: {fileID: 2011051048}
   - component: {fileID: 2011051036}
+  - component: {fileID: 2011051047}
   - component: {fileID: 2011051039}
   - component: {fileID: 2011051038}
   - component: {fileID: 2011051037}
-  - component: {fileID: 2011051046}
   - component: {fileID: 2011051045}
   - component: {fileID: 2011051042}
-  - component: {fileID: 2011051041}
   - component: {fileID: 2011051043}
+  - component: {fileID: 2011051041}
+  - component: {fileID: 2011051035}
+  - component: {fileID: 2011051046}
   m_Layer: 8
   m_Name: PLAYER
   m_TagString: Player
@@ -3519,12 +3521,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2011051034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffff57f5904bae8438eb7b78899c1bca, type: 3}
+  m_Script: {fileID: 11500000, guid: 662f74a4583122b468f3a3662033d289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  playerAnims: {fileID: 2011051036}
-  playerUI: {fileID: 1463651476}
+  consumeInputName: Consume
+  canUseConsumable: 1
 --- !u!114 &2011051036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3538,7 +3539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 2011051039}
-  playerState: {fileID: 2011051035}
+  playerState: {fileID: 0}
 --- !u!114 &2011051037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3548,12 +3549,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2011051034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f78ff456c6cf35f439475143d6643d09, type: 3}
+  m_Script: {fileID: 11500000, guid: 89c2af45bcdbd554ab9d9adb8f020384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 2011051039}
   playerAnims: {fileID: 2011051036}
   swordDamage: 1
+  attackDamage: 1
   attackRange: 0.6
   attackRadius: 0.25
   startAttackCoolDown: 0.5
@@ -3561,6 +3563,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackMoveSpeed: 0
+  canAttack: 1
+  dashDistance: 0
 --- !u!114 &2011051038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3570,10 +3574,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2011051034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb5bcca59ef6444aa35961ada82a6c4, type: 3}
+  m_Script: {fileID: 11500000, guid: c462789fae455ae42b86c7c4d93f4cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stanceInput: Fire1
+  beenBuffed: 0
+  canSwitch: 1
   postProcess: {fileID: 852418607}
 --- !u!114 &2011051039
 MonoBehaviour:
@@ -3711,7 +3717,7 @@ MonoBehaviour:
   - {fileID: 8277674747929181775, guid: 62543e02991124b48a43f8a3626ea477, type: 3}
   - {fileID: 8384358206270592575, guid: caebabf5b55885147a8c297e06bfac4a, type: 3}
   - {fileID: 2369424289353008294, guid: 150e5accb9626f9459c42b23089bcbd7, type: 3}
-  playerStance: {fileID: 2011051038}
+  playerStance: {fileID: 0}
   startCoolDownTime:
   - 2
   - 2
@@ -3720,6 +3726,35 @@ MonoBehaviour:
   - 2
   - 2
   aimDistance: 1
+--- !u!114 &2011051047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011051034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb108af84a9e73b4f8599ad4467eefc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownReduction: 0
+--- !u!114 &2011051048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011051034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fe54ecd6bfa0947b1eb57ab269def9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  playerAnims: {fileID: 2011051036}
+  playerUI: {fileID: 1463651476}
+  isImmune: 0
 --- !u!1 &2077036289
 GameObject:
   m_ObjectHideFlags: 0

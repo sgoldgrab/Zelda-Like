@@ -7,21 +7,21 @@ public class LocketOfAWIngedSoul : PickUp
     //During 10 seconds, increase the range of the dash performed when the player uses a basic attack
 
     #region Variables
-    private PlayerAttack attackScript;
+    private TestSimonPlayerAttack attackScript;
     #endregion
 
     public override void Consume()
     {
         base.Consume();
-        attackScript = player.GetComponent<PlayerAttack>();
+        attackScript = player.GetComponent<TestSimonPlayerAttack>();
         StartCoroutine(LocketEffect(10f));
     }
 
     IEnumerator LocketEffect (float time)
     {
-        //attackScript.dashDistance *= 2.5; AJOUTER LA FLOAT DASH DISTANCE SUR LE SCRIPT PLAYER ATTACK
+        attackScript.dashDistance *= 2.5f;
         yield return new WaitForSeconds(time);
-        //attackScript.dashDistance /= 2.5;
+        attackScript.dashDistance /= 2.5f;
         Destroy(this);
     }
 

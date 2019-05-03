@@ -24,6 +24,10 @@ public class TestSimonPlayerAttack : MonoBehaviour
     [SerializeField] private float attackMoveSpeed;
     private bool attackMove = false;
 
+    public bool canAttack = true;
+
+    public float dashDistance;
+
     void Start()
     {
         attackDamage = swordDamage;

@@ -8,27 +8,27 @@ public class CharmOfRenewal : PickUp
 
     #region Variables
     private PlayerState healthScript;
-    private PlayerStance stanceScript;
+    private TestSimonPlayerStances stanceScript;
     #endregion
 
     public override void Consume()
     {
         base.Consume();
         healthScript = player.GetComponent<PlayerState>();
-        stanceScript = player.GetComponent<PlayerStance>();
+        stanceScript = player.GetComponent<TestSimonPlayerStances>();
         StartCoroutine(CharmEffect(2f, 1));
     }
 
     IEnumerator CharmEffect(float time, int healingAmount)
     {
-        //stanceScript.canSwitch = false; AJOUTER LA BOOL CAN SWITCH SUR LE SCXRIPT PLAYER STANCE
+        stanceScript.canSwitch = false;
         yield return new WaitForSeconds(time);
         healthScript.TakeHeal(healingAmount);
         yield return new WaitForSeconds(time);
         healthScript.TakeHeal(healingAmount);
         yield return new WaitForSeconds(time);
         healthScript.TakeHeal(healingAmount);
-        //stanceScript.canSwitch = true;
+        stanceScript.canSwitch = true;
         Destroy(this);
     }
 

@@ -7,14 +7,14 @@ public class UnstableSpiritsCrystal : PickUp
 
     #region Variables
     private TestSimonPlayerAttack attackScript;
-    private TestSimonPlayerStance stanceScript;
+    private TestSimonPlayerStances stanceScript;
     #endregion
 
     public override void Consume()
     {
         base.Consume();
         attackScript = player.GetComponent<TestSimonPlayerAttack>();
-        stanceScript = player.GetComponent<TestSimonPlayerStance>();
+        stanceScript = player.GetComponent<TestSimonPlayerStances>();
         StartCoroutine(CrystalEffect(7.5f));
     }
 
@@ -32,13 +32,13 @@ public class UnstableSpiritsCrystal : PickUp
 
     private void OnDisable()
     {
-        TestSimonPlayerStance.whenPlayerSwitches -= AttackBuff;
+        TestSimonPlayerStances.whenPlayerSwitches -= AttackBuff;
         TestSimonEnemyState.whenEnemyHit -= AttackDebuff;
     }
 
     IEnumerator CrystalEffect (float time)
     {
-        TestSimonPlayerStance.whenPlayerSwitches += AttackBuff;
+        TestSimonPlayerStances.whenPlayerSwitches += AttackBuff;
         TestSimonEnemyState.whenEnemyHit += AttackDebuff;
         int temper = attackScript.attackDamage;
         yield return new WaitForSeconds(time);

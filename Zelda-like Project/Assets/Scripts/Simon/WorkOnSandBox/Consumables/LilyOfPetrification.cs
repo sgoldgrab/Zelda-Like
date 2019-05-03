@@ -2,38 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LilyOfPetrificaion : PickUp
+public class LilyOfPetrification : PickUp
 {
     //During 5 seconds, makes the player immune to damage, but prevents him from attacking casting abilities or using consumables
 
     #region Variables
     private PlayerMovement movementScript;
-    private PlayerAttack attackScript;
-    private Inventory inventoryScript;
-    private PlayerState healthScript;
+    private TestSimonPlayerAttack attackScript;
+    private TestSimonInventory inventoryScript;
+    private TestSimonPlayerState healthScript;
     #endregion
 
     public override void Consume()
     {
         base.Consume();
         movementScript = player.GetComponent<PlayerMovement>();
-        attackScript = player.GetComponent<PlayerAttack>();
-        inventoryScript = player.GetComponent<Inventory>();
-        healthScript = player.GetComponent<PlayerState>();
+        attackScript = player.GetComponent<TestSimonPlayerAttack>();
+        inventoryScript = player.GetComponent<TestSimonInventory>();
+        healthScript = player.GetComponent<TestSimonPlayerState>();
         StartCoroutine(LilyEffect(5f));
     }
 
     IEnumerator LilyEffect(float time)
     {
-        //healthScript.isImmune = true; AJOUTER LA BOOL IS IMMUNE AU SCRIPT PLAYER STATE
+        healthScript.isImmune = true;
         movementScript.canMove = false;
-        //attackScript.canAttack = false; AJOUTER LA BOOL CAN ATTACK AU SCRIPT PLAYER ATTACK
-        //inventoryScript.canUseConsumable = false; AJOUTER LA BOOL CAN USE CONSUMABLE AU SCRIPT INVENTORY
+        attackScript.canAttack = false;
+        inventoryScript.canUseConsumable = false;
         yield return new WaitForSeconds(time);
-        //healthScript.isImmune = false;
+        healthScript.isImmune = false;
         movementScript.canMove = true;
-        //attackScript.canAttack = true;
-        //inventoryScript.canUseConsumable = true;
+        attackScript.canAttack = true;
+        inventoryScript.canUseConsumable = true;
         Destroy(this);
     }
 
