@@ -26,9 +26,9 @@ public class CallDamageZonesSkill : Skill
     {
         if (rate > 0)
         {
-            if (waitRate <= 0.1)
+            if (waitRate <= 0.0f)
             {
-                enemyAnims.AttackAnim();
+                enemyAnims.SkillAnim(animIndex);
                 waitRate = startWaitRate;
                 rate--;
             }

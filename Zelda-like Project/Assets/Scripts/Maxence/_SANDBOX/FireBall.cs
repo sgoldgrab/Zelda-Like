@@ -28,8 +28,6 @@ public class FireBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("do something motherfucker");
-
         if (other.gameObject.tag == "Player")
         {
             GameObject player = other.transform.parent.parent.gameObject;

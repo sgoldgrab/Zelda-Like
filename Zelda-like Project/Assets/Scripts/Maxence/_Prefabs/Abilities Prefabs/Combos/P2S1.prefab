@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3544258004084273381}
   - component: {fileID: 225477365491230973}
   - component: {fileID: 6825040019884651151}
-  - component: {fileID: 6891478376040563725}
+  - component: {fileID: 6057910152452726866}
   m_Layer: 0
   m_Name: P2S1
   m_TagString: Untagged
@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
 --- !u!212 &6825040019884651151
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6891478376040563725
+--- !u!114 &6057910152452726866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8130630827743236345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4fb6f0865ccf748b9ba51e2665eacb, type: 3}
+  m_Script: {fileID: 11500000, guid: b026974e6d9625e448ad253b7f6e393b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0.2

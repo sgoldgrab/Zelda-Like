@@ -11,6 +11,9 @@ public class IdleBehavior : Behavior
 
     [SerializeField] private float minX; [SerializeField] private float maxX; [SerializeField] private float minY; [SerializeField] private float maxY;
 
+    public float enemyLastX;
+    public float enemyLastY;
+
     void Start()
     {
         waitTime = startWaitTime;
@@ -44,6 +47,9 @@ public class IdleBehavior : Behavior
             enemyState.isMoving = true;
 
             transform.position = Vector2.MoveTowards(transform.position, checkpoint, enemyBaseSpeed * Time.deltaTime);
+
+            enemyLastX = checkpoint.x - transform.position.x;
+            enemyLastY = checkpoint.y - transform.position.y;
         }
     }
 }

@@ -36,7 +36,7 @@ public class ShieldAbility : Trigger
         {
             if (wait <= 0.0f)
             {
-                enemyAnims.AttackAnim();
+                enemyAnims.SkillAnim(animIndex);
                 pushDuration = pushTime;
                 enemyState.isProtected = true;
                 wait = time;

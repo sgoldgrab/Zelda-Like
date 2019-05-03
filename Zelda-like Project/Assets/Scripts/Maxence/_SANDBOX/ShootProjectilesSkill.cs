@@ -26,7 +26,7 @@ public class ShootProjectilesSkill : Skill
         {
             if (waitRate <= 0.1)
             {
-                enemyAnims.AttackAnim();
+                enemyAnims.SkillAnim(animIndex);
                 waitRate = startWaitRate;
                 rate--;
             }

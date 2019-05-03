@@ -7,6 +7,8 @@ public class EnemyAnims : MonoBehaviour
     public Animator enemyAnimator { get; private set; }
 
     [SerializeField] private EnemyState enemyState;
+    private IdleBehavior idleBehavior;
+    private EnemyBehaviorsManager enemyBehaviorsManager;
 
     [SerializeField] private List<Skill> skillsAnimationMethods;
 
@@ -17,6 +19,8 @@ public class EnemyAnims : MonoBehaviour
         enemyAnimator = GetComponentInChildren<Animator>();
 
         skillsAnimationMethods = GetComponentInParent<EnemyBehaviorsManager>().theSkills;
+        enemyBehaviorsManager = GetComponentInParent<EnemyBehaviorsManager>();
+        idleBehavior = GetComponentInParent<IdleBehavior>();
     }
 
     void Start()
@@ -26,7 +30,14 @@ public class EnemyAnims : MonoBehaviour
 
     void Update()
     {
-        LookAtPlayer();
+        if (enemyBehaviorsManager.behavior == EnemyBehaviorsManager.Behaviors.idle) DirectionAnim();
+
+        else if (enemyBehaviorsManager.behavior == EnemyBehaviorsManager.Behaviors.combat) LookAtPlayer();
+
+        if (enemyState.health <= 0)
+        {
+            enemyAnimator.SetTrigger("isDead");
+        }
     }
 
     void LookAtPlayer()
@@ -35,6 +46,14 @@ public class EnemyAnims : MonoBehaviour
         if (transform.position.x <= enemyState.playerTransform.position.x) { enemyAnimator.SetFloat("lastX", 1f); }
         if (transform.position.y >= enemyState.playerTransform.position.y) { enemyAnimator.SetFloat("lastY", -1f); }
         if (transform.position.y <= enemyState.playerTransform.position.y) { enemyAnimator.SetFloat("lastY", 1f); }
+    }
+
+    public void DirectionAnim()
+    {
+        if (idleBehavior.enemyLastX > 0) { enemyAnimator.SetFloat("lastX", 1); }
+        if (idleBehavior.enemyLastX < 0) { enemyAnimator.SetFloat("lastX", -1); }
+        if (idleBehavior.enemyLastY > 0) { enemyAnimator.SetFloat("lastY", 1); }
+        if (idleBehavior.enemyLastY < 0) { enemyAnimator.SetFloat("lastY", -1); }
     }
 
     public void MoveAnim(bool move)
@@ -51,16 +70,17 @@ public class EnemyAnims : MonoBehaviour
         {
             enemyAnimator.SetTrigger("isHit");
         }
-
-        else if (enemyState.health <= 0)
-        {
-            enemyAnimator.SetTrigger("isDead");
-        }
     }
 
-    public void AttackAnim()
+    public void SkillAnim(int val)
     {
-        enemyAnimator.SetTrigger("attacks");
+        if (gameObject.transform.parent.name == "Test FDPU")
+        {
+            enemyAnimator.SetInteger("ability", val);
+            enemyAnimator.SetTrigger("useSkill");
+        }
+
+        else enemyAnimator.SetTrigger("attacks");
     }
 
     /// Animation Events \\\

@@ -59,7 +59,7 @@ public class SwordAttackSkill : Skill
             if (attackWaitRate <= 0.0f)
             {
                 fixedAttackPos = attackPosition;
-                enemyAnims.AttackAnim();
+                enemyAnims.SkillAnim(animIndex);
                 attackWaitRate = startAttackWaitRate;
                 rate--;
             }

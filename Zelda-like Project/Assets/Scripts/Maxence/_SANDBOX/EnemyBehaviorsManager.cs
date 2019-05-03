@@ -35,6 +35,7 @@ public abstract class Ability : Behavior
 
     public string abilityName;
     public abstract void AbilityAnimMethod();
+    [SerializeField] protected int animIndex;
 
     public bool skillIsActive { get; set; } = false;
 }

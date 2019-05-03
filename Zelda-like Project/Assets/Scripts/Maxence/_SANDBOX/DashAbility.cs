@@ -38,7 +38,7 @@ public class DashAbility : Trigger
             {
                 Direction();
 
-                enemyAnims.AttackAnim();
+                enemyAnims.SkillAnim(animIndex);
                 duration = dashDuration;
                 canDash = true;
                 wait = time;

@@ -25,7 +25,7 @@ public class EnemyState : EntityState
     [SerializeField] private float maxOffset;
 
     // ON DEATH REQUIRED
-    [SerializeField] private Collider2D[] enemyCollider;
+    [SerializeField] private Collider2D[] enemyColliders;
     private EnemySpawner enemySpawner;
     private bool isDead = false;
 
@@ -70,7 +70,7 @@ public class EnemyState : EntityState
             {
                 if (health == 1)
                 {
-                    foreach (Collider2D col in enemyCollider) { col.enabled = false; }
+                    foreach (Collider2D col in enemyColliders) { col.enabled = false; }
                     enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
 
                     isDead = true;
