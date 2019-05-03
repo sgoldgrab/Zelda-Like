@@ -29,7 +29,6 @@ public class LayerSorter : MonoBehaviour
 
             obstacles.Add(obstacleCollider);
         }
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -38,7 +37,9 @@ public class LayerSorter : MonoBehaviour
         {
             Obstacle obstacleCollider = collision.GetComponent<Obstacle>();
             obstacleCollider.FadeIn();
+
             obstacles.Remove(obstacleCollider);
+
             if (obstacles.Count == 0)
             {
                 spriteRenderer.sortingOrder = 2000; //  not enough layers !!!

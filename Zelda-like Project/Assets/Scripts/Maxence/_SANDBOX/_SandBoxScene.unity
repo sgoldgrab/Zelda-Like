@@ -2331,10 +2331,7 @@ MonoBehaviour:
   segsNumber: 3
   minOffset: 0.15
   maxOffset: 0.2
-  enemyCollider:
-  - {fileID: 1568865607}
-  - {fileID: 1617586684}
-  - {fileID: 1547622638}
+  enemyColliders: []
 --- !u!50 &1157775228
 Rigidbody2D:
   serializedVersion: 4

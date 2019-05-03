@@ -61,6 +61,7 @@ public class EnemyState : EntityState
     public override void TakeDamage(int dmg)
     {
         Debug.Log(dmg);
+        Debug.Log(health);
 
         if (isProtected) { parry = true; return; }
 
