@@ -24,7 +24,7 @@ public class TestSimonPlayerStances : MonoBehaviour
     {
         if (Input.GetButtonDown(stanceInput) && canSwitch)
         {
-            if(!beenBuffed) { whenPlayerSwitches(); }
+            if(!beenBuffed && whenPlayerSwitches != null) { whenPlayerSwitches(); }
 
             if (whatStance == Stance.stance1) //switch to stance 2
             {

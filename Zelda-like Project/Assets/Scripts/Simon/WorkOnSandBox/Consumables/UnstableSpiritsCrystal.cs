@@ -42,9 +42,8 @@ public class UnstableSpiritsCrystal : PickUp
     {
         TestSimonPlayerStances.whenPlayerSwitches += AttackBuff;
         TestSimonEnemyState.whenEnemyHit += AttackDebuff;
-        int temper = attackScript.attackDamage;
         yield return new WaitForSeconds(time);
-        attackScript.attackDamage = temper;
+        if (stanceScript.beenBuffed) { attackScript.attackDamage -= 1; }
         stanceScript.beenBuffed = false;
         Destroy(gameObject);
     }
