@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnstableSpiritsCrystal : PickUp
 {
+    //grants the player +1 dmg on his next attack every time he switches stance during 7,5 seconds
+    //needs to be tested with enemies to hit 1 and see iof the damage bonus fades away as intended
 
     #region Variables
     private TestSimonPlayerAttack attackScript;
@@ -44,7 +46,7 @@ public class UnstableSpiritsCrystal : PickUp
         yield return new WaitForSeconds(time);
         attackScript.attackDamage = temper;
         stanceScript.beenBuffed = false;
-        Destroy(this);
+        Destroy(gameObject);
     }
 
 }

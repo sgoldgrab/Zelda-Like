@@ -20,6 +20,7 @@ public class TestSimonPlayerState : EntityState
 
         if(!isImmune)
         {
+
             playerUI.UITakeDamage(health, dmg);
 
             base.TakeDamage(dmg);

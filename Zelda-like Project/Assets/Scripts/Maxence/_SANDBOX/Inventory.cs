@@ -9,16 +9,19 @@ public abstract class PickUp : MonoBehaviour
 
     private int pickUpSlot;
 
+    public bool used;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            player = other.GetComponent<GameObject>();
+            player = other.transform.parent.parent.gameObject;
 
             inventory = player.GetComponent<Inventory>();
 
-            if (inventory.currentSlotsTaken < inventory.consumables.Count)
+            if (inventory.currentSlotsTaken < inventory.consumables.Length)
             {
+
                 pickUpSlot = inventory.firstAvailable;
                 inventory.consumables[pickUpSlot] = gameObject;
 
@@ -31,21 +34,35 @@ public abstract class PickUp : MonoBehaviour
         }
     }
 
-    public virtual void Consume() { inventory.currentSlotsTaken--; }
+    public virtual void Consume()
+    {
+        inventory.currentSlotsTaken--;
+        used = true;
+    }
 }
 
 public class Inventory : MonoBehaviour
 {
-    public int currentSlotsTaken { get; set; }
+    public int currentSlotsTaken = 0;
     public int firstAvailable { get; set; }
-    public List<GameObject> consumables { get; private set; }
+    //public List<GameObject> consumables = new List<GameObject>(3);
+
+    public GameObject[] consumables;
+
     [SerializeField] private string consumeInputName;
+
+    private void Awake()
+    {
+
+        consumables = new GameObject[3];
+
+    }
 
     void Update()
     {
         for (int z = 0; z < 3; z++)
         {
-            if (Input.GetButtonDown(consumeInputName + (z + 1).ToString())) { UseConsumable(z); }
+            if (Input.GetButtonDown(consumeInputName + (z + 1).ToString()) && consumables[z].GetComponent<PickUp>().used == false) { UseConsumable(z); }
         }
     }
 

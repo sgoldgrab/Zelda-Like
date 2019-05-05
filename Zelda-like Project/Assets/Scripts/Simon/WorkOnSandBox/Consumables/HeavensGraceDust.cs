@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HeavensGraceDust : PickUp
 {
+    //makes the player immune to lethal damage 
+    //has to be testes with HP that aren't broken
 
     #region Variables
     TestSimonPlayerState healthScript;
@@ -20,7 +22,7 @@ public class HeavensGraceDust : PickUp
     {
         while(healthScript.health == 1) { healthScript.isImmune = true; }
         yield return new WaitForSeconds(time);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
 }

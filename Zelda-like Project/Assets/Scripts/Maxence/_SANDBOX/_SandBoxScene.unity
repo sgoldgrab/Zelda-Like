@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97583761c192d974cb8ff18efdcde049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyState: {fileID: 1157775227}
+  enemyState: {fileID: 0}
   skillsAnimationMethods:
   - {fileID: 1157775234}
   layerIndex: 0
@@ -2153,7 +2153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1157775227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1157775226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22048c93778260a41b6a1c5392e78418, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f12696f8d6eb8547b4d733c779fb882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111da1eb8cc8be143b953a6f21dd757f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyState: {fileID: 1157775227}
+  enemyState: {fileID: 0}
   enemySpawner: {fileID: 0}
   enemyAnims: {fileID: 114530221}
   playerStance: {fileID: 0}
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93a399f52ff4784bb5c1d4f47474b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyState: {fileID: 1157775227}
+  enemyState: {fileID: 0}
   startWaitTime: 4
   minX: -2
   maxX: 2
@@ -2274,7 +2274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: PLAYER
-  enemyState: {fileID: 1157775227}
+  enemyState: {fileID: 0}
   enemyConditions: {fileID: 1157775230}
   skills:
   - {fileID: 1157775234}
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7df5c43399607a47a28cf25f6ac3548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyState: {fileID: 1157775227}
+  enemyState: {fileID: 0}
   enemyAnims: {fileID: 114530221}
   minDist: 0.5
   chaseSpeed: 0.5
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26ea29200cec284192add84bc70e9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyState: {fileID: 1157775227}
+  enemyState: {fileID: 0}
   conditions: 00000000
   conditionInfos:
   - conditionType: 0
@@ -3270,6 +3270,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1817062475
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6421262393387768093, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_Name
+      value: Unstable Spirit's Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421262393387768090, guid: cf0ba3ec7233be148a11d9cd9eaa98f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf0ba3ec7233be148a11d9cd9eaa98f4, type: 3}
 --- !u!1 &1843731824
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,7 +3572,6 @@ GameObject:
   - component: {fileID: 2011051042}
   - component: {fileID: 2011051043}
   - component: {fileID: 2011051041}
-  - component: {fileID: 2011051035}
   - component: {fileID: 2011051046}
   m_Layer: 8
   m_Name: PLAYER
@@ -3512,20 +3580,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2011051035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011051034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662f74a4583122b468f3a3662033d289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  consumeInputName: Consume
-  canUseConsumable: 1
 --- !u!114 &2011051036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3627,6 +3681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc08358e9e368146a830e6aed62f105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSlotsTaken: 0
+  consumables: []
   consumeInputName: Consume
 --- !u!114 &2011051042
 MonoBehaviour:

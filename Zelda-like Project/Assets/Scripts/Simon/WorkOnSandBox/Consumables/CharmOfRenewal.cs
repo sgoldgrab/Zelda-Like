@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharmOfRenewal : PickUp
 {
     //Heals the player every 2 second during 6 seconds, but locks him in his current stance during the effect
+    //Les HP sont casssés, faut test sur une scène ou les Hp sont pas cassés
 
     #region Variables
     private PlayerState healthScript;
@@ -29,7 +30,7 @@ public class CharmOfRenewal : PickUp
         yield return new WaitForSeconds(time);
         healthScript.TakeHeal(healingAmount);
         stanceScript.canSwitch = true;
-        Destroy(this);
+        Destroy(gameObject);
     }
 
 }

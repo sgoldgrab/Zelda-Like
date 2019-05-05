@@ -6,11 +6,23 @@ public class BreachRift1 : MonoBehaviour
 {
     private float score = 0;
 
+    private float timerTookHit = 2f;
+
     private float timer = 12f;
     private bool isActive = false;
 
+    private bool tookHit = false;
+
     private void Update()
     {
+        if(tookHit) { timerTookHit -= Time.deltaTime; }
+
+        if(timerTookHit <= 0)
+        {
+            timerTookHit = 4f;
+            tookHit = false;
+        }
+
         timer -= Time.deltaTime;
 
         if(timer <= 0 && !isActive)
@@ -28,6 +40,19 @@ public class BreachRift1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("")) { score += 15; }
+        if (other.CompareTag(""))
+        {
+            if(!tookHit)
+            {
+                score += 15;
+                tookHit = true;
+            }
+
+            if(tookHit)
+            {
+                score += 15;
+                isActive = false;
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ public class PickUpScript : MonoBehaviour
             player = other.GetComponent<GameObject>();
         
             
-            if(inventoryScript.currentSlotsTaken < inventoryScript.consumables.Count)
+            if(inventoryScript.currentSlotsTaken < inventoryScript.consumables.Length)
             {
 
                 inventoryScript.consumables[inventoryScript.firstAvailable] = gameObject;

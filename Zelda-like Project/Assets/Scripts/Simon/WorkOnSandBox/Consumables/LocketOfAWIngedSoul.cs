@@ -5,6 +5,7 @@ using UnityEngine;
 public class LocketOfAWIngedSoul : PickUp
 {
     //During 10 seconds, increase the range of the dash performed when the player uses a basic attack
+    //Works well, juste have to create a dashValue float in the PlayerAttackScript that increases the dash range
 
     #region Variables
     private TestSimonPlayerAttack attackScript;
@@ -19,10 +20,10 @@ public class LocketOfAWIngedSoul : PickUp
 
     IEnumerator LocketEffect (float time)
     {
-        attackScript.dashDistance *= 2.5f;
+        attackScript.dashDistance += 2.5f;
         yield return new WaitForSeconds(time);
-        attackScript.dashDistance /= 2.5f;
-        Destroy(this);
+        attackScript.dashDistance -= 2.5f;
+        Destroy(gameObject);
     }
 
 }
