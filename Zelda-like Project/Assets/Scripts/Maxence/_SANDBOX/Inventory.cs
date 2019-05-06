@@ -9,15 +9,17 @@ public abstract class PickUp : MonoBehaviour
 
     private int pickUpSlot;
 
+    public bool used { get; set; }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            player = other.GetComponent<GameObject>();
+            player = other.transform.parent.parent.gameObject;
 
             inventory = player.GetComponent<Inventory>();
 
-            if (inventory.currentSlotsTaken < inventory.consumables.Count)
+            if (inventory.currentSlotsTaken < inventory.consumables.Length)
             {
                 pickUpSlot = inventory.firstAvailable;
                 inventory.consumables[pickUpSlot] = gameObject;
@@ -31,20 +33,42 @@ public abstract class PickUp : MonoBehaviour
         }
     }
 
-    public virtual void Consume() { inventory.currentSlotsTaken--; }
+    public virtual void Consume()
+    {
+        inventory.currentSlotsTaken--;
+        used = true;
+    }
+
+    public virtual void OnDisable()
+    {
+        inventory.pressed = false;
+    }
 }
 
 public class Inventory : MonoBehaviour
 {
     public int currentSlotsTaken { get; set; }
     public int firstAvailable { get; set; }
-    public List<GameObject> consumables { get; private set; }
+    public GameObject[] consumables;
     [SerializeField] private string consumeInputName;
+
+    public bool pressed;
 
     public bool canUseConsumable { get; set; } = true;
 
+    void Awake()
+    {
+        consumables = new GameObject[3];
+    }
+
     void Update()
     {
+        if (Input.GetAxisRaw("Consume Y") == 1.0f && !pressed)
+        {
+            UseConsumable(0);
+            pressed = true;
+        }
+
         for (int z = 0; z < 3; z++)
         {
             //if (Input.GetButtonDown(consumeInputName + (z + 1).ToString()) && canUseConsumable) { UseConsumable(z); }

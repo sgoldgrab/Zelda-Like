@@ -7,7 +7,7 @@ public class PlayerState : EntityState
     [SerializeField] private PlayerAnims playerAnims;
     [SerializeField] private EntityUI playerUI;
 
-    public bool isImmune { get; set; } = false;
+    public int immunities { get; set; } = 0;
     public int damageCount { get; set; } = 0;
 
     private bool playerIsDead;
@@ -19,7 +19,7 @@ public class PlayerState : EntityState
 
     public override void TakeDamage(int dmg)
     {
-        if (isImmune) { damageCount++; return; }
+        if (immunities > 0) { damageCount++; return; }
 
         for (int d = 0; d < dmg; d++)
         {

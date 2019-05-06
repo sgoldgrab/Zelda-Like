@@ -24,7 +24,7 @@ public class ComboP3S3 : MonoBehaviour
 
         if (timer <= 0)
         {
-            playerState.isImmune = false;
+            playerState.immunities -= 1;
             playerState.damageCount = 0;
 
             Destroy(gameObject);
@@ -41,12 +41,12 @@ public class ComboP3S3 : MonoBehaviour
 
             if (playerState.damageCount < 4)
             {
-                playerState.isImmune = true;
+                playerState.immunities += 1;
             }
 
             else if (playerState.damageCount >= 4)
             {
-                playerState.isImmune = false;
+                playerState.immunities -= 1;
                 playerState.damageCount = 0;
 
                 Destroy(gameObject);
@@ -58,7 +58,7 @@ public class ComboP3S3 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerState.isImmune = false;
+            playerState.immunities -= 1;
         }
     }
 }

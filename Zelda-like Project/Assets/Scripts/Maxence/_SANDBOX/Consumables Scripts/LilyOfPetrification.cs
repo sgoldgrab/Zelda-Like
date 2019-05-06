@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LilyOfPetrificaion : PickUp
+public class LilyOfPetrification : PickUp
 {
     //During 5 seconds, makes the player immune to damage, but prevents him from attacking casting abilities or using consumables
 
-    private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
     private Inventory inventory;
     private PlayerState playerState;
@@ -16,7 +15,6 @@ public class LilyOfPetrificaion : PickUp
     {
         base.Consume();
 
-        playerMovement = player.GetComponent<PlayerMovement>();
         playerAttack = player.GetComponent<PlayerAttack>();
         inventory = player.GetComponent<Inventory>();
         playerState = player.GetComponent<PlayerState>();
@@ -27,21 +25,18 @@ public class LilyOfPetrificaion : PickUp
 
     IEnumerator LilyEffect(float time)
     {
-        playerState.isImmune = true;
-        playerMovement.canMove = false;
+        playerState.immunities += 1;
         playerAttack.canAttack = false;
         playerAbilities.canUseAbility = false;
         inventory.canUseConsumable = false;
 
         yield return new WaitForSeconds(time);
 
-        playerState.isImmune = false;
-        playerMovement.canMove = true;
+        playerState.immunities -= 1;
         playerAttack.canAttack = true;
         playerAbilities.canUseAbility = true;
         inventory.canUseConsumable = true;
 
         Destroy(gameObject);
     }
-
 }

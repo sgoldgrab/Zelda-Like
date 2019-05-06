@@ -144,7 +144,7 @@ public class PlayerAttack : MonoBehaviour
 
             if (!enemies.Contains(enemy))
             {
-                enemy.GetComponent<EnemyState>().TakeDamage(1);
+                enemy.GetComponent<EnemyState>().TakeDamage(attackDamage);
                 enemies.Add(enemy);
             }
         }

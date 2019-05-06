@@ -10,18 +10,20 @@ public class PlayerStance : MonoBehaviour
     public enum Stance { stance1, stance2 };
     public Stance whatStance { get; private set; } = Stance.stance1;
 
+    public delegate void PlayerSwitches();
+    public static event PlayerSwitches whenPlayerSwitches;
+
     public bool canSwitch { get; set; } = true;
+    public bool beenBuffed { get; set; } = false;
 
     [SerializeField] private GameObject postProcess;
-    [SerializeField] private PlayerAbilities playerAbilities;
 
     void Update()
     {
-        if (playerAbilities.inputPressed) canSwitch = false;
-        else canSwitch = true;
-
         if (Input.GetButtonDown(stanceInput) && canSwitch)
         {
+            if (!beenBuffed && whenPlayerSwitches != null) { whenPlayerSwitches(); }
+
             if (whatStance == Stance.stance1) //switch to stance 2
             {
                 whatStance = Stance.stance2;

@@ -9,6 +9,12 @@ public class EnemyState : EntityState
     public Transform playerTransform { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
 
+    public delegate void EnemyKilled();
+    public static event EnemyKilled whenEnemyDies;
+
+    public delegate void EnemyHit();
+    public static event EnemyHit whenEnemyHit;
+
     // HEALTH BAR INSTANTIATE
     [SerializeField] private GameObject enemyHealthBar;
     [SerializeField] private GameObject[] enemyHealthSegs;
@@ -70,6 +76,7 @@ public class EnemyState : EntityState
                 {
                     foreach (Collider2D col in enemyColliders) { col.enabled = false; }
                     enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
+                    whenEnemyDies?.Invoke();
 
                     isDead = true;
                 }
@@ -79,6 +86,8 @@ public class EnemyState : EntityState
                 base.TakeDamage(1);
             }
         }
+
+        whenEnemyHit?.Invoke();
 
         enemyCanUseSkill = false;
         enemyCanMove = false;

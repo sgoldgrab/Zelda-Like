@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocketOfAWIngedSoul : PickUp
+public class LocketOfAWingedSoul : PickUp
 {
     //During 10 seconds, increase the range of the dash performed when the player uses a basic attack
 

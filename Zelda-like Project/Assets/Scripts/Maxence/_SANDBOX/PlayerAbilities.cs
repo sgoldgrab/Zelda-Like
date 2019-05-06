@@ -20,12 +20,12 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject[] spellBlueprints;
     public GameObject[] potionBlueprints;
 
-    [SerializeField] private PlayerStance playerStance;
     private bool doubleTap = false;
 
     private bool[] cooldownIsOver = new bool[6];
     private float[] coolDownTime = new float[6];
     [SerializeField] private float[] startCoolDownTime;
+    public float reduction = 1.0f;
 
     private string buttonName;
     public bool inputPressed { get; private set; }
@@ -33,6 +33,8 @@ public class PlayerAbilities : MonoBehaviour
 
     private bool createBluePrint = true;
 
+    private PlayerStance playerStance;
+    private PlayerAttack playerAttack;
     private PlayerMovement playerMovement;
     private PlayerAnims playerAnims;
 
@@ -60,6 +62,8 @@ public class PlayerAbilities : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerStance = GetComponent<PlayerStance>();
+        playerAttack = GetComponent<PlayerAttack>();
         playerAnims = GetComponentInChildren<PlayerAnims>();
 
         for (int y = 0; y < 6; y++)
@@ -186,7 +190,7 @@ public class PlayerAbilities : MonoBehaviour
 
             else
             {
-                coolDownTime[i] -= Time.deltaTime;
+                coolDownTime[i] -= Time.deltaTime * reduction;
             }
         }
     }
@@ -194,6 +198,8 @@ public class PlayerAbilities : MonoBehaviour
     void Ability(int index, bool stance, float aBDistance)
     {
         playerMovement.canMove = false;
+        playerStance.canSwitch = false;
+        playerAttack.canAttack = false;
 
         AimDirection(aBDistance);
 
@@ -236,7 +242,8 @@ public class PlayerAbilities : MonoBehaviour
 
                 canDrink = false;
 
-                //playerMovement.canMove = false; // --> probably an animation with a function stopMove() and recover() at the first and last frames
+                playerStance.canSwitch = true;
+                playerAttack.canAttack = true;
 
                 playerAnims.DrinkAnim();
 
@@ -269,6 +276,8 @@ public class PlayerAbilities : MonoBehaviour
         Destroy(theBluePrint);
 
         playerMovement.canMove = true; // --> à remove dès l'intégration de l'anim de release --> use recover method instead
+        playerStance.canSwitch = true;
+        playerAttack.canAttack = true;
 
         doubleTap = false;
 
