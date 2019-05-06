@@ -36,6 +36,8 @@ public class PlayerAttack : MonoBehaviour
     //Testing
     [SerializeField] private GameObject attackPosition;
 
+    private List<GameObject> enemies = new List<GameObject>();
+
     void Start()
     {
         attackDamage = swordDamage;
@@ -63,7 +65,8 @@ public class PlayerAttack : MonoBehaviour
             Vector2 rawAttackPos = rawAttackCoordinates.normalized * attackRange;
             attackPos = transformPos + rawAttackPos;
 
-            float angle = Mathf.Atan2(attackPosX, attackPosY) * Mathf.Rad2Deg;
+            //Test Strauss Braüm Reich
+            float angle = (Mathf.Atan2(attackPosX, attackPosY) * - Mathf.Rad2Deg) + 45;
 
             attackPosition.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
@@ -75,10 +78,11 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire2") && canAttack) // initialize an attack
             {
+                playerMovement.canMove = false;
                 attackMove = true;
                 attackMoveDuration = startAttackMoveDuration;
 
-                SwordAttack();
+                //SwordAttack();
 
                 //SwordAttack2();
 
@@ -94,7 +98,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void SwordAttack()
+    public void SwordAttack()
     {
         Collider2D[] enemyList;
 
@@ -109,9 +113,9 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void SwordAttack2()
+    public void Clear()
     {
-        //
+        enemies.Clear();
     }
 
     void AttackMove()
@@ -128,6 +132,20 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 attackMoveDuration -= Time.deltaTime;
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            GameObject enemy = other.transform.parent.parent.gameObject;
+
+            if (!enemies.Contains(enemy))
+            {
+                enemy.GetComponent<EnemyState>().TakeDamage(1);
+                enemies.Add(enemy);
             }
         }
     }

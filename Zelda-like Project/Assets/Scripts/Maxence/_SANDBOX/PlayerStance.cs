@@ -13,9 +13,13 @@ public class PlayerStance : MonoBehaviour
     public bool canSwitch { get; set; } = true;
 
     [SerializeField] private GameObject postProcess;
+    [SerializeField] private PlayerAbilities playerAbilities;
 
     void Update()
     {
+        if (playerAbilities.inputPressed) canSwitch = false;
+        else canSwitch = true;
+
         if (Input.GetButtonDown(stanceInput) && canSwitch)
         {
             if (whatStance == Stance.stance1) //switch to stance 2

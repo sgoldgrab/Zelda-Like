@@ -11,34 +11,53 @@ public class FleeBehavior : Behavior
     public float waitTime { get; private set; } = 0.0f;
     [SerializeField] private float startWaitTime;
 
+    [SerializeField] private float fleeDuration;
+    private float duration;
+
+    private bool move;
+
     void Start()
     {
-        desiredPosition = transform.position;
+        duration = fleeDuration;
     }
 
     public override void EnemyBehavior()
     {
-        if (Vector2.Distance(transform.position, desiredPosition) <= 0.0f)
+        if (enemyState.enemyCanMove && move)
         {
-            if (waitTime <= 0)
-            {
-                waitTime = startWaitTime;
+            Flee();
+        }
 
-                if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= safeDistance)
-                {
-                    calculateNewPosition();
-                }
-            }
+        else if (waitTime <= 0)
+        {
+            waitTime = startWaitTime;
 
-            else
+            if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= safeDistance)
             {
-                waitTime -= Time.deltaTime;
+                calculateNewPosition();
+                move = true;
+                duration = fleeDuration;
             }
         }
 
-        else if (enemyState.enemyCanMove)
+        else
         {
-            transform.position = Vector2.MoveTowards(transform.position, desiredPosition, enemyBaseSpeed * Time.deltaTime);
+            waitTime -= Time.deltaTime;
+        }
+    }
+
+    void Flee()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, desiredPosition, enemyBaseSpeed * Time.deltaTime);
+
+        if (duration <= 0.0f)
+        {
+            move = false;
+        }
+
+        else
+        {
+            duration -= Time.deltaTime;
         }
     }
 
@@ -46,5 +65,11 @@ public class FleeBehavior : Behavior
     {
         Vector2 fleeDirection = transform.position - enemyState.playerTransform.position;
         desiredPosition = fleeDirection.normalized * distance;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, safeDistance);
     }
 }

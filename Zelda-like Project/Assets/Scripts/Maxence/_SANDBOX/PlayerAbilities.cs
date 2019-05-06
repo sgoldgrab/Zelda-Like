@@ -28,12 +28,13 @@ public class PlayerAbilities : MonoBehaviour
     [SerializeField] private float[] startCoolDownTime;
 
     private string buttonName;
-    private bool inputPressed;
+    public bool inputPressed { get; private set; }
     private int index;
 
     private bool createBluePrint = true;
 
     private PlayerMovement playerMovement;
+    private PlayerAnims playerAnims;
 
     //AimBlueprint
     private Vector2 transformPos;
@@ -59,6 +60,7 @@ public class PlayerAbilities : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerAnims = GetComponentInChildren<PlayerAnims>();
 
         for (int y = 0; y < 6; y++)
         {
@@ -94,6 +96,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = true;
                     buttonName = "Potion1";
+                    //playerAnims.AbilityToUseInAnim(index);
                 }
             }
 
@@ -105,6 +108,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = true;
                     buttonName = "Potion2";
+                    //playerAnims.AbilityToUseInAnim(index);
                 }
             }
 
@@ -116,6 +120,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = true;
                     buttonName = "Potion3";
+                    //playerAnims.AbilityToUseInAnim(index);
                 }
             }
 
@@ -135,6 +140,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = false;
                     buttonName = "Spell1";
+                    //playerAnims.AbilityToUseInAnim(index);
                 }
             }
 
@@ -146,6 +152,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = false;
                     buttonName = "Spell2";
+                    //playerAnims.AbilityToUseInAnim(index);
                 }
             }
 
@@ -157,6 +164,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = false;
                     buttonName = "Spell3";
+                    //playerAnims.AbilityToUseInAnim(index);
                 }
             }
 
@@ -185,6 +193,8 @@ public class PlayerAbilities : MonoBehaviour
 
     void Ability(int index, bool stance, float aBDistance)
     {
+        playerMovement.canMove = false;
+
         AimDirection(aBDistance);
 
         if (!canDrink)
@@ -215,6 +225,10 @@ public class PlayerAbilities : MonoBehaviour
             if (Input.GetButtonDown(buttonName) && drinkTimer >= 0.0f) //if the player press the button a second time during the right period of time
             {
                 inputPressed = false;
+
+                cooldownIsOver[dIndex] = false;
+                coolDownTime[dIndex] = startCoolDownTime[dIndex];
+
                 drinkTimer = drinkTime;
                 releaseTimer = 0;
 
@@ -222,7 +236,9 @@ public class PlayerAbilities : MonoBehaviour
 
                 canDrink = false;
 
-                //playerMovement.canMove = false; --> probably an animation with a function stopMove() and recover() at the first and last frames
+                //playerMovement.canMove = false; // --> probably an animation with a function stopMove() and recover() at the first and last frames
+
+                playerAnims.DrinkAnim();
 
                 Debug.Log("ça fait du bien par où ça passe !"); //drinks the potion
 
@@ -252,9 +268,11 @@ public class PlayerAbilities : MonoBehaviour
         createBluePrint = true;
         Destroy(theBluePrint);
 
-        playerMovement.canMove = true;
+        playerMovement.canMove = true; // --> à remove dès l'intégration de l'anim de release --> use recover method instead
 
         doubleTap = false;
+
+        //playerAnims.ReleaseAnim();
 
         if (rStance == false)
         {
@@ -282,11 +300,12 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (releaseTimer > releaseTime)
         {
-            playerMovement.canMove = false;
             doubleTap = false;
 
             if (createBluePrint)
             {
+                //playerAnims.HoldAnim();
+
                 if (bPStance == false)
                 {
                     theBluePrint = Instantiate(spellBlueprints[bPIndex], transform.position, Quaternion.identity, transform);

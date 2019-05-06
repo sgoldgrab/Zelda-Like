@@ -10,6 +10,9 @@ public class DashAbility : Trigger
     private float wait;
     [SerializeField] private float time;
 
+    private float cooldown = 0.0f;
+    [SerializeField] private float cooldownTime;
+
     private float duration;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeed;
@@ -18,16 +21,26 @@ public class DashAbility : Trigger
 
     private Vector2 desiredPosition;
 
+    private enum WhatDash
+    {
+        Simple,
+        Mixed,
+        Lateral
+    }
+    [SerializeField] private WhatDash dash;
+
     void Start() { rate = times; }
 
     void Update()
     {
-        if (skillIsActive && enemyState.enemyCanUseSkill || triggerIsActive)
+        if (skillIsActive && enemyState.enemyCanUseSkill || triggerIsActive && cooldown <= 0.0f)
         {
             EnemyBehavior();
 
             Dash();
         }
+
+        else cooldown -= Time.deltaTime;
     }
 
     public override void EnemyBehavior()
@@ -55,6 +68,7 @@ public class DashAbility : Trigger
         else
         {
             rate = times;
+            cooldown = cooldownTime;
             skillIsActive = false;
             triggerIsActive = false;
             enemyState.enemyCanMove = true;
@@ -85,7 +99,9 @@ public class DashAbility : Trigger
         Vector3 normalizedDirection = dashDirection.normalized;
         Vector3 randomizedDirection = LateralDash(normalizedDirection);
 
-        desiredPosition = transform.position + normalizedDirection + randomizedDirection;
+        if (dash == WhatDash.Simple) desiredPosition = transform.position + normalizedDirection ;
+        if (dash == WhatDash.Mixed) desiredPosition = transform.position + normalizedDirection + randomizedDirection;
+        if (dash == WhatDash.Lateral) desiredPosition = transform.position + randomizedDirection;
     }
 
     Vector2 LateralDash(Vector2 dir)

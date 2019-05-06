@@ -9,6 +9,8 @@ public class PlayerAnims : MonoBehaviour
     public AnimationState playerAnimState { get; set; }
 
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] private PlayerStance playerStance;
     [SerializeField] private PlayerState playerState;
 
     void OnValidate()
@@ -22,6 +24,8 @@ public class PlayerAnims : MonoBehaviour
         MoveAnim();
 
         IdleAnim();
+
+        Stance();
     }
 
     void MoveAnim()
@@ -54,5 +58,58 @@ public class PlayerAnims : MonoBehaviour
     public void AttackAnim()
     {
         playerAnimator.SetTrigger("playerAttacks");
+    }
+
+    public void Stance()
+    {
+        if (playerStance.whatStance == PlayerStance.Stance.stance1) playerAnimator.SetInteger("stance", 1);
+        else if (playerStance.whatStance == PlayerStance.Stance.stance2) playerAnimator.SetInteger("stance", 2);
+    }
+
+    public void AbilityToUseInAnim(int layer)
+    {
+        for (int L = 0; L < 3; L++) // reset all layers to 0
+        {
+            playerAnimator.SetLayerWeight(L, 0);
+        }
+
+        playerAnimator.SetLayerWeight(layer, 1); // set the right layer to 1
+    }
+
+    public void ReleaseAnim()
+    {
+        playerAnimator.SetTrigger("playerRelease");
+    }
+
+    public void DrinkAnim()
+    {
+        playerAnimator.SetTrigger("playerDrinks");
+    }
+
+    public void HoldAnim()
+    {
+        playerAnimator.SetTrigger("playerHolds");
+    }
+
+    /// EVENTS \\\
+
+    public void OnDeath()
+    {
+        //
+    }
+
+    public void Recover()
+    {
+        playerMovement.canMove = true;
+    }
+
+    public void Attack()
+    {
+        playerAttack.SwordAttack();
+    }
+
+    public void AttackClear()
+    {
+        playerAttack.Clear();
     }
 }

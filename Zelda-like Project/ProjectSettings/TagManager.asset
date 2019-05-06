@@ -20,6 +20,7 @@ TagManager:
   - EnemyHealthBar
   - PlayerSprite
   - Interactable
+  - Detect
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Player
   - Enemy
   - 
-  - 
+  - Detection
   - Collider
   - Obstacle
   - PP

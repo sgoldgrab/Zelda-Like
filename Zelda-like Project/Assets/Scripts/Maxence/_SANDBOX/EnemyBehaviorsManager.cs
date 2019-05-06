@@ -82,6 +82,9 @@ public class EnemyBehaviorsManager : MonoBehaviour
     public float generalCooldown { get; private set; } = 0.0f;
     public int k { get; private set; } = 0;
 
+    //Test
+    [SerializeField] private bool docile;
+
     void Start()
     {
         player = GameObject.Find(playerName);
@@ -97,11 +100,9 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Debug.Log(generalCooldown);
-
         if (enemyState.health <= 0) return;
 
-        if (player.GetComponent<PlayerState>().health <= 0) behavior = Behaviors.idle;
+        if (player.GetComponent<PlayerState>().health <= 0 || docile) behavior = Behaviors.idle;
 
         if (behavior == Behaviors.idle)
         {
@@ -198,7 +199,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Detect"))
         {
             behavior = Behaviors.combat;
         }
@@ -206,7 +207,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Detect"))
         {
             behavior = Behaviors.idle;
         }

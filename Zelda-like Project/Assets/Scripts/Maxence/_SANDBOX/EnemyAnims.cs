@@ -74,13 +74,8 @@ public class EnemyAnims : MonoBehaviour
 
     public void SkillAnim(int val)
     {
-        if (gameObject.transform.parent.name == "Test FDPU")
-        {
-            enemyAnimator.SetInteger("ability", val);
-            enemyAnimator.SetTrigger("useSkill");
-        }
-
-        else enemyAnimator.SetTrigger("attacks");
+        enemyAnimator.SetInteger("ability", val);
+        enemyAnimator.SetTrigger("useSkill");
     }
 
     /// Animation Events \\\
