@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Tipheret : AllSephiroths
 {
+    private bool effect = false;
 
+    private GameObject player;
     private PlayerMovement playerMovement;
 
     private void Awake()
     {
+        player = GameObject.Find("PLAYER");
         playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
     {
-        playerMovement.playerSpeed *= 1.3f;
-        isActive = false;
+        if(isActive && !effect)
+        {
+            playerMovement.playerSpeed *= 1.3f;
+            effect = true;
+        }
     }
 }

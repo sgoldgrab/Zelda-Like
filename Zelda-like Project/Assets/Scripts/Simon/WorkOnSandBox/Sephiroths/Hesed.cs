@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Hesed : AllSephiroths
 {
-
+    private GameObject player;
     private PlayerAbilities playerAbilities;
 
     private void Awake()
     {
+        player = GameObject.Find("PLAYER");
         playerAbilities = GetComponent<PlayerAbilities>();
     }
 
@@ -16,8 +17,7 @@ public class Hesed : AllSephiroths
     {
         if (isActive)
         {
-            TestSimonEnemyState.whenEnemyHit += CDReduc;
-            isActive = false;
+            EnemyState.whenEnemyHit += CDReduc;
         }
     }
 

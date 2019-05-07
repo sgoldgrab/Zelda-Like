@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Yesod : AllSephiroths
 {
+    private bool effect = false;
 
-    private TestSimonPlayerAttack attackScript;
+    private GameObject player;
+    private PlayerAttack playerAttack;
+
+    private void Awake()
+    {
+        player = GameObject.Find("PLAYER");
+        playerAttack = player.GetComponent<PlayerAttack>();
+    }
 
     private void Update()
     {
-        if (isActive)
+        if (isActive && !effect)
         {
-            /*attackScript.attackSpeed += 0.5f;*/
-            isActive = false;
+            //playerAttack.attackSpeed *= 1.5f;
+            effect = true;
         }
     }
 
