@@ -10,18 +10,17 @@ public class HeavensGraceDust : PickUp
     PlayerState playerState;
 
     private bool activated;
+    private bool immune;
 
     void Update()
     {
         if (activated)
         {
-            if (playerState.health == 1)
+            if (playerState.health == 1 && !immune)
             {
                 playerState.immunities += 1;
-                activated = false;
+                immune = true;
             }
-
-            else playerState.immunities -= 1;
         }
     }
 
@@ -36,7 +35,7 @@ public class HeavensGraceDust : PickUp
     IEnumerator DustEffect(float time)
     {
         yield return new WaitForSeconds(time);
-        if (playerState.health == 1) playerState.immunities -= 1;
+        if (immune) playerState.immunities -= 1;
         Destroy(gameObject);
     }
 }
