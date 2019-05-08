@@ -2,24 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbility : Trigger
+public class DashAbility : CombatSkill
 {
-    private int rate;
-    [SerializeField] private int times;
-
-    private float wait;
-    [SerializeField] private float time;
-
     private float cooldown = 0.0f;
     [SerializeField] private float cooldownTime;
 
-    private float duration;
-    [SerializeField] private float dashDuration;
-    [SerializeField] private float dashSpeed;
-
-    private bool canDash = false;
-
-    private Vector2 desiredPosition;
+    private Vector2 direction;
 
     private enum WhatDash
     {
@@ -30,69 +18,23 @@ public class DashAbility : Trigger
     }
     [SerializeField] private WhatDash dash;
 
-    void Start() { rate = times; }
-
-    void Update()
-    {
-        if (skillIsActive && enemyState.enemyCanUseSkill || triggerIsActive && cooldown <= 0.0f)
-        {
-            EnemyBehavior();
-
-            Dash();
-        }
-
-        else cooldown -= Time.deltaTime;
-    }
-
     public override void EnemyBehavior()
     {
-        if (rate > 0)
-        {
-            if (wait <= 0.0f)
-            {
-                Direction();
+        Direction();
 
-                enemyAnims.SkillAnim(animIndex);
-                duration = dashDuration;
-                canDash = true;
-                wait = time;
-
-                rate--;
-            }
-
-            else
-            {
-                wait -= Time.deltaTime;
-            }
-        }
-
-        else if (passed == times)
-        {
-            rate = times;
-            passed = 0;
-            cooldown = cooldownTime;
-            skillIsActive = false;
-            triggerIsActive = false;
-            enemyState.enemyCanMove = true;
-        }
+        base.EnemyBehavior();
     }
 
-    void Dash()
+    public override void AdditionalBehavior()
     {
-        if (canDash)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, desiredPosition, dashSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, direction, enemyBaseSpeed * Time.deltaTime);
 
-            if (duration <= 0.0f)
-            {
-                canDash = false;
-            }
+        base.AdditionalBehavior();
+    }
 
-            else
-            {
-                duration -= Time.deltaTime;
-            }
-        }
+    public override void AbilityAnimMethod()
+    {
+        base.AbilityAnimMethod();
     }
 
     void Direction()
@@ -101,14 +43,14 @@ public class DashAbility : Trigger
         Vector3 normalizedDirection = dashDirection.normalized;
         Vector3 randomizedDirection = LateralDash(normalizedDirection);
 
-        if (dash == WhatDash.Simple) desiredPosition = transform.position + normalizedDirection ;
-        if (dash == WhatDash.Mixed) desiredPosition = transform.position + normalizedDirection + randomizedDirection;
-        if (dash == WhatDash.Lateral) desiredPosition = transform.position + randomizedDirection;
+        if (dash == WhatDash.Simple) direction = transform.position + normalizedDirection ;
+        if (dash == WhatDash.Mixed) direction = transform.position + normalizedDirection + randomizedDirection;
+        if (dash == WhatDash.Lateral) direction = transform.position + randomizedDirection;
 
         if (dash == WhatDash.Attack)
         {
             Vector3 breakthrough = enemyState.playerTransform.position - transform.position;
-            desiredPosition = transform.position + breakthrough.normalized;
+            direction = transform.position + breakthrough.normalized;
         }
     }
 
@@ -123,10 +65,5 @@ public class DashAbility : Trigger
 
         Vector2 lateralDir = new Vector2(coordinates[0], coordinates[1]);
         return lateralDir;
-    }
-
-    public override void AbilityAnimMethod()
-    {
-        base.AbilityAnimMethod();
     }
 }

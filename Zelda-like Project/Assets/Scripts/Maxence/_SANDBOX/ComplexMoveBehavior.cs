@@ -2,63 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComplexMoveBehavior : Behavior
+public class ComplexMoveBehavior : MovementBehavior
 {
-    [SerializeField] private float pauseTime = 0.2f;
-    private float time;
-
-    [SerializeField] private float moveDurationMax;
-    [SerializeField] private float moveDurationMin;
-    private float moveTime;
-
-    private Vector2 direction;
-
-    private bool move;
-
     [SerializeField] private float maxDist;
     [SerializeField] private float minDist;
 
     public override void EnemyBehavior()
     {
-        if (enemyState.enemyCanMove && move)
-        {
-            Movement();
-        }
-
-        else if (time <= 0)
-        {
-            time = pauseTime;
-
-            NewDirection();
-            move = true;
-            enemyState.isMoving = true;
-
-            moveTime = Random.Range(moveDurationMin, moveDurationMax);
-        }
-
-        else
-        {
-            time -= Time.deltaTime;
-        }
+        base.EnemyBehavior();
     }
 
-    void Movement()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, direction, enemyBaseSpeed * Time.deltaTime);
-
-        if (moveTime <= 0.0f)
-        {
-            move = false;
-            enemyState.isMoving = false;
-        }
-
-        else
-        {
-            moveTime -= Time.deltaTime;
-        }
-    }
-
-    void NewDirection()
+    public override void NewDirection()
     {
         int[] values = new int[2];
         values[0] = 1;

@@ -696,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 5172756952916316769, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316769, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
@@ -797,6 +797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: randomValue.Array.data[1]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: docile
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
@@ -1968,13 +1973,13 @@ MonoBehaviour:
   enemyState: {fileID: 728505298}
   enemyAnims: {fileID: 237395884}
   enemyBaseSpeed: 0.5
-  startWaitTime: 4
+  moveDuration: 1
+  pauseTime: 1
   minX: -2
   maxX: 2
   minY: -2
   maxY: 2
   rayDist: 0.4
-  idleDuration: 1
 --- !u!114 &728505295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1990,9 +1995,8 @@ MonoBehaviour:
   enemyState: {fileID: 728505298}
   enemyAnims: {fileID: 237395884}
   enemyBaseSpeed: 1
+  moveDuration: 0.5
   pauseTime: 0.4
-  moveDurationMax: 0.5
-  moveDurationMin: 0.1
   maxDist: 1.5
   minDist: 0.6
 --- !u!114 &728505296
@@ -2017,16 +2021,16 @@ MonoBehaviour:
     text: 
   abilityName: Clear
   animIndex: 1
+  attackRate: 1
+  waitTime: 0.4
+  abilityDuration: 0.2
   attackRange: 0.4
   swordDamage: 1
   swordBlowZoneRadius: 0.2
   thisIsThePlayer:
     serializedVersion: 2
     m_Bits: 256
-  startRate: 1
-  startAttackWaitRate: 1
   attackPos2: {fileID: 1789798559}
-  swordMoveDuration: 0.3
 --- !u!114 &728505298 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
@@ -2061,8 +2065,9 @@ MonoBehaviour:
     text: 
   abilityName: FireBall
   animIndex: 2
-  startRate: 1
-  startWaitRate: 0.3
+  attackRate: 1
+  waitTime: 0.3
+  abilityDuration: 0
   fireBall: {fileID: 3881369036538732966, guid: b75db516b57106342b9678657601d2de,
     type: 3}
 --- !u!1001 &765572987
@@ -2347,10 +2352,30 @@ PrefabInstance:
       propertyPath: idleDuration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 912241390328060619, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: moveDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 912241390328060619, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: pauseTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: attackRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: waitTime
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4904808987406339879, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
@@ -2366,6 +2391,21 @@ PrefabInstance:
         type: 3}
       propertyPath: startWaitTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904808987406339879, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: pauseTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904808987406339879, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: moveDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399091905867270513, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c02b63a861bc82d43ae03a73bec8fac6, type: 3}
@@ -2515,6 +2555,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867176917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 412597720, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1720679439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97583761c192d974cb8ff18efdcde049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &911022591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,13 +2985,13 @@ MonoBehaviour:
   enemyState: {fileID: 1157775227}
   enemyAnims: {fileID: 0}
   enemyBaseSpeed: 0
-  startWaitTime: 4
+  moveDuration: 0
+  pauseTime: 0
   minX: -2
   maxX: 2
   minY: -2
   maxY: 2
   rayDist: 0
-  idleDuration: 0
 --- !u!114 &1157775232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3001,16 +3053,16 @@ MonoBehaviour:
     text: 
   abilityName: 
   animIndex: 0
+  attackRate: 0
+  waitTime: 0
+  abilityDuration: 0
   attackRange: 0
   swordDamage: 1
   swordBlowZoneRadius: 0.6
   thisIsThePlayer:
     serializedVersion: 2
     m_Bits: 256
-  startRate: 2
-  startAttackWaitRate: 1
   attackPos2: {fileID: 0}
-  swordMoveDuration: 0
 --- !u!1001 &1207495286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3250,15 +3302,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756952166266084, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 5172756952392051802, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952166266084, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bb5bf4693df852459ef9f5d89a58b73, type: 3}
@@ -3974,12 +4026,12 @@ PrefabInstance:
     - target: {fileID: 4697471463926243226, guid: c68ab61e6e5f3644aa698f17eb06a22f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.18
+      value: 2.86
       objectReference: {fileID: 0}
     - target: {fileID: 4697471463926243226, guid: c68ab61e6e5f3644aa698f17eb06a22f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 4697471463926243226, guid: c68ab61e6e5f3644aa698f17eb06a22f,
         type: 3}
@@ -4035,6 +4087,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 679890270, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: attackRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890270, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: waitTime
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 679890272, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
       propertyPath: rayDist
       value: 0.4
@@ -4054,6 +4114,14 @@ PrefabInstance:
     - target: {fileID: 679890271, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
       propertyPath: startWaitTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890271, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: moveDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890271, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: pauseTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
@@ -4162,6 +4230,7 @@ MonoBehaviour:
   enemyAnims: {fileID: 391942274}
   enemyBaseSpeed: 2
   moveDuration: 1
+  pauseTime: 0
   reachDistance: 1.5
 --- !u!114 &1695223875
 MonoBehaviour:
@@ -4178,13 +4247,13 @@ MonoBehaviour:
   enemyState: {fileID: 1695223878}
   enemyAnims: {fileID: 391942274}
   enemyBaseSpeed: 0.5
-  startWaitTime: 4
+  moveDuration: 0
+  pauseTime: 0
   minX: -2
   maxX: 2
   minY: -2
   maxY: 2
   rayDist: 0.4
-  idleDuration: 0
 --- !u!114 &1695223878 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
@@ -4210,7 +4279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885001530, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1885001538, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4262,10 +4331,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: enemyBaseSpeed
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: swordMoveDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: attackRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: waitTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: abilityDuration
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 412597722, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
@@ -4280,6 +4361,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1885001532, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: enemyAnims
+      value: 
+      objectReference: {fileID: 867176917}
+    - target: {fileID: 1885001531, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: moveDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885001531, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: pauseTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885001531, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: enemyAnims
+      value: 
+      objectReference: {fileID: 867176917}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
 --- !u!1 &1744341766 stripped
@@ -4302,7 +4399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1744341773}
   enemyAnims: {fileID: 1250143990}
-  enemyBaseSpeed: 0
+  enemyBaseSpeed: 2
   conditions: 00000000
   conditionInfos:
   - conditionType: 0
@@ -4310,11 +4407,10 @@ MonoBehaviour:
     text: 
   abilityName: 
   animIndex: 0
-  times: 1
-  time: 0.5
+  attackRate: 0
+  waitTime: 0
+  abilityDuration: 0
   cooldownTime: 2
-  dashDuration: 0.3
-  dashSpeed: 2
   dash: 1
 --- !u!114 &1744341773 stripped
 MonoBehaviour:

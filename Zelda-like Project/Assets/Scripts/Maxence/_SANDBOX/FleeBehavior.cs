@@ -2,72 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FleeBehavior : Behavior
+public class FleeBehavior : MovementBehavior
 {
-    private Vector2 desiredPosition;
     [SerializeField] private float distance;
     [SerializeField] private float safeDistance;
 
-    public float waitTime { get; private set; } = 0.0f;
-    [SerializeField] private float startWaitTime;
-
-    [SerializeField] private float fleeDuration;
-    private float duration;
-
-    private bool flee;
-
     void Start()
     {
-        duration = fleeDuration;
+        duration = moveDuration;
     }
 
     public override void EnemyBehavior()
     {
-        if (enemyState.enemyCanMove && flee)
-        {
-            Flee();
-        }
+        if (Vector2.Distance(transform.position, enemyState.playerTransform.position) >= safeDistance) otherCondition = false;
+        else otherCondition = true;
 
-        else if (waitTime <= 0)
-        {
-            waitTime = startWaitTime;
-
-            if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= safeDistance)
-            {
-                calculateNewPosition();
-                flee = true;
-                enemyState.isMoving = true;
-
-                duration = fleeDuration;
-            }
-        }
-
-        else
-        {
-            waitTime -= Time.deltaTime;
-        }
+        base.EnemyBehavior();
     }
 
-    void Flee()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, desiredPosition, enemyBaseSpeed * Time.deltaTime);
-
-        if (duration <= 0.0f)
-        {
-            flee = false;
-            enemyState.isMoving = false;
-        }
-
-        else
-        {
-            duration -= Time.deltaTime;
-        }
-    }
-
-    void calculateNewPosition()
+    public override void NewDirection()
     {
         Vector2 fleeDirection = transform.position - enemyState.playerTransform.position;
-        desiredPosition = fleeDirection.normalized * distance;
+        direction = fleeDirection.normalized * distance;
     }
 
     void OnDrawGizmosSelected()

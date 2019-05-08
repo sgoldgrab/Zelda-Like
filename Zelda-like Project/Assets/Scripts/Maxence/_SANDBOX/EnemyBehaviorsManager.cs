@@ -108,7 +108,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(skillStock[0].skillIsActive);
+        //Debug.Log(skillStock[0].skillIsActive);
 
         if (enemyState.health <= 0) return;
 
@@ -194,7 +194,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
             {
                 //activate the trigger
                 triggers[t].triggerIsActive = true;
-                if (skillStock.Count > 0) skillStock[k].skillIsActive = false; // annule le skill en cours
+                if (skillStock.Count > 0) skillStock[k].skillIsActive = false; // cancel the current skill, if any
                 enemyState.enemyCanMove = false;
             }
 
