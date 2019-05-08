@@ -12,6 +12,11 @@ public class ShootProjectilesSkill : Skill
 
     [SerializeField] private GameObject fireBall;
 
+    void Start()
+    {
+        rate = startRate;
+    }
+
     void Update()
     {
         if (skillIsActive && enemyState.enemyCanUseSkill)
@@ -37,9 +42,10 @@ public class ShootProjectilesSkill : Skill
             }
         }
 
-        else
+        else if (passed == startRate)
         {
             rate = startRate;
+            passed = 0;
             skillIsActive = false;
             enemyState.enemyCanMove = true;
         }
@@ -49,5 +55,7 @@ public class ShootProjectilesSkill : Skill
     {
         GameObject bullet = Instantiate(fireBall, transform.position, transform.rotation);
         bullet.GetComponent<FireBall>().SetPlayerPos(enemyState.playerTransform.position);
+
+        base.AbilityAnimMethod();
     }
 }

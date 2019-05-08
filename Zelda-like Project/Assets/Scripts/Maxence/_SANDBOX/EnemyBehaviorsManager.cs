@@ -34,10 +34,16 @@ public abstract class Ability : Behavior
     public List<ConditionInfo> infos { get => conditionInfos; protected set => conditionInfos = value; }
 
     public string abilityName;
-    public abstract void AbilityAnimMethod();
+    
     [SerializeField] protected int animIndex;
 
     public bool skillIsActive { get; set; } = false;
+
+    protected int passed = 0;
+    public virtual void AbilityAnimMethod()
+    {
+        passed++;
+    }
 }
 
 public abstract class Skill : Ability
@@ -89,6 +95,8 @@ public class EnemyBehaviorsManager : MonoBehaviour
     {
         player = GameObject.Find(playerName);
 
+        generalCooldown = startGeneralCooldown;
+
         for (int p = 0; p < skills.Count; p++)
         {
             for (int s = 0; s < randomValue[p]; s++)
@@ -100,6 +108,8 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(skillStock[0].skillIsActive);
+
         if (enemyState.health <= 0) return;
 
         if (player.GetComponent<PlayerState>().health <= 0 || docile) behavior = Behaviors.idle;
@@ -184,7 +194,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
             {
                 //activate the trigger
                 triggers[t].triggerIsActive = true;
-                if (skillStock.Count > 0) skillStock[k].skillIsActive = false;
+                if (skillStock.Count > 0) skillStock[k].skillIsActive = false; // annule le skill en cours
                 enemyState.enemyCanMove = false;
             }
 

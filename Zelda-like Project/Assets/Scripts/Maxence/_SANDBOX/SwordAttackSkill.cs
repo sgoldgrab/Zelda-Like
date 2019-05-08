@@ -22,6 +22,11 @@ public class SwordAttackSkill : Skill
 
     [SerializeField] private GameObject attackPos2;
 
+    //Attack Move
+    private bool swordMove;
+    [SerializeField] private float swordMoveDuration;
+    private float moveDuration;
+
     void Start()
     {
         additionalCooldown = 1.0f;
@@ -35,6 +40,8 @@ public class SwordAttackSkill : Skill
         if (skillIsActive && enemyState.enemyCanUseSkill)
         {
             EnemyBehavior();
+
+            SwordAttackMove();
         }
 
         attackWaitRate -= Time.deltaTime;
@@ -52,25 +59,23 @@ public class SwordAttackSkill : Skill
             if (attackWaitRate <= 0.0f)
             {
                 fixedAttackPos = attackPosition;
+
+                moveDuration = swordMoveDuration;
+                swordMove = true;
+
                 enemyAnims.SkillAnim(animIndex);
                 attackWaitRate = startAttackWaitRate;
                 rate--;
             }
         }
 
-        else
+        else if (passed == startRate)
         {
             rate = startRate;
+            passed = 0;
             skillIsActive = false;
             enemyState.enemyCanMove = true;
         }
-    }
-
-    public override void AbilityAnimMethod() // SwordBlow
-    {
-        //SwordBlow();
-
-        Clear();
     }
 
     void SwordBlow()
@@ -86,9 +91,22 @@ public class SwordAttackSkill : Skill
         }
     }
 
-    public void Clear()
+    void SwordAttackMove()
     {
-        thePlayer.Clear();
+        if (swordMove)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, fixedAttackPos, enemyBaseSpeed * Time.deltaTime);
+
+            if (moveDuration <= 0.0f)
+            {
+                swordMove = false;
+            }
+
+            else
+            {
+                moveDuration -= Time.deltaTime;
+            }
+        }
     }
 
     void SwordAttackDirection()
@@ -118,6 +136,12 @@ public class SwordAttackSkill : Skill
                 thePlayer.Add(player);
             }
         }
+    }
+
+    public override void AbilityAnimMethod() // Clear
+    {
+        thePlayer.Clear();
+        base.AbilityAnimMethod();
     }
 
     void OnDrawGizmosSelected()

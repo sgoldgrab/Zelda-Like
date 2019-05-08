@@ -25,7 +25,8 @@ public class DashAbility : Trigger
     {
         Simple,
         Mixed,
-        Lateral
+        Lateral,
+        Attack
     }
     [SerializeField] private WhatDash dash;
 
@@ -65,9 +66,10 @@ public class DashAbility : Trigger
             }
         }
 
-        else
+        else if (passed == times)
         {
             rate = times;
+            passed = 0;
             cooldown = cooldownTime;
             skillIsActive = false;
             triggerIsActive = false;
@@ -102,6 +104,12 @@ public class DashAbility : Trigger
         if (dash == WhatDash.Simple) desiredPosition = transform.position + normalizedDirection ;
         if (dash == WhatDash.Mixed) desiredPosition = transform.position + normalizedDirection + randomizedDirection;
         if (dash == WhatDash.Lateral) desiredPosition = transform.position + randomizedDirection;
+
+        if (dash == WhatDash.Attack)
+        {
+            Vector3 breakthrough = enemyState.playerTransform.position - transform.position;
+            desiredPosition = transform.position + breakthrough.normalized;
+        }
     }
 
     Vector2 LateralDash(Vector2 dir)
@@ -119,6 +127,6 @@ public class DashAbility : Trigger
 
     public override void AbilityAnimMethod()
     {
-        //
+        base.AbilityAnimMethod();
     }
 }

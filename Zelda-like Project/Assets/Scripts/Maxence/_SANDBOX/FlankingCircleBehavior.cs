@@ -27,6 +27,8 @@ public class FlankingCircleBehavior : Behavior
         if (duration <= 0.0f)
         {
             GenerateNewDirectrion();
+
+            enemyState.isMoving = true;
         }
 
         else

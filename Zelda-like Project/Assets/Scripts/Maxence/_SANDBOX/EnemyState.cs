@@ -59,6 +59,8 @@ public class EnemyState : EntityState
 
     void Update()
     {
+        // fils de pute fait ton taff .exe
+
         if (isMoving && enemyCanMove) enemyAnims.MoveAnim(true);
 
         else if (!isMoving || !enemyCanMove) enemyAnims.MoveAnim(false);

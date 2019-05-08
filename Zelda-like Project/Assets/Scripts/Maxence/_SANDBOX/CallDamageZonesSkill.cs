@@ -39,9 +39,10 @@ public class CallDamageZonesSkill : Skill
             }
         }
 
-        else
+        else if (passed == startRate)
         {
             rate = startRate;
+            passed = 0;
             skillIsActive = false;
             enemyState.enemyCanMove = true;
         }
@@ -52,5 +53,7 @@ public class CallDamageZonesSkill : Skill
         Vector2 desiredPos = enemyState.playerTransform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 
         GameObject aOE = Instantiate(areaOfEffect, desiredPos, transform.rotation);
+
+        base.AbilityAnimMethod();
     }
 }

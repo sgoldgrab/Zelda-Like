@@ -50,9 +50,10 @@ public class ShieldAbility : Trigger
             }
         }
 
-        else
+        else if (passed == times)
         {
             rate = times;
+            passed = 0;
             skillIsActive = false;
             triggerIsActive = false;
             enemyState.enemyCanMove = true;
@@ -84,5 +85,6 @@ public class ShieldAbility : Trigger
     public override void AbilityAnimMethod()
     {
         enemyState.isProtected = false;
+        base.AbilityAnimMethod();
     }
 }

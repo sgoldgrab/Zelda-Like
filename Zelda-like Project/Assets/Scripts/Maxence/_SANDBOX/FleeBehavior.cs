@@ -14,7 +14,7 @@ public class FleeBehavior : Behavior
     [SerializeField] private float fleeDuration;
     private float duration;
 
-    private bool move;
+    private bool flee;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class FleeBehavior : Behavior
 
     public override void EnemyBehavior()
     {
-        if (enemyState.enemyCanMove && move)
+        if (enemyState.enemyCanMove && flee)
         {
             Flee();
         }
@@ -35,7 +35,9 @@ public class FleeBehavior : Behavior
             if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= safeDistance)
             {
                 calculateNewPosition();
-                move = true;
+                flee = true;
+                enemyState.isMoving = true;
+
                 duration = fleeDuration;
             }
         }
@@ -52,7 +54,8 @@ public class FleeBehavior : Behavior
 
         if (duration <= 0.0f)
         {
-            move = false;
+            flee = false;
+            enemyState.isMoving = false;
         }
 
         else
