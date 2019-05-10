@@ -38,12 +38,7 @@ public abstract class Ability : Behavior
     [SerializeField] protected int animIndex;
 
     public bool skillIsActive { get; set; } = false;
-
-    protected int passed = 0;
-    public virtual void AbilityAnimMethod()
-    {
-        passed++;
-    }
+    public abstract void AbilityAnimMethod();
 }
 
 public abstract class Skill : Ability
@@ -79,6 +74,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
     private bool triggerIsValid = true;
 
     [SerializeField] private List<Trigger> triggers;
+    public List<Trigger> theTriggers { get => triggers; private set => triggers = value; }
 
     [SerializeField] private Behavior moveIdleBehavior;
     [SerializeField] private Behavior moveCombatBehavior;

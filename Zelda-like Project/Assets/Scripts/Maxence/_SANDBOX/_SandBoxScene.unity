@@ -741,7 +741,7 @@ PrefabInstance:
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
@@ -2022,7 +2022,7 @@ MonoBehaviour:
   abilityName: Clear
   animIndex: 1
   attackRate: 1
-  waitTime: 0.4
+  waitTime: 2
   abilityDuration: 0.2
   attackRange: 0.4
   swordDamage: 1
@@ -2066,7 +2066,9 @@ MonoBehaviour:
   abilityName: FireBall
   animIndex: 2
   attackRate: 1
-  waitTime: 0.3
+  waitTime: 1
+  abilityRate: 2
+  abilityTime: 0.4
   abilityDuration: 0
   fireBall: {fileID: 3881369036538732966, guid: b75db516b57106342b9678657601d2de,
     type: 3}
@@ -2260,7 +2262,7 @@ PrefabInstance:
     - target: {fileID: 8399091906969231778, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8399091906969231781, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
@@ -2375,7 +2377,22 @@ PrefabInstance:
     - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
       propertyPath: waitTime
-      value: 0.4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: animIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: abilityRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645534412392498241, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: abilityTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4904808987406339879, guid: c02b63a861bc82d43ae03a73bec8fac6,
         type: 3}
@@ -2406,6 +2423,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399091905867270515, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399091905867270515, guid: c02b63a861bc82d43ae03a73bec8fac6,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c02b63a861bc82d43ae03a73bec8fac6, type: 3}
@@ -3204,7 +3231,7 @@ PrefabInstance:
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
@@ -3374,6 +3401,7 @@ Transform:
   - {fileID: 1290243152}
   - {fileID: 1531592917}
   - {fileID: 1880154251}
+  - {fileID: 1953922126}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4093,6 +4121,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 679890270, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
       propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890270, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: animIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890270, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: abilityRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890270, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: abilityTime
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 679890272, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
@@ -4101,6 +4141,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 679890272, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
       propertyPath: idleDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890272, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: moveDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679890272, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
+      propertyPath: pauseTime
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 679890271, guid: c68ab61e6e5f3644aa698f17eb06a22f, type: 3}
@@ -4279,6 +4327,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885001530, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 412597720, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
+      propertyPath: layerIndex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1885001538, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
@@ -4343,7 +4395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: waitTime
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1885001533, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: abilityDuration
@@ -4353,10 +4405,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 905b6b638c786b74cb2a8e0af6d4de55, type: 2}
-    - target: {fileID: 412597720, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
-      propertyPath: layerIndex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1636143539, guid: 53b2d26ddc84d234e9c8ed9d739b0bb3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4400,16 +4448,21 @@ MonoBehaviour:
   enemyState: {fileID: 1744341773}
   enemyAnims: {fileID: 1250143990}
   enemyBaseSpeed: 2
-  conditions: 00000000
+  conditions: 0000000003000000
   conditionInfos:
   - conditionType: 0
-    value: 0.3
+    value: 1
     text: 
-  abilityName: 
-  animIndex: 0
-  attackRate: 0
-  waitTime: 0
-  abilityDuration: 0
+  - conditionType: 0
+    value: 0
+    text: 
+  abilityName: Dash
+  animIndex: 2
+  attackRate: 1
+  waitTime: 1
+  abilityRate: 2
+  abilityTime: 0.5
+  abilityDuration: 0.2
   cooldownTime: 2
   dash: 1
 --- !u!114 &1744341773 stripped
@@ -4906,6 +4959,12 @@ MonoBehaviour:
   playerAttack: {fileID: 2011051037}
   playerStance: {fileID: 2011051038}
   playerState: {fileID: 2011051035}
+--- !u!4 &1953922126 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1247044986969143221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1982764812
 GameObject:
   m_ObjectHideFlags: 0
@@ -5301,7 +5360,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1294931996}
     m_Modifications:
     - target: {fileID: 7904209009255195807, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}
@@ -5331,17 +5390,17 @@ PrefabInstance:
     - target: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}
@@ -5351,7 +5410,7 @@ PrefabInstance:
     - target: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2599105554251133175, guid: 4a6e65f565be02d48b22f0f17f9c467d,
         type: 3}

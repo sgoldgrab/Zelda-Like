@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbility : CombatSkill
+public class DashAbility : CombatSkillNew
 {
     private float cooldown = 0.0f;
     [SerializeField] private float cooldownTime;
@@ -25,11 +25,11 @@ public class DashAbility : CombatSkill
         base.EnemyBehavior();
     }
 
-    public override void AdditionalBehavior()
+    public override void LateEffect()
     {
         transform.position = Vector2.MoveTowards(transform.position, direction, enemyBaseSpeed * Time.deltaTime);
 
-        base.AdditionalBehavior();
+        base.LateEffect();
     }
 
     public override void AbilityAnimMethod()
@@ -65,5 +65,11 @@ public class DashAbility : CombatSkill
 
         Vector2 lateralDir = new Vector2(coordinates[0], coordinates[1]);
         return lateralDir;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, infos[0].value);
     }
 }

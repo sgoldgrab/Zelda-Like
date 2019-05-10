@@ -93,11 +93,19 @@ public class EnemyAnims : MonoBehaviour
 
     public void SkillAnimationEvent(string name)
     {
-        foreach (Skill skill in skillsAnimationMethods)
+        foreach (Skill skill in GetComponentInParent<EnemyBehaviorsManager>().theSkills)
         {
             if (skill.abilityName == name)
             {
                 skill.AbilityAnimMethod();
+            }
+        }
+
+        foreach (Trigger trig in GetComponentInParent<EnemyBehaviorsManager>().theTriggers)
+        {
+            if (trig.abilityName == name)
+            {
+                trig.AbilityAnimMethod();
             }
         }
     }

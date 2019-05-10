@@ -20,8 +20,6 @@ public class IdleBehavior : MovementBehavior
 
     void Update()
     {
-        Debug.Log(moves);
-
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction, rayDist);
 
         for (int h = 0; h < 0; h++)
