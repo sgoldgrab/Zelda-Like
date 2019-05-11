@@ -20,7 +20,7 @@ public class Hokhmah : AllSephiroths
         if(isActive && !effect)
         {
             playerAbilities.reduction += 0.2;
-            effect = true:
+            effect = true;
         }
     }
 }

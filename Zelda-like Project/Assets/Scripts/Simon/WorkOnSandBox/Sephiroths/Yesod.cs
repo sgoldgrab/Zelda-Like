@@ -19,7 +19,7 @@ public class Yesod : AllSephiroths
     {
         if (isActive && !effect)
         {
-            //playerAttack.attackSpeed *= 1.5f;
+            playerAttack.attackSpeed *= 1.5f;
             effect = true;
         }
     }

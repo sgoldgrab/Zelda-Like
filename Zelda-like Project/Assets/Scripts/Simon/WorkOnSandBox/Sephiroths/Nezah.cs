@@ -7,19 +7,19 @@ public class Nezah : AllSephiroths
     private bool effect = false;
 
     private GameObject player;
-    private PlayerAbilities playerAbilities;
+    private PotionsEffects potionsEffects;
 
     private void Awake()
     {
         player = GameObject.Find("PLAYER");
-        playerAbilities = player.GetComponent<PlayerAbilities>();
+        potionsEffects = player.GetComponent<PotionsEffects>();
     }
 
     private void Update()
     {
         if(isActive && !effect)
         {
-            /* playerAbilities.potionDuration *= 1.3f; */
+            potionsEffects.duration *= 1.3f;
             effect = true;
         }
     }

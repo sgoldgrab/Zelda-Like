@@ -15,7 +15,7 @@ public class SephirothsStock : MonoBehaviour
     private bool slot2Taken = false;
     private bool slot3Taken = false;
 
-    [SerializeField] private GameObject[] sephirothsInInventory = new GameObject[4];
+    public GameObject[] sephirothsInInventory = new GameObject[4];
 
     private void Update()
     {

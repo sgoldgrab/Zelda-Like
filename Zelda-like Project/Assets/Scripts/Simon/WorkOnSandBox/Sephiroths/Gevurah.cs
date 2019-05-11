@@ -7,19 +7,19 @@ public class Gevurah : AllSephiroths
     private bool effect = false;
 
     private GameObject player;
-    private PlayerState playerState;
+    private EntityState entityState;
 
     private void Awake()
     {
         player = GameObject.Find("PLAYER");
-        playerState = GetComponent<PlayerState>();
+        entityState = GetComponent<EntityState>();
     }
 
     private void Update()
     {
         if(isActive && !effect)
         {
-            /*playerState.SetMaximumHealth*/
+            entityState.SetMaxHealth += 1;
             effect = true;
         }
     }

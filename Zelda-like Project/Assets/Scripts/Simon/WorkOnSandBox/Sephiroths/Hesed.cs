@@ -23,7 +23,12 @@ public class Hesed : AllSephiroths
 
     private void CDReduc()
     {
-        //réduire les CD en cours de 1 sec
+        playerAbilities.cooldownTime[0] -= 1f;
+        playerAbilities.cooldownTime[1] -= 1f;
+        playerAbilities.cooldownTime[2] -= 1f;
+        playerAbilities.cooldownTime[3] -= 1f;
+        playerAbilities.cooldownTime[4] -= 1f;
+        playerAbilities.cooldownTime[5] -= 1f;
     }
 }
 
