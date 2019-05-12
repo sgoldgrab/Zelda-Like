@@ -18,6 +18,15 @@ public class PlayerStance : MonoBehaviour
 
     [SerializeField] private GameObject postProcess;
 
+    private GameObject fog;
+    private GameObject mist;
+
+    void Start()
+    {
+        fog = GameObject.Find("Fog");
+        mist = GameObject.Find("Mist");
+    }
+
     void Update()
     {
         if (Input.GetButtonDown(stanceInput) && canSwitch)
@@ -26,6 +35,9 @@ public class PlayerStance : MonoBehaviour
 
             if (whatStance == Stance.stance1) //switch to stance 2
             {
+                fog.GetComponent<SpriteRenderer>().enabled = false;
+                mist.GetComponent<SpriteRenderer>().enabled = true;
+
                 whatStance = Stance.stance2;
 
                 postProcess.SetActive(true);
@@ -33,6 +45,9 @@ public class PlayerStance : MonoBehaviour
 
             else if (whatStance == Stance.stance2) // switch to stance 1
             {
+                mist.GetComponent<SpriteRenderer>().enabled = false;
+                fog.GetComponent<SpriteRenderer>().enabled = true;
+
                 whatStance = Stance.stance1;
 
                 postProcess.SetActive(false);

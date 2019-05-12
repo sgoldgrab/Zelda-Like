@@ -11,6 +11,8 @@ public abstract class PickUp : MonoBehaviour
 
     public bool used { get; set; }
 
+    public bool hasKey { get; set; } = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

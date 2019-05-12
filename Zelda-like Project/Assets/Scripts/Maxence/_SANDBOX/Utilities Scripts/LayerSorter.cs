@@ -42,7 +42,7 @@ public class LayerSorter : MonoBehaviour
 
             if (obstacles.Count == 0)
             {
-                spriteRenderer.sortingOrder = 2000; //  not enough layers !!!
+                spriteRenderer.sortingOrder = 1999; //  not enough layers !!!
             }
             else
             {

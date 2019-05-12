@@ -105,6 +105,7 @@ public class EnemyBehaviorsManager : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log(skillStock[0].skillIsActive);
+        //Debug.Log(triggers[0].triggerIsActive);
 
         if (enemyState.health <= 0) return;
 

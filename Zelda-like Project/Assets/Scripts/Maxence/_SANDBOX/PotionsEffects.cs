@@ -8,11 +8,16 @@ public class PotionsEffects : MonoBehaviour
     protected PlayerAttack playerAttack;
     protected PlayerSight playerSight;
 
+    [SerializeField] private float bonusTime;
+    private float bonus;
+
     private void Awake()
     {
         playerState = GetComponent<PlayerState>();
         playerSight = GetComponent<PlayerSight>();
         playerAttack = GetComponent<PlayerAttack>();
+
+        bonus = bonusTime;
     }
 
     public void Effect(int value, float time, int index)
@@ -24,15 +29,15 @@ public class PotionsEffects : MonoBehaviour
     {
         if (index == 0) // Potion 1
         {
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time - (bonus / 3));
 
             playerState.TakeHeal(value);
 
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time - (bonus / 3));
 
             playerState.TakeHeal(value);
 
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time - (bonus / 3));
 
             playerState.TakeHeal(value);
         }
@@ -41,7 +46,7 @@ public class PotionsEffects : MonoBehaviour
         {
             playerAttack.attackDamage += value;
 
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time + bonus);
 
             playerAttack.attackDamage -= value;
         }
@@ -50,7 +55,7 @@ public class PotionsEffects : MonoBehaviour
         {
             playerSight.sightZoneRadius += value;
 
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time + bonus);
 
             playerSight.sightZoneRadius -= value;
         }

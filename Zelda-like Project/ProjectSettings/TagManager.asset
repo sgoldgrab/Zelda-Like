@@ -55,6 +55,9 @@ TagManager:
   - 
   - PostProcess
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 3721093281
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -63,6 +66,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 322498475
+    locked: 0
+  - name: Fog
+    uniqueID: 3943719723
     locked: 0
   - name: UI
     uniqueID: 73460133
