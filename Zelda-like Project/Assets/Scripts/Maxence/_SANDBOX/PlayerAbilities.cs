@@ -23,6 +23,7 @@ public class PlayerAbilities : MonoBehaviour
     private bool doubleTap = false;
 
     private bool[] cooldownIsOver = new bool[6];
+    public bool[] notCooldown { get => cooldownIsOver; private set => cooldownIsOver = value; }
     private float[] coolDownTime = new float[6];
     [SerializeField] private float[] startCoolDownTime;
     public float reduction = 1.0f;
