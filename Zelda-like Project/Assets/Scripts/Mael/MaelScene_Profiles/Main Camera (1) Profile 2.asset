@@ -85,7 +85,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: -66.1
+    value: -39
   brightness:
     overrideState: 1
     value: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 12.7
+    value: -17.7
   mixerRedOutRedIn:
     overrideState: 1
     value: 0
@@ -124,13 +124,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.9500457, z: 0.9639491, w: 0}
+    value: {x: 1, y: 0.9426146, z: 0.96566087, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 0.54768896, z: 0.55911195, w: 0}
+    value: {x: 1, y: 0.39946073, z: 0.45864722, w: 0}
   gain:
     overrideState: 1
-    value: {x: 1, y: 0.98325276, z: 0.98325276, w: 0}
+    value: {x: 1, y: 0.66089535, z: 0.78058594, w: 0}
   masterCurve:
     overrideState: 1
     value:
@@ -1453,10 +1453,10 @@ MonoBehaviour:
     value: 10
   aperture:
     overrideState: 1
-    value: 5
+    value: 17.76
   focalLength:
     overrideState: 1
-    value: 77.6
+    value: 141.9
   kernelSize:
     overrideState: 1
     value: 1
@@ -1509,16 +1509,16 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.5
+    value: 0.378
   smoothness:
     overrideState: 1
-    value: 0.15
+    value: 0.783
   roundness:
     overrideState: 1
-    value: 1
+    value: 0.655
   rounded:
     overrideState: 1
-    value: 0
+    value: 1
   mask:
     overrideState: 1
     value: {fileID: 0}
