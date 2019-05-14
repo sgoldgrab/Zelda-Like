@@ -62,7 +62,7 @@ public class TextTrigger : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
 
         if (isTrigger == true)
@@ -80,7 +80,7 @@ public class TextTrigger : MonoBehaviour
         {
             nextButton.SetActive(true);
         }
-    }
+    }*/
 
     public void NextSentence()
     {

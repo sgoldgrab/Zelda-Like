@@ -35,8 +35,10 @@ public class PlayerStance : MonoBehaviour
 
             if (whatStance == Stance.stance1) //switch to stance 2
             {
+                /*
                 fog.GetComponent<SpriteRenderer>().enabled = false;
                 mist.GetComponent<SpriteRenderer>().enabled = true;
+                */
 
                 whatStance = Stance.stance2;
 
@@ -45,8 +47,10 @@ public class PlayerStance : MonoBehaviour
 
             else if (whatStance == Stance.stance2) // switch to stance 1
             {
+                /*
                 mist.GetComponent<SpriteRenderer>().enabled = false;
                 fog.GetComponent<SpriteRenderer>().enabled = true;
+                */
 
                 whatStance = Stance.stance1;
 

@@ -12,6 +12,9 @@ public class PlayerState : EntityState
 
     private bool playerIsDead;
 
+    [SerializeField] private Collider2D[] colliders;
+    public Collider2D[] playerColliders { get => colliders; private set => colliders = value; }
+
     void Update() // TESTING ONLY
     {
         TestMethod();

@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CombatSkillInfos
-{
-    public int attackRate;
-    public float waitTime;
-
-    public int abilityRate;
-    public float abilityTime;
-    public float abilityDuration;
-}
-
 public class CombatSkillNew : Trigger
 {
-    //[SerializeField] private CombatSkillInfos cSInfos;
-
     //ANIM LOOP
     [SerializeField] protected int attackRate;
     protected int rate;

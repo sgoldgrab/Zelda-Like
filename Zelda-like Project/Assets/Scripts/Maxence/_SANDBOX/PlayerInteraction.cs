@@ -14,6 +14,8 @@ public class PlayerInteraction : MonoBehaviour
     public bool isInRangeToInteract { get; set; } = false;
     [SerializeField] private string interactName;
 
+    public bool canInteract { get; set; }
+
     void Update()
     {
         if (Input.GetButtonDown(interactName)) { Interaction(); }

@@ -10,6 +10,7 @@ public class PotionsEffects : MonoBehaviour
 
     [SerializeField] private float bonusTime;
     private float bonus;
+    public float bonusCooldown { get => bonusTime; set => bonusTime = value; }
 
     private void Awake()
     {

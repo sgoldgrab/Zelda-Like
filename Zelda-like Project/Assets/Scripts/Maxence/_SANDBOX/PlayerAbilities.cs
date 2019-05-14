@@ -24,7 +24,8 @@ public class PlayerAbilities : MonoBehaviour
 
     private bool[] cooldownIsOver = new bool[6];
     public bool[] notCooldown { get => cooldownIsOver; private set => cooldownIsOver = value; }
-    private float[] coolDownTime = new float[6];
+
+    public float[] coolDownTime { get; set; } = new float[6];
     [SerializeField] private float[] startCoolDownTime;
     public float reduction = 1.0f;
 
@@ -45,6 +46,7 @@ public class PlayerAbilities : MonoBehaviour
     private float posX;
     private float posY;
     [SerializeField] private float[] aimDistances;
+    private float angle; // Test rotation
 
     //Bools
     public bool canUseAbility { get; set; } = true;
@@ -289,7 +291,7 @@ public class PlayerAbilities : MonoBehaviour
             cooldownIsOver[rIndex + 3] = false;
             coolDownTime[rIndex + 3] = startCoolDownTime[rIndex + 3];
 
-            GameObject spell = Instantiate(spells[rIndex], transformPos + aimPos, Quaternion.identity);
+            GameObject spell = Instantiate(spells[rIndex], transformPos + aimPos, Quaternion.identity); //Quaternion.Euler(0, 0, angle)
 
             //CHECK SPELLS
             if (spell.GetComponent<SpellOne>() == null && spell.GetComponent<SpellTwo>() == null) return;
@@ -302,7 +304,7 @@ public class PlayerAbilities : MonoBehaviour
             cooldownIsOver[rIndex] = false;
             coolDownTime[rIndex] = startCoolDownTime[rIndex];
 
-            GameObject potion = Instantiate(potions[rIndex], transformPos + aimPos, Quaternion.identity);
+            GameObject potion = Instantiate(potions[rIndex], transformPos + aimPos, Quaternion.identity); //Quaternion.Euler(0, 0, angle)
         }
     }
 
@@ -332,6 +334,9 @@ public class PlayerAbilities : MonoBehaviour
             else
             {
                 theBluePrint.transform.position = transformPos + aimPos;
+
+                // Test Hilda Von Schaft
+                theBluePrint.transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
 
@@ -350,6 +355,9 @@ public class PlayerAbilities : MonoBehaviour
 
             Vector2 rawAimCoordinates = new Vector2(posX, posY);
             aimPos = rawAimCoordinates.normalized * distance;
+
+            // Test Himmler Von Schaft
+            angle = (Mathf.Atan2(posX, posY) * -Mathf.Rad2Deg) + 45;
         }
     }
 }

@@ -10,12 +10,10 @@ public class CooldownManagerUI : MonoBehaviour
     public float cooldown = 5;
     bool isCooldown;
 
-    [SerializeField] private PlayerAbilities playerAbilities;
-    [SerializeField] private int index;
 
     void Update()
     {
-        if (!playerAbilities.notCooldown[index])
+        if (Input.GetKeyDown(KeyCode.K))
         {
             isCooldown = true;
         }

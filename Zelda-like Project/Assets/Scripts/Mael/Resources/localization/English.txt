@@ -1,0 +1,8 @@
+title	My Great\nGame
+play	Play
+howtoplay=How To Play
+opts	Settings
+info	Info
+retour=Return
+exit=Exit
+test=The perfectly circular trace of what seems to be a powerful blast\n gives the still smoking remains a supernatural look. Btw I'm just shitwirting because I need a long text to test if everything is ok, are u mad lad ?
