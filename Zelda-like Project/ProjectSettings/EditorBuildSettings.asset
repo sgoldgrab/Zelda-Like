@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Mael/Scenes/Menu.unity
+    guid: edc80c1e9f40ef449b7a13280c3b1dca
+  - enabled: 1
+    path: Assets/Mael/Scenes/SceneMaelVEVO.unity
+    guid: 8b511c1c6a77b9149a908512ef44fae8
+  - enabled: 1
+    path: Assets/Mael/Scenes/HowToPlay.unity
+    guid: 60413410983068f4ea9c02f44a830ded
+  - enabled: 1
+    path: Assets/Mael/Scenes/Options.unity
+    guid: 8ab44018e43d9f741867bc53d37a792d
   m_configObjects: {}

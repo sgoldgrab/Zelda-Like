@@ -1,0 +1,8 @@
+title=Il mio grande\ngioco
+play=Jouer
+howtoplay=Comment jouer
+opts=Option
+info=Informazioni
+retour=Retour
+exit=Quitter
+test=Ceci est un test de longueur juste pour voir si on va me casser les couilles ou pas car ça commence carrément à me niquer ptn de merde. Allez c'est pas fini t'avais cru mais non haha deso pas deso on pete un cable
