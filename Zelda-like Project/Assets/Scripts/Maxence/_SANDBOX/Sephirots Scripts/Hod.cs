@@ -18,6 +18,7 @@ public class Hod : Sephiroth
         if (isActive)
         {
             EnemyState.whenEnemyDies += Regen;
+            isActive = false;
         }
     }
 

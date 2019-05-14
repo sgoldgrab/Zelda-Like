@@ -56,13 +56,13 @@ public class SpellOne : MonoBehaviour
     {
         hasHit = true;
 
-        enemyState.TakeDamage(damageValue);
-
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(0.1f);
 
         enemyState.TakeDamage(damageValue);
 
         yield return new WaitForSeconds(time);
+
+        enemyState.TakeDamage(damageValue);
 
         Destroy(gameObject);
     }

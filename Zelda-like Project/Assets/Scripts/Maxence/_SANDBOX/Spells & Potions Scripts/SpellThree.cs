@@ -4,28 +4,63 @@ using UnityEngine;
 
 public class SpellThree : MonoBehaviour
 {
-    private Transform playerPos;
+    private Transform playerTransform;
+    private PlayerState playerState;
+
+    private Vector3 blinkDir;
+
+    [SerializeField] private float blinkSpeed = 10f;
+
+    [SerializeField] private float blinkDuration;
+    private float duration;
+
+    public void SetPositions(Vector2 pos)
+    {
+        blinkDir = pos;
+    }
 
     private void Start()
     {
-        GameObject playerPosMessenger = GameObject.FindWithTag("Player");
+        GameObject playerMessenger = GameObject.FindWithTag("Player");
 
-        if(playerPosMessenger != null)
+        if (playerMessenger != null)
         {
-            playerPos = playerPosMessenger.GetComponent<Transform>();
+            playerTransform = playerMessenger.GetComponent<Transform>();
+            playerState = playerMessenger.GetComponent<PlayerState>();
         }
 
-        Teleport();
+        duration = blinkDuration;
     }
 
     void Update()
     {
-        StartCoroutine(Die());
+        Blink();
+
+        Teleport();
+
+        //StartCoroutine(Die());
+    }
+
+    void Blink()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position + blinkDir, blinkSpeed * Time.deltaTime);
+
+        if (duration <= 0.0f)
+        {
+            foreach (Collider2D col in playerState.playerColliders) col.enabled = true;
+
+            Destroy(gameObject);
+        }
+
+        else
+        {
+            duration -= Time.deltaTime;
+        }
     }
 
     void Teleport()
     {
-        playerPos.position = transform.position;
+        playerTransform.position = transform.position;
     }
 
     IEnumerator Die()

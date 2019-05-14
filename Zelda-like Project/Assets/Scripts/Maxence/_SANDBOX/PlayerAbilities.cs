@@ -25,7 +25,7 @@ public class PlayerAbilities : MonoBehaviour
     private bool[] cooldownIsOver = new bool[6];
     public bool[] notCooldown { get => cooldownIsOver; private set => cooldownIsOver = value; }
 
-    public float[] coolDownTime { get; set; } = new float[6];
+    public float[] coolDownTime = new float[6];
     [SerializeField] private float[] startCoolDownTime;
     public float reduction = 1.0f;
 
@@ -72,11 +72,6 @@ public class PlayerAbilities : MonoBehaviour
         for (int y = 0; y < 6; y++)
         {
             cooldownIsOver[y] = true;
-        }
-
-        for (int x = 0; x < 6; x++) //pas utile
-        {
-            coolDownTime[x] = startCoolDownTime[x];
         }
 
         drinkTimer = drinkTime;
@@ -291,12 +286,15 @@ public class PlayerAbilities : MonoBehaviour
             cooldownIsOver[rIndex + 3] = false;
             coolDownTime[rIndex + 3] = startCoolDownTime[rIndex + 3];
 
-            GameObject spell = Instantiate(spells[rIndex], transformPos + aimPos, Quaternion.identity); //Quaternion.Euler(0, 0, angle)
+            Vector2 instantiatePos = transformPos + aimPos;
+            if (rIndex == 2) instantiatePos = transformPos; // only for the spell 3, the instantiation is not on the aim location
+
+            GameObject spell = Instantiate(spells[rIndex], instantiatePos, Quaternion.identity); //Quaternion.Euler(0, 0, angle)
 
             //CHECK SPELLS
-            if (spell.GetComponent<SpellOne>() == null && spell.GetComponent<SpellTwo>() == null) return;
-            else if (spell.GetComponent<SpellTwo>() == null) { spell.GetComponent<SpellOne>().SetPositions(aimPos); }
-            else { spell.GetComponent<SpellTwo>().SetPositions(aimPos); }
+            if (spell.GetComponent<SpellOne>() != null) spell.GetComponent<SpellOne>().SetPositions(aimPos);
+            else if (spell.GetComponent<SpellTwo>() != null) spell.GetComponent<SpellTwo>().SetPositions(aimPos);
+            else if (spell.GetComponent<SpellThree>() != null) spell.GetComponent<SpellThree>().SetPositions(aimPos);
         }
 
         else if (rStance == true)

@@ -18,7 +18,13 @@ public class Hesed : Sephiroth
         if (isActive)
         {
             EnemyState.whenEnemyHit += CDReduc;
+            isActive = false;
         }
+    }
+
+    private void OnDisable()
+    {
+        EnemyState.whenEnemyHit -= CDReduc;
     }
 
     private void CDReduc()

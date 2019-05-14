@@ -7,26 +7,12 @@ public class CooldownManagerUI : MonoBehaviour
 {
     public Image spell1Cooldown;
 
-    public float cooldown = 5;
+    [SerializeField] private int index;
+    [SerializeField] private PlayerAbilities playerAbilities;
     bool isCooldown;
-
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            isCooldown = true;
-        }
-
-        if (isCooldown)
-        {
-            spell1Cooldown.fillAmount += 1 / cooldown * Time.deltaTime;
-
-            if (spell1Cooldown.fillAmount >= 1)
-            {
-                spell1Cooldown.fillAmount = 0;
-                isCooldown = false;
-            }
-        }
+        spell1Cooldown.fillAmount = 1 - (playerAbilities.coolDownTime[index] / 2);
     }
 }

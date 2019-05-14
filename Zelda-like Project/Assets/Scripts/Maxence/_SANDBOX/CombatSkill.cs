@@ -39,8 +39,6 @@ public class CombatSkill : Trigger
                 enemyAnims.SkillAnim(animIndex);
                 wait = waitTime;
 
-                Debug.Log(rate);
-
                 activated = true;
                 duration = abilityDuration;
             }

@@ -12,24 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec471869854907b44bf84f7db323484c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.2
   forceAmount: 0
-  direction: {x: 0, y: 0}
-  pushDistance: 0.5
+  timeBeforeDestroy: 0.5
+  pushDistance: 2
   pushSpeed: 4
-  pushDuration: 0.2
---- !u!114 &8087508310518984530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807790849097075692}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 787d90b8c79e84b4c94798946746472f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pushDuration: 0.5
 --- !u!1001 &2001073528671619985
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,10 +6,12 @@ public class SpellTwo : MonoBehaviour
 {
     //OLD
     private Rigidbody2D rb2D;
-    private bool isTrigger = false;
-    [SerializeField] private float timer;
     [SerializeField] private int forceAmount;
     //
+
+    private bool isTrigger = false;
+    [SerializeField] private float timeBeforeDestroy;
+    private float timer;
 
     private Vector3 direction;
 
@@ -17,11 +19,12 @@ public class SpellTwo : MonoBehaviour
     [SerializeField] private float pushSpeed;
 
     private List<GameObject> enemies = new List<GameObject>();
+    private int numberOfEnemies;
 
     [SerializeField] private float pushDuration;
     private float duration;
 
-    public void SetPositions(Vector2 pos) // A DELETE
+    public void SetPositions(Vector2 pos)
     {
         direction = pos.normalized;
     }
@@ -29,23 +32,18 @@ public class SpellTwo : MonoBehaviour
     void Start()
     {
         duration = pushDuration;
+
+        timer = timeBeforeDestroy;
     }
 
     private void Update()
     {
-        /*
         timer -= Time.deltaTime;
 
-        if (timer <= 0)
+        if (timer <= 0.1f && !isTrigger)
         {
-            if (isTrigger)
-            {
-                rb2D.AddForce(direction * forceAmount * -1);
-            }
-
             Destroy(gameObject);
         }
-        */
 
         Push();
     }
@@ -54,12 +52,22 @@ public class SpellTwo : MonoBehaviour
     {
         foreach (GameObject enm in enemies)
         {
-            enm.transform.position = Vector2.MoveTowards(enm.transform.position, (enm.transform.position + direction) * pushDistance, pushSpeed * Time.deltaTime);
+            Debug.Log(direction);
 
-            if (duration <= 0.0f) Destroy(gameObject);
+            enm.transform.position = Vector2.MoveTowards(enm.transform.position, enm.transform.position + (direction * pushDistance), pushSpeed * Time.deltaTime);
 
-            else duration -= Time.deltaTime;
+            if (duration <= 0.0f)
+            {
+                enm.GetComponent<EnemyState>().enemyCanMove = true;
+                enm.GetComponent<EnemyState>().enemyCanUseSkill = true;
+
+                numberOfEnemies--;
+
+                if (numberOfEnemies <= 0) Destroy(gameObject);
+            }
         }
+
+        duration -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -71,8 +79,14 @@ public class SpellTwo : MonoBehaviour
             isTrigger = true;
 
             enemies.Add(enemy);
+            numberOfEnemies++;
+
+            enemy.GetComponent<EnemyState>().enemyCanMove = false;
+            enemy.GetComponent<EnemyState>().enemyCanUseSkill = false;
 
             /*
+            isTrigger = true;
+
             rb2D = enemy.GetComponent<Rigidbody2D>();
             rb2D.AddForce(direction * forceAmount);
             */

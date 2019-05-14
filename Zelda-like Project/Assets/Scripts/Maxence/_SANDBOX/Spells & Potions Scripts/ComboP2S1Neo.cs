@@ -28,7 +28,6 @@ public class ComboP2S1Neo : MonoBehaviour
         {
             GameObject enemy = col.transform.parent.parent.gameObject;
 
-            Debug.Log(enemy);
             enemy.GetComponent<EnemyState>().TakeDamage(2);
         }
     }
