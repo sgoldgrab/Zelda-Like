@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootProjectilesSkill : CombatSkillNew
+public class ShootProjectilesSkill : CombatSkillUpdate
 {
     [SerializeField] private GameObject fireBall;
 
-    public override void EnemyBehavior()
+    public override void Skill(int index)
     {
-        base.EnemyBehavior();
+        base.Skill(index);
     }
 
     public override void DirectEffect()

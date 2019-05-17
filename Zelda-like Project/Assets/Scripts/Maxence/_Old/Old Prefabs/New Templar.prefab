@@ -44,7 +44,7 @@ Animator:
   m_GameObject: {fileID: 412597719}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0521f9b7242469b40a33f52e468eed9b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 905b6b638c786b74cb2a8e0af6d4de55, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -87,9 +87,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 322498475
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: f591cc5d15e5d194a82ed3e3e613d3e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   enemyState: {fileID: 1885001536}
   skillsAnimationMethods:
   - {fileID: 1885001533}
-  layerIndex: 0
+  layerIndex: 1
 --- !u!1 &660365917
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1636143540
 Transform:
   m_ObjectHideFlags: 0
@@ -542,22 +542,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1885001536}
   enemyAnims: {fileID: 412597720}
-  enemyBaseSpeed: 0
+  enemyBaseSpeed: 1
   conditions: 00000000
   conditionInfos:
   - conditionType: 0
     value: 0.7
     text: 
   abilityName: Clear
-  animIndex: 0
+  animIndex: 1
+  combatInfos:
+  - attackRate: 2
+    waitTime: 0.5
+    abilityRate: 1
+    abilityTime: 0
+    abilityDuration: 0.2
   attackRange: 0.4
   swordDamage: 1
   swordBlowZoneRadius: 0.2
   thisIsThePlayer:
     serializedVersion: 2
     m_Bits: 256
-  startRate: 2
-  startAttackWaitRate: 1
   attackPos2: {fileID: 1636143539}
 --- !u!114 &1885001532
 MonoBehaviour:
@@ -572,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1885001536}
-  enemyAnims: {fileID: 0}
+  enemyAnims: {fileID: 412597720}
   enemyBaseSpeed: 0.5
   minDist: 0.5
 --- !u!114 &1885001531
@@ -588,9 +592,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyState: {fileID: 1885001536}
-  enemyAnims: {fileID: 0}
+  enemyAnims: {fileID: 412597720}
   enemyBaseSpeed: 0.5
-  startWaitTime: 4
+  moveDuration: 1
+  pauseTime: 1
   minX: -2
   maxX: 2
   minY: -2

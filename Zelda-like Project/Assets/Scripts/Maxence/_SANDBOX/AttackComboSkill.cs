@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AttackComboSkill : Skill
 {
-    [SerializeField] private CombatSkill dashSkill;
-    [SerializeField] private CombatSkill attackSkill;
+    [SerializeField] private CombatSkillUpdate dashSkill;
+    [SerializeField] private CombatSkillUpdate attackSkill;
 
     [SerializeField] private float rangeOfAttack;
 
@@ -19,12 +19,9 @@ public class AttackComboSkill : Skill
 
     public override void EnemyBehavior()
     {
-        if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= rangeOfAttack)
-        {
+        if (Vector2.Distance(transform.position, enemyState.playerTransform.position) >= rangeOfAttack) dashSkill.Skill(1);
 
-
-            dashSkill.skillIsActive = true;
-        }
+        else if (Vector2.Distance(transform.position, enemyState.playerTransform.position) <= rangeOfAttack) attackSkill.Skill(1);
     }
 
     public override void AbilityAnimMethod()

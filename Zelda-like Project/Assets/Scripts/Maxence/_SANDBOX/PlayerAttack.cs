@@ -47,8 +47,6 @@ public class PlayerAttack : MonoBehaviour
     {
         transformPos = transform.position;
 
-        AttackDirection();
-
         Attack();
 
         AttackMove();
@@ -66,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
             attackPos = transformPos + rawAttackPos;
 
             //Test Strauss Braüm Reich
-            float angle = (Mathf.Atan2(attackPosX, attackPosY) * - Mathf.Rad2Deg) + 45;
+            float angle = (Mathf.Atan2(attackPosX, attackPosY) * - Mathf.Rad2Deg) + 90;
 
             attackPosition.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
@@ -85,6 +83,8 @@ public class PlayerAttack : MonoBehaviour
                 //SwordAttack();
 
                 //SwordAttack2();
+
+                AttackDirection();
 
                 playerAnims.AttackAnim();
 

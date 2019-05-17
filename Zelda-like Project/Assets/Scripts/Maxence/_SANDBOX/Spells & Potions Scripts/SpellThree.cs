@@ -14,6 +14,8 @@ public class SpellThree : MonoBehaviour
     [SerializeField] private float blinkDuration;
     private float duration;
 
+    [SerializeField] private bool brokenSpell;
+
     public void SetPositions(Vector2 pos)
     {
         blinkDir = pos;
@@ -21,7 +23,7 @@ public class SpellThree : MonoBehaviour
 
     private void Start()
     {
-        GameObject playerMessenger = GameObject.FindWithTag("Player");
+        GameObject playerMessenger = GameObject.Find("PLAYER");
 
         if (playerMessenger != null)
         {
@@ -68,5 +70,17 @@ public class SpellThree : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") && brokenSpell)
+        {
+            GameObject enemy = other.transform.parent.parent.gameObject;
+
+            enemy.GetComponent<EnemyState>().TakeDamage(1);
+        }
+
+        if (other.CompareTag("Base")) Destroy(gameObject);
     }
 }

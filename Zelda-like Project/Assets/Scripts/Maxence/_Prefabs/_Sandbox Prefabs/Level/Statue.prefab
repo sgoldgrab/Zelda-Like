@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 667247167}
   - component: {fileID: 667247166}
   m_Layer: 13
-  m_Name: Statue 1
+  m_Name: Statue
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 709155704}
   m_Layer: 13
   m_Name: Statue Base
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

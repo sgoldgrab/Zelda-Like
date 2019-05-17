@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CallDamageZonesSkill : CombatSkillNew
+public class CallDamageZonesSkill : CombatSkillUpdate
 {
     [SerializeField] private GameObject areaOfEffect;
 
-    public override void EnemyBehavior()
+    public override void Skill(int index)
     {
-        base.EnemyBehavior();
+        base.Skill(index);
     }
 
     public override void DirectEffect()

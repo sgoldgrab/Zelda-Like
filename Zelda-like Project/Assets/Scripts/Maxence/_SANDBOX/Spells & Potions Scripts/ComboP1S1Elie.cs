@@ -14,7 +14,7 @@ public class ComboP1S1Elie : MonoBehaviour
     private void Awake()
     {
         timer = time;
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("PLAYER");
     }
 
     void Update()
@@ -35,7 +35,6 @@ public class ComboP1S1Elie : MonoBehaviour
         {
             GameObject enemy = col.transform.parent.parent.gameObject;
 
-            Debug.Log(enemy);
             enemy.GetComponent<EnemyState>().TakeDamage(1);
             player.GetComponent<PlayerState>().TakeHeal(1);
 
@@ -48,7 +47,6 @@ public class ComboP1S1Elie : MonoBehaviour
     {
         foreach (GameObject enemy in enemies)
         {
-            Debug.Log(enemy);
             enemy.GetComponent<EnemyState>().TakeDamage(1);
             player.GetComponent<PlayerState>().TakeHeal(1);
         }

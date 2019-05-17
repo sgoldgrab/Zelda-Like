@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldAbility : CombatSkillNew
+public class ShieldAbility : CombatSkillUpdate
 {
     [SerializeField] private float pushSpeed;
 
-    public override void EnemyBehavior()
+    public override void Skill(int index)
     {
         if (rate > 0 && wait <= 0.0f) enemyState.isProtected = true;
 
-        base.EnemyBehavior();
+        base.Skill(index);
+    }
+
+    public override void SkillUpdate(int uIndex)
+    {
+        if (rate > 0 && wait <= 0.0f && !isPlaying) activation = true; // we activate the Late Effect in advance, at the exact time the animation starts
+
+        base.SkillUpdate(uIndex);
     }
 
     public override void LateEffect()
@@ -25,7 +32,7 @@ public class ShieldAbility : CombatSkillNew
 
         base.LateEffect();
 
-        if (duration <= 0.0f) enemyState.parry = false;
+        if (abDuration <= 0.0f) enemyState.parry = false;
     }
 
     public override void AbilityAnimMethod()

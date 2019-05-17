@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2599105554251133175
 Transform:
   m_ObjectHideFlags: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   moveIdleBehavior: {fileID: 4596755164966469726}
   moveCombatBehavior: {fileID: 7150306689832634263}
   startGeneralCooldown: 3
+  docile: 0
 --- !u!114 &3439758358968947944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,14 +248,14 @@ MonoBehaviour:
     text: 
   abilityName: SwordBlow
   animIndex: 0
+  combatInfos: []
   attackRange: 0.4
   swordDamage: 1
   swordBlowZoneRadius: 0.2
   thisIsThePlayer:
     serializedVersion: 2
     m_Bits: 256
-  startRate: 2
-  startAttackWaitRate: 1
+  attackPos2: {fileID: 0}
 --- !u!114 &7150306689832634263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,13 +287,13 @@ MonoBehaviour:
   enemyState: {fileID: 2984951247146468618}
   enemyAnims: {fileID: 0}
   enemyBaseSpeed: 0.5
-  startWaitTime: 4
+  moveDuration: 0
+  pauseTime: 0
   minX: -2
   maxX: 2
   minY: -2
   maxY: 2
-  enemyLastX: 0
-  enemyLastY: 0
+  rayDist: 0
 --- !u!1 &8303102949524525995
 GameObject:
   m_ObjectHideFlags: 0

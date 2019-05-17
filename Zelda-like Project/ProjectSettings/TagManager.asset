@@ -21,6 +21,7 @@ TagManager:
   - PlayerSprite
   - Interactable
   - Detect
+  - Base
   layers:
   - Default
   - TransparentFX

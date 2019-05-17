@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnims : MonoBehaviour
 {
-    private Animator playerAnimator;
+    public Animator playerAnimator { get; private set; }
 
     public AnimationState playerAnimState { get; set; }
 
@@ -13,9 +13,10 @@ public class PlayerAnims : MonoBehaviour
     [SerializeField] private PlayerStance playerStance;
     [SerializeField] private PlayerState playerState;
 
-    void OnValidate()
+    void Awake()
     {
         playerAnimator = GetComponentInChildren<Animator>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
         //playerAnimState = playerAnimator.GetComponentInChildren<AnimationState>();
     }
 

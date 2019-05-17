@@ -20,6 +20,8 @@ public class ComboP3S3 : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(playerState.immunities + " " + playerState.damageCount);
+
         timer -= Time.deltaTime;
 
         if (timer <= 0)

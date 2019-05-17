@@ -117,9 +117,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 322498475
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -427,7 +427,10 @@ MonoBehaviour:
   segsNumber: 3
   minOffset: 0.15
   maxOffset: 0.2
-  enemyColliders: []
+  enemyColliders:
+  - {fileID: 5172756952790503516}
+  - {fileID: 5172756953543869671}
+  - {fileID: 5172756952802833909}
 --- !u!114 &5172756952916316827
 MonoBehaviour:
   m_ObjectHideFlags: 0

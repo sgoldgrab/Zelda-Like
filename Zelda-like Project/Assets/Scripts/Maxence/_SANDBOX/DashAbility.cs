@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAbility : CombatSkillNew
+public class DashAbility : CombatSkillUpdate
 {
     private float cooldown = 0.0f;
     [SerializeField] private float cooldownTime;
@@ -18,11 +18,18 @@ public class DashAbility : CombatSkillNew
     }
     [SerializeField] private WhatDash dash;
 
-    public override void EnemyBehavior()
+    public override void Skill(int index)
     {
         Direction();
 
-        base.EnemyBehavior();
+        base.Skill(index);
+    }
+
+    public override void SkillUpdate(int uIndex)
+    {
+        if (rate > 0 && wait <= 0.0f && !isPlaying) activation = true; // we activate the Late Effect in advance, at the exact time the animation starts
+
+        base.SkillUpdate(uIndex);
     }
 
     public override void LateEffect()

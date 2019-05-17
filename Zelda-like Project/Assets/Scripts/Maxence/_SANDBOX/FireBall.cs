@@ -9,6 +9,8 @@ public class FireBall : MonoBehaviour
 
     private Vector2 currentPlayerPosition;
 
+    private bool allClear = true;
+
     public void SetPlayerPos(Vector2 pos)
     {
         currentPlayerPosition = pos;
@@ -18,7 +20,7 @@ public class FireBall : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currentPlayerPosition, speed * Time.deltaTime);
+        if (allClear) transform.position = Vector2.MoveTowards(transform.position, currentPlayerPosition, speed * Time.deltaTime);
 
         if (currentPlayerPosition.x == transform.position.x && currentPlayerPosition.y == transform.position.y)
         {
@@ -36,6 +38,8 @@ public class FireBall : MonoBehaviour
 
             ExplosionAnim();
         }
+
+        if (other.gameObject.tag == "Base") { allClear = false; ExplosionAnim(); }
     }
 
     void ExplosionAnim()

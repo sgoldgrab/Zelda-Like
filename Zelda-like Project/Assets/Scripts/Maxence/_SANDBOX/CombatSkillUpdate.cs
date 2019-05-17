@@ -43,11 +43,11 @@ public class CombatSkillUpdate : Trigger
     {
         if (skillIsActive && enemyState.enemyCanUseSkill || triggerIsActive)
         {
-            Skill(0);
+            Skill(0); // if the skill is activated the usual way, it plays the methid with the base informations (0)
         }
     }
 
-    public void Skill(int index)
+    public virtual void Skill(int index)
     {
         SkillUpdate(index); // execution of the animation
 
@@ -103,7 +103,7 @@ public class CombatSkillUpdate : Trigger
 
     public virtual void DirectEffect()
     {
-        activation = true;
+        //
     }
 
     public virtual void LateEffect()

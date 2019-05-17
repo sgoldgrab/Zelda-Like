@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttackSkill : CombatSkill
+public class SwordAttackSkill : CombatSkillUpdate
 {
     [SerializeField] private float attackRange;
     [SerializeField] private int swordDamage;
@@ -15,18 +15,24 @@ public class SwordAttackSkill : CombatSkill
 
     [SerializeField] private GameObject attackPos2;
 
-    public override void EnemyBehavior()
+    public override void Skill(int index)
     {
-        SwordAttackDirection();
-
-        base.EnemyBehavior();
+        base.Skill(index);
     }
 
-    public override void AdditionalBehavior()
+    public override void SkillUpdate(int uIndex)
+    {
+        // we activate the Late Effect in advance AND we set the direction of the attack, at the exact time the animation starts
+        if (rate > 0 && wait <= 0.0f && !isPlaying) { activation = true; SwordAttackDirection(); }
+
+        base.SkillUpdate(uIndex);
+    }
+
+    public override void LateEffect()
     {
         transform.position = Vector2.MoveTowards(transform.position, attackPosition, enemyBaseSpeed * Time.deltaTime);
 
-        base.AdditionalBehavior();
+        base.LateEffect();
     }
 
     public override void AbilityAnimMethod() // Clear

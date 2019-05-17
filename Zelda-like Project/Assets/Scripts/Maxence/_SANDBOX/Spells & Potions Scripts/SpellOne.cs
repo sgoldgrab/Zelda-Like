@@ -46,10 +46,7 @@ public class SpellOne : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
         }
 
-        /*if (other.CompareTag("Obstacle"))
-        {
-            Destroy(gameObject);
-        }*/
+        if (other.CompareTag("Base")) Destroy(gameObject);
     }
 
     IEnumerator EffectSpellOne(int damageValue, float time)

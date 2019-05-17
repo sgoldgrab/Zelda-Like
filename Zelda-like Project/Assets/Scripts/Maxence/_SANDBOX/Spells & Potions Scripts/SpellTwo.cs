@@ -52,8 +52,6 @@ public class SpellTwo : MonoBehaviour
     {
         foreach (GameObject enm in enemies)
         {
-            Debug.Log(direction);
-
             enm.transform.position = Vector2.MoveTowards(enm.transform.position, enm.transform.position + (direction * pushDistance), pushSpeed * Time.deltaTime);
 
             if (duration <= 0.0f)
