@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ComboP3S2 : MonoBehaviour
 {
-    // 
-
     private Behavior behavior;
 
     //private Invisible invisibleScript;
