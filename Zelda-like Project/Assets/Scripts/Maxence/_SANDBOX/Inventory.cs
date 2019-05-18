@@ -54,6 +54,9 @@ public class Inventory : MonoBehaviour
     public GameObject[] consumables;
     [SerializeField] private string consumeInputName;
 
+    [SerializeField] private GameObject inventoryUI;
+    private bool displayed;
+
     public bool pressed;
 
     public bool canUseConsumable { get; set; } = true;
@@ -65,6 +68,13 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Inventory"))
+        {
+            if (!displayed) { inventoryUI.SetActive(true); displayed = true; }
+
+            else if (displayed) { inventoryUI.SetActive(false); displayed = false; }
+        }
+
         if (Input.GetAxisRaw("Consume Y") == 1.0f && !pressed)
         {
             UseConsumable(0);

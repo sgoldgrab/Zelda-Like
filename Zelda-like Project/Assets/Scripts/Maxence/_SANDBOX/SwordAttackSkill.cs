@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class SwordCombatInfos : CombatInfos
+{
+    public int damage;
+    public float attackMoveDistance;
+}
+
 public class SwordAttackSkill : CombatSkillUpdate
 {
-    [SerializeField] private float attackRange;
+    [SerializeField] private float attackMoveRange;
     [SerializeField] private int swordDamage;
 
     private Vector2 attackPosition;
@@ -20,12 +27,12 @@ public class SwordAttackSkill : CombatSkillUpdate
         base.Skill(index);
     }
 
-    public override void SkillUpdate(int uIndex)
+    public override void SkillUpdate()
     {
         // we activate the Late Effect in advance AND we set the direction of the attack, at the exact time the animation starts
         if (rate > 0 && wait <= 0.0f && !isPlaying) { activation = true; SwordAttackDirection(); }
 
-        base.SkillUpdate(uIndex);
+        base.SkillUpdate();
     }
 
     public override void LateEffect()
@@ -47,7 +54,7 @@ public class SwordAttackSkill : CombatSkillUpdate
         float attackY = enemyState.playerTransform.position.y - transform.position.y;
 
         Vector2 attackCoordinates = new Vector2(attackX, attackY);
-        Vector3 attackDir = attackCoordinates.normalized * attackRange;
+        Vector3 attackDir = attackCoordinates.normalized * attackMoveRange;
         attackPosition = transform.position + attackDir;
 
         // Test Strauss Yona Gurzeit

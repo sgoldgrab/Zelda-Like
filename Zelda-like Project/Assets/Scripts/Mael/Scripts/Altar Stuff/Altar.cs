@@ -8,7 +8,7 @@ public abstract class Sephiroth : MonoBehaviour
 {
     public bool isActive { get; set; } = false;
 
-    [SerializeField] private Sprite sephSprite;
+    public Sprite sephSprite;
 }
 
 public class Altar : MonoBehaviour
