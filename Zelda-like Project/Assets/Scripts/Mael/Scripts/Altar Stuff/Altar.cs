@@ -8,7 +8,7 @@ public abstract class Sephiroth : MonoBehaviour
 {
     public bool isActive { get; set; } = false;
 
-    [SerializeField] private Sprite sephSprite;
+    public Sprite sephSprite;
 }
 
 public class Altar : MonoBehaviour
@@ -20,9 +20,13 @@ public class Altar : MonoBehaviour
     public Button FirstSeph;
     public EventSystem Yessai;
 
+    public Sprite zeSprite;
+
     [SerializeField] private SephirothsStock sephirothsStock;
 
     private PlayerMovement playerMovement;
+
+    public bool hasBeenFinallyActivatedAfterAllTheseYears = false;
 
     void Start()
     {
@@ -48,8 +52,14 @@ public class Altar : MonoBehaviour
         {
             //sephirots[theSeph - 1].GetComponent<Sephiroth>().method();
             //sephirothsStock.sephirothsInInventory[1] = sephirots[theSeph - 1];
+            Debug.Log("Simon aide moi");
 
             sephirots[theSeph - 1].GetComponent<Sephiroth>().isActive = true;
+            zeSprite = sephirots[theSeph - 1].GetComponent<Sephiroth>().sephSprite;
+            hasBeenFinallyActivatedAfterAllTheseYears = true;
+
+            Debug.Log("Allez les bleues");
+
         }
 
         if (theSeph == 2)
@@ -69,6 +79,7 @@ public class Altar : MonoBehaviour
 
     public void DestroyDisplay()
     {
+        Debug.Log("ENculé");
         Destroy(displaySephs);
     }
 }
