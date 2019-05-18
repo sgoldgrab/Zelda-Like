@@ -10,7 +10,7 @@ public class PlayerState : EntityState
     public int immunities { get; set; } = 0;
     public int damageCount { get; set; } = 0;
 
-    private bool playerIsDead;
+    public bool playerIsDead { get; set; }
 
     [SerializeField] private Collider2D[] colliders;
     public Collider2D[] playerColliders { get => colliders; private set => colliders = value; }

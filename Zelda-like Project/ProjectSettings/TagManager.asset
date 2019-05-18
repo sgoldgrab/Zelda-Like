@@ -59,8 +59,17 @@ TagManager:
   - name: Ground
     uniqueID: 3721093281
     locked: 0
+  - name: Environment
+    uniqueID: 117842095
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Items
+    uniqueID: 1385310107
+    locked: 0
+  - name: Pickups
+    uniqueID: 3400805749
     locked: 0
   - name: Enemy
     uniqueID: 521122165

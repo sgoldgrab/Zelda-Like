@@ -1,95 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
     public bool checkPoint = false;
-
     public bool canRespawn = false;
+    private bool pausedGame = false;
 
-    [SerializeField] private GameObject player;
-    private SpriteRenderer playerSprite;
-
-    private PlayerMovement playerMovement;
-    private PlayerAbilities playerAbilities;
-    private PlayerAttack playerAttack;
-    private PlayerStance playerStance;
-    private PlayerInteraction playerInteraction;
-    private Inventory inventory;
+    private PlayerState playerState;
 
     public GameObject checkPointSpawn;
 
+    private GameObject player;
+    private PlayerDeath playerDeath;
+
+    public GameObject[] savedSephs = new GameObject[4];
+
     private void Awake()
     {
-        playerMovement = player.GetComponent<PlayerMovement>();
-        playerAbilities = player.GetComponent<PlayerAbilities>();
-        playerAttack = player.GetComponent<PlayerAttack>();
-        playerStance = player.GetComponent<PlayerStance>();
-        playerInteraction = player.GetComponent<PlayerInteraction>();
-        inventory = player.GetComponent<Inventory>();
+        if (playerDeath == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            playerDeath = this;
+        }
 
-        playerSprite = player.GetComponent<SpriteRenderer>();
+        else if (playerDeath != this) Destroy(gameObject);
+
+        player = GameObject.Find("PLAYER");
+        playerState = player.GetComponent<PlayerState>();
+    }
+
+    private void Update()
+    {
+        if (playerState.playerIsDead) OnDeath();
+
+        if (Input.GetKeyDown(KeyCode.K)) playerState.TakeDamage(7);
+
+        if (pausedGame && Input.GetKeyDown(KeyCode.R)) PlayerRespawn();
     }
 
     private void OnDeath()
     {
-        playerMovement.canMove = false;
-        playerStance.canSwitch = false;
-        playerAttack.canAttack = false;
-        playerInteraction.canInteract = false;
-        playerAbilities.canUseAbility = false;
-        inventory.canUseConsumable = false;
-
-        playerSprite.enabled = false;
-
-        GameObject[] consumables = GameObject.FindGameObjectsWithTag("Consumables");
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        for(int i =0; i < consumables.Length; i++)
-        {
-            Destroy(consumables[i]);
-        }
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            Destroy(enemies[i]);
-        }
+        Time.timeScale = 0f;
+        pausedGame = true;
     }
 
     private void PlayerRespawn()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+
         if(checkPoint && canRespawn)
         {
             player.transform.position = checkPointSpawn.transform.position;
-            player.transform.rotation = Quaternion.identity;
-
-            playerSprite.enabled = true;
-
-            playerMovement.canMove = true;
-            playerStance.canSwitch = true;
-            playerAttack.canAttack = true;
-            playerInteraction.canInteract = true;
-            playerAbilities.canUseAbility = true;
-            inventory.canUseConsumable = true;
         }
 
         if(!checkPoint && canRespawn)
         {
             player.transform.position = new Vector3(0, 0, 0);
-            player.transform.rotation = Quaternion.identity;
-
-            playerSprite.enabled = true;
-
-            playerMovement.canMove = true;
-            playerStance.canSwitch = true;
-            playerAttack.canAttack = true;
-            playerInteraction.canInteract = true;
-            playerAbilities.canUseAbility = true;
-            inventory.canUseConsumable = true;
         }
 
-        //Faire repop les mobs et les consommables
+        for(int i = 0; i < savedSephs.Length; i++)
+        {
+            if (savedSephs[i] != null) savedSephs[i].GetComponent<Sephiroth>().isActive = true;
+        }
+
+        Time.timeScale = 1f;
+        pausedGame = false;
+        playerState.playerIsDead = false;
     }
 }
 
