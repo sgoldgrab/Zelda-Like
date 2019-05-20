@@ -10,11 +10,11 @@ public class SceneManagerPop : MonoBehaviour
     public GameObject credits;
     public EventSystem eventSys;
     public Button returnButton;
-    
+    public Button mainMenuButton;
 
     public void Game()
     {
-        SceneManager.LoadScene("SceneMaelVEVO");
+        SceneManager.LoadScene("_SandBoxScene");
     }
 
     public void Tuto()
@@ -36,6 +36,7 @@ public class SceneManagerPop : MonoBehaviour
     public void DisplayCreditsOff()
     {
         credits.SetActive(false);
+        eventSys.SetSelectedGameObject(mainMenuButton.gameObject);
     }
 
     public void Menu()

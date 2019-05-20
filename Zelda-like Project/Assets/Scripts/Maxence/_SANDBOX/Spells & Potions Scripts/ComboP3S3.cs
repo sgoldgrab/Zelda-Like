@@ -18,22 +18,27 @@ public class ComboP3S3 : MonoBehaviour
 
     private float timer = 6f;
 
+    void Start()
+    {
+        playerState = GameObject.Find("PLAYER").GetComponent<PlayerState>();
+    }
+
     private void Update()
     {
         Debug.Log(playerState.immunities + " " + playerState.damageCount);
 
         timer -= Time.deltaTime;
 
-        if (timer <= 0)
+        if (playerState.damageCount >= 4 || timer <= 0)
         {
-            playerState.immunities -= 1;
+            playerState.immunities = Mathf.Clamp(playerState.immunities - 1, 0, 10);
             playerState.damageCount = 0;
 
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -41,18 +46,7 @@ public class ComboP3S3 : MonoBehaviour
 
             playerState = player.GetComponent<PlayerState>();
 
-            if (playerState.damageCount < 4)
-            {
-                playerState.immunities += 1;
-            }
-
-            else if (playerState.damageCount >= 4)
-            {
-                playerState.immunities -= 1;
-                playerState.damageCount = 0;
-
-                Destroy(gameObject);
-            }
+            playerState.immunities += 1;
         }
     }
 
@@ -60,7 +54,7 @@ public class ComboP3S3 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerState.immunities -= 1;
+            playerState.immunities = Mathf.Clamp(playerState.immunities - 1, 0, 10);
         }
     }
 }

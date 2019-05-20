@@ -294,18 +294,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 134645079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1026482867}
-        m_MethodName: Tuto
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &137823666
@@ -520,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1933,6 +1922,7 @@ MonoBehaviour:
   credits: {fileID: 1922379427}
   eventSys: {fileID: 58222251}
   returnButton: {fileID: 147453289}
+  mainMenuButton: {fileID: 354569091}
 --- !u!1 &1056434795
 GameObject:
   m_ObjectHideFlags: 0

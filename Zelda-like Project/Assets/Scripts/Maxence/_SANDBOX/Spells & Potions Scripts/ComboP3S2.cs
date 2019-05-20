@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ComboP3S2 : MonoBehaviour
 {
-    // 
-
     private Behavior behavior;
 
     //private Invisible invisibleScript;
 
     private bool isTrigger = false;
 
-    private float timer = 0.25f;
+    [SerializeField] private float timer;
 
     private void Update()
     {
@@ -45,7 +43,7 @@ public class ComboP3S2 : MonoBehaviour
 
     IEnumerator ComboEffect(float timer)
     {
-        behavior.enemyGlobalSpeed /= 2;
+        Time.timeScale = 0.3f;
 
         //invisibleScript.enabled = false;
 
@@ -54,7 +52,7 @@ public class ComboP3S2 : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
 
-        behavior.enemyGlobalSpeed *= 2;
+        Time.timeScale = 1.0f;
 
         //invisibleScript.enabled = true;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CombatSkillInfos
+public class CombatInfos
 {
     public int attackRate;
     public float waitTime;
@@ -15,7 +15,7 @@ public class CombatSkillInfos
 
 public class CombatSkillUpdate : Trigger
 {
-    [SerializeField] private List<CombatSkillInfos> combatInfos;
+    [SerializeField] private List<CombatInfos> combatInfos;
 
     //ANIM LOOP
     protected int rate;
@@ -33,6 +33,9 @@ public class CombatSkillUpdate : Trigger
     //LATE EFFECT
     protected bool activation;
 
+    //COMPLEX BEHAVIOR REQUIRED
+    protected int index;
+
     void Start()
     {
         rate = combatInfos[0].attackRate;
@@ -47,16 +50,18 @@ public class CombatSkillUpdate : Trigger
         }
     }
 
-    public virtual void Skill(int index)
+    public virtual void Skill(int ind)
     {
-        SkillUpdate(index); // execution of the animation
+        index = ind;
 
-        if (execute) ExecuteSkill(index); // execution of the main method --> execute the Direct Effect method and allows for the Late Effect method
+        SkillUpdate(); // execution of the animation
+
+        if (execute) ExecuteSkill(); // execution of the main method --> execute the Direct Effect method and allows for the Late Effect method
 
         if (activation) LateEffect(); // activation of the effect if any
     }
 
-    public virtual void SkillUpdate(int uIndex)
+    public virtual void SkillUpdate()
     {
         if (rate > 0)
         {
@@ -67,23 +72,23 @@ public class CombatSkillUpdate : Trigger
 
         else
         {
-            rate = combatInfos[uIndex].attackRate;
+            rate = combatInfos[index].attackRate;
             skillIsActive = false;
             triggerIsActive = false;
             enemyState.enemyCanMove = true;
         }
     }
 
-    public virtual void ExecuteSkill(int eIndex)
+    public virtual void ExecuteSkill()
     {
         if (abRate > 0)
         {
             if (abWait <= 0.0f)
             {
                 DirectEffect();
-                abWait = combatInfos[eIndex].abilityTime;
+                abWait = combatInfos[index].abilityTime;
                 abRate--;
-                abDuration = combatInfos[eIndex].abilityDuration; // only late effects (movements generally)
+                abDuration = combatInfos[index].abilityDuration; // only late effects (movements generally)
             }
 
             abWait -= Time.deltaTime;
@@ -91,10 +96,10 @@ public class CombatSkillUpdate : Trigger
 
         else
         {
-            abRate = combatInfos[eIndex].abilityRate;
+            abRate = combatInfos[index].abilityRate;
             execute = false;
             isPlaying = false;
-            wait = combatInfos[eIndex].waitTime;
+            wait = combatInfos[index].waitTime;
             rate--;
 
             abWait = 0.0f;
@@ -117,6 +122,23 @@ public class CombatSkillUpdate : Trigger
     {
         execute = true;
     }
+
+    public void ResetValues()
+    {
+        abWait = 0.0f;
+        abRate = combatInfos[index].abilityRate;
+
+        execute = false;
+        isPlaying = false;
+
+        wait = combatInfos[index].waitTime;
+        rate = combatInfos[index].attackRate;
+
+        skillIsActive = false;
+        triggerIsActive = false;
+    }
+
+    ////
 
     public override void EnemyBehavior()
     {

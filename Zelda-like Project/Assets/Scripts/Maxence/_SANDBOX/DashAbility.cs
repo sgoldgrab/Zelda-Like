@@ -25,11 +25,11 @@ public class DashAbility : CombatSkillUpdate
         base.Skill(index);
     }
 
-    public override void SkillUpdate(int uIndex)
+    public override void SkillUpdate()
     {
         if (rate > 0 && wait <= 0.0f && !isPlaying) activation = true; // we activate the Late Effect in advance, at the exact time the animation starts
 
-        base.SkillUpdate(uIndex);
+        base.SkillUpdate();
     }
 
     public override void LateEffect()

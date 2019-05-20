@@ -19,6 +19,8 @@ public class PlayerDash : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerState playerState;
 
+    public bool canDash { get; set; } = true;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -29,7 +31,7 @@ public class PlayerDash : MonoBehaviour
     {
         DashDirection();
 
-        if (Input.GetButtonDown("Dash") && cooldown <= 0.0f)
+        if (Input.GetButtonDown("Dash") && cooldown <= 0.0f && canDash)
         {
             dashMove = true;
             duration = dashDuration;
