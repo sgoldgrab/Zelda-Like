@@ -66,7 +66,7 @@ MonoBehaviour:
     abilityRate: 1
     abilityTime: 0
     abilityDuration: 0.2
-  attackMoveRange: 0
+  attackMoveRange: 2
   swordDamage: 1
   swordBlowZoneRadius: 0.2
   thisIsThePlayer:
@@ -113,6 +113,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 1450523453}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: randomValue.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
       propertyPath: moveIdleBehavior
       value: 
       objectReference: {fileID: 1450523451}
@@ -123,12 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 1450523452}
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
-      propertyPath: skills.Array.data[0]
-      value: 
-      objectReference: {fileID: 1450523453}
-    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: randomValue.Array.data[0]
+      propertyPath: startGeneralCooldown
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
@@ -188,9 +193,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
       propertyPath: enemyBehaviorsManager
       value: 
       objectReference: {fileID: 5974703766927467587}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: segsNumber
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: layerIndex

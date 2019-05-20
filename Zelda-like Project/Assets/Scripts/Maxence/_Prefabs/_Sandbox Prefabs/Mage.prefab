@@ -113,6 +113,11 @@ PrefabInstance:
       propertyPath: moveCombatBehavior
       value: 
       objectReference: {fileID: 679890271}
+    - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: startGeneralCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -170,9 +175,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
+      propertyPath: maxHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
       propertyPath: enemyBehaviorsManager
       value: 
       objectReference: {fileID: 4697471463926243175}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: segsNumber
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: skillsAnimationMethods.Array.size
