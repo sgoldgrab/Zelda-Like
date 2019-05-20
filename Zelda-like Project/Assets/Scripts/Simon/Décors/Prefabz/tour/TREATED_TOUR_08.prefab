@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4622764004956475932}
   - component: {fileID: 6073718567686344879}
-  - component: {fileID: 442700552570130276}
   - component: {fileID: 2050851352689564601}
+  - component: {fileID: 6303624098448931487}
   m_Layer: 0
   m_Name: TREATED_TOUR_08
   m_TagString: Untagged
@@ -82,7 +82,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &442700552570130276
+--- !u!114 &2050851352689564601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825374034084832536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8b3d07c67e519499da42d0f2723b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaColor: 0.5
+--- !u!60 &6303624098448931487
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,25 +120,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.6065674, y: -4.321448}
-      - {x: 0.82242775, y: -5.2691393}
-      - {x: -1.5902405, y: -4.886635}
-      - {x: -1.6095753, y: -6.0512333}
-      - {x: 0.8167114, y: -6.5172095}
-      - {x: 1.6190395, y: -5.3049994}
---- !u!114 &2050851352689564601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5825374034084832536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b3d07c67e519499da42d0f2723b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaColor: 0
+    - - {x: 2.5277538, y: 1.5347013}
+      - {x: 2.4299679, y: 3.2007284}
+      - {x: 1.2081947, y: 3.3844013}
+      - {x: 1.1996899, y: 4.4543715}
+      - {x: 0.82984924, y: 5.5047197}
+      - {x: -0.008094788, y: 6.609496}
+      - {x: -0.9090481, y: 5.375268}
+      - {x: -1.2203884, y: 4.301738}
+      - {x: -1.3363476, y: 3.645894}
+      - {x: -2.3911228, y: 2.1011066}
+      - {x: -2.4453716, y: 0.30996418}
+      - {x: -1.6421852, y: 0.16841602}
+      - {x: -1.5585022, y: -5.95179}
+      - {x: -0.6077728, y: -4.677002}
+      - {x: 1.5576324, y: -5.2139816}
+      - {x: 1.6651554, y: 0.38498497}
 --- !u!1 &6663646607607158604
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675360845142945677}
-  - component: {fileID: 7033484797648919904}
+  - component: {fileID: 8880710352429600810}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -157,7 +167,7 @@ Transform:
   m_Father: {fileID: 4622764004956475932}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &7033484797648919904
+--- !u!60 &8880710352429600810
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,28 +183,18 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.74, y: 12.86}
+    newSize: {x: 4.74, y: 12.86}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.5277538, y: 1.5347013}
-      - {x: 2.4299679, y: 3.2007284}
-      - {x: 1.2081947, y: 3.3844013}
-      - {x: 1.1996899, y: 4.4543715}
-      - {x: 0.82984924, y: 5.5047197}
-      - {x: -0.008094788, y: 6.609496}
-      - {x: -0.9090481, y: 5.375268}
-      - {x: -1.2203884, y: 4.301738}
-      - {x: -1.3363476, y: 3.645894}
-      - {x: -2.3911228, y: 2.1011066}
-      - {x: -2.4453716, y: 0.30996418}
-      - {x: -1.6421852, y: 0.16841602}
-      - {x: -1.5643673, y: -4.6842527}
-      - {x: 0.7947464, y: -5.0114894}
-      - {x: 1.651535, y: -4.175297}
-      - {x: 1.6651554, y: 0.38498497}
+    - - {x: 0.9610596, y: -5.1019135}
+      - {x: 0.34710693, y: -4.940529}
+      - {x: -0.6043854, y: -4.7223206}
+      - {x: -1.5508881, y: -6.010147}
+      - {x: 0.78149414, y: -6.4467926}
+      - {x: 1.5603485, y: -5.2932663}
