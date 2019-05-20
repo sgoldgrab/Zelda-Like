@@ -18,6 +18,8 @@ public class PlayerAnims : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         playerMovement = GetComponentInParent<PlayerMovement>();
         //playerAnimState = playerAnimator.GetComponentInChildren<AnimationState>();
+
+        playerAnimator.SetFloat("speedAnim", 1f);
     }
 
     void Update()

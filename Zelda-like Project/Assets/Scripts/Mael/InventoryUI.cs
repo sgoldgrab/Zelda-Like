@@ -15,12 +15,16 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        altar = GameObject.Find("Altar" + (altarIndex).ToString()).GetComponent<AltarTestSandbox>();
+        GameObject altarMessenger = GameObject.Find("Altar" + (altarIndex).ToString());
+        if (altarMessenger != null) altar = altarMessenger.GetComponent<AltarTestSandbox>();
+
         image = GetComponent<Image>();
     }
 
     private void Update()
     {
+        if (altar == null) return;
+
         if (altar.chose)
         {
             sprite = altar.chosenSephSprite;

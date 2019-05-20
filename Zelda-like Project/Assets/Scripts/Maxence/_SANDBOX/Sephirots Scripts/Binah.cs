@@ -19,7 +19,7 @@ public class Binah : Sephiroth
     {
         if(isActive && !effect)
         {
-            playerSight.sightZoneRadius += 1;
+            playerSight.aware = true;
             effect = true;
         }
     }

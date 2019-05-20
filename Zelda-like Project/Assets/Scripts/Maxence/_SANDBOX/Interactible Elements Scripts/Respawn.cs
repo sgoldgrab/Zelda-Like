@@ -41,8 +41,6 @@ public class Respawn : MonoBehaviour
             OnDeath();
         }
 
-        if (Input.GetKeyDown(KeyCode.M)) playerState.TakeDamage(3);
-
         if (pausedGame && Input.GetButtonDown("Respawn"))
         {
             Debug.Log("RESPAWN");

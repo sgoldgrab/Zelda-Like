@@ -54,11 +54,11 @@ public class PotionsEffects : MonoBehaviour
 
         if (index == 2) // Potion 3
         {
-            playerSight.sightZoneRadius += value;
+            playerSight.aware = true;
 
             yield return new WaitForSeconds(time + bonus);
 
-            playerSight.sightZoneRadius -= value;
+            playerSight.aware = false;
         }
     }
 }

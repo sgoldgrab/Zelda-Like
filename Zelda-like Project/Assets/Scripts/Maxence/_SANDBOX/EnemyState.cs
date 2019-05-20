@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyState : EntityState
 {
     [SerializeField] private EnemyAnims enemyAnims;
+    [SerializeField] private EnemyBehaviorsManager enemyBehaviorsManager;
 
     public Transform playerTransform { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
@@ -92,6 +93,8 @@ public class EnemyState : EntityState
         enemyCanUseSkill = false;
         enemyCanMove = false;
 
+        foreach (CombatSkillUpdate combatSkill in enemyBehaviorsManager.theSkills) combatSkill.ResetValues();
+
         enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
     }
 
@@ -108,12 +111,6 @@ public class EnemyState : EntityState
 
             base.TakeHeal(1);
         }
-    }
-
-    public void Recover()
-    {
-        enemyCanUseSkill = true;
-        enemyCanMove = true;
     }
 
     //Old

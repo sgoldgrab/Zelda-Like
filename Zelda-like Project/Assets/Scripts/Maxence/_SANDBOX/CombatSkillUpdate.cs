@@ -123,7 +123,7 @@ public class CombatSkillUpdate : Trigger
         execute = true;
     }
 
-    public void Reset(string type)
+    public void ResetValues()
     {
         abWait = 0.0f;
         abRate = combatInfos[index].abilityRate;
@@ -132,17 +132,10 @@ public class CombatSkillUpdate : Trigger
         isPlaying = false;
 
         wait = combatInfos[index].waitTime;
-        rate--;
+        rate = combatInfos[index].attackRate;
 
-        if (type == "EndSkill")
-        {
-            rate = combatInfos[index].attackRate;
-
-            skillIsActive = false;
-            triggerIsActive = false;
-
-            enemyState.enemyCanMove = true;
-        }
+        skillIsActive = false;
+        triggerIsActive = false;
     }
 
     ////

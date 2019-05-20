@@ -9,6 +9,8 @@ public class ComboP1S3 : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
 
+    private Animator playerAnimator;
+
     private bool isTrigger = false;
 
     private float timer = 0.25f;
@@ -36,6 +38,7 @@ public class ComboP1S3 : MonoBehaviour
 
             playerMovement = player.GetComponent<PlayerMovement>();
             playerAttack = player.GetComponent<PlayerAttack>();
+            playerAnimator = player.GetComponentInChildren<Animator>();
 
             StartCoroutine(ComboEffect(8f));
         }
@@ -43,16 +46,18 @@ public class ComboP1S3 : MonoBehaviour
 
     IEnumerator ComboEffect(float time)
     {
-        playerAttack.attackCoolDownSpeed /= 2; // --> (voir attack script) : la vitesse d'att y est définie par le cooldowns entre chaque inputs, donc on la réduit pour aller plus vite
-        playerMovement.playerSpeed *= 2;
+        playerAttack.attackCoolDownSpeed /= 1.5f; // --> (voir attack script) : la vitesse d'att y est définie par le cooldowns entre chaque inputs, donc on la réduit pour aller plus vite
+        playerMovement.playerSpeed *= 2f;
+        playerAnimator.SetFloat("speedAnim", 1.5f);
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(time);
 
-        playerAttack.attackCoolDownSpeed *= 2;
-        playerMovement.playerSpeed /= 2;
+        playerAttack.attackCoolDownSpeed *= 1.5f;
+        playerMovement.playerSpeed /= 2f;
+        playerAnimator.SetFloat("speedAnim", 1f);
 
         Destroy(gameObject);
     }

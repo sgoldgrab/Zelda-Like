@@ -30,7 +30,7 @@ public class SwordAttackSkill : CombatSkillUpdate
     public override void SkillUpdate()
     {
         // we activate the Late Effect in advance AND we set the direction of the attack, at the exact time the animation starts
-        if (rate > 0 && wait <= 0.0f && !isPlaying) { activation = true; SwordAttackDirection(); }
+        if (rate > 0 && wait <= 0.0f && !isPlaying) { SwordAttackDirection(); activation = true; }
 
         base.SkillUpdate();
     }

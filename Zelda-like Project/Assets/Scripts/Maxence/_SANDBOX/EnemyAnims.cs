@@ -87,6 +87,8 @@ public class EnemyAnims : MonoBehaviour
 
     public void Recover()
     {
+        Debug.Log(gameObject.transform.parent.name);
+
         enemyState.enemyCanUseSkill = true;
         enemyState.enemyCanMove = true;
     }

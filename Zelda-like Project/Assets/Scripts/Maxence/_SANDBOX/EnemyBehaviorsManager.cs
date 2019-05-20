@@ -104,6 +104,8 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        //Debug.Log(enemyState.enemyCanMove + " " + enemyState.enemyCanUseSkill);
+
         /*
         if (triggers[0].triggerIsActive) gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.green;
         else gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
