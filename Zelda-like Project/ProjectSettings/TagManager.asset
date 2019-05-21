@@ -59,6 +59,9 @@ TagManager:
   - name: Ground
     uniqueID: 3721093281
     locked: 0
+  - name: Lights
+    uniqueID: 4154040235
+    locked: 0
   - name: Environment
     uniqueID: 117842095
     locked: 0
