@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6285025940188884631}
   - component: {fileID: 5045875127931560081}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,9 +74,9 @@ GameObject:
   - component: {fileID: 8998568096128053067}
   - component: {fileID: 7461913876237318521}
   - component: {fileID: 5118868826080544206}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_CABANE_005
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
