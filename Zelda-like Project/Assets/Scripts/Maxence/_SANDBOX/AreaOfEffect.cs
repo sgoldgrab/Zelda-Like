@@ -11,6 +11,8 @@ public class AreaOfEffect : MonoBehaviour
     {
         col = GetComponent<Collider2D>();
         col.enabled = false;
+
+        GetComponent<Animator>().SetFloat("speed", 1f);
     }
 
     void OnTriggerEnter2D(Collider2D other)

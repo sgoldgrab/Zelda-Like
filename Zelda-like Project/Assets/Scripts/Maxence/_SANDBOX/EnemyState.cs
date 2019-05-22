@@ -32,7 +32,7 @@ public class EnemyState : EntityState
     [SerializeField] private float maxOffset;
 
     // ON DEATH REQUIRED
-    [SerializeField] private Collider2D[] enemyColliders;
+    public Collider2D[] enemyColliders;
     private EnemySpawner enemySpawner;
     private bool isDead = false;
 

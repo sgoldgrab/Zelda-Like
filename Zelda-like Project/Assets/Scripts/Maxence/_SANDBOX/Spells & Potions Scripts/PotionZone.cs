@@ -12,6 +12,11 @@ public class PotionZone : MonoBehaviour
     [SerializeField] private string compareTag1;
     [SerializeField] private string compareTag2;
 
+    void Start()
+    {
+
+    }
+
     private void Update()
     {
         timer -= Time.deltaTime;

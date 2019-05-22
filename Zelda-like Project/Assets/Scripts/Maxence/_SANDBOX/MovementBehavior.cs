@@ -58,6 +58,6 @@ public class MovementBehavior : Behavior
 
     public virtual void NewDirection()
     {
-
+        //
     }
 }

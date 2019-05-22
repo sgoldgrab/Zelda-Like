@@ -15,7 +15,7 @@ public class CombatInfos
 
 public class CombatSkillUpdate : Trigger
 {
-    [SerializeField] private List<CombatInfos> combatInfos;
+    public List<CombatInfos> combatInfos;
 
     //ANIM LOOP
     protected int rate;
@@ -46,7 +46,7 @@ public class CombatSkillUpdate : Trigger
     {
         if (skillIsActive && enemyState.enemyCanUseSkill || triggerIsActive)
         {
-            Skill(0); // if the skill is activated the usual way, it plays the methid with the base informations (0)
+            Skill(0); // if the skill is activated the usual way, it plays the method with the base informations (0)
         }
     }
 
@@ -70,7 +70,7 @@ public class CombatSkillUpdate : Trigger
             wait -= Time.deltaTime;
         }
 
-        else
+        else if (!activation)
         {
             rate = combatInfos[index].attackRate;
             skillIsActive = false;

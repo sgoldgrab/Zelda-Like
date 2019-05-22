@@ -13,14 +13,17 @@ public class SwordAttackSkill : CombatSkillUpdate
 {
     [SerializeField] private float attackMoveRange;
     [SerializeField] private int swordDamage;
+    private int damage = 1;
 
     private Vector2 attackPosition;
-    [SerializeField] private float swordBlowZoneRadius;
-    [SerializeField] private LayerMask thisIsThePlayer;
 
     private List<GameObject> thePlayer = new List<GameObject>();
 
     [SerializeField] private GameObject attackPos2;
+
+    //Powerful Blow
+    [SerializeField] private bool powerful;
+    private bool power = true;
 
     public override void Skill(int index)
     {
@@ -31,6 +34,13 @@ public class SwordAttackSkill : CombatSkillUpdate
     {
         // we activate the Late Effect in advance AND we set the direction of the attack, at the exact time the animation starts
         if (rate > 0 && wait <= 0.0f && !isPlaying) { SwordAttackDirection(); activation = true; }
+
+        if (powerful)
+        {
+            if (rate == 1 && power) { damage++; power = false; }
+        }
+
+        if (rate <= 0 && !activation) { damage = swordDamage; power = true; }
 
         base.SkillUpdate();
     }
@@ -69,25 +79,19 @@ public class SwordAttackSkill : CombatSkillUpdate
         {
             GameObject player = other.transform.parent.parent.gameObject;
 
-            if (thePlayer.Count < 1)
-            {
-                player.GetComponent<PlayerState>().TakeDamage(1);
-                thePlayer.Add(player);
-            }
+            player.GetComponent<PlayerState>().TakeDamage(damage);
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(attackPosition, swordBlowZoneRadius);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, infos[0].value);
     }
 
     //OLD SCRIPTING
 
+    /*
     void SwordBlow()
     {
         Collider2D[] playerCollider = Physics2D.OverlapCircleAll(attackPosition, swordBlowZoneRadius, thisIsThePlayer);
@@ -100,4 +104,5 @@ public class SwordAttackSkill : CombatSkillUpdate
             }
         }
     }
+    */
 }
