@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 117842095
   m_SortingLayer: -1
-  m_SortingOrder: 576
+  m_SortingOrder: 37
   m_Sprite: {fileID: 21300000, guid: 237c50ef83f384949abd0d709dd9f946, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -144,7 +144,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2470280405413635388}
-  - component: {fileID: 7675833303163625546}
   - component: {fileID: 7895404765347259398}
   m_Layer: 0
   m_Name: GameObject
@@ -167,19 +166,6 @@ Transform:
   m_Father: {fileID: 3839117889154047251}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7675833303163625546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6687657231104112778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b3d07c67e519499da42d0f2723b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaColor: 0.5
 --- !u!60 &7895404765347259398
 PolygonCollider2D:
   m_ObjectHideFlags: 0
