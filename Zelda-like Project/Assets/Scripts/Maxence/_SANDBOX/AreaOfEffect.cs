@@ -7,8 +7,12 @@ public class AreaOfEffect : MonoBehaviour
     [SerializeField] private int aOEDamage;
     private Collider2D col;
 
+    [SerializeField] private int layer;
+
     void Awake()
     {
+        GetComponent<Animator>().SetLayerWeight(layer, 1);
+
         col = GetComponent<Collider2D>();
         col.enabled = false;
 
