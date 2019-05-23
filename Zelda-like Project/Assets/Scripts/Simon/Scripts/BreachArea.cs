@@ -9,7 +9,7 @@ public class BreachArea : MonoBehaviour
     [SerializeField] private bool beingActivated = false;
 
     [SerializeField] private float timer = 6f;
-    [SerializeField] private float activeTime = 10f;
+    [SerializeField] private float activeTime = 6f;
 
     public GameObject breach;
     private BreachRift2 breachScript;
@@ -39,13 +39,13 @@ public class BreachArea : MonoBehaviour
         if(timer <= 0)
         {
             isActive = true;
-            timer = 20f;
+            timer = 18f;
         }
 
         if(activeTime <= 0)
         {
             isActive = false;
-            activeTime = 10f;
+            activeTime = 6f;
         }
 
         if(beingActivated)
