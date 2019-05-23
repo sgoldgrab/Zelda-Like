@@ -13,6 +13,6 @@ public class CooldownManagerUI : MonoBehaviour
 
     void Update()
     {
-        spell1Cooldown.fillAmount = 1 - (playerAbilities.coolDownTime[index] / 2);
+        //spell1Cooldown.fillAmount = 1 - (playerAbilities.coolDownTime[index] / 2);
     }
 }
