@@ -13,13 +13,15 @@ public class Hod : Sephiroth
         playerState = player.GetComponent<PlayerState>();
     }
 
-    private void Update()
+    public override void Activation()
     {
-        if (isActive)
+        if (isActive && !effect)
         {
             EnemyState.whenEnemyDies += Regen;
-            isActive = false;
+            effect = true;
         }
+
+        base.Activation();
     }
 
     private void OnDisable()

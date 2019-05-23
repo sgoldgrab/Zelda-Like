@@ -4,13 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public abstract class Sephiroth : MonoBehaviour
-{
-    public bool isActive { get; set; } = false;
-
-    public Sprite sephSprite;
-}
-
 public class Altar : MonoBehaviour
 {
     public GameObject displaySephs;

@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private Respawn respawn;
+    private GlobalData globalData;
 
     void Start()
     {
-        respawn = GameObject.Find("Respawn").GetComponent<Respawn>();
+        globalData = GameObject.Find("DATA").GetComponent<GlobalData>();
     }
 
     void OnTriggerEnter2D()
     {
-        respawn.checkPoint = true;
-        respawn.checkPointSpawn = gameObject;
+        globalData.checkpointPos = transform.position;
     }
 }

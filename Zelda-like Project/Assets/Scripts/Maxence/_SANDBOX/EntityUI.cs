@@ -11,8 +11,13 @@ public class EntityUI : MonoBehaviour
 
     private void Start()
     {
-        if (gameObject.tag == "Enemy") { state = GetComponentInParent<EntityState>(); }
+        if (gameObject.tag == "Enemy") { state = GetComponentInParent<EntityState>(); InitializeUI(); }
 
+        // The player UI is initialized in the PlayerState script directly
+    }
+
+    public void InitializeUI()
+    {
         for (int n = 0; n < state.health; n++)
         {
             string theNameYouNeed = segName + " " + (n + 1).ToString();

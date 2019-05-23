@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Gevurah : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private EntityState entityState;
 
@@ -15,12 +13,14 @@ public class Gevurah : Sephiroth
         entityState = player.GetComponent<EntityState>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if(isActive && !effect)
         {
             entityState.SetMaximumHealth += 1;
             effect = true;
         }
+
+        base.Activation();
     }
 }

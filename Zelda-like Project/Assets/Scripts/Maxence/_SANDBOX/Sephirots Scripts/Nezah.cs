@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Nezah : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private PotionsEffects potionsEffects;
 
@@ -15,12 +13,14 @@ public class Nezah : Sephiroth
         potionsEffects = player.GetComponent<PotionsEffects>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if(isActive && !effect)
         {
             potionsEffects.bonusCooldown *= 1.3f;
             effect = true;
         }
+
+        base.Activation();
     }
 }

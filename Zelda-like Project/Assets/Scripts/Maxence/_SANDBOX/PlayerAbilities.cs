@@ -290,6 +290,7 @@ public class PlayerAbilities : MonoBehaviour
             if (rIndex == 2) instantiatePos = transformPos; // only for the spell 3, the instantiation is not on the aim location
 
             GameObject spell = Instantiate(spells[rIndex], instantiatePos, Quaternion.identity); //Quaternion.Euler(0, 0, angle)
+            spell.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder;
 
             //CHECK SPELLS
             if (spell.GetComponent<SpellOne>() != null) spell.GetComponent<SpellOne>().SetPositions(aimPos);
@@ -319,6 +320,7 @@ public class PlayerAbilities : MonoBehaviour
                 if (bPStance == false)
                 {
                     theBluePrint = Instantiate(spellBlueprints[bPIndex], transform.position, Quaternion.identity, transform);
+                    theBluePrint.GetComponent<SpriteRenderer>().sortingOrder = GetComponentInChildren<SpriteRenderer>().sortingOrder;
                     createBluePrint = false;
                 }
 

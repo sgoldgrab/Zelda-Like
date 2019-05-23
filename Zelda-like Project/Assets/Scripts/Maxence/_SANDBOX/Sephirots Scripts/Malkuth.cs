@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Malkuth : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject gameManager;
     private PlayerDeath playerDeath;
 
@@ -15,11 +13,14 @@ public class Malkuth : Sephiroth
         playerDeath = gameManager.GetComponent<PlayerDeath>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if(isActive && !effect)
         {
             playerDeath.canRespawn = true;
+            effect = true;
         }
+
+        base.Activation();
     }
 }

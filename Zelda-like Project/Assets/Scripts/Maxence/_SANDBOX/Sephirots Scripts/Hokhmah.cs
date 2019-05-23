@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Hokhmah : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private PlayerAbilities playerAbilities;
 
@@ -15,12 +13,14 @@ public class Hokhmah : Sephiroth
         playerAbilities = player.GetComponent<PlayerAbilities>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if (isActive && !effect)
         {
             playerAbilities.reduction += 0.2f;
             effect = true;
         }
+
+        base.Activation();
     }
 }

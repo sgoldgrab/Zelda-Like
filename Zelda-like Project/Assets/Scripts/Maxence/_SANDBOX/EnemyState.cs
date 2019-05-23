@@ -48,6 +48,8 @@ public class EnemyState : EntityState
 
     void Start()
     {
+        health = maxHealth;
+
         GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner");
         if (enemySpawnerMessenger != null) { enemySpawner = enemySpawnerMessenger.GetComponent<EnemySpawner>(); }
 

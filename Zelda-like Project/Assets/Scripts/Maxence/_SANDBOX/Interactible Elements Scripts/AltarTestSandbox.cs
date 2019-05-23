@@ -18,7 +18,7 @@ public class AltarTestSandbox : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerDash playerDash;
 
-    private Respawn respawn;
+    private GlobalData globalData;
 
     public bool chose = false;
 
@@ -27,7 +27,7 @@ public class AltarTestSandbox : MonoBehaviour
         playerMovement = GameObject.Find("PLAYER").GetComponent<PlayerMovement>();
         playerDash = GameObject.Find("PLAYER").GetComponent<PlayerDash>();
 
-        respawn = GameObject.Find("Respawn").GetComponent<Respawn>();
+        globalData = GameObject.Find("DATA").GetComponent<GlobalData>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -47,31 +47,29 @@ public class AltarTestSandbox : MonoBehaviour
 
         if (theSeph == 1)
         {
-            DisplaySprite(theSeph);
-
-            respawn.savedSephs[theSeph] = sephirots[theSeph - 1];
+            ActivateSeph(theSeph);
         }
 
         if (theSeph == 2)
         {
-            DisplaySprite(theSeph);
-
-            respawn.savedSephs[theSeph] = sephirots[theSeph - 1];
+            ActivateSeph(theSeph);
         }
 
         if (theSeph == 3)
         {
-            DisplaySprite(theSeph);
-
-            respawn.savedSephs[theSeph] = sephirots[theSeph - 1];
+            ActivateSeph(theSeph);
         }
     }
 
-    public void DisplaySprite(int seph)
+    public void ActivateSeph(int seph)
     {
         sephirots[seph - 1].GetComponent<Sephiroth>().isActive = true;
+
+        globalData.savedSephiroths.Add(sephirots[seph - 1].name);
+        /*
         chosenSephSprite = sephirots[seph - 1].GetComponent<Sephiroth>().sephSprite;
         chose = true;
+        */
     }
 
     public void DestroyUI()

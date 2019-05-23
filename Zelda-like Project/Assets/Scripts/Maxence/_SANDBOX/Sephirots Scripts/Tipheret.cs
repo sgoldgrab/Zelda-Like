@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Tipheret : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private PlayerMovement playerMovement;
 
@@ -15,12 +13,14 @@ public class Tipheret : Sephiroth
         playerMovement = player.GetComponent<PlayerMovement>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if(isActive && !effect)
         {
             playerMovement.playerSpeed *= 1.3f;
             effect = true;
         }
+
+        base.Activation();
     }
 }

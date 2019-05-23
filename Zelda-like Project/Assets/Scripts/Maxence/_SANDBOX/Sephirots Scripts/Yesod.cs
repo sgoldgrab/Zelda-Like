@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Yesod : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private PlayerAttack playerAttack;
 
@@ -15,13 +13,15 @@ public class Yesod : Sephiroth
         playerAttack = player.GetComponent<PlayerAttack>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if (isActive && !effect)
         {
             //playerAttack.attackSpeed *= 1.5f; --> A faire avec anim rate
             effect = true;
         }
+
+        base.Activation();
     }
 
 }

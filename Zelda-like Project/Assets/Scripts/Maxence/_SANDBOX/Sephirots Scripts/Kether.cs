@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Kether : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private PlayerAttack playerAttack;
 
@@ -15,12 +13,14 @@ public class Kether : Sephiroth
         playerAttack = player.GetComponent<PlayerAttack>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if(isActive && !effect)
         {
             playerAttack.attackDamage += 1;
             effect = true;
         }
+
+        base.Activation();
     }
 }

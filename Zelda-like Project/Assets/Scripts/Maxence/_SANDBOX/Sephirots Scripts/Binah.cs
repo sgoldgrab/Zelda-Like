@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Binah : Sephiroth
 {
-    private bool effect = false;
-
     private GameObject player;
     private PlayerSight playerSight;
 
@@ -15,12 +13,14 @@ public class Binah : Sephiroth
         playerSight = player.GetComponent<PlayerSight>();
     }
 
-    private void Update()
+    public override void Activation()
     {
         if(isActive && !effect)
         {
             playerSight.aware = true;
             effect = true;
         }
+
+        base.Activation();
     }
 }

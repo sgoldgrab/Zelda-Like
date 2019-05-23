@@ -13,13 +13,15 @@ public class Hesed : Sephiroth
         playerAbilities = player.GetComponent<PlayerAbilities>();
     }
 
-    private void Update()
+    public override void Activation()
     {
-        if (isActive)
+        if (isActive && !effect)
         {
             EnemyState.whenEnemyHit += CDReduc;
-            isActive = false;
+            effect = true;
         }
+
+        base.Activation();
     }
 
     private void OnDisable()

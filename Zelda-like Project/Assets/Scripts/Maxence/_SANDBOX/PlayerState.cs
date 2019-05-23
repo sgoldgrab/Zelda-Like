@@ -15,9 +15,20 @@ public class PlayerState : EntityState
     [SerializeField] private Collider2D[] colliders;
     public Collider2D[] playerColliders { get => colliders; private set => colliders = value; }
 
+    [SerializeField] private GlobalData globalData;
+
+    void Start()
+    {
+        globalData = GameObject.Find("DATA").GetComponent<GlobalData>();
+
+        Set();
+    }
+
     void Update() // TESTING ONLY
     {
         TestMethod();
+
+        globalData.playerHealth = health;
     }
 
     public override void TakeDamage(int dmg)
@@ -49,6 +60,17 @@ public class PlayerState : EntityState
 
             base.TakeHeal(1);
         }
+    }
+
+    void Set()
+    {
+        //health = globalData.playerHealth;
+        health = maxHealth;
+        playerUI.InitializeUI();
+
+        foreach (string seph in globalData.savedSephiroths) GameObject.Find(seph).GetComponent<Sephiroth>().isActive = true;
+
+        transform.position = globalData.checkpointPos;
     }
 
     void TestMethod() // TESTING ONLY
