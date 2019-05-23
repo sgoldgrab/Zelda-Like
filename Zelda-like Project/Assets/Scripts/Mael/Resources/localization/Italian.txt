@@ -1,5 +1,0 @@
-title=Il mio grande\ngioco
-play=Jouer
-opts=Impostazioni
-info=Informazioni
-retour=Retour
