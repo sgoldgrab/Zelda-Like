@@ -4,15 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DFTGames.Localization;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
+
+    public AudioMixer audiMixer;
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject pauseSettingsUI;
 
     public EventSystem eventSyst;
     public Button firstToBeSelected;
+    public Button firstSettingsToBeSelected;
+
+    public GameObject areYouSure;
+    public Button yesPleaseBeSelected;
 
     [SerializeField] private PlayerDash playerDash;
 
@@ -51,10 +60,53 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void LoadSettings()
+    {
+        pauseSettingsUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+        eventSyst.SetSelectedGameObject(firstSettingsToBeSelected.gameObject);
+    }
+
+    public void ReturnPauseMenu()
+    {
+        pauseMenuUI.SetActive(true);
+        pauseSettingsUI.SetActive(false);
+    }
+
+    public void SetEnglish()
+    {
+        Localize.SetCurrentLanguage(SystemLanguage.English);
+    }
+
+    public void SetFrench()
+    {
+        Localize.SetCurrentLanguage(SystemLanguage.French);
+    }
+
+    
+
+    public void SetVolume(float volume)
+    {
+        audiMixer.SetFloat("MainVolume", volume);
+    }
+
     public void QuitGame()
+    {
+        
+        areYouSure.SetActive(true);
+        eventSyst.SetSelectedGameObject(yesPleaseBeSelected.gameObject);
+        
+    }
+
+    public void YesIQuit()
     {
         Debug.Log("Quitting game...");
         Application.Quit();
+    }
+
+    public void NoIStay()
+    {
+        areYouSure.SetActive(false);
     }
 
 }

@@ -6,3 +6,16 @@ info=Informazioni
 retour=Retour
 exit=Quitter
 test=Ceci est un test de longueur juste pour voir si on va me casser les couilles ou pas car ça commence carrément à me niquer ptn de merde. Allez c'est pas fini t'avais cru mais non haha deso pas deso on pete un cable
+
+fr=Français
+eng=Anglais
+
+mainVolume=Son global
+
+Intro
+ 
+ic1=Tout ceci...Presque rien ne reste de mon matériel d'alchimie. Que s'est-il passé ? Où sont les autres kabbalistes ? Le rituel n'a pas dû se passer comme prévu, c'est probablement ma faute. Je dois rejoindre ce qui reste de la Kabbale, je dois réparer mon erreur.
+ic2=Le cataclysme que j'ai provoqué semble avoir causé des mutations sur tous les humains dans un rayon immense. Je me sens moi-même un peu différent. Qu'ai-je fait au juste ? Et qu'arrive-t-il à Jérusalem ? La ville semble en proie à des émeutes.
+
+it1=Utilisez le joystick gauche pour vous déplacer
+it2=Appuyez sur R2 pour changer de posture entre la posture normale et la posture mutante.
