@@ -11,8 +11,6 @@ public abstract class PickUp : MonoBehaviour
 
     public bool used { get; set; }
 
-    public bool hasKey { get; set; } = false;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -58,6 +56,8 @@ public class Inventory : MonoBehaviour
     private bool displayed;
 
     public bool pressed;
+
+    public bool hasKey { get; set; } = false;
 
     public bool canUseConsumable { get; set; } = true;
 

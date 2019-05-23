@@ -5,7 +5,7 @@ using UnityEngine;
 public class BreachArea : MonoBehaviour
 {
 
-    [SerializeField] private bool isActive = false;
+    [SerializeField] public bool isActive = false;
     [SerializeField] private bool beingActivated = false;
 
     [SerializeField] private float timer = 6f;

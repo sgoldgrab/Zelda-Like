@@ -13,17 +13,21 @@ public class BreachRift1 : MonoBehaviour
 
     private bool tookHit = false;
 
+    [SerializeField] private GameObject keyPrefab;
+
+    [SerializeField] private GameObject altar2;
+
     private void Update()
     {
-        if(tookHit) { timerTookHit -= Time.deltaTime; }
+        timer -= Time.deltaTime;
+
+        if (tookHit) { timerTookHit -= Time.deltaTime; }
 
         if(timerTookHit <= 0)
         {
             timerTookHit = 4f;
             tookHit = false;
         }
-
-        timer -= Time.deltaTime;
 
         if(timer <= 0 && !isActive)
         {
@@ -35,6 +39,15 @@ public class BreachRift1 : MonoBehaviour
         {
             isActive = false;
             timer = 12f;
+        }
+
+        if(score >= 40)
+        {
+            Instantiate(keyPrefab, transform.position, transform.rotation);
+
+            //altar2.GetComponent<Altar>().locked = false;
+
+            Destroy(gameObject);
         }
     }
 

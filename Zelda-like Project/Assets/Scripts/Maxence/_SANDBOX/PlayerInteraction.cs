@@ -11,13 +11,19 @@ public class PlayerInteraction : MonoBehaviour
 {
     private Interactable interactable;
 
-    public bool isInRangeToInteract { get; set; } = false;
+    public bool isInRangeToInteract { get; set; }  = false;
     [SerializeField] private string interactName;
 
     public bool canInteract { get; set; }
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Interaction();
+            Debug.Log("frtger");
+        }
+
         if (Input.GetButtonDown(interactName)) { Interaction(); }
     }
 
