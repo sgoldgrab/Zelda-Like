@@ -29,6 +29,8 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+        if (GetComponent<PlayerState>().inMenu) return;
+
         DashDirection();
 
         if (Input.GetButtonDown("Dash") && cooldown <= 0.0f && canDash)

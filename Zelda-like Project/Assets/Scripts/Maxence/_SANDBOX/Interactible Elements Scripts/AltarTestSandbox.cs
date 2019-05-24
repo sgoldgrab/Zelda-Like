@@ -22,6 +22,8 @@ public class AltarTestSandbox : MonoBehaviour
 
     public bool chose = false;
 
+    public bool locked = true;
+
     void Start()
     {
         playerMovement = GameObject.Find("PLAYER").GetComponent<PlayerMovement>();
@@ -32,7 +34,7 @@ public class AltarTestSandbox : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && altarUI != null)
+        if (other.gameObject.tag == "Player" && altarUI != null && !locked)
         {
             altarUI.SetActive(true);
             eventSystem.SetSelectedGameObject(FirstSeph.gameObject);

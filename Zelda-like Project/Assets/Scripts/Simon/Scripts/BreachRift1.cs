@@ -15,9 +15,9 @@ public class BreachRift1 : MonoBehaviour
 
     private void Update()
     {
-        if(tookHit) { timerTookHit -= Time.deltaTime; }
+        if (tookHit) { timerTookHit -= Time.deltaTime; }
 
-        if(timerTookHit <= 0)
+        if (timerTookHit <= 0)
         {
             timerTookHit = 4f;
             tookHit = false;
@@ -25,13 +25,13 @@ public class BreachRift1 : MonoBehaviour
 
         timer -= Time.deltaTime;
 
-        if(timer <= 0 && !isActive)
+        if (timer <= 0 && !isActive)
         {
             isActive = true;
             timer = 12f;
         }
 
-        if(timer <= 0 && isActive)
+        if (timer <= 0 && isActive)
         {
             isActive = false;
             timer = 12f;
@@ -42,13 +42,13 @@ public class BreachRift1 : MonoBehaviour
     {
         if (other.CompareTag("")) //METTRE LE BON TAG
         {
-            if(!tookHit)
+            if (!tookHit)
             {
                 score += 15;
                 tookHit = true;
             }
 
-            if(tookHit)
+            if (tookHit)
             {
                 score += 15;
                 isActive = false;

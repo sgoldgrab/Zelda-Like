@@ -17,6 +17,8 @@ public class PlayerState : EntityState
 
     [SerializeField] private GlobalData globalData;
 
+    public bool inMenu { get; set; } = false;
+
     void Start()
     {
         globalData = GameObject.Find("DATA").GetComponent<GlobalData>();

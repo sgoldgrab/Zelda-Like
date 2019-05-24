@@ -68,6 +68,8 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
+        if (GetComponent<PlayerState>().inMenu) return;
+
         if (Input.GetButtonDown("Inventory"))
         {
             if (!displayed) { inventoryUI.SetActive(true); displayed = true; }

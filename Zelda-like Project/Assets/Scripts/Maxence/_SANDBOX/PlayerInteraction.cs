@@ -18,6 +18,8 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        if (GetComponent<PlayerState>().inMenu) return;
+
         if (Input.GetButtonDown(interactName)) { Interaction(); }
     }
 

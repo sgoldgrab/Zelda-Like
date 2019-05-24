@@ -14,9 +14,8 @@ public class PauseMenu : MonoBehaviour
     public EventSystem eventSyst;
     public Button firstToBeSelected;
 
-    [SerializeField] private PlayerDash playerDash;
+    [SerializeField] private PlayerState playerState;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Menu"))
@@ -29,7 +28,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        playerDash.canDash = true;
+        playerState.inMenu = false;
+
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -37,7 +37,8 @@ public class PauseMenu : MonoBehaviour
 
     void Paused()
     {
-        playerDash.canDash = false;
+        playerState.inMenu = true;
+
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

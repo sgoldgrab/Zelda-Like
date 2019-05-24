@@ -88,6 +88,8 @@ public class PlayerAbilities : MonoBehaviour
 
     void InputManager()
     {
+        if (GetComponent<PlayerState>().inMenu) return;
+
         if (playerStance.whatStance == PlayerStance.Stance.stance1)
         {
             if (Input.GetButtonDown("Potion1"))

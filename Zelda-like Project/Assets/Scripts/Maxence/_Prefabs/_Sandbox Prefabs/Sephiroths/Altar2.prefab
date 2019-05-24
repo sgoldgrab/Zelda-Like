@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Altar2
       objectReference: {fileID: 0}
+    - target: {fileID: 683274338371701733, guid: 2422114fced7c154299c88f234b361da,
+        type: 3}
+      propertyPath: altarUI
+      value: 
+      objectReference: {fileID: 4968744415900092757, guid: 1123f974e0994e14ab9d46c9595e0150,
+        type: 3}
+    - target: {fileID: 683274338371701733, guid: 2422114fced7c154299c88f234b361da,
+        type: 3}
+      propertyPath: sephirots.Array.data[0]
+      value: 
+      objectReference: {fileID: 3092900287636555196, guid: 1862679a340a51d42877b8997777e82d,
+        type: 3}
     - target: {fileID: 683274338371701728, guid: 2422114fced7c154299c88f234b361da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,17 +79,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 683274338371701733, guid: 2422114fced7c154299c88f234b361da,
-        type: 3}
-      propertyPath: altarUI
-      value: 
-      objectReference: {fileID: 4968744415900092757, guid: 1123f974e0994e14ab9d46c9595e0150,
-        type: 3}
-    - target: {fileID: 683274338371701733, guid: 2422114fced7c154299c88f234b361da,
-        type: 3}
+    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
       propertyPath: sephirots.Array.data[0]
       value: 
-      objectReference: {fileID: 3092900287636555196, guid: 1862679a340a51d42877b8997777e82d,
+      objectReference: {fileID: 324046452418321045, guid: 9f998093e9b4aa248aad731db128205d,
+        type: 3}
+    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
+      propertyPath: sephirots.Array.data[1]
+      value: 
+      objectReference: {fileID: 8569605647334562777, guid: 92d52ba10a513554389f9626a9f324dd,
+        type: 3}
+    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
+      propertyPath: sephirots.Array.data[2]
+      value: 
+      objectReference: {fileID: 7045547362816370489, guid: f17ad47a771095e488afbf934561f357,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2422114fced7c154299c88f234b361da, type: 3}

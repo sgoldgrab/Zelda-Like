@@ -28,6 +28,8 @@ public class PlayerStance : MonoBehaviour
 
     void Update()
     {
+        if (GetComponent<PlayerState>().inMenu) return;
+
         if (Input.GetButtonDown(stanceInput) && canSwitch)
         {
             if (!beenBuffed && whenPlayerSwitches != null) { whenPlayerSwitches(); }

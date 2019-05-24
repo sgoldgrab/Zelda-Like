@@ -74,6 +74,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackCoolDown <= 0.1f)
         {
+            if (GetComponent<PlayerState>().inMenu) return;
+
             if (Input.GetButtonDown("Fire2") && canAttack) // initialize an attack
             {
                 playerMovement.canMove = false;

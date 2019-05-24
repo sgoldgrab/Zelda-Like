@@ -22,6 +22,7 @@ TagManager:
   - Interactable
   - Detect
   - Base
+  - PlayerSword
   layers:
   - Default
   - TransparentFX
