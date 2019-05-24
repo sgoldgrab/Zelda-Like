@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2282830324396484962}
   - component: {fileID: 6924291199852651515}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,9 +76,9 @@ GameObject:
   - component: {fileID: 8695927782301252902}
   - component: {fileID: 5270920120487869290}
   - component: {fileID: 4910376204886954379}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_RUINES_002
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.4, y: 2.68}
+  m_Offset: {x: 2.4, y: 5.52}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -193,7 +193,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.98, y: 2.14}
+  m_Offset: {x: -2.98, y: 4.78}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

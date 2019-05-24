@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6368777281240970155}
   - component: {fileID: 6368777281240970152}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,12 +56,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.1816063, y: -0.49386978}
-      - {x: -0.6581383, y: -0.048355103}
-      - {x: -0.65808105, y: -0.73285675}
-      - {x: -0.12871933, y: -1.4082909}
-      - {x: 1.1166382, y: -1.1772957}
-      - {x: 1.0916595, y: -0.21823883}
+    - - {x: 0.51677704, y: -0.5888939}
+      - {x: -0.57925415, y: -0.8304558}
+      - {x: -0.16250229, y: -1.4045372}
+      - {x: 1.1091309, y: -1.162281}
 --- !u!1 &6368777281982250127
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,9 +72,9 @@ GameObject:
   - component: {fileID: 6368777281982250114}
   - component: {fileID: 6368777281982250125}
   - component: {fileID: 6368777281982250124}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_CABANON_007
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +155,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.43}
+  m_Offset: {x: 0, y: 2.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,9 +170,9 @@ PolygonCollider2D:
     - - {x: 0.68545914, y: 0.020943046}
       - {x: -1.1639595, y: -1.0406262}
       - {x: -0.7742615, y: -1.5657192}
-      - {x: -0.6387253, y: -1.4566952}
-      - {x: -0.15968323, y: -1.8805348}
-      - {x: 1.1011543, y: -1.63018}
+      - {x: -0.5790863, y: -2.237926}
+      - {x: 0.517189, y: -1.9640232}
+      - {x: 1.1190453, y: -2.5634837}
       - {x: 1.1226234, y: -0.5201565}
 --- !u!114 &6368777281982250124
 MonoBehaviour:

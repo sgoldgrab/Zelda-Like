@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4660468102228491456}
   - component: {fileID: 6547515498491404224}
   - component: {fileID: 8218513804514794623}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TAVERNE 16
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.313126}
+  m_Offset: {x: 0, y: 4.92}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,9 +131,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2172272022111800890}
   - component: {fileID: 7442529721662157642}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

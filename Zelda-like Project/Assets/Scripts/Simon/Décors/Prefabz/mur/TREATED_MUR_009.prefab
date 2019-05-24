@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7266512255231578977}
   - component: {fileID: 7818693606570323304}
   - component: {fileID: 2991350663596619038}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_MUR_009
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.7256881}
+  m_Offset: {x: 0, y: 1.3467886}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.04, y: 1.0286238}
+  m_Size: {x: 3.04, y: 1.7150464}
   m_EdgeRadius: 0
 --- !u!114 &2991350663596619038
 MonoBehaviour:
@@ -131,9 +131,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2934993983279601590}
   - component: {fileID: 6871913191263392363}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.002998352, y: -0.53077316}
+  m_Offset: {x: -0.002998352, y: -1.0348682}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -176,5 +176,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0811005, y: 1.413826}
+  m_Size: {x: 3.0811005, y: 0.40563583}
   m_EdgeRadius: 0

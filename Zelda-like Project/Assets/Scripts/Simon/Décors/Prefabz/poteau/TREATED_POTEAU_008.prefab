@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1638095877044215592}
   - component: {fileID: 5934758755288074327}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,9 +69,9 @@ GameObject:
   - component: {fileID: 694319109251277031}
   - component: {fileID: 7315060097481943395}
   - component: {fileID: 4722432750272173150}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_POTEAU_008
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18585521}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

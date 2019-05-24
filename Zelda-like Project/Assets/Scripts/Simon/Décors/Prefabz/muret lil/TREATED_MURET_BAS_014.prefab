@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5681727645904184664}
   - component: {fileID: 2931060463029321978}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,9 +73,9 @@ GameObject:
   - component: {fileID: 9132561730525683451}
   - component: {fileID: 1938982196646637002}
   - component: {fileID: 8449069828235198699}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_MURET_BAS_014
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3385151151253651755}
   - component: {fileID: 3385151151253651752}
   - component: {fileID: 3385151151253651753}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_CABANON_009
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.29}
+  m_Offset: {x: 0, y: 2.31}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -137,9 +137,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3385151151304795441}
   - component: {fileID: 3385151151304795440}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2626255372622347627}
   - component: {fileID: 5689690745803276223}
   - component: {fileID: 4575696114968536865}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TAVERNE 13
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.84}
+  m_Offset: {x: 0, y: 4.56}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -116,7 +116,7 @@ PolygonCollider2D:
       - {x: -1.2105217, y: 1.8576738}
       - {x: -5.172577, y: -0.22340953}
       - {x: -5.107254, y: -2.857418}
-      - {x: -0.72436523, y: 0.45138943}
+      - {x: -0.06998062, y: -0.101204395}
       - {x: 4.502655, y: -3.4171257}
       - {x: 4.36586, y: -2.4580345}
       - {x: 4.7534027, y: -2.015396}
@@ -145,9 +145,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4085275840884802595}
   - component: {fileID: 1250436702253252785}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,9 +191,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.9315796, y: 1.2137833}
-      - {x: -5.064392, y: -1.1528549}
+    - - {x: -5.064392, y: -1.1528549}
       - {x: 0.19290924, y: -3.725771}
       - {x: 4.5020905, y: -1.6330814}
-      - {x: 2.0657043, y: 0.23008728}
-      - {x: -0.7559204, y: 2.1034927}
+      - {x: -0.8140869, y: 1.2746029}
