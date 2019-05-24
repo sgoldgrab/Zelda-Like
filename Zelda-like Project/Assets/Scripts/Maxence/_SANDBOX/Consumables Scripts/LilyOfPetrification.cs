@@ -7,7 +7,6 @@ public class LilyOfPetrification : PickUp
     //During 5 seconds, makes the player immune to damage, but prevents him from attacking casting abilities or using consumables
 
     private PlayerAttack playerAttack;
-    private Inventory inventory;
     private PlayerState playerState;
     private PlayerAbilities playerAbilities; //rajouté au vue de la description donnée, avec le bool canUseAbility
 
@@ -16,7 +15,6 @@ public class LilyOfPetrification : PickUp
         base.Consume();
 
         playerAttack = player.GetComponent<PlayerAttack>();
-        inventory = player.GetComponent<Inventory>();
         playerState = player.GetComponent<PlayerState>();
         playerAbilities = player.GetComponent<PlayerAbilities>();
 

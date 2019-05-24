@@ -20,6 +20,9 @@ public class PlayerAnims : MonoBehaviour
         //playerAnimState = playerAnimator.GetComponentInChildren<AnimationState>();
 
         playerAnimator.SetFloat("speedAnim", 1f);
+
+        //TESTING
+        playerAnimator.SetLayerWeight(1, 1f);
     }
 
     void Update()

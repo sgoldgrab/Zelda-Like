@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class SpellTwo : MonoBehaviour
 {
-    //OLD
-    private Rigidbody2D rb2D;
-    [SerializeField] private int forceAmount;
-    //
-
     private bool isTrigger = false;
     [SerializeField] private float timeBeforeDestroy;
     private float timer;
@@ -89,7 +84,5 @@ public class SpellTwo : MonoBehaviour
             rb2D.AddForce(direction * forceAmount);
             */
         }
-
-        //Si un jour on y arrive, faut stopper le collider contre les murs (pas le détruire mais faire en sorte qu'il aille pas plus loin)
     }
 }

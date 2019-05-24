@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public abstract class PickUp : MonoBehaviour
 {
-    [SerializeField] private Inventory inventory;
-    public GameObject player { get; private set; }
+    [SerializeField] protected Inventory inventory;
+    public GameObject player { get; protected set; }
 
     private int pickUpSlot;
 

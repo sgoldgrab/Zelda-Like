@@ -15,31 +15,29 @@ public class AltarTestSandbox : MonoBehaviour
 
     public Sprite chosenSephSprite;
 
-    private PlayerMovement playerMovement;
-    private PlayerDash playerDash;
+    private PlayerState playerState;
 
     private GlobalData globalData;
 
     public bool chose = false;
 
-    public bool locked = true;
+    public bool locked = false;
 
     void Start()
     {
-        playerMovement = GameObject.Find("PLAYER").GetComponent<PlayerMovement>();
-        playerDash = GameObject.Find("PLAYER").GetComponent<PlayerDash>();
+        playerState = GameObject.Find("PLAYER").GetComponent<PlayerState>();
 
         globalData = GameObject.Find("DATA").GetComponent<GlobalData>();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player" && altarUI != null && !locked)
         {
             altarUI.SetActive(true);
             eventSystem.SetSelectedGameObject(FirstSeph.gameObject);
-            playerMovement.canMove = false;
-            //playerDash.canDash = false;
+
+            playerState.inMenu = true;
         }
     }
 
@@ -47,20 +45,7 @@ public class AltarTestSandbox : MonoBehaviour
     {
         Debug.Log(sephirots[theSeph - 1]);
 
-        if (theSeph == 1)
-        {
-            ActivateSeph(theSeph);
-        }
-
-        if (theSeph == 2)
-        {
-            ActivateSeph(theSeph);
-        }
-
-        if (theSeph == 3)
-        {
-            ActivateSeph(theSeph);
-        }
+        ActivateSeph(theSeph);
     }
 
     public void ActivateSeph(int seph)
@@ -68,6 +53,7 @@ public class AltarTestSandbox : MonoBehaviour
         sephirots[seph - 1].GetComponent<Sephiroth>().isActive = true;
 
         globalData.savedSephiroths.Add(sephirots[seph - 1].name);
+
         /*
         chosenSephSprite = sephirots[seph - 1].GetComponent<Sephiroth>().sephSprite;
         chose = true;
@@ -76,14 +62,8 @@ public class AltarTestSandbox : MonoBehaviour
 
     public void DestroyUI()
     {
-        //StartCoroutine("WaitForDash");
+        playerState.inMenu = false;
+
         Destroy(altarUI);
-    }
-
-    IEnumerator WaitForDash()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        playerDash.canDash = true;
     }
 }

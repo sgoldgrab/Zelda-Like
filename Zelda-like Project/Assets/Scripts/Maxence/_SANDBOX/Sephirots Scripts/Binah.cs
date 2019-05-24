@@ -15,7 +15,7 @@ public class Binah : Sephiroth
 
     public override void Activation()
     {
-        if(isActive && !effect)
+        if (isActive && !effect)
         {
             playerSight.aware = true;
             effect = true;
