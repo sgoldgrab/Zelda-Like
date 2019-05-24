@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public abstract class PickUp : MonoBehaviour
 {
@@ -11,7 +12,16 @@ public abstract class PickUp : MonoBehaviour
 
     public bool used { get; set; }
 
-    public bool hasKey { get; set; } = false;
+    protected bool displayed;
+    [SerializeField] private List<GameObject> UISlots;
+    [SerializeField] private List<GameObject> InventorySlots;
+
+    void Awake()
+    {
+        for (int g = 0; g < 3; g++) UISlots.Add(GameObject.Find("Consumable " + (g + 1).ToString() + " (1)"));
+
+        for (int w = 0; w < 3; w++) InventorySlots.Add(GameObject.Find("Consumable " + (w + 1).ToString()));
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,7 +41,19 @@ public abstract class PickUp : MonoBehaviour
 
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider2D>().enabled = false;
+
+                DisplayConsumable();
             }
+        }
+    }
+
+    public void DisplayConsumable()
+    {
+        if (!displayed)
+        {
+            UISlots[pickUpSlot].GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+            InventorySlots[pickUpSlot].GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+            displayed = true;
         }
     }
 
@@ -52,7 +74,7 @@ public class Inventory : MonoBehaviour
     public int currentSlotsTaken { get; set; }
     public int firstAvailable { get; set; }
     public GameObject[] consumables;
-    [SerializeField] private string consumeInputName;
+    //[SerializeField] private string consumeInputName;
 
     [SerializeField] private GameObject inventoryUI;
     private bool displayed;
@@ -61,9 +83,17 @@ public class Inventory : MonoBehaviour
 
     public bool canUseConsumable { get; set; } = true;
 
+    public bool hasKey { get; set; } = false;
+
+
     void Awake()
     {
         consumables = new GameObject[3];
+    }
+
+    void Start()
+    {
+        inventoryUI.SetActive(false);
     }
 
     void Update()
@@ -77,15 +107,34 @@ public class Inventory : MonoBehaviour
             else if (displayed) { inventoryUI.SetActive(false); displayed = false; }
         }
 
-        if (Input.GetAxisRaw("Consume Y") == 1.0f && !pressed)
+        InputManager();
+
+        /*
+        for (int z = 0; z < 3; z++)
+        {
+            //if (Input.GetButtonDown(consumeInputName + (z + 1).ToString()) && canUseConsumable) { UseConsumable(z); }
+        }
+        */
+    }
+
+    void InputManager()
+    {
+        if (Input.GetAxisRaw("Consume X") == -1.0f && !pressed)
         {
             UseConsumable(0);
             pressed = true;
         }
 
-        for (int z = 0; z < 3; z++)
+        if (Input.GetAxisRaw("Consume Y") == 1.0f && !pressed)
         {
-            //if (Input.GetButtonDown(consumeInputName + (z + 1).ToString()) && canUseConsumable) { UseConsumable(z); }
+            UseConsumable(1);
+            pressed = true;
+        }
+
+        if (Input.GetAxisRaw("Consume X") == 1.0f && !pressed)
+        {
+            UseConsumable(2);
+            pressed = true;
         }
     }
 

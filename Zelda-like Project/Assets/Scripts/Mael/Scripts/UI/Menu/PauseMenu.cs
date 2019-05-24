@@ -4,15 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DFTGames.Localization;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
+    [Header("Pause Menu")]
     public GameObject pauseMenuUI;
+    public Button firstButtonMenu;
+
+    [Header("Settings Menu")]
+    public GameObject pauseSettingsUI;
+    public Button firstButtonSettings;
+
+    [Header("Quit Menu")]
+    public GameObject quitGameMenuUI;
+    public Button firstButtonQuit;
 
     public EventSystem eventSyst;
-    public Button firstToBeSelected;
+
+    private AudioMixer audioMixer;
 
     [SerializeField] private PlayerState playerState;
 
@@ -31,6 +44,7 @@ public class PauseMenu : MonoBehaviour
         playerState.inMenu = false;
 
         pauseMenuUI.SetActive(false);
+        pauseSettingsUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -42,21 +56,58 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        eventSyst.SetSelectedGameObject(firstToBeSelected.gameObject);
+        eventSyst.SetSelectedGameObject(firstButtonMenu.gameObject);
     }
 
+    #region settings
+    public void LoadSettings()
+    {
+        pauseSettingsUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+        eventSyst.SetSelectedGameObject(firstButtonSettings.gameObject);
+    }
 
-    public void LoadMenu()
+    public void UnloadSettings()
+    {
+        pauseSettingsUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        eventSyst.SetSelectedGameObject(firstButtonMenu.gameObject);
+    }
+
+    public void SetEnglish()
+    {
+        Localize.SetCurrentLanguage(SystemLanguage.English);
+    }
+
+    public void SetFrench()
+    {
+        Localize.SetCurrentLanguage(SystemLanguage.French);
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("MainVolume", volume);
+    }
+    #endregion
+
+    #region quit
+    public void QuitToMenu()
+    {
+        quitGameMenuUI.SetActive(true);
+        eventSyst.SetSelectedGameObject(firstButtonQuit.gameObject);
+    }
+
+    public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 
-    public void QuitGame()
+    public void ReturnToGame()
     {
-        Debug.Log("Quitting game...");
-        Application.Quit();
+        quitGameMenuUI.SetActive(false);
+        eventSyst.SetSelectedGameObject(firstButtonMenu.gameObject);
     }
-
+    #endregion
 }
 
