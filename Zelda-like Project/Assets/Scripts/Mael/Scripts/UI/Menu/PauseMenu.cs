@@ -94,6 +94,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitToMenu()
     {
         quitGameMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
         eventSyst.SetSelectedGameObject(firstButtonQuit.gameObject);
     }
 
@@ -106,6 +107,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToGame()
     {
         quitGameMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
         eventSyst.SetSelectedGameObject(firstButtonMenu.gameObject);
     }
     #endregion
