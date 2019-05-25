@@ -23,6 +23,7 @@ TagManager:
   - Detect
   - Base
   - PlayerSword
+  - BossSpawner
   layers:
   - Default
   - TransparentFX

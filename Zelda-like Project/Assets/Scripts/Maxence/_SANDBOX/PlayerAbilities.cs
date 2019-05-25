@@ -100,7 +100,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = true;
                     buttonName = "Potion1";
-                    //playerAnims.AbilityToUseInAnim(index + 1);
+                    playerAnims.AbilityToUseInAnim(index + 1);
                 }
             }
 
@@ -112,7 +112,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = true;
                     buttonName = "Potion2";
-                    //playerAnims.AbilityToUseInAnim(index + 1);
+                    playerAnims.AbilityToUseInAnim(index + 1);
                 }
             }
 
@@ -124,7 +124,7 @@ public class PlayerAbilities : MonoBehaviour
                     inputPressed = true;
                     doubleTap = true;
                     buttonName = "Potion3";
-                    //playerAnims.AbilityToUseInAnim(index + 1);
+                    playerAnims.AbilityToUseInAnim(index + 1);
                 }
             }
 

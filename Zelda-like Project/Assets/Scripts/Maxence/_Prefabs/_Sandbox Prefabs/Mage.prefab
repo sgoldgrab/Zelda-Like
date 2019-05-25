@@ -118,6 +118,26 @@ PrefabInstance:
       propertyPath: startGeneralCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: maxHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: enemyBehaviorsManager
+      value: 
+      objectReference: {fileID: 4697471463926243175}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: segsNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: maximumSegsOnABar
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316774, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,31 +193,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: maxHealth
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: enemyBehaviorsManager
-      value: 
-      objectReference: {fileID: 4697471463926243175}
-    - target: {fileID: 5172756952916316768, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: segsNumber
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: skillsAnimationMethods.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
-        type: 3}
-      propertyPath: skillsAnimationMethods.Array.data[0]
-      value: 
-      objectReference: {fileID: 679890270}
     - target: {fileID: 5172756953543869671, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Offset.x
@@ -258,11 +253,16 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.10851234
       objectReference: {fileID: 0}
-    - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+    - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
-      propertyPath: m_Controller
+      propertyPath: skillsAnimationMethods.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172756951906646710, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: skillsAnimationMethods.Array.data[0]
       value: 
-      objectReference: {fileID: 9100000, guid: f7f64bdd57c72064a88eb1cbc2e0096f, type: 2}
+      objectReference: {fileID: 679890270}
     - target: {fileID: 5172756951906646704, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Sprite
@@ -284,6 +284,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5172756951906646711, guid: 7bb5bf4693df852459ef9f5d89a58b73,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f7f64bdd57c72064a88eb1cbc2e0096f, type: 2}
     - target: {fileID: 5172756952392051800, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: m_Radius

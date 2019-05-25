@@ -76,7 +76,7 @@ public class PlayerAnims : MonoBehaviour
     {
         for (int L = 0; L < 3; L++) // reset all layers to 0
         {
-            playerAnimator.SetLayerWeight(L, 0);
+            playerAnimator.SetLayerWeight(L + 1, 0);
         }
 
         playerAnimator.SetLayerWeight(layer, 1); // set the right layer to 1

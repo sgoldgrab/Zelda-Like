@@ -17,31 +17,43 @@ public class EnemyState : EntityState
     public static event EnemyHit whenEnemyHit;
 
     // HEALTH BAR INSTANTIATE
+    [Header("Health Bar Instance")]
+
     [SerializeField] private GameObject enemyHealthBar;
     [SerializeField] private GameObject[] enemyHealthSegs;
-    [SerializeField] private float offsetValue = 0.4f;
+    
     [SerializeField] private float mainOffset;
+    [SerializeField] private float offsetBetweenBars;
 
     [SerializeField] private string theName;
 
     //TEST Instantiation
     [SerializeField] private float barSize;
-    [SerializeField] private int segsNumber;
 
     [SerializeField] private float minOffset;
     [SerializeField] private float maxOffset;
 
+    [SerializeField] private bool decomposedBar;
+    [SerializeField] private int maximumSegsOnABar;
+    private int segSorting;
+    [SerializeField] private Color[] barsColors;
+    private int index;
+
     // ON DEATH REQUIRED
+    [Header("Other")]
+
     public Collider2D[] enemyColliders;
-    private EnemySpawner enemySpawner;
-    private bool isDead = false;
+    private BossFightSpawner bossFightSpawner;
+    private bool isDead = false; // DO NOT ERASE --> USEFUL
+
+    [SerializeField] private bool bossSbire;
 
     //CONDITIONS
     public bool enemyCanMove { get; set; } = true;
     public bool enemyCanUseSkill { get; set; } = true;
 
     //STATES
-    public bool isStunned { get; set; } = false;
+    public bool isStunned { get; set; } = false; //useless
     public bool isMoving { get; set; } = true;
     public bool isProtected { get; set; } = false;
     public bool parry { get; set; } = false;
@@ -50,8 +62,8 @@ public class EnemyState : EntityState
     {
         health = maxHealth;
 
-        GameObject enemySpawnerMessenger = GameObject.FindWithTag("EnemySpawner");
-        if (enemySpawnerMessenger != null) { enemySpawner = enemySpawnerMessenger.GetComponent<EnemySpawner>(); }
+        GameObject spawnerMessenger = GameObject.FindWithTag("BossSpawner");
+        if (spawnerMessenger != null) { bossFightSpawner = spawnerMessenger.GetComponent<BossFightSpawner>(); }
 
         GameObject playerMessenger = GameObject.FindWithTag("Player");
         if (playerMessenger != null) { playerTransform = playerMessenger.GetComponent<Transform>(); playerMovement = playerMessenger.GetComponent<PlayerMovement>(); }
@@ -77,8 +89,9 @@ public class EnemyState : EntityState
             {
                 if (health == 1)
                 {
+                    if (bossSbire) bossFightSpawner.enemyCount = Mathf.Clamp(bossFightSpawner.enemyCount - 1, 0, 99);
+
                     foreach (Collider2D col in enemyColliders) { col.enabled = false; }
-                    enemySpawner.enemiesAlive = Mathf.Clamp(enemySpawner.enemiesAlive - 1, 0, 99);
                     whenEnemyDies?.Invoke();
 
                     isDead = true;
@@ -131,11 +144,11 @@ public class EnemyState : EntityState
             index++;
             if (index % 2 == 1) //odd
             {
-                offsetX += offsetValue * multiple;
+                offsetX += offsetBetweenBars * multiple;
             }
             else if (index % 2 == 0) //even
             {
-                offsetX -= offsetValue * multiple;
+                offsetX -= offsetBetweenBars * multiple;
                 multiple++;
             }
         }
@@ -143,30 +156,34 @@ public class EnemyState : EntityState
 
     public void InstantiateHealthBar()
     {
-        float segOffset = barSize / (segsNumber - 1);
+        float segOffset = barSize / (maximumSegsOnABar - 1);
         float offset = 0.0f;
 
         if (segOffset < minOffset)
         {
             segOffset = minOffset;
-            barSize = segOffset * (segsNumber - 1);
+            barSize = segOffset * (maximumSegsOnABar - 1);
         }
 
         if (segOffset > maxOffset)
         {
             segOffset = maxOffset;
-            barSize = segOffset * (segsNumber - 1);
+            barSize = segOffset * (maximumSegsOnABar - 1);
         }
 
         //Debug.Log(segOffset);
 
         float startPos = transform.position.x + (barSize / 2);
 
-        for (int x = 0; x < segsNumber; x++)
+        for (int x = 0; x < maxHealth; x++)
         {
+            if (decomposedBar && (x) == maximumSegsOnABar * (index + 1)) { offset = 0.0f; segSorting--; index++; mainOffset -= offsetBetweenBars; Debug.Log(index); }
+
             Vector2 spawnPosition = new Vector2(startPos - offset, transform.position.y + mainOffset);
             GameObject seg = Instantiate(enemyHealthSegs[1], spawnPosition, Quaternion.identity, enemyHealthBar.transform);
             seg.name = theName + " " + (x + 1).ToString();
+            seg.GetComponent<SpriteRenderer>().sortingOrder = segSorting;
+            seg.GetComponent<SpriteRenderer>().color = barsColors[index];
             offset += segOffset;
         }
     }

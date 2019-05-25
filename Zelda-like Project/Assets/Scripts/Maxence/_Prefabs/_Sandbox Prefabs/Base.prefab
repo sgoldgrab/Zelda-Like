@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   enemyAnims: {fileID: 5172756951906646710}
+  enemyBehaviorsManager: {fileID: 0}
   enemyHealthBar: {fileID: 2022997580815991132, guid: 122779e50215c7e4a99e87eebdedb3a6,
     type: 3}
   enemyHealthSegs:
@@ -427,6 +428,10 @@ MonoBehaviour:
   segsNumber: 3
   minOffset: 0.15
   maxOffset: 0.2
+  decomposedBar: 0
+  maximumSegsOnABar: 0
+  barsColors:
+  - {r: 1, g: 1, b: 1, a: 1}
   enemyColliders:
   - {fileID: 5172756952790503516}
   - {fileID: 5172756953543869671}

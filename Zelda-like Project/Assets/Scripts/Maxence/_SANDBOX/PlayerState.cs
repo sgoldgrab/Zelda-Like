@@ -28,8 +28,6 @@ public class PlayerState : EntityState
 
     void Update() // TESTING ONLY
     {
-        TestMethod();
-
         globalData.playerHealth = health;
     }
 
@@ -73,18 +71,5 @@ public class PlayerState : EntityState
         foreach (string seph in globalData.savedSephiroths) GameObject.Find(seph).GetComponent<Sephiroth>().isActive = true;
 
         transform.position = globalData.checkpointPos;
-    }
-
-    void TestMethod() // TESTING ONLY
-    {
-        if (Input.GetButtonDown("Test1"))
-        {
-            TakeDamage(1);
-        }
-
-        if (Input.GetButtonDown("Test2"))
-        {
-            TakeHeal(1);
-        }
     }
 }
