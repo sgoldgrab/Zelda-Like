@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Breach : MonoBehaviour
 {
+    private GameObject player;
+
     //States
     [Header("States")]
 
@@ -26,6 +28,8 @@ public class Breach : MonoBehaviour
     //Spawning
     [Header("Spawning")]
 
+    [SerializeField] private float initializeRange;
+
     [SerializeField] private float spawnTimeRate;
     private float timeRate;
 
@@ -45,10 +49,16 @@ public class Breach : MonoBehaviour
     private int bonusIdx;
 
     //OnDeath
+    [Header("OnDeath")]
+
     [SerializeField] private GameObject key;
+    [SerializeField] private AltarTestSandbox altar;
+    [SerializeField] private Sprite unlockedAltar;
 
     void Start()
     {
+        player = GameObject.Find("PLAYER");
+
         health = startHealth;
         blockedTime = blockedTimer;
 
@@ -58,12 +68,17 @@ public class Breach : MonoBehaviour
 
     void Update()
     {
+        if (Vector2.Distance(transform.position, player.transform.position) > initializeRange) return;
+
         StateManager();
 
         Spawning();
 
         if (health <= 0)
         {
+            altar.locked = false;
+            altar.transform.parent.gameObject.GetComponent<SpriteRenderer>().sprite = unlockedAltar;
+
             Instantiate(key, transform.position, transform.rotation);
 
             Destroy(gameObject);
@@ -174,5 +189,11 @@ public class Breach : MonoBehaviour
                 BonusSpawn();
             }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, initializeRange);
     }
 }

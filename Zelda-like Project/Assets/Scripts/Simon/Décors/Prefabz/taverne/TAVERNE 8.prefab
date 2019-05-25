@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5076743314827833288}
   - component: {fileID: 5108983818324617159}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,9 +56,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 5.2013855, y: -0.52038}
-      - {x: -0.18568516, y: 2.6457405}
-      - {x: -4.3158045, y: 0.07339096}
+    - - {x: 0.17719078, y: 1.5023994}
       - {x: -4.3295355, y: -0.97867393}
       - {x: 0.97421455, y: -3.6459618}
       - {x: 5.2111855, y: -1.5665722}
@@ -74,9 +72,9 @@ GameObject:
   - component: {fileID: 701602266854386333}
   - component: {fileID: 6489742146617730601}
   - component: {fileID: 5254062274277938255}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TAVERNE 8
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +155,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.92}
+  m_Offset: {x: 0, y: 5.23}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

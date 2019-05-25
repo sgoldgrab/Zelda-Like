@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5154137263532186627}
   - component: {fileID: 5154137263532186628}
   - component: {fileID: 5154137263532186629}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_MASURE_015
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.66}
+  m_Offset: {x: 0, y: 3.62}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -122,7 +122,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -2.9076538, y: -0.9768411}
       - {x: -2.8777084, y: -3.6900215}
-      - {x: 0.14563751, y: -1.3099176}
+      - {x: 0.6401634, y: -1.6608715}
       - {x: 2.894432, y: -3.293644}
       - {x: 2.9028244, y: -0.59592354}
       - {x: 1.7994995, y: -0.09024441}
@@ -140,9 +140,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5154137264729627391}
   - component: {fileID: 5154137264729627390}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,9 +186,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.9426346, y: -0.5962906}
-      - {x: -2.8749542, y: -2.0849533}
+    - - {x: -2.8749542, y: -2.0849533}
       - {x: -0.32791138, y: -3.3303375}
       - {x: 2.904091, y: -1.7033463}
-      - {x: 1.3131332, y: -0.51984406}
-      - {x: 0.14479065, y: 0.28284454}
+      - {x: 0.6552677, y: -0.21167946}

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6122872989184486051}
   - component: {fileID: 3552798836559548288}
   - component: {fileID: 8206517237292003999}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_MASURE_016
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.37}
+  m_Offset: {x: 0, y: 3.78}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -140,9 +140,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2860592924688297080}
   - component: {fileID: 8480831760957604873}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,9 +186,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.74560547, y: 0.74796295}
+    - - {x: 0.4606018, y: 0.012952805}
       - {x: -2.9059792, y: -1.711071}
       - {x: -0.36436558, y: -2.940813}
       - {x: 2.8406, y: -1.3675652}
-      - {x: 1.6774902, y: -0.13472748}
-      - {x: 1.255516, y: 0.32193756}

@@ -24,6 +24,7 @@ TagManager:
   - Base
   - PlayerSword
   - BossSpawner
+  - BreachSpawner
   layers:
   - Default
   - TransparentFX

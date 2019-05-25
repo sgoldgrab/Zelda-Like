@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8383856316419369915}
   - component: {fileID: 4977597482398396693}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,9 +56,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.933136, y: 0.31349564}
-      - {x: -0.29579163, y: 0.5025215}
-      - {x: -0.74489594, y: 0.04011154}
+    - - {x: -0.25589752, y: -0.43627167}
       - {x: -0.73119354, y: -0.9972458}
       - {x: 0.52503204, y: -1.198925}
       - {x: 0.9555435, y: -0.6411247}
@@ -74,9 +72,9 @@ GameObject:
   - component: {fileID: 5257476860658118612}
   - component: {fileID: 2198380429308025366}
   - component: {fileID: 2334371531449574173}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_ETAL_005
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +155,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.8}
+  m_Offset: {x: 0, y: 2.74}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -171,9 +169,10 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.53447723, y: -0.6768234}
       - {x: -0.9841385, y: -1.3807037}
-      - {x: -0.7822952, y: -1.7686584}
-      - {x: -0.29260254, y: -1.272641}
-      - {x: 0.93981934, y: -1.4641235}
+      - {x: -0.68782806, y: -2.7054908}
+      - {x: -0.26374054, y: -2.2015998}
+      - {x: 0.94244385, y: -2.4140785}
+      - {x: 0.9105072, y: -1.527272}
       - {x: 0.6795502, y: -0.8651664}
 --- !u!114 &2334371531449574173
 MonoBehaviour:

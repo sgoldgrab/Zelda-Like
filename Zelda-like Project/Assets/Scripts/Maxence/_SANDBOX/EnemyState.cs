@@ -44,9 +44,11 @@ public class EnemyState : EntityState
 
     public Collider2D[] enemyColliders;
     private BossFightSpawner bossFightSpawner;
+    private BreachZones breachZones;
     private bool isDead = false; // DO NOT ERASE --> USEFUL
 
     [SerializeField] private bool bossSbire;
+    [SerializeField] private bool breachSbire;
 
     //CONDITIONS
     public bool enemyCanMove { get; set; } = true;
@@ -64,6 +66,9 @@ public class EnemyState : EntityState
 
         GameObject spawnerMessenger = GameObject.FindWithTag("BossSpawner");
         if (spawnerMessenger != null) { bossFightSpawner = spawnerMessenger.GetComponent<BossFightSpawner>(); }
+
+        GameObject breachMessenger = GameObject.FindWithTag("BreachSpawner");
+        if (breachMessenger != null) { breachZones = breachMessenger.GetComponent<BreachZones>(); }
 
         GameObject playerMessenger = GameObject.FindWithTag("Player");
         if (playerMessenger != null) { playerTransform = playerMessenger.GetComponent<Transform>(); playerMovement = playerMessenger.GetComponent<PlayerMovement>(); }
@@ -90,6 +95,7 @@ public class EnemyState : EntityState
                 if (health == 1)
                 {
                     if (bossSbire) bossFightSpawner.enemyCount = Mathf.Clamp(bossFightSpawner.enemyCount - 1, 0, 99);
+                    if (breachSbire) breachZones.count = Mathf.Clamp(breachZones.count - 1, 0, 99);
 
                     foreach (Collider2D col in enemyColliders) { col.enabled = false; }
                     whenEnemyDies?.Invoke();

@@ -6,7 +6,7 @@ using UnityEngine;
 public class StartData
 {
     public int startHealth;
-    public Vector2 startPosition;
+    public Vector2 startPoint;
 }
 
 public class GlobalData : MonoBehaviour
@@ -40,6 +40,6 @@ public class GlobalData : MonoBehaviour
     {
         playerHealth = startData.startHealth;
         savedSephiroths = new List<string>(3);
-        checkpointPos = startData.startPosition;
+        checkpointPos = startData.startPoint;
     }
 }

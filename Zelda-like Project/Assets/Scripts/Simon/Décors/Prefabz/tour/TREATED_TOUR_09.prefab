@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5268852819725372406}
   - component: {fileID: 4602795274110489099}
   - component: {fileID: 8925140663729903827}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_TOUR_09
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.43}
+  m_Offset: {x: 0, y: 3.33}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -148,9 +148,9 @@ GameObject:
   m_Component:
   - component: {fileID: 968062656412171237}
   - component: {fileID: 3286053078812745861}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

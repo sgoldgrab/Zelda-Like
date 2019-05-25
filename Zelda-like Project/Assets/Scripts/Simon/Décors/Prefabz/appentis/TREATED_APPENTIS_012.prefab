@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 836655691631218327}
   - component: {fileID: 836655691631218326}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,12 +56,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5177269, y: 0.22047424}
-      - {x: 0.199543, y: -0.12128544}
-      - {x: -0.49921036, y: -0.0328722}
-      - {x: -0.5017166, y: -0.598155}
+    - - {x: -0.22813034, y: -0.26044655}
+      - {x: -0.47829056, y: -0.57305527}
       - {x: 0.20478821, y: -0.71864796}
-      - {x: 0.5167465, y: -0.3047037}
+      - {x: 0.43810272, y: -0.37498474}
 --- !u!1 &836655691778347181
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,9 +72,9 @@ GameObject:
   - component: {fileID: 836655691778347185}
   - component: {fileID: 836655691778347182}
   - component: {fileID: 836655691778347183}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_APPENTIS_012
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +155,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.29}
+  m_Offset: {x: 0, y: 1.77}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,10 +170,10 @@ PolygonCollider2D:
     - - {x: 0.5236778, y: -0.70250225}
       - {x: -0.21430969, y: -0.597661}
       - {x: -0.52898407, y: -1.0808983}
-      - {x: -0.5136261, y: -1.2353067}
-      - {x: 0.18965912, y: -1.308384}
-      - {x: 0.20180893, y: -1.302208}
-      - {x: 0.52270126, y: -0.9686518}
+      - {x: -0.47681427, y: -1.8360386}
+      - {x: -0.23035431, y: -1.5292654}
+      - {x: 0.44444656, y: -1.6552839}
+      - {x: 0.44405365, y: -0.849844}
 --- !u!114 &836655691778347183
 MonoBehaviour:
   m_ObjectHideFlags: 0

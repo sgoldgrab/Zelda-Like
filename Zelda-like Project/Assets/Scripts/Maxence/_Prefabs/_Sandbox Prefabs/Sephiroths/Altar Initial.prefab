@@ -12,6 +12,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Altar Initial
       objectReference: {fileID: 0}
+    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
+      propertyPath: sephirots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
+      propertyPath: sephirots.Array.data[0]
+      value: 
+      objectReference: {fileID: 7979869564297105108, guid: 984f0d3d733967f468619be15aa0d584,
+        type: 3}
     - target: {fileID: 683274338371701728, guid: 2422114fced7c154299c88f234b361da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,14 +97,5 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
-      propertyPath: sephirots.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 796078109, guid: 2422114fced7c154299c88f234b361da, type: 3}
-      propertyPath: sephirots.Array.data[0]
-      value: 
-      objectReference: {fileID: 7979869564297105108, guid: 984f0d3d733967f468619be15aa0d584,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2422114fced7c154299c88f234b361da, type: 3}

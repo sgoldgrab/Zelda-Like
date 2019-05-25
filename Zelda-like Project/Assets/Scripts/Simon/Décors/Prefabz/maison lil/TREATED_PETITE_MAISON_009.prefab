@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8574469191251080556}
   - component: {fileID: 2334508956295678124}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,12 +56,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.012199402, y: 0.49978638}
-      - {x: -0.41535187, y: 0.17299652}
+    - - {x: 0.13103914, y: 0.107429504}
       - {x: -1.7878437, y: -0.94616127}
       - {x: -0.033172607, y: -1.8014851}
       - {x: 1.7943134, y: -0.886858}
-      - {x: 1.0176468, y: -0.2780609}
 --- !u!1 &1979157811299755819
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,9 +72,9 @@ GameObject:
   - component: {fileID: 1351579320894055479}
   - component: {fileID: 3656607500063750506}
   - component: {fileID: 5204135616639311401}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_PETITE_MAISON_009
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +155,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.06}
+  m_Offset: {x: 0, y: 2.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,7 +170,7 @@ PolygonCollider2D:
     - - {x: 0.03637314, y: 0.7454963}
       - {x: -1.7328663, y: -0.16317034}
       - {x: -1.789772, y: -1.9449487}
-      - {x: 0.018989563, y: -0.4887948}
+      - {x: 0.15012312, y: -0.8967674}
       - {x: 1.7972031, y: -1.8730721}
       - {x: 1.7623806, y: -0.12256098}
 --- !u!114 &5204135616639311401

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6918831863737168929}
   - component: {fileID: 1695011752529198305}
   - component: {fileID: 1322850193754591080}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TREATED_CABANE_010
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.28}
+  m_Offset: {x: 0, y: 2.43}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -138,9 +138,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6497510494950762684}
   - component: {fileID: 376861235976525226}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
