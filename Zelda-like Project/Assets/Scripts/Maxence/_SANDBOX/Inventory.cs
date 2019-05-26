@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public abstract class PickUp : MonoBehaviour
 {
@@ -15,12 +16,20 @@ public abstract class PickUp : MonoBehaviour
     protected bool displayed;
     [SerializeField] private List<GameObject> UISlots;
     [SerializeField] private List<GameObject> InventorySlots;
+    [SerializeField] private List<GameObject> Texts;
+
+    [TextArea(3,10)]
+    [SerializeField] private string textToDisplay;
+
+    public Sprite blankSprite;
 
     void Awake()
     {
         for (int g = 0; g < 3; g++) UISlots.Add(GameObject.Find("Consumable " + (g + 1).ToString() + " (1)"));
 
         for (int w = 0; w < 3; w++) InventorySlots.Add(GameObject.Find("Consumable " + (w + 1).ToString()));
+
+        for (int h = 0; h < 3; h++) Texts.Add(GameObject.Find("Text Slot " + (h + 1).ToString()));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -53,19 +62,21 @@ public abstract class PickUp : MonoBehaviour
         {
             UISlots[pickUpSlot].GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
             InventorySlots[pickUpSlot].GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
+            Texts[pickUpSlot].GetComponent<TextMeshProUGUI>().text = textToDisplay;
+
             displayed = true;
         }
     }
 
     public virtual void Consume()
     {
-        inventory.currentSlotsTaken--;
-        used = true;
-    }
+        UISlots[pickUpSlot].GetComponent<SpriteRenderer>().sprite = blankSprite;
+        InventorySlots[pickUpSlot].GetComponent<SpriteRenderer>().sprite = blankSprite;
+        Texts[pickUpSlot].GetComponent<TextMeshProUGUI>().text = " ";
 
-    public virtual void OnDisable()
-    {
-        inventory.pressed = false;
+        inventory.consumables[pickUpSlot] = null;
+
+        inventory.currentSlotsTaken--;
     }
 }
 
@@ -78,8 +89,6 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private GameObject inventoryUI;
     private bool displayed;
-
-    public bool pressed;
 
     public bool canUseConsumable { get; set; } = true;
 
@@ -119,22 +128,19 @@ public class Inventory : MonoBehaviour
 
     void InputManager()
     {
-        if (Input.GetAxisRaw("Consume X") == -1.0f && !pressed)
+        if (Input.GetAxisRaw("Consume X") == -1.0f)
         {
             UseConsumable(0);
-            pressed = true;
         }
 
-        if (Input.GetAxisRaw("Consume Y") == 1.0f && !pressed)
+        if (Input.GetAxisRaw("Consume Y") == 1.0f)
         {
             UseConsumable(1);
-            pressed = true;
         }
 
-        if (Input.GetAxisRaw("Consume X") == 1.0f && !pressed)
+        if (Input.GetAxisRaw("Consume X") == 1.0f)
         {
             UseConsumable(2);
-            pressed = true;
         }
     }
 
@@ -144,6 +150,6 @@ public class Inventory : MonoBehaviour
 
         consumables[slotNum].GetComponent<PickUp>().Consume();
 
-        if(firstAvailable > slotNum) { firstAvailable = slotNum; }
+        if (firstAvailable > slotNum) { firstAvailable = slotNum; }
     }
 }

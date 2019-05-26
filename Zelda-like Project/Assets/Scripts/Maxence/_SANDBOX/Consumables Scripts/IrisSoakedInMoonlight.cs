@@ -18,9 +18,8 @@ public class IrisSoakedInMoonlight : PickUp
         StartCoroutine(IrisEffect(10f));
     }
 
-    public override void OnDisable()
+    public void OnDisable()
     {
-        base.OnDisable();
         EnemyState.whenEnemyDies -= CDRbuff;
     }
 

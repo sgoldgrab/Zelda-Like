@@ -30,9 +30,8 @@ public class UnstableSpiritsCrystal : PickUp
         playerStance.beenBuffed = false;
     }
 
-    public override void OnDisable()
+    public void OnDisable()
     {
-        base.OnDisable();
         PlayerStance.whenPlayerSwitches -= AttackBuff;
         EnemyState.whenEnemyHit -= AttackDebuff;
     }

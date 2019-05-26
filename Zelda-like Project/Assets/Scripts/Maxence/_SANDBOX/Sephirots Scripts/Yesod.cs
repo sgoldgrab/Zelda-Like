@@ -5,19 +5,19 @@ using UnityEngine;
 public class Yesod : Sephiroth
 {
     private GameObject player;
-    private PlayerAttack playerAttack;
+    private Animator playerAnimator;
 
     private void Awake()
     {
         player = GameObject.Find("PLAYER");
-        playerAttack = player.GetComponent<PlayerAttack>();
+        playerAnimator = player.GetComponentInChildren<Animator>();
     }
 
     public override void Activation()
     {
         if (isActive && !effect)
         {
-            //playerAttack.attackSpeed *= 1.5f; --> A faire avec anim rate
+            playerAnimator.SetFloat("speedAnim", 1.5f);
             effect = true;
         }
 

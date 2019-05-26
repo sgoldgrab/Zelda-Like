@@ -11,8 +11,8 @@ public class Checkpoint : MonoBehaviour
         globalData = GameObject.Find("DATA").GetComponent<GlobalData>();
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        globalData.checkpointPos = transform.position;
+        if (other.gameObject.tag == "Player") globalData.checkpointPos = transform.position;
     }
 }

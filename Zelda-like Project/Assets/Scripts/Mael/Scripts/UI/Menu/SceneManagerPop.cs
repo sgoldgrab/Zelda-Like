@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class SceneManagerPop : MonoBehaviour
 {
+    public string sceneToPlay;
+
     public GameObject credits;
     public EventSystem eventSys;
     public Button returnButton;
@@ -14,7 +16,7 @@ public class SceneManagerPop : MonoBehaviour
 
     public void Game()
     {
-        SceneManager.LoadScene("_SandBoxScene");
+        SceneManager.LoadScene(sceneToPlay);
     }
 
     public void Tuto()

@@ -11,9 +11,9 @@ public class CharmOfRenewal : PickUp
 
     public override void Consume()
     {
-        base.Consume();
         playerState = player.GetComponent<PlayerState>();
         playerStance = player.GetComponent<PlayerStance>();
+        base.Consume();
         StartCoroutine(CharmEffect(2f, 1));
     }
 
