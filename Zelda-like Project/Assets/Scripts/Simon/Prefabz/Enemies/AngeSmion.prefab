@@ -1,38 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1933922443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8399091906969231778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a43a11a0ff867894880bf9ec2030f2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyState: {fileID: 8399091906969231779}
-  enemyAnims: {fileID: 8399091905867270517}
-  enemyBaseSpeed: 2
-  conditions: 0000000003000000
-  conditionInfos:
-  - conditionType: 0
-    value: 1
-    text: 
-  - conditionType: 0
-    value: 0
-    text: 
-  abilityName: Dash
-  animIndex: 2
-  combatInfos:
-  - attackRate: 2
-    waitTime: 0.5
-    abilityRate: 1
-    abilityTime: 0
-    abilityDuration: 0.3
-  cooldownTime: 2
-  dash: 1
 --- !u!114 &912241390328060619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: triggers.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
@@ -145,7 +112,7 @@ PrefabInstance:
         type: 3}
       propertyPath: triggers.Array.data[0]
       value: 
-      objectReference: {fileID: 1933922443}
+      objectReference: {fileID: 0}
     - target: {fileID: 5172756952916316827, guid: 7bb5bf4693df852459ef9f5d89a58b73,
         type: 3}
       propertyPath: moveIdleBehavior

@@ -49,7 +49,7 @@ public abstract class PickUp : MonoBehaviour
                 inventory.firstAvailable++;
 
                 GetComponent<SpriteRenderer>().enabled = false;
-                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Collider2D>().enabled = false;
 
                 DisplayConsumable();
             }

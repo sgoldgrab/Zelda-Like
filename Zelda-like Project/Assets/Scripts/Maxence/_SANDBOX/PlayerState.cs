@@ -68,8 +68,8 @@ public class PlayerState : EntityState
         health = maxHealth;
         playerUI.InitializeUI();
 
-        foreach (string seph in globalData.savedSephiroths) GameObject.Find(seph).GetComponent<Sephiroth>().isActive = true;
-
         transform.position = globalData.checkpointPos;
+
+        if (globalData.savedSephiroths.Count > 0) foreach (string seph in globalData.savedSephiroths) GameObject.Find(seph).GetComponent<Sephiroth>().isActive = true;
     }
 }

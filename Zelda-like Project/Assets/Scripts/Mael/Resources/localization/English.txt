@@ -1,8 +1,103 @@
-title	My Great\nGame
-play	Play
+title=My Great\nGame
+play=Play
 howtoplay=How To Play
-opts	Settings
-info	Info
+opts=Settings
 retour=Return
 exit=Exit
 test=The perfectly circular trace of what seems to be a powerful blast\n gives the still smoking remains a supernatural look. Btw I'm just shitwirting because I need a long text to test if everything is ok, are u mad lad ?
+
+fr=French
+eng=English
+
+mainVolume=Main Volume
+
+
+
+dp1=Heal 3 health points over time, within 7.5 seconds.
+dp2=Increase your attack damage by 1 for 7.5 seconds.
+dp3=Increase the field of sight for 10 seconds.
+ds1=Cast an igneted energy orb in a straight line, dealing 2 damage over time to the first enemy it hits.
+ds2=Create a powerful conic blast that pulls all enemies hit back.
+ds3=Blink on a short distance in front of you.
+dcs1p1=Deal 1 damage to all hit enemies and restore 1 health point for each hit enemy.
+dcs1p2=Deal 2 damage to all hit enemies.
+dcs2p2=Pull all hit enemies towards the centre of the area and stun them for 2 seconds.
+dcs2p3=Slow all hit enemies by 50% and reveal them for 8 seconds.
+dcs3p1=Increase your attack speed and movement speed by 50% for 8 seconds.
+dcs3p3=Create a smoke area for 6 seconds, that allows you to prevent up to 3 damage that you were supposed to take.
+
+dpu1=Lily of Petrification: Make you immune to damage for 5 seconds but prevent you from attacking or using any ability.
+dpu2=Charm of Renewal: Heal 3 health points over time within 6 seconds but prevent you from switching stances while the effect is on.
+dpu3=Unstable Spirit's Crystal: Increase the attack damage by 1 for a single attack each time you switch stance for 7.5 seconds.
+dpu4=Locket of a Winged Soul: Increase the range of the dash performed at each attack for 10 seconds.
+dpu5=Iris Soaked in Moonlight: Increase the cooldown reduction by 10%, plus additional 10% each time you kill an enemy for 10 seconds.
+dpu6=Heaven's Grace Dust: Prevent from taking lethal damage for 6 seconds.
+
+dh1=Malkuth: You can respawn when you die.
+dh2=Yesod: Increase your attack speed by 0.5.
+dh3=Hod: Heal 1 health point for each enemy killed.
+dh4=Nezah: Increase the potion duration by 30%.
+dh5=Gevurah: Increase your maximum health by 1.
+dh6=Tipheret: Increase your movement speed by 30%.
+dh7=Hesed: Reduce your active cooldowns by 1 second each time you reach an enemy with a sword attack.
+dh8=Binah: Increase the field of sight.
+dh9=Hokhmah: Increase your cooldwon redution by 20%.
+dh10=Kether: Increase your attack damage by 1.
+
+
+
+ic1=All of this... There's almost nothing left of my alchemy equipment. What happened? Where are all the other kabbalists? The ritual must have gone wrong, and it's probably my fault. I have to join what's left of the Kabbalah, I have to fix my mistake.
+ic2=The cataclysm I provoked seems to have caused every human to mutate in a very wide radius. I feel a bit different myself. What exactly have I done? And what's happening in Jerusalem? The town looks like it's experiencing riots.
+
+it1=Use your left joystick to move around.
+it2=Press R2 to switch between the normal stance and the mutant stance.
+it3=The first allows you to see the lights, the second the shades. You can switch anytime.
+it4=Press R1 to attack with your sword.
+it5=Press [input], [input] and [input] to use an ability. In normal stance, they are potions. In mutant stance, they are spells.
+it6=You can either drink your potions (douple tap) to benefit an effect over time, or throw it (hold or simple tap) to create a pool on the ground.
+it7=You can cast your spells (hold or simple tap). If a spell hits a color-matching potion pool, it creates a powerful combo effect.
+it8=You can check the possible combo effects in the inventory. You'll also see your current items. Press the touchpad to open it.
+it9=Press [nput] to interact with an object. Interacting with the same object in your two stances can have different effects.
+it10=You don't need to interact with pick-up items to pick them up. Walking on them makes you pick them up. Then, press [input], [input] and [input] to use them.
+
+io1s1=The perfectly circular trace of what seems to be a powerful blast gives the still smoking remains a supernatural look. Or is it just the marks of the two huge wings that are bordering the corpse?
+io1s2=Something very particular emerges from this corpse. Its proximity causes a weird feeling, like a mixture of a deep nostalgia and and unjustified fluffiness? An almost painful heat also emanates from the shining dust that surrounds the remains.
+io2s1=What could have caused such damage to the city, if not a battering ram or a trebuchet? However, the riots only started in Jerusalem right after the Cataclysm, afew hours ago at the most. What happened here?
+io2s2=It's only after a crusade that one might walk through a Jerusalem this quiet. The air is satured with dust, and especially loaded with a heavy atmosphere, blended the usual tranquility that follows a scene of carnage.
+io3s1=Jerusalem has had its share of atrocities over the last few years. But what kind of madman would one have to be to indulge in a hobby as twisted as that of using the blood of cadavers in the streets to draw weird-looking patterns on a building's front?
+io3s2=The insane man who drew on those walls with the blood of nearby corpses didn't just make a disguting bad joke. The bloody symbols are enochian letters. We can read: "His time has come".
+io4s1=These lucent singularities indicate the superposition of two worlds on this spot. The Cataclysm probably cause the opening of several in-between worlds breaches. That's the way the celestial armies used to storm Jerusalem.
+io4s2=This place is filled with ethereal energy. This was the location of an in-breach, connecting the Earth with the celestial kingdoms. If this breach has been closed, the maybe there's still hope. By closing all of them, we might contain the invasion.
+io5s1=Usually, the Kabbalah knows how to cover its track. Despite that, we easily spot of the rubble a handful of objects that indicate their recent passage and their hurried departure: broken braziers, spilled censer, abandoned ether catalysts...
+io5s2=Among the rubble, every object tells a story. Here, several kabbalist's belongings lie around, telling their own stories. And from what they whisper, the Kabbalah pulled out all the stops here. Were they trying to shut down a breach?
+io6s1=The arab astrolabes are engineering marvels as well as tasteful decorative objects. Each of them is unique, in the image of it's owner. This one emanates a particular aura, powerful, which gives the impression that the whole sky is within reach.
+io6s2=It doesn't take an expert in astronomy to notice that the discs of this astrolabe are quit far from conventional. They are arranged in an unspeakable way, as if they were in fact one single shape, generating an intense optical illusion.
+io7s1=That's another proof that the kabbalists' passage. An inactive pentacle surrounded by enochian symbols. Impossible to miss it: this installation was created to open an in-between worlds breach. What on earth does the Kabbalah think?
+io7s2=Another breach was here and was shut down. The Kabbalah has something to do with it, according to the pentacle on the ground. However, the enochian snetence reflects that the kabbalists were trying to keep the breach open, rather than closing it.
+io8s1=This alley seems to have been the scene of a particularly violent battle. A man is impaled on a wall, a large blade still entirely plunged up to its hilt in his abdomen. The sword looks massive, it's hard to believe that anyone could've lift such a weapon.
+io8s2=The sword that has been used to impale the poor man on the wall is similar to no usual weapon of war. the knob is richly decorated with shimmering stones, and we can see several enochian symbols on the hilt.
+io9s1=Only the kabbalist’s jewels and tattoos allow us to identify this corpse, with his body crushed and his face charred. It’s David’s body, one of the best arcanists in the Kabbalah. Presumably dead after having tried to merge his body with an angel’s.
+io9s2=David was a prominent member of the Kabbalah, and one of the bests. His body is barely recognizable, but the rings and tattoos betray him. He seems to have been killed by some sort of supernatural force, like consumed from inside. 
+
+i2t1=This grille seems to be the only way towards the rest of the city. No way anyone could create a hole in it by hand. I have to find something to make a hole or to melt it. An interdimensional crystal might do the trick.
+i2t2=An in~between-worlds breach! Still open. It's probably the legions of divine entities which crawl out of it who wreak havoc in Jerusalem and who try to stop the Kabbalah. It's essential that I close this for good.
+
+
+iio1s1=This lantern shines with a weird glimmer. The light that it diffuses seems to shine in a perfect equilibrium. It’s nor too flickering, nor too dazzling. It’s nor worrying, nor reassuring. We wouldn’t even be able to tell its exact colour.
+iio1s2=This lantern almost gives the impression that it’s watching you, listening to you and understanding you. Its perfect shine both makes you want to confide to it and hide to its inquisitive sight.
+iio2s1=Among all the sinister mirror images that are reflected within these walls, one is glimmering with a particular light. We could expect all kinds of objects in such a temple of abjection: sparklers, skulls or even grimoires. But silverware?
+iio2s2=Here’s a sumptuous argent spoon. It seems to have gotten lost in this place. But, by taking a closer look… What are those glyphs engraved in its handle? They seem to have been designed by the same twisted minds that haunt these corridors.
+iio3s1=This necklace is a true jewellery masterpiece. It’s forged in gold, with a magnificent level of detail. However, even with all the strength and will in the world, it seems impossible to open the locket, as if it was welded to be never opened.
+iio3s2=At the sight of this wonderful locket entirely made of gold, any man feels an irrepressible desire to discover its content. Truth is, it doesn’t contain anything else than the heart-breaking frustration of having failed to open it.
+iio4s1=Every room of the palace is decorated with mirrors. All of them are broken, creating a stifling contrast with the splendour of the building. This one, however, catches the eye. A dozen of fissures pass through the mirror, all of them being lines as straight as tile floor.
+iio4s2=A cracked mirror doesn’t reflect anything else than desperation, fragility and betrayal. To many, it even brings bad luck. So what about a mirror covered in perfectly straight fissures, as if they were done by an outstandingly meticulous madman?
+iio5s1=The mere thought of the doomed and occult melodies that must come from this oud, definitely made of human bones, would send a chill of fright to the most valiant knight. Playing such a macabre instrument undoubtedly costs his soul to the musician.
+iio5s2=Not many things in this world inspire as much affliction and inclination. This is the case for this oud, conveying both the unspeakable beauty of the Arabic music and the repugnance of making a musical instrument out of human bones.
+iio6s1=His head is held up, so that we can’t see his eyes, but we can tell them filled with rage. His feet bathe in hellfire, which is unbelievably well sculpted. He holds his ignited morgenstern high, ready to smite anyone doesn’t bend to his inflexible and celestial will.
+iio6s2=Who might be the author of this colossal statue, portraying surprisingly well the angels’ primordial nature? The work as a whole perfectly illustrates the dominating power wielded by the celestial entities and exercised on men.
+iio7s1=The polished, grey and dull surface of these stones is brightened up by those strange red crystals, glowing with a red and pale light. Despite their look of minerals straight out of another world, they perfectly fade into the background.
+iio7s2=These weird-looking stones have undeniably been altered by an occult force. When close to them, we feel a soft but pernicious feeling of fulfilment, as if all our never-uttered wishes were about to be answered, but we wouldn’t recall any of them.
+iio8s1=All these bodies, these occult tools… They kept going, after the Cataclysm. Not only they kept opening breaches, but they also tried to take control over the entities that were summoned. That hasn’t been successful, obviously.
+iio8s2=The Kabbalah is still trying to summon angels. All people, among us, who died trying to assimilate the angelic power, that wasn’t enough to make them realize the chaos caused by their wrongdoings?
+
+oc1=This is Elijah, the Master of the Kabbalah. He doesn’t seem like himself. He became one with the archangel Raziel. It’s no wonder he’s trying to keep the in-between worlds breaches open. Time has come to end this.

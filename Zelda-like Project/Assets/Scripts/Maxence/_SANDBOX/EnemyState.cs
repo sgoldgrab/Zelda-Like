@@ -62,6 +62,12 @@ public class EnemyState : EntityState
 
     void Start()
     {
+        if (GameObject.Find("DATA").GetComponent<GlobalData>().easyMode == true)
+        {
+            maxHealth -= 2;
+            maximumSegsOnABar = maxHealth;
+        }
+
         health = maxHealth;
 
         GameObject spawnerMessenger = GameObject.FindWithTag("BossSpawner");
@@ -183,7 +189,7 @@ public class EnemyState : EntityState
 
         for (int x = 0; x < maxHealth; x++)
         {
-            if (decomposedBar && (x) == maximumSegsOnABar * (index + 1)) { offset = 0.0f; segSorting--; index++; mainOffset -= offsetBetweenBars; Debug.Log(index); }
+            if (decomposedBar && (x) == maximumSegsOnABar * (index + 1)) { offset = 0.0f; segSorting--; index++; mainOffset -= offsetBetweenBars; }
 
             Vector2 spawnPosition = new Vector2(startPos - offset, transform.position.y + mainOffset);
             GameObject seg = Instantiate(enemyHealthSegs[1], spawnPosition, Quaternion.identity, enemyHealthBar.transform);

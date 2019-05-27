@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8231090654164379395}
   - component: {fileID: 4515891807839713007}
   - component: {fileID: 7878602177644572966}
+  - component: {fileID: 2872215398970609890}
   m_Layer: 13
   m_Name: TREATED_RUINES_016
   m_TagString: Obstacle
@@ -94,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.15}
+  m_Offset: {x: 0, y: 1.38}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,6 +112,19 @@ PolygonCollider2D:
       - {x: -1.543808, y: -0.37187195}
       - {x: 0.015594482, y: 0.5095062}
       - {x: -0.093826294, y: 0.70349884}
+--- !u!114 &2872215398970609890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344565931539526770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8b3d07c67e519499da42d0f2723b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaColor: 0.5
 --- !u!1 &9118258597381920850
 GameObject:
   m_ObjectHideFlags: 0

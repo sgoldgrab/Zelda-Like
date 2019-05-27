@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 225477365491230973}
   - component: {fileID: 2251111386848509938}
   - component: {fileID: 150937747189843620}
+  - component: {fileID: 353889345280971563}
   m_Layer: 0
   m_Name: P3S3
   m_TagString: Smoke
@@ -109,3 +110,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cc901f30bb36d4b883277613953319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &353889345280971563
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130630827743236345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92ace3ed93b2bd14b9565191b6718263, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

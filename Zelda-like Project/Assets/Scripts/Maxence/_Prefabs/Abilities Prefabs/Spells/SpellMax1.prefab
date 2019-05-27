@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5613961340686970532}
   - component: {fileID: 8741358835127678455}
-  - component: {fileID: 8467451350083200825}
+  - component: {fileID: 530430228516694250}
+  - component: {fileID: 2000602542844699400}
   - component: {fileID: 8577872066933773417}
   - component: {fileID: 8838437008522592734}
   m_Layer: 15
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fee69d6346f84204199c0bedd2c91d12, type: 3}
-  m_Color: {r: 0.8962264, g: 0.16487186, b: 0.16487186, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 18006c3d1f2078e4da0f46322f07faf1, type: 3}
+  m_Color: {r: 0.990566, g: 0.4146903, b: 0.28502133, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82,8 +83,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8467451350083200825
-PolygonCollider2D:
+--- !u!95 &530430228516694250
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203697685894185085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 860cbbc7acdc2c84bbeaf9db099e2ec6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2000602542844699400
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,21 +115,9 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5}
-      - {x: -0.4330127, y: -0.25000003}
-      - {x: 0.43301272, y: -0.24999996}
+  m_Offset: {x: -0.02, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!50 &8577872066933773417
 Rigidbody2D:
   serializedVersion: 4

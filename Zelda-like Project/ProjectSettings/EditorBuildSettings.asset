@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scripts/Maxence/_SANDBOX/_SandBoxScene.unity
     guid: 8df75a74881643f4284ae91db637b4fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scripts/Mael/Scenes/HowToPlay.unity
     guid: 60413410983068f4ea9c02f44a830ded
   - enabled: 1

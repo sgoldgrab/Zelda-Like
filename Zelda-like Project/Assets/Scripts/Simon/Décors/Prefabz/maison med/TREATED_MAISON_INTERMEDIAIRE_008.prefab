@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1551574531776870311}
   - component: {fileID: 5235027841715228199}
   - component: {fileID: 4111348774764514852}
+  - component: {fileID: 8622297196281838261}
   m_Layer: 13
   m_Name: TREATED_MAISON_INTERMEDIAIRE_008
   m_TagString: Obstacle
@@ -94,7 +95,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.58, y: 3.85}
+  m_Offset: {x: 0.58, y: 3.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,6 +113,19 @@ PolygonCollider2D:
       - {x: 0.30255407, y: -2.2132974}
       - {x: 1.4352818, y: -3.8207}
       - {x: 1.3997917, y: -1.1484206}
+--- !u!114 &8622297196281838261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501591384438980184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8b3d07c67e519499da42d0f2723b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaColor: 0.5
 --- !u!1 &9167479899440267731
 GameObject:
   m_ObjectHideFlags: 0

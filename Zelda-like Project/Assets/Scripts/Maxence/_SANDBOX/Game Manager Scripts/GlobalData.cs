@@ -20,6 +20,10 @@ public class GlobalData : MonoBehaviour
 
     public Vector2 checkpointPos;
 
+    public bool easyMode;
+
+    public bool isEnglish;
+
     //Start
     [SerializeField] private StartData startData;
 

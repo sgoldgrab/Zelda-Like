@@ -8,6 +8,8 @@ public class Portail : Interactable
 
     private BoxCollider2D colliderGrille;
 
+    [SerializeField] private GameObject tuto;
+
     private void Start()
     {
         inventory = GameObject.Find("PLAYER").GetComponent<Inventory>();
@@ -15,6 +17,11 @@ public class Portail : Interactable
 
     public override void InteractionItem()
     {
+        if(!inventory.hasKey)
+        {
+            tuto.SetActive(true);
+        }
+
         if (inventory.hasKey)
         {
             colliderGrille = GetComponentInChildren<BoxCollider2D>();

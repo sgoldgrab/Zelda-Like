@@ -43,7 +43,7 @@ public class ComboP3S2 : MonoBehaviour
 
     IEnumerator ComboEffect(float timer)
     {
-        Time.timeScale = 0.3f;
+        //Time.timeScale = 0.3f;
 
         //invisibleScript.enabled = false;
 
@@ -52,7 +52,7 @@ public class ComboP3S2 : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
 
-        Time.timeScale = 1.0f;
+        //Time.timeScale = 1.0f;
 
         //invisibleScript.enabled = true;
 
