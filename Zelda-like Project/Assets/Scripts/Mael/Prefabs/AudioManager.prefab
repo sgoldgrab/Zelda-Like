@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7267219478062109224}
   - component: {fileID: 7267219478062109225}
   m_Layer: 0
-  m_Name: lAudioManagerVEVO
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,14 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: BossLoopMusic
-    clip: {fileID: 8300000, guid: 9dbca6378cda4de4eaeb32aef1967bc2, type: 3}
+    clip: {fileID: 8300000, guid: 9a2f31777ac62214991651a0d8397115, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 1
   - name: JeruMusic
-    clip: {fileID: 8300000, guid: 9dbca6378cda4de4eaeb32aef1967bc2, type: 3}
+    clip: {fileID: 8300000, guid: 5cea1a7d31acdd144b8c7ccd440ea5ed, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1

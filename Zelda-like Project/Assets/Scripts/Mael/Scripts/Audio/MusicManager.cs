@@ -11,20 +11,40 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] private Teleporter teleporter;
 
+    //NEW
+    [SerializeField] private List<AudioSource> audioSources;
+
     void Start()
     {
-        audioManager = AudioManager.instance;
+        //audioManager = AudioManager.instance;
 
-        audioManager.PlaySound(jerusalemMusicName);
+        //audioManager.PlaySound(jerusalemMusicName);
+        audioSources[0].Play();
     }
 
     void Update()
     {
+        /*
+        Debug.Log(audioManager.theSounds[1].clip.loadState);
+        Debug.Log(audioManager.theSounds[0].clip.loadState);
+        */
+
         if (teleporter.readyForBossMusic)
         {
-            audioManager.StopSound(jerusalemMusicName);
 
-            audioManager.PlaySound(bossMusicName);
+            //StartCoroutine(SwitchMusic());
+            
         }
+    }
+
+    IEnumerator SwitchMusic()
+    {
+        //audioManager.StopSound(jerusalemMusicName);
+        audioSources[0].Stop();
+
+        yield return new WaitForSeconds(0.5f);
+
+        //audioManager.PlaySound(bossMusicName);
+        audioSources[1].Play();
     }
 }

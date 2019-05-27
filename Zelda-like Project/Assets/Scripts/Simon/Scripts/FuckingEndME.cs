@@ -20,7 +20,7 @@ public class FuckingEndME : MonoBehaviour
     //Timing
     private bool activated;
 
-    private float timer = 4f;
+    private float timer = 15f;
     private float time;
 
     void Start()
