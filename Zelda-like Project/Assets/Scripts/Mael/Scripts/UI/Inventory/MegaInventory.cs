@@ -34,7 +34,7 @@ public class MegaInventory : MonoBehaviour
     
 
     /*
-        Faut ajouter cette ligne dans la fonction qui ouvre l'inventaire
+        Faut ajouter cette ligne dans la fonction qui ouvre l'inventaire:
         eveSystem.SetSelectedGameObject(firstSlotSelected.gameObject);    
         */
     

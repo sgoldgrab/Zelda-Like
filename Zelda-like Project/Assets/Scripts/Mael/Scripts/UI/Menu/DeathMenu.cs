@@ -37,7 +37,7 @@ public class DeathMenu : MonoBehaviour
         //le load a son precedent checkpoint
 
         deathDisplay.SetActive(false);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()

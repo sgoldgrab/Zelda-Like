@@ -2,7 +2,6 @@ title=Il mio grande\ngioco
 play=Jouer
 howtoplay=Comment jouer
 opts=Option
-info=Informazioni
 retour=Retour
 exit=Quitter
 test=Ceci est un test de longueur juste pour voir si on va me casser les couilles ou pas car ça commence carrément à me niquer ptn de merde. Allez c'est pas fini t'avais cru mais non haha deso pas deso on pete un cable
@@ -12,6 +11,39 @@ eng=Anglais
 
 mainVolume=Son global
 
+
+
+dp1=Régénère 3 points de vie sur la durée, en 7.5 secondes.
+dp2=Augmente vos dégâts d'attaque de 1 durant 7.5 secondes.
+dp3=Augmente le champ de vision durant 10 secondes.
+ds1=Lance une boule d'énergie enflammée en ligne droite, infligeant 2 dégâts sur la durée au premier ennemi touché.
+ds2=Provoque un puissant souffle en cône repoussant tous les ennemis touchés vers l'arrière.
+ds3=Vous téléporte instantanément sur une courte distance vers l'avant.
+dcs1p1=Inflige 1 dégât à tous les ennemis touchés, et régénère 1 point de vie pour chaque ennemi touché.
+dcs1p2=Inflige 2 dégât à tous les ennemis touchés.
+dcs2p2=Projette tous les ennemis touchés au centre de la zone et les étourdit durant 2 secondes.
+dcs2p3=Ralentit tous les ennemis touchés de 50% et les révèle durant 8 secondes.
+dcs3p1=Augmente votre vitesse d'attaque et votre vitesse de déplacement de 50% durant 8 secondes.
+dsc3p3=Crée une zone fumigène durant 6 secondes qui vous permet d'esquiver jusqu'à 3 attaques portées contre vous.
+
+dpu1=Lis de Pétrification: Vous rend invulnérable durant 5 secondes, mais vous empêche d'attaquer ou d'utiliser des compétences.
+dpu2=Charme de Renouveau: Régénère 3 points de vie sur la durée en 6 secondes, mais vous empêche de changer de posture durant l'effet.
+dpu3=Cristal de l'Esprit Instable: Augmente les dégâts d'attaque de 1 pour une unique attaque à chaque fois que vous changez de posture durant 7.5 secondes.
+dpu4=Médaillon d'une Âme Ailée: Augmente la portée de la ruée effectuée lors de chaque attaque durant 10 secondes.
+dpu5=Iris Imprégnée de Rayons de Lune: Augmente la réduction des délais de récupération de 10%, plus 10% supplémentaire à chaque fois que vous tuez un ennemi durant 10 secondes.
+dpu6=Poussière de Grâce Céleste: Empêche de subir des dégâts létaux durant 6 secondes.
+
+dh1=Malkuth: Vous pouvez réapparaître lorsque vous mourrez.
+dh2=Yesod: Augmente votre vitesse d'attaque de 0.5.
+dh3=Hod: Régénère 1 point de vie pour chaque ennemi tué.
+dh4=Nezah: Augmente la durée des potions de 30%.
+dh5=Gevurah: Augmente vos points de vie maximum de 1.
+dh6=Tipheret: Augmente votre vitesse de déplacement de 30%.
+dh7=Hesed: Réduit les dégâts de récupérations en cours d'1 seconde à chaque coup d'épée porté à un ennemi.
+dh8=Binah: Augmente le champ de vision.
+dh9=Hokmah: Augmente la réduction des délais de récupération de 20%.
+dh10=Kether: Augmente vos dégâts d'attaque de 1.
+
 Intro
  
 ic1=Tout ceci...Presque rien ne reste de mon matériel d'alchimie. Que s'est-il passé ? Où sont les autres kabbalistes ? Le rituel n'a pas dû se passer comme prévu, c'est probablement ma faute. Je dois rejoindre ce qui reste de la Kabbale, je dois réparer mon erreur.
@@ -19,3 +51,56 @@ ic2=Le cataclysme que j'ai provoqué semble avoir causé des mutations sur tous le
 
 it1=Utilisez le joystick gauche pour vous déplacer
 it2=Appuyez sur R2 pour changer de posture entre la posture normale et la posture mutante.
+it3=La première vous permet de voir les lumières et la seconde les ombres. Vous êtes libres de changer de posture à tout moment.
+it4=Appuyer sur R1 pour effectuer une attaque à l'épée.
+it5=Appuyer sur "Triangle", "Cercle" et "Croix" pour lancer des compétences. Dans la posture normale, ce sont des potions. Dans la posture mutante, ce sont des sortilèges.
+it6=Vous pouvez soit boire vos potions (presser deux fois la touche) pour bénéficier d'un effet sur la durée, ou la lancer (appuyer une fois ou maintenir la touche afin de viser) pour crée une flaque au sol.
+it7=Vous pouvez lancer vos sortilèges (appuyer une fois ou maintenir la touche). Si un sortilège touche une flaque de potion de couleur correspondante, cela crée un puissant effet de combo.
+it8=Vous pouvez lire tous les effets de combos possibles dans l'inventaire. Vous verrez aussi vos objets actuels. Utilisez le Pad Tactile pour ouvrir l' inventaire.
+it9=Utilisez "Carré" pour interagir avec un objet. Interagir avec le même objet dans les deux postures n'aura pas toujours le même effet.
+it10=Vous n'avez pas besoin d'intéragir avec les objets à ramasser. Passer dessus suffit à les ramasser. Utilisez ensuite les flèches directionnelles Gauche, Haut et Droite pour les consommer.
+
+io1s1=La trace parfaitement circulaire de ce qui semble être une puissante déflagration donne à la dépouille fumante une allure surnaturelle. Ou peut-être est-ce dû aux marques de deux immenses ailes bordant le corps ?
+io1s2=Il se dégage quelque chose de particulier de ce corps. Sa proximité provoque un étrange sentiment, mélange d’une profonde nostalgie et d’une plénitude injustifiée. La poussière brillante qui entoure la dépouille émane également une chaleur presque douloureuse.
+io2s1=Qu’est-ce qui aurait pu causer de tels dégâts à la ville, si ce n’est des béliers ou des trébuchets ? Or, les émeutes se sont déclenchées à Jérusalem peu après la Cataclysme, soit il y a quelques heures tout au plus. Que s’est-il passé ici ?
+io2s2=Ce n’est qu’à la suite d’une croisade qu’on peut traverser une Jérusalem aussi calme. L’air est saturé de poussière, mais surtout lourd d’une pesante atmosphère, mêlée à l’habituelle quiétude qui suit les scènes de carnages. 
+io3s1=Jérusalem a connu son lot d’atrocités lors des dernières années. Mais quel genre de dément faut-il être pour s’adonner à un passe-temps aussi abject que celui d’utiliser le sang des cadavres dans les rues pour dessiner de curieux motifs sur les façades d’une bâtisse ?
+io3s2=L’aliéné qui a dessiné sur ces murs en utilisant le sang des corps à proximité n’a pas simplement fait une mauvaise blague. Les symboles sanglants sont des lettres énochiennes. On peut lire : ‘Son temps est venu’.
+io4s1=Ces anomalies lumineuses trahissent la superposition de deux mondes en cet endroit. Le Cataclysme a dû provoquer l’ouverture de brèches d’entre-deux mondes. C’est par ces failles qu’ont déferlées les armées célestes sur Jérusalem.
+io4s2=Ce lieu est imprégné d’énergie éthérée. C’était l’emplacement d’une brèche d’entre-deux mondes, reliant la Terre aux royaumes célestes. Si cette brèche a pu être fermée, alors il reste un espoir. En les fermant toutes, il doit être possible d’endiguer l’invasion.
+io5s1=Habituellement, la Kabbale sait dissimuler ses traces. Toutefois, on distingue sans peine dans les décombres toute sorte d’objets trahissant leur passage récent et leur fuite précipitée : braseros brisés, encensoirs renversés, catalyseurs d’éther abandonnés…
+io5s2=Parmi les décombres, chaque objet délaissé raconte une histoire. Ici, plusieurs objets de kabbalistes traînent, racontant eux aussi leur histoire. Et d’après ce qu’ils disent, la Kabbale a sorti le grand jeu ici. Cherchaient-ils à fermer une brèche ?
+io6s1=Les astrolabes arabes sont aussi bien des merveilles d’ingénierie que des objets décoratifs de très bon goût. Tous sont uniques, à l’image de leur propriétaire. Celui-ci dégage une aura particulière, puissante, qui donne l’impression que les cieux entiers sont à notre portée.
+io6s2=Il ne faut pas être un expert en astronomie pour remarquer que les disques de cet astrolabe n’ont rien de conventionnel. Ils sont disposés de façon indescriptible, comme si tous n’étaient en réalité qu’une unique forme engendrant une intense illusion d’optique.
+io7s1=Encore une preuve du passage des kabbalistes. Un pentacle inactif, entouré de symboles énochiens. Impossible de s’y tromper : cette installation est destinée à ouvrir une brèche d’entre-deux mondes. Que diable pense la Kabbale ?
+io7s2=Une autre brèche se situait ici, puis a été close. La Kabbale y était pour quelque chose, d’après le pentacle au sol. Toutefois, la phrase énochienne indique plutôt que les kabbalistes cherchaient à maintenir la brèche ouverte, plutôt qu’à la fermer.
+io8s1=Cette ruelle semble avoir été le théâtre d’une bataille particulièrement violente. Un homme a été empalé sur un mur, une épée encore enfoncée dans son abdomen jusqu’à la garde. La lame semble massive, difficile à croire qu’un humain puisse soulever une telle arme.
+io8s2=L’épée avec laquelle cet homme a été empalé au mur ne ressemble à aucune arme de guerre classique. Le pommeau est richement orné de pierres brillantes, et on distingue de nombreux sigles enochiens sur la garde. 
+io9s1=Seuls les bijoux et les tatouages de kabbalistes permettent d’identifier la dépouille au corps écrasé et au visage carbonisé. Il s’agit de David, l’un des meilleurs arcanistes de la Kabbale. Vraisemblablement mort en essayant d’unir son corps à celui d’un ange.
+io9s2=David était un membre éminent de la Kabbale, l’un des meilleurs. Son corps est à peine reconnaissable, mais ses bagues et ses tatouages ne trompent pas. Il semble avoir été tué par une force surnaturelle, comme consumé de l’intérieur.
+
+i2t1=Cette grille semble être la seule issue vers le reste de la ville. Impossible d’y faire un trou à la main. Il faut trouver de quoi le trouer ou le faire fondre. Un cristal interdimensionnel ferait l’affaire.
+i2t2= Une brèche d’entre-deux mondes ! Encore ouverte. Ce sont probablement les légions d’entités divines qui s’en déversent qui causent ces ravages dans Jérusalem et qui tentent d’arrêter la Kabbale. Il est impératif de la fermer.
+
+
+iio1s1=Cette lanterne brille d’une étrange lueur. La lumière qu’elle diffuse paraît briller d’un parfait équilibre. Elle n’est ni trop vacillante, ni trop éblouissante. Elle n’est ni inquiétante, ni rassurante. On ne saurait même lui donner une couleur spécifique.
+iio1s2=Cette lanterne donnerait presque l’impression de vous observer, de vous écouter et de vous comprendre. Son éclat parfait donne à la fois envie de se confier à elle et de se cacher de sa vue inquisitrice. 
+iio2s1=Parmi tous les sinistre reflets qui se réfléchissent entre ces murs, l’un chatoie d’un éclat particulier. On peut s’attendre à toute sorte d'objets dans un tel temple de l’abjection : des cierges, des crânes, voire des grimoires. Mais de l’argenterie ? 
+iio2s2=Voilà une somptueuse cuillère en argent. Elle semble s’être perdu en ce lieu. Mais, en regardant de plus près… Que sont ces glyphes gravés sur son manche ? Ils semblent avoir été conçus par les mêmes esprits dérangés qui hantent ces couloirs.
+iio3s1=Ce sautoir est un réel chef-d’œuvre de bijouterie. Il est forgé dans de l’or, avec un splendide niveau de détail. Toutefois, même avec toute la force et la volonté du monde, impossible d’ouvrir le médaillon, comme s’il avait été soudé pour ne jamais être ouvert.
+iio3s2=A la vue de ce merveilleux médaillon entièrement doré, tout homme se sent envahi d’un irrépressible désir d’en découvrir le contenu. En réalité, il ne contient rien de plus que la déchirante frustration d’échouer à l’ouvrir.
+iio4s1=Chaque pièce de ce palais est ornée de miroirs. Tous sont brisés, formant un étouffant contraste avec la splendeur du bâtiment. Celui-ci cependant attire l’œil. Une dizaine de fentes le traverse de part en part, toutes aussi droites que des dalles carrelées.
+iio4s2=Un miroir fendu ne reflète plus que le désespoir, la fragilité et la tromperie. Pour beaucoup, il est même porteur de malheur. Qu’en est-il alors d’un miroir parcouru de fentes parfaitement droites, comme tracées intentionnellement par un dément particulièrement méticuleux ?
+iio5s1=La simple pensée des funestes mélodies occultes qui doivent provenir de cet oud vraisemblablement fait d’os humains ferait frissonner d’effroi le plus valeureux guerrier. Jouer d’un instrument aussi macabre coûte au musicien son âme, sans nul doute.
+iio5s2=Rares sont les choses de ce monde qui inspirent autant l’affliction que l'inclination. C’est le cas de cet oued, évoquant à la fois la beauté indicible de la musique arabe et l’horreur de tailler des instruments de musique dans des ossements humains.
+iio6s1=Sa tête est relevée de sorte qu’on ne peut voir ses yeux, mais on les devine emplis de rage. Ses pieds baignent dans le feu infernal, incroyablement bien sculpté. Il tient haut son morgenstern embrasé, prêt à châtier qui ne se soumet pas à son inflexible volonté céleste.
+iio6s2=Qui peut bien être l’auteur de cette colossale sculpture, dépeignant particulièrement bien la nature primordiale des anges ? L’ensemble de l’œuvre dégage à merveille la puissance dominatrice exercée par les entités célestes sur les hommes.
+iio7s1=La surface grise, lisse et terne de ces pierres est égayée par ces curieux cristaux rouges, luisant d’une lueur rouge blafarde. Malgré leur allure de minéraux tout droit sortis d’un autre monde, elles se fondent à merveille dans cet étrange décor.
+iio7s2=Ces surprenantes pierres ont indéniablement été altérées par une force occulte. On ressent en leur présence une douce mais pernicieuse sensation de plénitude, comme si tous nos souhaits jamais formulés s’exauçaient, mais qu’on ne pouvait s’en souvenir exactement.
+iio8s1=Tous ces corps, tous ces outils occultes… Ils ont continué, après le Cataclysme. Ils ont non seulement continué à ouvrir des brèches, mais ils ont également tenté de prendre le contrôle des entités invoquées… Sans grand succès, apparemment.
+iio8s2=La Kabbale tente encore d’invoquer des anges. Tous ceux qui, parmi les nôtres, ont péri en tentant d’assimiler la puissance angélique, n’ont pas suffit à leur faire prendre conscience du chaos causé par leurs méfaits ? 
+
+oc1=C’est Elijah, le Maître de la Kabbale. Mais il ne semble pas être lui-même. Il ne fait plus qu’un avec l’archange Raziel. Pas étonnant qu’il cherche à maintenir ouverte les brèches entre les deux mondes. C’est le moment d’en finir.
+
+
+

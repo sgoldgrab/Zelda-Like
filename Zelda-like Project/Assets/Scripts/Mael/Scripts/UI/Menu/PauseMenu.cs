@@ -76,11 +76,13 @@ public class PauseMenu : MonoBehaviour
     public void SetEnglish()
     {
         Localize.SetCurrentLanguage(SystemLanguage.English);
+        //GameObject.Find("DATA").GetComponent < GetComponent<GlobalData>().isEnglish = true;
     }
 
     public void SetFrench()
     {
         Localize.SetCurrentLanguage(SystemLanguage.French);
+        //GameObject.Find("DATA").GetComponent < GetComponent<GlobalData>().isEnglish = false;
     }
 
     

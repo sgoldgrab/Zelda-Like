@@ -19,7 +19,7 @@ namespace DFTGames.Localization
 
         /// <summary>
         /// Update the value of the Text we are attached to.
-        /// </summary>
+        
         public override void UpdateLocale()
         {
             if (!text) return; // catching race condition
