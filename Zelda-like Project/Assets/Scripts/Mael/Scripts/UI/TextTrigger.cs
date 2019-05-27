@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+/*
 public class TextTrigger : MonoBehaviour
 {
-    /*public GameObject pressTheOne;
+    public GameObject pressTheOne;
  
     public GameObject textDisplay;
 
@@ -50,6 +50,6 @@ public class TextTrigger : MonoBehaviour
     public void RipText()
     {        
         textDisplay.SetActive(false);
-    }*/
+    }
 }
-
+*/

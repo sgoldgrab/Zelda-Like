@@ -76,13 +76,19 @@ public class PauseMenu : MonoBehaviour
     public void SetEnglish()
     {
         Localize.SetCurrentLanguage(SystemLanguage.English);
+<<<<<<< HEAD
         //GameObject.Find("DATA").GetComponent < GetComponent<GlobalData>().isEnglish = true;
+=======
+>>>>>>> MaelV2
     }
 
     public void SetFrench()
     {
         Localize.SetCurrentLanguage(SystemLanguage.French);
+<<<<<<< HEAD
         //GameObject.Find("DATA").GetComponent < GetComponent<GlobalData>().isEnglish = false;
+=======
+>>>>>>> MaelV2
     }
 
     
