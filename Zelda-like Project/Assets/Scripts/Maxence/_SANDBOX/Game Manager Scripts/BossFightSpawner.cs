@@ -77,7 +77,7 @@ public class BossFightSpawner : MonoBehaviour
 
     void PhaseUpdate()
     {
-        if ((bossState.health == (2 * bossState.SetMaximumHealth) / 3 && currentPhase == 0) || (bossState.health == bossState.SetMaximumHealth / 3 && currentPhase == 1))
+        if ((bossState.health <= (2 * bossState.SetMaximumHealth) / 3 && currentPhase == 0) || (bossState.health <= bossState.SetMaximumHealth / 3 && currentPhase == 1))
         {
             CreateBigWave(currentPhase);
 
