@@ -56,6 +56,17 @@ public class BossFightSpawner : MonoBehaviour
     [SerializeField] private GameObject door;
     private bool theFightHasBegan;
 
+
+    private AudioManager audioManager;
+
+    [SerializeField] private string BossIntroStop;
+    [SerializeField] private string BossMusicStart;
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
+
     void Update()
     {
         if (!theFightHasBegan) return;
@@ -153,6 +164,9 @@ public class BossFightSpawner : MonoBehaviour
         {
             door.SetActive(true);
             theFightHasBegan = true;
+
+            audioManager.StopSound("BossIntroMusic");
+            audioManager.PlaySound("BossLoopMusic");
         }
     }
 }
