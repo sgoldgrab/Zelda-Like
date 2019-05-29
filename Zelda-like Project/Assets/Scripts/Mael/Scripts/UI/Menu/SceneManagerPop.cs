@@ -14,9 +14,22 @@ public class SceneManagerPop : MonoBehaviour
     public Button returnButton;
     public Button mainMenuButton;
 
+    private AudioManager audioManager;
+    [SerializeField] private string MenuLoopMusic;
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+
+        audioManager.PlaySound("MenuLoopMusic");
+    }
+
     public void Game()
     {
         SceneManager.LoadScene(sceneToPlay);
+
+        audioManager.StopSound("MenuLoopMusic");
+        
     }
 
     public void Tuto()

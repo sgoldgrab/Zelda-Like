@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 313885925}
   - component: {fileID: 313885924}
   - component: {fileID: 313885923}
+  - component: {fileID: 313885926}
   m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
@@ -908,6 +909,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &313885926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313885921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1026482868}
+          m_MethodName: OnSelect
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &354569087
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +952,7 @@ GameObject:
   - component: {fileID: 354569091}
   - component: {fileID: 354569090}
   - component: {fileID: 354569089}
+  - component: {fileID: 354569092}
   m_Layer: 0
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1038,6 +1071,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &354569092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354569087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1026482868}
+          m_MethodName: OnSelect
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &505227925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,11 +1894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1331403676, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
       propertyPath: startData.startPoint.x
-      value: 5
+      value: 205
       objectReference: {fileID: 0}
     - target: {fileID: 1331403676, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
       propertyPath: startData.startPoint.y
-      value: -200
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 1331403676, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
       propertyPath: startData.startHealth
@@ -1842,6 +1906,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
+--- !u!1001 &912618137
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7267219478062109223, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267219478062109224, guid: 98354e6a431ba4146ae0101423a217c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98354e6a431ba4146ae0101423a217c9, type: 3}
 --- !u!1 &1026424951
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026482866}
   - component: {fileID: 1026482867}
+  - component: {fileID: 1026482868}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -2070,6 +2204,21 @@ MonoBehaviour:
   eventSys: {fileID: 58222251}
   returnButton: {fileID: 147453289}
   mainMenuButton: {fileID: 354569091}
+  MenuLoopMusic: MenuLoopMusic
+--- !u!114 &1026482868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026482865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d520f55060e31dd42b420677dad1955c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSelectedSound: ButtonSelected
+  buttonPressedSound: ButtpnClicked
 --- !u!1 &1033276142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3535,7 @@ GameObject:
   - component: {fileID: 1508332044}
   - component: {fileID: 1508332043}
   - component: {fileID: 1508332042}
+  - component: {fileID: 1508332045}
   m_Layer: 0
   m_Name: Credits
   m_TagString: Untagged
@@ -3504,6 +3654,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1508332045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508332040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1026482868}
+          m_MethodName: OnSelect
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1595620574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,6 +3772,7 @@ GameObject:
   - component: {fileID: 1702474360}
   - component: {fileID: 1702474359}
   - component: {fileID: 1702474358}
+  - component: {fileID: 1702474361}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -3709,6 +3891,26 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1702474361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702474356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1870563162
 GameObject:
   m_ObjectHideFlags: 0

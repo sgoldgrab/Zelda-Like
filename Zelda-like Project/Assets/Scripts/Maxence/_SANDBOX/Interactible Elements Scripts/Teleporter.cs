@@ -6,7 +6,15 @@ public class Teleporter : MonoBehaviour
 {
     [SerializeField] private Transform destination;
 
-    public bool readyForBossMusic { get; set; } = false;
+    private AudioManager audioManager;
+
+    [SerializeField] private string JeruStop;
+    [SerializeField] private string BossIntroMusicStart;
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +24,8 @@ public class Teleporter : MonoBehaviour
 
             player.transform.position = destination.position;
 
-            readyForBossMusic = true;
+            audioManager.StopSound("JeruLoopMusic");
+            audioManager.PlaySound("BossIntroMusic");
         }
     }
 }

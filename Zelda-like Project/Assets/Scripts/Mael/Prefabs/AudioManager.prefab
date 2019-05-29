@@ -58,7 +58,7 @@ MonoBehaviour:
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 1
-  - name: MenuMusic
+  - name: MenuLoopMusic
     clip: {fileID: 8300000, guid: 824d256561724c140b928ab1665131a2, type: 3}
     volume: 0.7
     pitch: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
     loop: 0
   - name: ButtonSelected
     clip: {fileID: 8300000, guid: 914938972e4d1c54294e6e16c2dc7952, type: 3}
-    volume: 0.7
+    volume: 0.42
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
@@ -233,3 +233,10 @@ MonoBehaviour:
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
+  - name: BossIntroMusic
+    clip: {fileID: 8300000, guid: 6859461bbe8f333428795f4b6265bff1, type: 3}
+    volume: 0.7
+    pitch: 1
+    randomVolume: 0.1
+    randomPitch: 0.196
+    loop: 1
