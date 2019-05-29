@@ -1894,11 +1894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1331403676, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
       propertyPath: startData.startPoint.x
-      value: 205
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1331403676, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
       propertyPath: startData.startPoint.y
-      value: -100
+      value: -205
       objectReference: {fileID: 0}
     - target: {fileID: 1331403676, guid: 79cd704ec1c25dc4288ecbd83e3e3a05, type: 3}
       propertyPath: startData.startHealth

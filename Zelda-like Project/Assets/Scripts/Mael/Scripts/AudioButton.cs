@@ -13,26 +13,21 @@ public class AudioButton : MonoBehaviour
     [SerializeField]
     string buttonPressedSound;
 
-
     private void Start()
     {
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         audioManager = AudioManager.instance;
     }
 
-
-
     public void OnSelect(BaseEventData eventData)
     {
         audioManager.PlaySound("ButtonSelected");
-        Debug.Log("BBBB");
     }
 
     public void ButtonPressed()
     {
         audioManager.PlaySound("ButtonClicked");
     }
-
 }
 
 

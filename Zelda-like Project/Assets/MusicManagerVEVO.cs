@@ -8,12 +8,10 @@ public class MusicManagerVEVO : MonoBehaviour
 
     [SerializeField] private string JerusalemMusic;
 
-    // Start is called before the first frame update
     void Start()
     {
-        audioManager = AudioManager.instance;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         audioManager.PlaySound("JeruLoopMusic");
     }
-
 }

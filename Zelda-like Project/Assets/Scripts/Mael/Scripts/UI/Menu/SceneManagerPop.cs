@@ -19,22 +19,16 @@ public class SceneManagerPop : MonoBehaviour
 
     private void Start()
     {
-        audioManager = AudioManager.instance;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         audioManager.PlaySound("MenuLoopMusic");
     }
 
     public void Game()
     {
-        SceneManager.LoadScene(sceneToPlay);
-
         audioManager.StopSound("MenuLoopMusic");
-        
-    }
 
-    public void Tuto()
-    {
-        SceneManager.LoadScene("HowToPlay");
+        SceneManager.LoadScene(sceneToPlay);
     }
 
     public void Option()

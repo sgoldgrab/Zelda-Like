@@ -38,7 +38,6 @@ public class Sound
 
     public void Stop()
     {
-        
         source.Stop();
     }
 }
@@ -65,9 +64,11 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
         instance = this;
+
+        Initialize();
     }
 
-    private void Start()
+    private void Initialize()
     {
         for (int i = 0; i < sounds.Length; i++)
         {
@@ -76,8 +77,7 @@ public class AudioManager : MonoBehaviour
             sounds[i].SetSource (_go.AddComponent<AudioSource>());
         }
 
-        PlaySound("MenuMusic");
-        
+        //PlaySound("MenuMusic");
     }
 
 
