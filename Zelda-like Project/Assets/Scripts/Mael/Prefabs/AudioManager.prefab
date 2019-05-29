@@ -205,7 +205,7 @@ MonoBehaviour:
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
-  - name: BossBeam
+  - name: BossAttack
     clip: {fileID: 0}
     volume: 0.7
     pitch: 1
@@ -213,6 +213,13 @@ MonoBehaviour:
     randomPitch: 0.196
     loop: 0
   - name: BossDeath
+    clip: {fileID: 0}
+    volume: 0.7
+    pitch: 1
+    randomVolume: 0.1
+    randomPitch: 0.196
+    loop: 0
+  - name: BossHurt
     clip: {fileID: 0}
     volume: 0.7
     pitch: 1

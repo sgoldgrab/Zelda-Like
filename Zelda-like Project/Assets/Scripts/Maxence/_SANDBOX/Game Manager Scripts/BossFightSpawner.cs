@@ -118,6 +118,8 @@ public class BossFightSpawner : MonoBehaviour
     {
         foreach (GameObject enemy in wavesEnemies[phase].enemies)
         {
+            Debug.Log(waveIndex);
+
             for (int q = 0; q < wavesEnemies[phase].quantity[waveIndex]; q++)
             {
                 enemiesToSpawn.Add(enemy);
