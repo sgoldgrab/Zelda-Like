@@ -31,15 +31,14 @@ public class Sound
 
     public void Play()
     {
-        /*
         source.volume = volume * (1+ Random.Range(-randomVolume/2f, randomVolume/2f));
         source.pitch = pitch * (1 + Random.Range(-randomPitch / 2f, randomPitch / 2f));
-        */
         source.Play();
     }
 
     public void Stop()
     {
+        
         source.Stop();
     }
 }
@@ -51,8 +50,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     Sound[] sounds;
 
-    public Sound[] theSounds { get => sounds; set => sounds = value; }
-
     private void Awake()
     {
         if(instance != null)
@@ -62,19 +59,15 @@ public class AudioManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-
         else
         {
             instance = this;
             DontDestroyOnLoad(this);
         }
-
         instance = this;
-
-        Initialize();
     }
 
-    private void Initialize()
+    private void Start()
     {
         for (int i = 0; i < sounds.Length; i++)
         {
@@ -83,11 +76,12 @@ public class AudioManager : MonoBehaviour
             sounds[i].SetSource (_go.AddComponent<AudioSource>());
         }
 
-        //PlaySound("MenuMusic");
+        PlaySound("MenuMusic");
+        
     }
 
 
-    public void PlaySound(string _name)
+    public void PlaySound (string _name)
     {
         for (int i = 0; i < sounds.Length; i++)
         {
