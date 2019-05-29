@@ -20,6 +20,8 @@ public class RockFromGroundSkill : CombatSkillUpdate
         abRate = combatInfos[0].abilityRate;
 
         range = baseRange;
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     public override void Skill(int ind)

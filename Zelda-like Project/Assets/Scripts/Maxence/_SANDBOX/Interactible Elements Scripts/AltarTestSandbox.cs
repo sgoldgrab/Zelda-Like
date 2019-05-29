@@ -23,11 +23,15 @@ public class AltarTestSandbox : MonoBehaviour
 
     public bool locked = false;
 
+    private AudioManager audioManager;
+
     void Start()
     {
         playerState = GameObject.Find("PLAYER").GetComponent<PlayerState>();
 
         globalData = GameObject.Find("DATA").GetComponent<GlobalData>();
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +50,8 @@ public class AltarTestSandbox : MonoBehaviour
         Debug.Log(sephirots[theSeph - 1]);
 
         ActivateSeph(theSeph);
+
+        audioManager.PlaySound("PickUpSeph");
     }
 
     public void ActivateSeph(int seph)

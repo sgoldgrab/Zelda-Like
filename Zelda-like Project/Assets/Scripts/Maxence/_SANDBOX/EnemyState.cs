@@ -60,8 +60,15 @@ public class EnemyState : EntityState
     public bool isProtected { get; set; } = false;
     public bool parry { get; set; } = false;
 
+    //SOUND
+    private AudioManager audioManager;
+
+    public string enemy;
+
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         if (GameObject.Find("DATA").GetComponent<GlobalData>().easyMode == true)
         {
             maxHealth -= 2;
@@ -123,6 +130,9 @@ public class EnemyState : EntityState
         foreach (CombatSkillUpdate combatSkill in enemyBehaviorsManager.theSkills) combatSkill.ResetValues();
 
         enemyAnims.DamageAnim(); // trigger the anim // the OnDeath() Method is activated through the playerAnims script, with the death animation.
+
+        if (isDead) audioManager.PlaySound(enemy + "Death");
+        else audioManager.PlaySound(enemy + "Hurt");
     }
 
     public override void TakeHeal(int heal)

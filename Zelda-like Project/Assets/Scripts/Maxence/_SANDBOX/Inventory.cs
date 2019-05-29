@@ -23,6 +23,8 @@ public abstract class PickUp : MonoBehaviour
 
     public Sprite blankSprite;
 
+    private AudioManager audioManager;
+
     void Awake()
     {
         for (int g = 0; g < 3; g++) UISlots.Add(GameObject.Find("Consumable " + (g + 1).ToString() + " (1)"));
@@ -30,6 +32,8 @@ public abstract class PickUp : MonoBehaviour
         for (int w = 0; w < 3; w++) InventorySlots.Add(GameObject.Find("Consumable " + (w + 1).ToString()));
 
         for (int h = 0; h < 3; h++) Texts.Add(GameObject.Find("Text Slot " + (h + 1).ToString()));
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,6 +56,8 @@ public abstract class PickUp : MonoBehaviour
                 GetComponent<Collider2D>().enabled = false;
 
                 DisplayConsumable();
+
+                audioManager.PlaySound("PickUpItem");
             }
         }
     }
@@ -85,7 +91,6 @@ public class Inventory : MonoBehaviour
     public int currentSlotsTaken { get; set; }
     public int firstAvailable { get; set; }
     public GameObject[] consumables;
-    //[SerializeField] private string consumeInputName;
 
     [SerializeField] private GameObject inventoryUI;
     private bool displayed;
@@ -94,10 +99,13 @@ public class Inventory : MonoBehaviour
 
     public bool hasKey { get; set; } = false;
 
+    public AudioManager audioManager;
 
     void Awake()
     {
         consumables = new GameObject[3];
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void Start()
@@ -114,16 +122,11 @@ public class Inventory : MonoBehaviour
             if (!displayed) { inventoryUI.SetActive(true); displayed = true; }
 
             else if (displayed) { inventoryUI.SetActive(false); displayed = false; }
+
+            audioManager.PlaySound("InventoryOpened");
         }
 
         InputManager();
-
-        /*
-        for (int z = 0; z < 3; z++)
-        {
-            //if (Input.GetButtonDown(consumeInputName + (z + 1).ToString()) && canUseConsumable) { UseConsumable(z); }
-        }
-        */
     }
 
     void InputManager()
@@ -151,5 +154,7 @@ public class Inventory : MonoBehaviour
         consumables[slotNum].GetComponent<PickUp>().Consume();
 
         if (firstAvailable > slotNum) { firstAvailable = slotNum; }
+
+        audioManager.PlaySound("ItemConso");
     }
 }

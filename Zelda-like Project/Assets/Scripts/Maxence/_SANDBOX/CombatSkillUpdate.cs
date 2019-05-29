@@ -36,10 +36,15 @@ public class CombatSkillUpdate : Trigger
     //COMPLEX BEHAVIOR REQUIRED
     protected int index;
 
+    //SOUND
+    protected AudioManager audioManager;
+
     void Start()
     {
         rate = combatInfos[0].attackRate;
         abRate = combatInfos[0].abilityRate;
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -65,7 +70,7 @@ public class CombatSkillUpdate : Trigger
     {
         if (rate > 0)
         {
-            if (wait <= 0.0f && !isPlaying) { enemyAnims.SkillAnim(animIndex); isPlaying = true; }
+            if (wait <= 0.0f && !isPlaying) { enemyAnims.SkillAnim(animIndex); audioManager.PlaySound(enemyState.enemy + "Attack"); isPlaying = true; }
 
             wait -= Time.deltaTime;
         }

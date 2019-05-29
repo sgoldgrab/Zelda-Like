@@ -45,21 +45,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: BossLoopMusic
-    clip: {fileID: 8300000, guid: 9a2f31777ac62214991651a0d8397115, type: 3}
+    clip: {fileID: 8300000, guid: 5ddd23b12700e33488ff7d60883aa6f8, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 1
-  - name: JeruMusic
-    clip: {fileID: 8300000, guid: 5cea1a7d31acdd144b8c7ccd440ea5ed, type: 3}
+  - name: JeruLoopMusic
+    clip: {fileID: 8300000, guid: bb30a351cb3f48e41bf1080c4ff6ab8c, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 1
   - name: MenuMusic
-    clip: {fileID: 8300000, guid: d7f97c990d5d2a542a4cadb26b48adca, type: 3}
+    clip: {fileID: 8300000, guid: 824d256561724c140b928ab1665131a2, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
@@ -73,28 +73,28 @@ MonoBehaviour:
     randomPitch: 0.196
     loop: 0
   - name: ButtonSelected
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 914938972e4d1c54294e6e16c2dc7952, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: PickUpItem
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ec603e7401e0f1f45bdc081eda7fe840, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: PickUpSephi
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 536081d160ec99d43bb890b2f5eb2c8c, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: ItemConso
-    clip: {fileID: 8300000, guid: 375dc4981520c6247bb197e4cf2f0758, type: 3}
+    clip: {fileID: 8300000, guid: ff7667495dd7b9848ad224f96b5838bd, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
@@ -108,126 +108,126 @@ MonoBehaviour:
     randomPitch: 0.196
     loop: 0
   - name: ThrowPotion
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: bf4f24dfa1fe8ef49afce43e8edc5893, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: DrinkPotion
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 79fe61354e082a940bcdeccff98e7597, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: Blink
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 48a58bab735612f41b452e504ea7df9b, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: PlayerAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ea74544e6365d3d45b376ef728a40a28, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: PlayerDeath
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1bd6484831d20ac4982a86513edc35ee, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: AngeAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 525fa259afa136048bdce344e3f182e3, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: AngeDeath
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f1edee88bdae9404998668fdeb1691f1, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: AngeHurt
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c087e21868496c44eb3200a86a3a7788, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: RebeuAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 031d6f7f3d0154c46bedc474991db7c0, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: RebeuDeath
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1c76c7afa644a0a4cbfca35bfba5a4dc, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: RebeuHurt
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 90759af7b392ec94a895b4eff33b4078, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: TemplarAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 0d110cccff222ad4ca2c63446bebbabd, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: TemplarDeath
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 04bdffea17312e847a716cef6d550a71, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: TemplarHurt
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3ba7542df7e6acb4ea451e329bc6d22d, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: BossAttack
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9ed36b582faf88d4890bfcef3d4f639b, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: BossDeath
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f1d985d246d7acc4e9a3c2eb1a730f2c, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: BossHurt
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c087e21868496c44eb3200a86a3a7788, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1
     randomPitch: 0.196
     loop: 0
   - name: DeathMusic
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 46de92182738c3547a70fa8950a00f3a, type: 3}
     volume: 0.7
     pitch: 1
     randomVolume: 0.1

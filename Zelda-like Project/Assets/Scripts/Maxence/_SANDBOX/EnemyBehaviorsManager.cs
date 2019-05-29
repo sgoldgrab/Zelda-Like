@@ -104,15 +104,6 @@ public class EnemyBehaviorsManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Debug.Log(enemyState.enemyCanMove + " " + enemyState.enemyCanUseSkill);
-
-        /*
-        if (triggers[0].triggerIsActive) gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.green;
-        else gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
-
-        Debug.Log(triggers[0].triggerIsActive);
-        */
-
         if (enemyState.health <= 0) return;
 
         if (player.GetComponent<PlayerState>().health <= 0 || docile) behavior = Behaviors.idle;
@@ -133,18 +124,6 @@ public class EnemyBehaviorsManager : MonoBehaviour
                     skillCheck();
                 }
             }
-
-            /*for (int j = 0; j < skills.Count; j++)
-            {
-                if (skills[j].cooldown <= 0.0f && enemyState.enemyCanUseSkill)
-                {
-                    //if (skills[j].condition != Skill.Conditions.none) { //check la condition }
-                    //else { skills[j].EnemyBehavior(); skills[j].cooldown = skills[j].cooldownValue; }
-
-                    skills[j].skillIsActive = true;
-                    skills[j].cooldown = skills[j].cooldownValue;
-                }
-            }*/
 
             TriggerCheck();
         }

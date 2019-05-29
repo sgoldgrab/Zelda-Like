@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAnims : MonoBehaviour
 {
     public Animator playerAnimator { get; private set; }
-
     public AnimationState playerAnimState { get; set; }
 
     [SerializeField] private PlayerMovement playerMovement;
@@ -13,8 +12,12 @@ public class PlayerAnims : MonoBehaviour
     [SerializeField] private PlayerStance playerStance;
     [SerializeField] private PlayerState playerState;
 
+    private AudioManager audioManager;
+
     void Awake()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         playerAnimator = GetComponentInChildren<Animator>();
         playerMovement = GetComponentInParent<PlayerMovement>();
         //playerAnimState = playerAnimator.GetComponentInChildren<AnimationState>();
@@ -58,12 +61,16 @@ public class PlayerAnims : MonoBehaviour
         else if (playerState.health <= 0)
         {
             playerAnimator.SetTrigger("playerIsDead");
+
+            audioManager.PlaySound("PlayerDeath");
         }
     }
 
     public void AttackAnim()
     {
         playerAnimator.SetTrigger("playerAttacks");
+
+        audioManager.PlaySound("PlayerAttack");
     }
 
     public void Stance()
@@ -85,11 +92,15 @@ public class PlayerAnims : MonoBehaviour
     public void ReleaseAnim()
     {
         playerAnimator.SetTrigger("playerRelease");
+
+        if (playerStance.whatStance == PlayerStance.Stance.stance1) audioManager.PlaySound("ThrowPotion");
     }
 
     public void DrinkAnim()
     {
         playerAnimator.SetTrigger("playerDrinks");
+
+        audioManager.PlaySound("DrinkPotion");
     }
 
     public void HoldAnim()
